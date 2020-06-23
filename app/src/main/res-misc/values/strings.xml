@@ -1,0 +1,11 @@
+
+<resources>
+    <string name="games">Games</string>
+    <string name="movies">Movies</string>
+    <string name="audio">Audio</string>
+    <string name="art">Art</string>
+    <string name="community">Community</string>
+    <string name="portal">Portal</string>
+    <string name="feed">Your feed</string>
+    <string name="wiki">Wiki</string>
+</resources>

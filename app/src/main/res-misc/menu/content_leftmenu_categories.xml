@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="@string/movies"
+        android:id="@+id/leftmenu_content_movies" />
+
+    <item
+        android:title="@string/audio"
+        android:id="@+id/leftmenu_content_audio" />
+
+    <item
+        android:title="@string/art"
+        android:id="@+id/leftmenu_content_art" />
+
+    <item
+        android:title="@string/games"
+        android:id="@+id/leftmenu_content_games" />
+    <item
+        android:title="@string/community"
+        android:id="@+id/leftmenu_content_community" />
+    <item
+        android:title="@string/portal"
+        android:id="@+id/leftmenu_content_portal" />
+    <item
+        android:title="@string/feed"
+        android:id="@+id/leftmenu_content_feed" />
+    <item
+        android:title="@string/wiki"
+        android:id="@+id/leftmenu_content_wiki" />
+</menu>

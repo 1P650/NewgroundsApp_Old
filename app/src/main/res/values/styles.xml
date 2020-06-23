@@ -1,0 +1,18 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+    <style name="ContentBottomBarStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="android:background">@color/colorBottomBar</item>
+        <item name="itemTextColor">@color/colorBottomBarText</item>
+        <item name="paddingStart">@dimen/ng_bottombar_padding</item>
+        <item name="tabTextColor">@color/colorBottomBarText</item>
+
+    </style>
+
+</resources>
