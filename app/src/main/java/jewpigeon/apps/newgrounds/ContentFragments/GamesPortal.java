@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.R;
 
-public class GamesPortal extends Fragment {
+public class GamesPortal extends NG_Fragment {
     View rootView;
     public static GamesPortal newInstance() {
 

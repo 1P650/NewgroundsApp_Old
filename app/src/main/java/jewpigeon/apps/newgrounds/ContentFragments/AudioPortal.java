@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.R;
 
-public class AudioPortal extends Fragment {
+public class AudioPortal extends NG_Fragment {
     View rootView;
     public static AudioPortal newInstance() {
 

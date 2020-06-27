@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.R;
 
-public class CommunityPortal extends Fragment {
+public class CommunityPortal extends NG_Fragment {
     View rootView;
     public static CommunityPortal newInstance() {
 

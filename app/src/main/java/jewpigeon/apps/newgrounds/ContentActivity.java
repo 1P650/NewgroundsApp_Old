@@ -1,16 +1,21 @@
 package jewpigeon.apps.newgrounds;
 
+import android.content.ContentResolver;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.ImageButton;
-import android.widget.Toast;
 
+
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.behavior.HideBottomViewOnScrollBehavior;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.infideap.drawerbehavior.AdvanceDrawerLayout;
 import com.ncapdevi.fragnav.FragNavController;
+
 
 
 import java.util.ArrayList;
@@ -18,8 +23,12 @@ import java.util.Arrays;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import jewpigeon.apps.newgrounds.ContentFragments.ArtPortal;
@@ -40,15 +49,19 @@ public class ContentActivity extends NG_Activity implements
     private ImageButton HomeButton;
     private ImageButton SearchButton;
     private SearchView ContentSearch;
+    private AppBarLayout contentAppBarLayout;
+
+
 
     private BottomNavigationView ContentBottomBar;
+    private HideBottomViewOnScrollBehavior contentBottomBarBehaviour;
 
     private NavigationView ContentLeftMenu;
-    private DrawerLayout ContentDrawerLayout;
+    private AdvanceDrawerLayout ContentDrawerLayout;
     private ActionBarDrawerToggle ContentDrawerToggle;
 
     private FragNavController ContentFragmentsController;
-    private ArrayList<Fragment> ContentFragmentsList = new ArrayList<>(
+    private ArrayList<NG_Fragment> ContentFragmentsList = new ArrayList<>(
             Arrays.asList(
                     MoviesPortal.newInstance(),
                     AudioPortal.newInstance(),
@@ -77,10 +90,14 @@ public class ContentActivity extends NG_Activity implements
     private void establishViews() {
 
         ContentToolbar = findViewById(R.id.content_toolbar);
-
+        contentAppBarLayout = findViewById(R.id.content_appbarlayout);
+        
 
         ContentBottomBar = findViewById(R.id.content_bottombar);
-        ContentDrawerLayout = findViewById(R.id.content_drawerlayout);
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) ContentBottomBar.getLayoutParams();
+        contentBottomBarBehaviour = (HideBottomViewOnScrollBehavior) layoutParams.getBehavior();
+
+        ContentDrawerLayout = (AdvanceDrawerLayout) findViewById(R.id.content_drawerlayout);
         ContentLeftMenu = findViewById(R.id.content_left_menu);
 
         HomeButton = findViewById(R.id.NG_appbar_home);
@@ -94,15 +111,19 @@ public class ContentActivity extends NG_Activity implements
 
 
 
-
         ContentDrawerToggle = new ActionBarDrawerToggle(this, ContentDrawerLayout, ContentToolbar, 0, 0);
         ContentDrawerLayout.addDrawerListener(ContentDrawerToggle);
 
         ContentDrawerToggle.setDrawerIndicatorEnabled(true);
         ContentDrawerToggle.syncState();
 
-        ContentDrawerLayout.setScrimColor(getResources().getColor(R.color.colorLeftMenuShadow));
-        ContentDrawerLayout.setDrawerElevation(0);
+        ContentDrawerLayout.useCustomBehavior(GravityCompat.START);
+        ContentDrawerLayout.setViewScrimColor(GravityCompat.START, getResources().getColor(R.color.colorLeftMenuShadow));
+        ContentDrawerLayout.setDrawerElevation(GravityCompat.START, 20);
+
+
+
+
     }
 
     private void setUpListeners() {
@@ -120,7 +141,6 @@ public class ContentActivity extends NG_Activity implements
             public void onClick(View view) {
                 if(ContentSearch.getVisibility() == View.GONE){
                     ContentSearch.setVisibility(View.VISIBLE);
-                    setMargins(ContentSearch,0,getResources().getDimensionPixelSize(R.dimen.ng_toolbar_top_margin),0,0);
                     ContentSearch.setIconified(false);
                 }
                 else{
@@ -212,10 +232,17 @@ public class ContentActivity extends NG_Activity implements
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if (ContentDrawerLayout.isDrawerOpen(ContentLeftMenu))
-            ContentDrawerLayout.closeDrawer(ContentLeftMenu);
+
+        contentAppBarLayout.setExpanded(true, true);
+
+
+
+
+        if (ContentDrawerLayout.isDrawerOpen(ContentLeftMenu)) ContentDrawerLayout.closeDrawer(ContentLeftMenu);
+
         switch (item.getItemId()) {
             case R.id.bottom_content_movies:
+
                 getController().switchTab(FragNavController.TAB1);
                 return true;
             case R.id.bottom_content_audio:
@@ -230,29 +257,38 @@ public class ContentActivity extends NG_Activity implements
             case R.id.bottom_content_community:
                 getController().switchTab(FragNavController.TAB5);
                 return true;
+
+
             case R.id.leftmenu_content_movies:
+                contentBottomBarBehaviour.slideUp(ContentBottomBar);
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_movies);
                 getController().switchTab(FragNavController.TAB1);
                 return true;
             case R.id.leftmenu_content_audio:
+                contentBottomBarBehaviour.slideUp(ContentBottomBar);
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_audio);
                 getController().switchTab(FragNavController.TAB2);
                 return true;
             case R.id.leftmenu_content_art:
+                contentBottomBarBehaviour.slideUp(ContentBottomBar);
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_art);
                 getController().switchTab(FragNavController.TAB3);
                 return true;
             case R.id.leftmenu_content_games:
+                contentBottomBarBehaviour.slideUp(ContentBottomBar);
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_games);
                 getController().switchTab(FragNavController.TAB4);
                 return true;
             case R.id.leftmenu_content_community:
+                contentBottomBarBehaviour.slideUp(ContentBottomBar);
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_community);
                 getController().switchTab(FragNavController.TAB5);
                 return true;
+
+
             default:
                 ContentBottomBar.setSelected(false);
-                return false;
         }
+        return false;
     }
 }

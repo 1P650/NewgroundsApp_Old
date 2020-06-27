@@ -6,5 +6,5 @@
     <color name="colorPrimaryBackground">#313435</color>
     <color name="colorBottomBar">#1C1F22</color>
     <color name="colorBottomBarText">#E1EAF3</color>
-    <color name="colorLeftMenuShadow">#00000000</color>
+    <color name="colorLeftMenuShadow">#2F000000</color>
 </resources>

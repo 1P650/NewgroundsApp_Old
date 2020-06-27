@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SearchView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.SearchView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layoutDirection="rtl"
     android:layout_height="wrap_content"
-    android:visibility="visible">
+    android:background="@color/colorPrimary"
+    android:visibility="gone"
+    app:layout_anchor="@id/content_toolbar"
+    app:layout_anchorGravity="center">
 
-</SearchView>
+</androidx.appcompat.widget.SearchView>
