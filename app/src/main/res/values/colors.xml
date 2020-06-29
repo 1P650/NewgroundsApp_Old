@@ -7,6 +7,7 @@
     <color name="colorBottomBar">#1C1F22</color>
     <color name="colorBottomBarText">#E1EAF3</color>
     <color name="colorLeftMenuShadow">#2F000000</color>
-    <color name="colorDashboardBackground">#202020</color>
-    <color name="colorDashboardLabelBackground">#3E4449</color>
+    <color name="colorDashboardBackground">#0F0B0C</color>
+    <color name="colorDashboardLabelBackground">#191919</color>
+    <color name="colorDashboardItemLabelBackground">#A3221E1F</color>
 </resources>

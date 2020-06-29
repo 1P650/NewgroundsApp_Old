@@ -47,7 +47,7 @@ public class NG_Fragment extends Fragment {
         if(behavior == null)
             return;
 
-        FrameLayout layout =(FrameLayout) getNGActivity().findViewById(R.id.content_container);
+        FrameLayout layout =getNGActivity().findViewById(R.id.content_container);
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) layout.getLayoutParams();
 
         params.setBehavior(behavior);

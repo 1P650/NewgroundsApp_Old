@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <declare-styleable name="Dashboard">
+        <attr name="labelVisible" format="boolean"/>
+        <attr name="content" format="reference" />
+        <attr name="labelText" format="string" />
+        <attr name="labelIcon" format="integer" />
+
+    </declare-styleable>
+</resources>

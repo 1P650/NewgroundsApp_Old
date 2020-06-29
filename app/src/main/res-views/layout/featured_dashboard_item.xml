@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="108dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/featured_dashboard_item_picture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_vertical"
+            android:adjustViewBounds="true"
+            android:background="@color/colorPrimaryDark"
+            android:tint="@color/colorAccent"
+            android:tintMode="multiply"
+            app:srcCompat="@drawable/label_default_icon" />
+
+        <LinearLayout
+            android:id="@+id/featured_dashboard_container_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/colorDashboardItemLabelBackground"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/featured_dashboard_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:text="name"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/featured_dashboard_item_author_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:text="author"
+                android:textAlignment="center"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
