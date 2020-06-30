@@ -1,23 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <item
+        android:id="@+id/bottom_content_movies"
+        android:icon="@drawable/ng_movies_icon"
         android:title="@string/movies"
-        android:id="@+id/bottom_content_movies" />
+        app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/bottom_content_audio"
+        android:icon="@drawable/ng_audio_icon"
         android:title="@string/audio"
-        android:id="@+id/bottom_content_audio" />
+        app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/bottom_content_art"
+        android:icon="@drawable/ng_art_icon"
         android:title="@string/art"
-        android:id="@+id/bottom_content_art" />
+        app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/bottom_content_games"
+        android:icon="@drawable/ng_games_icon"
         android:title="@string/games"
-        android:id="@+id/bottom_content_games" />
+        app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/bottom_content_community"
+        android:icon="@drawable/ng_community_icon"
         android:title="@string/community"
-        android:id="@+id/bottom_content_community" />
+        app:showAsAction="ifRoom" />
 </menu>

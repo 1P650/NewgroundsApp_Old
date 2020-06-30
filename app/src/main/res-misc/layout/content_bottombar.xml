@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/ng_content_bottombar_height"
     app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
-    app:labelVisibilityMode="labeled"
+    app:itemIconTint="@drawable/content_bottombar_selector"
     android:layout_gravity="bottom"
     app:menu="@menu/content_bottombar_menu" />

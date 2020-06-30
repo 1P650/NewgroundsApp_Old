@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<dimen name="dashboard_textSize">20sp</dimen>
+<dimen name="dashboard_textSize">17sp</dimen>
     <dimen name="dashboard_iconSize">30dp</dimen>
     <dimen name="dashboard_labelSize">44dp</dimen>
     <dimen name="content_padding">16dp</dimen>

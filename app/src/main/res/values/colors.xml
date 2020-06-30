@@ -10,4 +10,5 @@
     <color name="colorDashboardBackground">#0F0B0C</color>
     <color name="colorDashboardLabelBackground">#191919</color>
     <color name="colorDashboardItemLabelBackground">#A3221E1F</color>
+    <color name="colorDashboardButtonLabelBackground">#131313</color>
 </resources>

@@ -51,8 +51,9 @@
             android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
             android:layout_marginRight="@dimen/dashboard_margin_corners"
             app:cardCornerRadius="@dimen/dashboard_corner_radius"
-            app:labelText="Featured movies"
-            app:PanelButtonsList="@menu/test_button_menu">
+            app:labelText="Featured Movies"
+            app:labelIcon="@drawable/ng_movies_icon"
+            app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_movies_grid"
@@ -75,7 +76,9 @@
             android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
             android:layout_marginRight="@dimen/dashboard_margin_corners"
             app:cardCornerRadius="@dimen/dashboard_corner_radius"
-            app:labelText="Featured games">
+            app:labelText="Featured Games"
+            app:labelIcon="@drawable/ng_games_icon"
+            app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_games_grid"
@@ -98,7 +101,10 @@
             android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
             android:layout_marginRight="@dimen/dashboard_margin_corners"
             app:cardCornerRadius="@dimen/dashboard_corner_radius"
-            app:labelText="Featured art">
+            app:labelText="Featured Art"
+            app:labelIcon="@drawable/ng_art_icon"
+
+            app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_art_grid"
@@ -121,7 +127,10 @@
             android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
             android:layout_marginRight="@dimen/dashboard_margin_corners"
             app:cardCornerRadius="@dimen/dashboard_corner_radius"
-            app:labelText="Featured audio">
+            app:labelText="Featured Audio"
+            app:labelIcon="@drawable/ng_audio_icon"
+
+            app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_audio_list"

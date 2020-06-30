@@ -24,6 +24,7 @@ android {
     sourceSets {
         main.res.srcDirs += 'src/main/res-misc'
         main.res.srcDirs += 'src/main/res-views'
+        main.res.srcDirs += 'src/main/res-icons'
     }
 
 }

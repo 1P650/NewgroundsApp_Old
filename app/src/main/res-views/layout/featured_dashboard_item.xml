@@ -13,9 +13,7 @@
             android:layout_gravity="top|center_vertical"
             android:adjustViewBounds="true"
             android:background="@color/colorPrimaryDark"
-            android:tint="@color/colorAccent"
-            android:tintMode="multiply"
-            app:srcCompat="@drawable/label_default_icon" />
+            app:srcCompat="@drawable/ng_default_icon" />
 
         <LinearLayout
             android:id="@+id/featured_dashboard_container_text"

@@ -31,7 +31,6 @@ public class FeaturedPortal extends NG_Fragment {
     Dashboard FeaturedGames;
     Dashboard FeaturedArt;
     Dashboard FeaturedAudio;
-    Dashboard ArtistNews;
 
     ArrayList<DashboardItem> FeaturedMoviesArray = new ArrayList<>(Arrays.asList(
     new DashboardItem(null, "DEFAULT", "DEFAULT"),

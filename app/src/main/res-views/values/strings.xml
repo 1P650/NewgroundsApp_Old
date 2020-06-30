@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="LabelNameDefault">Label name</string>
-
+    <string name="more">More</string>
+    <string name="past_features">Past features</string>
 </resources>

@@ -1,11 +1,14 @@
 package jewpigeon.apps.newgrounds.Views;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,8 +17,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import jewpigeon.apps.newgrounds.R;
 
 
@@ -41,7 +46,7 @@ private LinearLayout ButtonPanelLayout;
         establishComponents(context, attrs);
 
     }
-
+    @SuppressLint("RestrictedApi")
     private void establishComponents(Context context, @Nullable  AttributeSet attributeSet){
         inflate(getContext(), R.layout.dashboard, this);
         Label = this.findViewById(R.id.dashboard_label);
@@ -54,9 +59,15 @@ private LinearLayout ButtonPanelLayout;
             if(!labelVisible) removeLabel();
             String labelName = attributes.getString(R.styleable.Dashboard_labelText);
             LabelName.setText(labelName == null ? getResources().getString(R.string.LabelNameDefault):labelName);
+            Drawable labelIcon = attributes.getDrawable(R.styleable.Dashboard_labelIcon);
+            if(labelIcon != null) LabelIcon.setImageDrawable(labelIcon);
             int buttonsMenuId = attributes.getResourceId(R.styleable.Dashboard_PanelButtonsList, 0);
+
             if(buttonsMenuId!=0){
-                Menu buttonsMenu = (Menu) LayoutInflater.from(getContext()).inflate(buttonsMenuId, null);
+                MenuInflater v = new MenuInflater(getContext());
+                Menu buttonsMenu = new MenuBuilder(getContext());
+                v.inflate(buttonsMenuId, buttonsMenu);
+
                 establishButtons(buttonsMenu);
             }
 
@@ -67,12 +78,17 @@ private LinearLayout ButtonPanelLayout;
     }
 
     private void establishButtons(Menu menu) {
-        Button[] buttons = new Button[menu.size()];
-        for (int i = 0; i < menu.size(); i++){
-            buttons[i] = new Button(getContext());
-            buttons[i].setText(menu.getItem(i).getTitle());
-            this.ButtonPanelLayout.addView(buttons[i]);
-        }
+       Button[] buttons = new Button[menu.size()];
+       for (int i = 0; i < menu.size(); i++){
+           buttons[i] = new Button(getContext());
+           buttons[i].setText(menu.getItem(i).getTitle());
+           buttons[i].setBackground(ContextCompat.getDrawable(this.getContext(), R.drawable.dashboard_button_shape));
+           buttons[i].setTextColor(ContextCompat.getColor(this.getContext(), R.color.colorAccent));
+           buttons[i].setTextAlignment(TEXT_ALIGNMENT_CENTER);
+           buttons[i].setTextSize(14);
+           buttons[i].setAllCaps(false);
+           this.ButtonPanelLayout.addView(buttons[i]);
+       }
     }
 
 

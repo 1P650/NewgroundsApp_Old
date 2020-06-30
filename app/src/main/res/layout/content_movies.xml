@@ -1,7 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <jewpigeon.apps.newgrounds.Views.Dashboard
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:labelVisible="false">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ng_content_toolbar_height"
+            android:text="Movies Portal"
+            android:textSize="@dimen/dashboard_textSize"
+            android:paddingTop="8dp"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"/>
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
+        <jewpigeon.apps.newgrounds.Views.Dashboard
+            android:id="@+id/movies_portal_brand_movies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dashboard_margin_corners"
+            android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
+            android:layout_marginRight="@dimen/dashboard_margin_corners"
+            app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons"
+            app:cardCornerRadius="@dimen/dashboard_corner_radius"
+            app:labelIcon="@drawable/ng_movies_icon"
+            app:labelText="Brand Spankin' New Movies">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/movies_portal_brand_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dashboard_labelSize"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:paddingStart="@dimen/content_padding"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:scrollbars="none" />
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+        <jewpigeon.apps.newgrounds.Views.Dashboard
+            android:id="@+id/movies_portal_popular_movies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dashboard_margin_corners"
+            android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
+            android:layout_marginRight="@dimen/dashboard_margin_corners"
+            app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons"
+            app:cardCornerRadius="@dimen/dashboard_corner_radius"
+            app:labelIcon="@drawable/ng_movies_icon"
+            app:labelText="Popular Movies">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/movies_portal_popular_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dashboard_labelSize"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:paddingStart="@dimen/content_padding"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:scrollbars="none" />
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+        <jewpigeon.apps.newgrounds.Views.Dashboard
+            android:id="@+id/movies_portal_month_movies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dashboard_margin_corners"
+            android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
+            android:layout_marginRight="@dimen/dashboard_margin_corners"
+            app:cardCornerRadius="@dimen/dashboard_corner_radius"
+            app:labelText="Best Movies This Month"
+            app:labelIcon="@drawable/ng_movies_icon"
+            app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/movies_portal_month_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dashboard_labelSize"
+                android:clipToPadding="false"
+                android:paddingBottom="8dp"
+                android:paddingStart="@dimen/content_padding"
+                android:overScrollMode="never"
+                android:paddingTop="8dp"
+                android:scrollbars="none" />
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+        <jewpigeon.apps.newgrounds.Views.Dashboard
+            android:id="@+id/movies_portal_year_movies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dashboard_margin_corners"
+            android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
+            android:layout_marginRight="@dimen/dashboard_margin_corners"
+            app:cardCornerRadius="@dimen/dashboard_corner_radius"
+            app:labelText="Best Movies This Year"
+            app:labelIcon="@drawable/ng_movies_icon"
+            app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/movies_portal_year_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dashboard_labelSize"
+                android:clipToPadding="false"
+                android:paddingBottom="8dp"
+                android:paddingStart="@dimen/content_padding"
+                android:overScrollMode="never"
+                android:paddingTop="8dp"
+                android:scrollbars="none" />
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+        <jewpigeon.apps.newgrounds.Views.Dashboard
+            android:id="@+id/movies_portal_classic_movies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dashboard_margin_corners"
+            android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
+            android:layout_marginRight="@dimen/dashboard_margin_corners"
+            app:cardCornerRadius="@dimen/dashboard_corner_radius"
+            app:labelText="High Ranking Classics"
+            app:labelIcon="@drawable/ng_movies_icon"
+            app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/movies_portal_classic_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dashboard_labelSize"
+                android:clipToPadding="false"
+                android:paddingBottom="8dp"
+                android:paddingStart="@dimen/content_padding"
+                android:overScrollMode="never"
+                android:paddingTop="8dp"
+                android:scrollbars="none" />
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/footer_skyline"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"/>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
