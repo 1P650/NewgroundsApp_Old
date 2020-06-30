@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <ferox.ip.newgrounds.Views.Dashboard
+        <jewpigeon.apps.newgrounds.Views.Dashboard
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:labelVisible="false">
@@ -21,9 +21,9 @@
                 android:paddingTop="8dp"
                 android:layout_gravity="center_horizontal"
                 android:textAlignment="center"/>
-        </ferox.ip.newgrounds.Views.Dashboard>
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
 
-        <ferox.ip.newgrounds.Views.Dashboard
+        <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_picture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,9 +41,9 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/main_img">
             </ImageView>
-        </ferox.ip.newgrounds.Views.Dashboard>
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
 
-        <ferox.ip.newgrounds.Views.Dashboard
+        <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_movies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +51,8 @@
             android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
             android:layout_marginRight="@dimen/dashboard_margin_corners"
             app:cardCornerRadius="@dimen/dashboard_corner_radius"
-            app:labelText="Featured movies">
+            app:labelText="Featured movies"
+            app:PanelButtonsList="@menu/test_button_menu">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_movies_grid"
@@ -64,9 +65,9 @@
                 android:overScrollMode="never"
                 android:paddingTop="8dp"
                 android:scrollbars="none" />
-        </ferox.ip.newgrounds.Views.Dashboard>
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
 
-        <ferox.ip.newgrounds.Views.Dashboard
+        <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_games"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,9 +88,9 @@
                 android:overScrollMode="never"
                 android:paddingTop="8dp"
                 android:scrollbars="none" />
-        </ferox.ip.newgrounds.Views.Dashboard>
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
 
-        <ferox.ip.newgrounds.Views.Dashboard
+        <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_art"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -110,9 +111,9 @@
                 android:overScrollMode="never"
                 android:paddingTop="8dp"
                 android:scrollbars="none" />
-        </ferox.ip.newgrounds.Views.Dashboard>
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
 
-        <ferox.ip.newgrounds.Views.Dashboard
+        <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_audio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -135,7 +136,7 @@
                 android:overScrollMode="never"
                 android:paddingTop="8dp"
                 android:scrollbars="none" />
-        </ferox.ip.newgrounds.Views.Dashboard>
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <ImageView
             android:layout_width="match_parent"

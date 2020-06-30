@@ -5,6 +5,7 @@
         <attr name="content" format="reference" />
         <attr name="labelText" format="string" />
         <attr name="labelIcon" format="integer" />
+        <attr name="PanelButtonsList" format="reference"></attr>
 
     </declare-styleable>
 </resources>
