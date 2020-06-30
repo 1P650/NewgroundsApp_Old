@@ -91,7 +91,6 @@ public class FeaturedPortal extends NG_Fragment {
         rootView = inflater.inflate(R.layout.content_featured, container, false);
         setSeekerView(rootView);
 
-
         FeaturedImage = (Dashboard) findViewById(R.id.featured_picture);
 
         FeaturedMovies = (Dashboard) findViewById(R.id.featured_movies);
@@ -120,24 +119,6 @@ public class FeaturedPortal extends NG_Fragment {
         Dash_ItemList_Adapter audio_adapter = new Dash_ItemList_Adapter(FeaturedAudioArray);
         FeaturedAudioList.setLayoutManager(new LinearLayoutManager(getContext()));
         FeaturedAudioList.setAdapter(audio_adapter);
-
-        ArtistNews = (Dashboard) findViewById(R.id.featured_artist_news);
-        RecyclerView ArtistNewsList = (RecyclerView) findViewById(R.id.featured_artist_news_list);
-        Dash_ItemList_Adapter news_adapter = new Dash_ItemList_Adapter(FeaturedAudioArray);
-        ArtistNewsList.setLayoutManager(new LinearLayoutManager(getContext()));
-        ArtistNewsList.setAdapter(news_adapter);
-
-
-
-
-
-
-
-
-
-
-
-
 
         return rootView;
     }

@@ -3,7 +3,11 @@
 <dimen name="dashboard_textSize">20sp</dimen>
     <dimen name="dashboard_iconSize">30dp</dimen>
     <dimen name="dashboard_labelSize">44dp</dimen>
-    <dimen name="content_padding">14dp</dimen>
+    <dimen name="content_padding">16dp</dimen>
     <dimen name="content_padding_small">17dp</dimen>
+
+    <dimen name="dashboard_margin_corners">2dp</dimen>
+    <dimen name="dashboard_margin_top_bottom">6dp</dimen>
+    <dimen name="dashboard_corner_radius">8dp</dimen>
 
 </resources>

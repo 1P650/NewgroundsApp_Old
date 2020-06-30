@@ -8,15 +8,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <jewpigeon.apps.newgrounds.Views.Dashboard
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:labelVisible="false">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ng_content_toolbar_height"
+                android:text="Featured content"
+                android:textSize="@dimen/dashboard_textSize"
+                android:paddingTop="8dp"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"/>
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_picture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginRight="4dp"
-            app:cardCornerRadius="8dp"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/dashboard_margin_corners"
+            android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
+            android:layout_marginRight="@dimen/dashboard_margin_corners"
+            app:cardCornerRadius="@dimen/dashboard_corner_radius"
             app:labelVisible="false">
 
             <ImageView
@@ -33,10 +48,10 @@
             android:id="@+id/featured_movies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="4dp"
-            app:cardCornerRadius="8dp"
+            android:layout_marginLeft="@dimen/dashboard_margin_corners"
+            android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
+            android:layout_marginRight="@dimen/dashboard_margin_corners"
+            app:cardCornerRadius="@dimen/dashboard_corner_radius"
             app:labelText="Featured movies">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -56,10 +71,10 @@
             android:id="@+id/featured_games"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="4dp"
-            app:cardCornerRadius="8dp"
+            android:layout_marginLeft="@dimen/dashboard_margin_corners"
+            android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
+            android:layout_marginRight="@dimen/dashboard_margin_corners"
+            app:cardCornerRadius="@dimen/dashboard_corner_radius"
             app:labelText="Featured games">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -79,10 +94,10 @@
             android:id="@+id/featured_art"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="4dp"
-            app:cardCornerRadius="8dp"
+            android:layout_marginLeft="@dimen/dashboard_margin_corners"
+            android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
+            android:layout_marginRight="@dimen/dashboard_margin_corners"
+            app:cardCornerRadius="@dimen/dashboard_corner_radius"
             app:labelText="Featured art">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -102,10 +117,10 @@
             android:id="@+id/featured_audio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="4dp"
-            app:cardCornerRadius="8dp"
+            android:layout_marginLeft="@dimen/dashboard_margin_corners"
+            android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
+            android:layout_marginRight="@dimen/dashboard_margin_corners"
+            app:cardCornerRadius="@dimen/dashboard_corner_radius"
             app:labelText="Featured audio">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -123,36 +138,12 @@
                 android:scrollbars="none" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
-        <jewpigeon.apps.newgrounds.Views.Dashboard
-            android:id="@+id/featured_artist_news"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="4dp"
-            app:cardCornerRadius="8dp"
-            app:labelText="Artists new">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/featured_artist_news_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dashboard_labelSize"
-                android:clipToPadding="false"
-                android:paddingBottom="8dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-
-                android:overScrollMode="never"
-                android:paddingTop="8dp"
-                android:scrollbars="none" />
-        </jewpigeon.apps.newgrounds.Views.Dashboard>
-
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp"
-            android:background="@drawable/footer_skyline"/>
+            android:src="@drawable/footer_skyline"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"/>
 
 
 

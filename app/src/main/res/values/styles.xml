@@ -14,5 +14,11 @@
         <item name="tabTextColor">@color/colorBottomBarText</item>
 
     </style>
+    
+
+    <style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@drawable/laucher_back</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
 
 </resources>
