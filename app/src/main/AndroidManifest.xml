@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jewpigeon.apps.newgrounds"
+    package="ferox.ip.newgrounds"
     >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:name=".Fundamental.NG_Application"
+        android:name="ferox.ip.newgrounds.Fundamental.NG_Application"
         android:allowBackup="true"
         android:icon="@mipmap/newgrounds_logo"
         android:label="@string/app_name"
@@ -13,14 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SplashScreen"
+        <activity android:name="ferox.ip.newgrounds.SplashScreen"
             android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".ContentActivity"/>
+        <activity android:name="ferox.ip.newgrounds.ContentActivity"/>
 
     </application>
 
