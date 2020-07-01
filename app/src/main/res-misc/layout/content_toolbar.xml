@@ -10,7 +10,7 @@
     app:contentInsetStart="0dp"
     app:contentInsetStartWithNavigation="0dp"
     app:layout_scrollFlags="scroll|enterAlways"
-    android:background="@color/colorPrimary">
+    style="@style/AppTheme.Toolbar">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:id="@+id/NG_appbar_search"
             android:layout_width="49dp"
             android:layout_height="40dp"
-            android:background="@android:color/transparent"
+            android:background="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -30,8 +30,9 @@
 
         <ImageButton
             android:id="@+id/NG_appbar_home"
-            android:layout_width="30dp"
-            android:layout_height="27dp"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:adjustViewBounds="true"
             android:background="@drawable/ng_mobile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

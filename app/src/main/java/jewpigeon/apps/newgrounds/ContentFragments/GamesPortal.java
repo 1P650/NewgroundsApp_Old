@@ -11,14 +11,12 @@ import java.util.Arrays;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.R;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
-import jewpigeon.apps.newgrounds.Views.DashboardData.Dash_ItemList_Adapter;
-import jewpigeon.apps.newgrounds.Views.DashboardData.Dash_Item_Adapter;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashboardItem;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.Dash_Item_Adapter;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.GridDecorator;
 
 public class GamesPortal extends NG_Fragment {
@@ -29,34 +27,34 @@ public class GamesPortal extends NG_Fragment {
     Dashboard YearGames;
 
 
-    ArrayList<DashboardItem> BrandGamesArray = new ArrayList<>(Arrays.asList(
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT")));
-    ArrayList<DashboardItem> PopularGamesArray = new ArrayList<>(Arrays.asList(
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT")));
-    ArrayList<DashboardItem> MonthGamesArray = new ArrayList<>(Arrays.asList(
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT")));
-    ArrayList<DashboardItem> YearGamesArray = new ArrayList<>(Arrays.asList(
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<DashItem> BrandGamesArray = new ArrayList<>(Arrays.asList(
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<DashItem> PopularGamesArray = new ArrayList<>(Arrays.asList(
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<DashItem> MonthGamesArray = new ArrayList<>(Arrays.asList(
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<DashItem> YearGamesArray = new ArrayList<>(Arrays.asList(
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT")));
     public static GamesPortal newInstance() {
 
         Bundle args = new Bundle();

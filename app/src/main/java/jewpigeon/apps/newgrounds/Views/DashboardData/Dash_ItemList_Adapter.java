@@ -11,9 +11,10 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import jewpigeon.apps.newgrounds.R;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashItem;
 
 public class Dash_ItemList_Adapter extends RecyclerView.Adapter<Dash_ItemList_Adapter.Item> {
-    private ArrayList<DashboardItem> items;
+    private ArrayList<DashItem> items;
     LayoutInflater inflater;
 
     @NonNull
@@ -25,7 +26,7 @@ public class Dash_ItemList_Adapter extends RecyclerView.Adapter<Dash_ItemList_Ad
 
     @Override
     public void onBindViewHolder(@NonNull Dash_ItemList_Adapter.Item holder, int position) {
-        DashboardItem item = items.get(position);
+        DashItem item = items.get(position);
         holder.Title.setText(item.getTitle());
         holder.Author.setText(item.getAuthor());
         if (item.getImage() != null) {
@@ -34,7 +35,7 @@ public class Dash_ItemList_Adapter extends RecyclerView.Adapter<Dash_ItemList_Ad
 
     }
 
-    public Dash_ItemList_Adapter(ArrayList<DashboardItem> items) {
+    public Dash_ItemList_Adapter(ArrayList<DashItem> items) {
         this.items = items;
     }
 

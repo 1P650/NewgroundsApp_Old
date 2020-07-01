@@ -11,6 +11,7 @@
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/colorDashboardBackground"
             app:labelVisible="false">
 
             <TextView
@@ -25,12 +26,7 @@
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_picture"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dashboard_margin_corners"
-            android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
-            android:layout_marginRight="@dimen/dashboard_margin_corners"
-            app:cardCornerRadius="@dimen/dashboard_corner_radius"
+            style="@style/AppTheme.Dashboard"
             app:labelVisible="false">
 
             <ImageView
@@ -45,62 +41,30 @@
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_movies"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dashboard_margin_corners"
-            android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
-            android:layout_marginRight="@dimen/dashboard_margin_corners"
-            app:cardCornerRadius="@dimen/dashboard_corner_radius"
+            style="@style/AppTheme.Dashboard"
             app:labelText="Featured Movies"
             app:labelIcon="@drawable/ng_movies_icon"
             app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_movies_grid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dashboard_labelSize"
-                android:clipToPadding="false"
-                android:paddingBottom="8dp"
-                android:paddingStart="@dimen/content_padding"
-                android:overScrollMode="never"
-                android:paddingTop="8dp"
-                android:scrollbars="none" />
+                style="@style/AppTheme.DashboardPortalGrid"/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_games"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dashboard_margin_corners"
-            android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
-            android:layout_marginRight="@dimen/dashboard_margin_corners"
-            app:cardCornerRadius="@dimen/dashboard_corner_radius"
-            app:labelText="Featured Games"
+            style="@style/AppTheme.Dashboard"
             app:labelIcon="@drawable/ng_games_icon"
             app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_games_grid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dashboard_labelSize"
-                android:clipToPadding="false"
-                android:paddingBottom="8dp"
-                android:paddingLeft="@dimen/content_padding"
-                android:overScrollMode="never"
-                android:paddingTop="8dp"
-                android:scrollbars="none" />
+             style="@style/AppTheme.DashboardPortalGrid" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_art"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dashboard_margin_corners"
-            android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
-            android:layout_marginRight="@dimen/dashboard_margin_corners"
-            app:cardCornerRadius="@dimen/dashboard_corner_radius"
+            style="@style/AppTheme.Dashboard"
             app:labelText="Featured Art"
             app:labelIcon="@drawable/ng_art_icon"
 
@@ -108,43 +72,19 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_art_grid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dashboard_labelSize"
-                android:clipToPadding="false"
-                android:paddingLeft="@dimen/content_padding_small"
-                android:paddingBottom="8dp"
-                android:overScrollMode="never"
-                android:paddingTop="8dp"
-                android:scrollbars="none" />
+                style="@style/AppTheme.DashboardPortalGridSmall" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_audio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dashboard_margin_corners"
-            android:layout_marginTop="@dimen/dashboard_margin_top_bottom"
-            android:layout_marginRight="@dimen/dashboard_margin_corners"
-            app:cardCornerRadius="@dimen/dashboard_corner_radius"
+            style="@style/AppTheme.Dashboard"
             app:labelText="Featured Audio"
             app:labelIcon="@drawable/ng_audio_icon"
-
             app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_audio_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dashboard_labelSize"
-                android:clipToPadding="false"
-                android:paddingBottom="8dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-
-                android:overScrollMode="never"
-                android:paddingTop="8dp"
-                android:scrollbars="none" />
+                style="@style/AppTheme.DashboardPortalList"/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <ImageView
@@ -152,6 +92,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/footer_skyline"
             android:layout_marginTop="8dp"
+            android:layout_gravity="bottom"
             android:adjustViewBounds="true"/>
 
 

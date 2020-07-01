@@ -1,4 +1,4 @@
-package jewpigeon.apps.newgrounds.Views.DashboardData;
+package jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import jewpigeon.apps.newgrounds.R;
 
 public class Dash_ItemSmall_Adapter extends RecyclerView.Adapter<Dash_ItemSmall_Adapter.Item> {
-    private ArrayList<DashboardItemSmall> items;
+    private ArrayList<DashItemSmall> items;
 
     LayoutInflater inflater;
 
@@ -26,7 +26,7 @@ public class Dash_ItemSmall_Adapter extends RecyclerView.Adapter<Dash_ItemSmall_
 
     @Override
     public void onBindViewHolder(@NonNull Dash_ItemSmall_Adapter.Item holder, int position) {
-        DashboardItemSmall item = items.get(position);
+        DashItemSmall item = items.get(position);
         holder.Author.setText(item.getAuthor());
         if (item.getImage() != null) {
             holder.Picture.setImageDrawable(item.getImage());
@@ -34,7 +34,7 @@ public class Dash_ItemSmall_Adapter extends RecyclerView.Adapter<Dash_ItemSmall_
 
     }
 
-    public Dash_ItemSmall_Adapter(ArrayList<DashboardItemSmall> items) {
+    public Dash_ItemSmall_Adapter(ArrayList<DashItemSmall> items) {
         this.items = items;
     }
 

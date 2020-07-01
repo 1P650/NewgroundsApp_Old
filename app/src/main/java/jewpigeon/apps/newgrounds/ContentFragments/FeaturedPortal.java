@@ -17,10 +17,10 @@ import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.R;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
 import jewpigeon.apps.newgrounds.Views.DashboardData.Dash_ItemList_Adapter;
-import jewpigeon.apps.newgrounds.Views.DashboardData.Dash_ItemSmall_Adapter;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashboardItem;
-import jewpigeon.apps.newgrounds.Views.DashboardData.Dash_Item_Adapter;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashboardItemSmall;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.Dash_ItemSmall_Adapter;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashItem;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.Dash_Item_Adapter;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashItemSmall;
 import jewpigeon.apps.newgrounds.Views.DashboardData.GridDecorator;
 
 
@@ -32,43 +32,43 @@ public class FeaturedPortal extends NG_Fragment {
     Dashboard FeaturedArt;
     Dashboard FeaturedAudio;
 
-    ArrayList<DashboardItem> FeaturedMoviesArray = new ArrayList<>(Arrays.asList(
-    new DashboardItem(null, "DEFAULT", "DEFAULT"),
-    new DashboardItem(null, "DEFAULT", "DEFAULT"),
-    new DashboardItem(null, "DEFAULT", "DEFAULT"),
-    new DashboardItem(null, "DEFAULT", "DEFAULT"),
-    new DashboardItem(null, "DEFAULT", "DEFAULT"),
-    new DashboardItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<DashItem> FeaturedMoviesArray = new ArrayList<>(Arrays.asList(
+    new DashItem(null, "DEFAULT", "DEFAULT"),
+    new DashItem(null, "DEFAULT", "DEFAULT"),
+    new DashItem(null, "DEFAULT", "DEFAULT"),
+    new DashItem(null, "DEFAULT", "DEFAULT"),
+    new DashItem(null, "DEFAULT", "DEFAULT"),
+    new DashItem(null, "DEFAULT", "DEFAULT")));
 
-    ArrayList<DashboardItem> FeaturedGamesArray = new ArrayList<>(Arrays.asList(
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<DashItem> FeaturedGamesArray = new ArrayList<>(Arrays.asList(
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT")));
 
-    ArrayList<DashboardItemSmall> FeaturedArtArray = new ArrayList<>(Arrays.asList(
-            new DashboardItemSmall(null, "DEFAULT"),
-            new DashboardItemSmall(null, "DEFAULT"),
-            new DashboardItemSmall(null, "DEFAULT"),
-            new DashboardItemSmall(null, "DEFAULT"),
-            new DashboardItemSmall(null, "DEFAULT"),
-            new DashboardItemSmall(null, "DEFAULT"),
-            new DashboardItemSmall(null, "DEFAULT"),
-            new DashboardItemSmall(null, "DEFAULT"),
-            new DashboardItemSmall(null, "DEFAULT"),
-            new DashboardItemSmall(null, "DEFAULT"),
-            new DashboardItemSmall(null, "DEFAULT"),
-            new DashboardItemSmall(null, "DEFAULT")));
+    ArrayList<DashItemSmall> FeaturedArtArray = new ArrayList<>(Arrays.asList(
+            new DashItemSmall(null, "DEFAULT"),
+            new DashItemSmall(null, "DEFAULT"),
+            new DashItemSmall(null, "DEFAULT"),
+            new DashItemSmall(null, "DEFAULT"),
+            new DashItemSmall(null, "DEFAULT"),
+            new DashItemSmall(null, "DEFAULT"),
+            new DashItemSmall(null, "DEFAULT"),
+            new DashItemSmall(null, "DEFAULT"),
+            new DashItemSmall(null, "DEFAULT"),
+            new DashItemSmall(null, "DEFAULT"),
+            new DashItemSmall(null, "DEFAULT"),
+            new DashItemSmall(null, "DEFAULT")));
 
-    ArrayList<DashboardItem> FeaturedAudioArray = new ArrayList<>(Arrays.asList(
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<DashItem> FeaturedAudioArray = new ArrayList<>(Arrays.asList(
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT")));
     public static FeaturedPortal newInstance() {
         
         Bundle args = new Bundle();
@@ -93,6 +93,7 @@ public class FeaturedPortal extends NG_Fragment {
         FeaturedImage = (Dashboard) findViewById(R.id.featured_picture);
 
         FeaturedMovies = (Dashboard) findViewById(R.id.featured_movies);
+
         RecyclerView FeaturedMoviesList = (RecyclerView) findViewById(R.id.featured_movies_grid);
         Dash_Item_Adapter movies_adapter = new Dash_Item_Adapter(FeaturedMoviesArray);
         FeaturedMoviesList.addItemDecoration(new GridDecorator(8, 3));

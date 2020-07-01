@@ -5,22 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.R;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
-import jewpigeon.apps.newgrounds.Views.DashboardData.Dash_ItemList_Adapter;
-import jewpigeon.apps.newgrounds.Views.DashboardData.Dash_ItemSmall_Adapter;
-import jewpigeon.apps.newgrounds.Views.DashboardData.Dash_Item_Adapter;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashboardItem;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.Dash_Item_Adapter;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.GridDecorator;
 
 public class MoviesPortal extends NG_Fragment {
@@ -31,41 +27,41 @@ public class MoviesPortal extends NG_Fragment {
     Dashboard YearMovies;
     Dashboard ClassicMovies;
 
-    ArrayList<DashboardItem> BrandMoviesArray = new ArrayList<>(Arrays.asList(
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT")));
-    ArrayList<DashboardItem> PopularMoviesArray = new ArrayList<>(Arrays.asList(
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT")));
-    ArrayList<DashboardItem> MonthMoviesArray = new ArrayList<>(Arrays.asList(
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT")));
-    ArrayList<DashboardItem> YearMoviesArray = new ArrayList<>(Arrays.asList(
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT")));
-    ArrayList<DashboardItem> ClassicMoviesArray = new ArrayList<>(Arrays.asList(
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT"),
-            new DashboardItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<DashItem> BrandMoviesArray = new ArrayList<>(Arrays.asList(
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<DashItem> PopularMoviesArray = new ArrayList<>(Arrays.asList(
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<DashItem> MonthMoviesArray = new ArrayList<>(Arrays.asList(
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<DashItem> YearMoviesArray = new ArrayList<>(Arrays.asList(
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<DashItem> ClassicMoviesArray = new ArrayList<>(Arrays.asList(
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT"),
+            new DashItem(null, "DEFAULT", "DEFAULT")));
 
     public static MoviesPortal newInstance() {
 

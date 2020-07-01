@@ -51,8 +51,11 @@ private LinearLayout ButtonPanelLayout;
         inflate(getContext(), R.layout.dashboard, this);
         Label = this.findViewById(R.id.dashboard_label);
         LabelName = this.findViewById(R.id.dashboard_label_name);
-        LabelIcon = this.findViewById(R.id.dashboard_label_icon);
         ButtonPanelLayout = this.findViewById(R.id.dashboard_buttons_panel);
+        LabelIcon = this.findViewById(R.id.dashboard_label_icon);
+        //this.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorDashboardBackground));
+
+
         TypedArray attributes = context.obtainStyledAttributes(attributeSet, R.styleable.Dashboard, 0, 0);
         try {
             boolean labelVisible = attributes.getBoolean(R.styleable.Dashboard_labelVisible, true);
@@ -72,7 +75,8 @@ private LinearLayout ButtonPanelLayout;
             }
 
 
-        } finally {
+        }
+        finally {
             attributes.recycle();
         }
     }

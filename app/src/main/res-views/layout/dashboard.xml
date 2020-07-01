@@ -3,14 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
     android:layout_height="wrap_content"
     tools:parentTag="androidx.cardview.widget.CardView">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/dashboard_card"
-    android:layout_width="match_parent"
-    android:background="@color/colorDashboardBackground"
-    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/dashboard_label"
@@ -66,8 +60,5 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </merge>
