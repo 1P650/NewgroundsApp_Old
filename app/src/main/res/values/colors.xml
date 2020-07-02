@@ -9,6 +9,8 @@
     <color name="colorLeftMenuShadow">#2F000000</color>
     <color name="colorDashboardBackground">#0F0B0C</color>
     <color name="colorDashboardLabelBackground">#191919</color>
-    <color name="colorDashboardItemLabelBackground">#A3221E1F</color>
+    <color name="colorDashboardItemLabelBackground">#222222</color>
     <color name="colorDashboardButtonLabelBackground">#131313</color>
+    <color name="colorFeaturedItemTitleText">#F6F6F6</color>
+    <color name="colorFeaturedItemAuthorText">#7E7E7E</color>
 </resources>

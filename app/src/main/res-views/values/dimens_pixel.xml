@@ -10,4 +10,6 @@
     <dimen name="dashboard_margin_top_bottom">6dp</dimen>
     <dimen name="dashboard_corner_radius">8dp</dimen>
 
+    <dimen name="dashboard_item_size">108dp</dimen>
+
 </resources>

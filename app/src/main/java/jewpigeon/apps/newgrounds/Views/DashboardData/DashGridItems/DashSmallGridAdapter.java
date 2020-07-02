@@ -12,21 +12,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import jewpigeon.apps.newgrounds.R;
 
-public class Dash_ItemSmall_Adapter extends RecyclerView.Adapter<Dash_ItemSmall_Adapter.Item> {
-    private ArrayList<DashItemSmall> items;
+public class DashSmallGridAdapter extends RecyclerView.Adapter<DashSmallGridAdapter.Item> {
+    private ArrayList<DashSmallGridItem> items;
 
     LayoutInflater inflater;
 
     @NonNull
     @Override
-    public Dash_ItemSmall_Adapter.Item onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DashSmallGridAdapter.Item onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.featured_dashboard_item_small, parent, false);
-        return new Dash_ItemSmall_Adapter.Item(v);
+        return new DashSmallGridAdapter.Item(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Dash_ItemSmall_Adapter.Item holder, int position) {
-        DashItemSmall item = items.get(position);
+    public void onBindViewHolder(@NonNull DashSmallGridAdapter.Item holder, int position) {
+        DashSmallGridItem item = items.get(position);
         holder.Author.setText(item.getAuthor());
         if (item.getImage() != null) {
             holder.Picture.setImageDrawable(item.getImage());
@@ -34,7 +34,7 @@ public class Dash_ItemSmall_Adapter extends RecyclerView.Adapter<Dash_ItemSmall_
 
     }
 
-    public Dash_ItemSmall_Adapter(ArrayList<DashItemSmall> items) {
+    public DashSmallGridAdapter(ArrayList<DashSmallGridItem> items) {
         this.items = items;
     }
 

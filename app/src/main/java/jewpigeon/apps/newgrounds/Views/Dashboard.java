@@ -91,6 +91,7 @@ private LinearLayout ButtonPanelLayout;
            buttons[i].setTextAlignment(TEXT_ALIGNMENT_CENTER);
            buttons[i].setTextSize(14);
            buttons[i].setAllCaps(false);
+           buttons[i].setClickable(true);
            this.ButtonPanelLayout.addView(buttons[i]);
        }
     }

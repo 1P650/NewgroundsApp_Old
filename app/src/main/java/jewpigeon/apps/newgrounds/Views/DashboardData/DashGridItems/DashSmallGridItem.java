@@ -3,18 +3,13 @@ package jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems;
 import android.graphics.drawable.Drawable;
 
 
-public class DashItem {
+public class DashSmallGridItem {
 
     private Drawable image;
-    private String title;
     private String author;
 
-    public DashItem(Drawable image, String title, String author) {
-        if(image == null){
-
-        }
+    public DashSmallGridItem(Drawable image, String author) {
         this.image = image;
-        this.title = title;
         this.author = author;
     }
 
@@ -24,14 +19,6 @@ public class DashItem {
 
     public void setImage(Drawable image) {
         this.image = image;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getAuthor() {
