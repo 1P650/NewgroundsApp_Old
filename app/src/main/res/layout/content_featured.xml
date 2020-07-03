@@ -35,7 +35,7 @@
                 android:layout_margin="16dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/main_img">
+                android:src="@drawable/main_header">
             </ImageView>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 

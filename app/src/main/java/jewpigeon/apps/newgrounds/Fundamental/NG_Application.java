@@ -8,6 +8,7 @@ import retrofit2.Retrofit;
 
 public class NG_Application extends Application {
     Retrofit NG_Connector;
+    
     @Override
     public void onCreate() {
         super.onCreate();

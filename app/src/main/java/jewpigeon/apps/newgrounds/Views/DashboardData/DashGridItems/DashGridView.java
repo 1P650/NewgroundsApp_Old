@@ -1,11 +1,15 @@
 package jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems;
 
 import android.content.Context;
+import android.graphics.BlendMode;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -13,6 +17,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.LruCache;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -51,7 +56,7 @@ public class DashGridView extends View implements Target<Drawable> {
     {
         TextCache.INSTANCE.changeWidth(ITEM_SIZE);
         defIcon = ContextCompat.getDrawable(getContext(), R.drawable.ng_default_icon);
-        defIcon.setBounds(0,0,ITEM_SIZE,ITEM_SIZE);
+        defIcon.setBounds(0,0,ITEM_SIZE,ITEM_SIZE*2/3);
     }
 
     @Override
@@ -80,14 +85,8 @@ public class DashGridView extends View implements Target<Drawable> {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return super.onTouchEvent(event);
-
-    }
-
-    @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        setMeasuredDimension((int) dp(108),(int) dp(108));
+        setMeasuredDimension(ITEM_SIZE,ITEM_SIZE);
     }
 
     @Override
@@ -101,7 +100,6 @@ public class DashGridView extends View implements Target<Drawable> {
         canvas.translate(0, DashTitle.getHeight());
         DashAuthor.draw(canvas);
         canvas.save();
-        canvas.translate(0,0);
         canvas.restore();
     }
 
@@ -113,18 +111,11 @@ public class DashGridView extends View implements Target<Drawable> {
     public void setDashItem(DashGridItem item){
         DashIcon = new ColorDrawable(Color.BLACK);
         DashTextBackground = new ColorDrawable(ContextCompat.getColor(getContext(), R.color.colorDashboardItemLabelBackground));
-        if (item.getImage() != null){
-            Glide
-                    .with(getContext())
-                    .load(item.getImage())
-                    .into(this);
-        }
-        else{
-            Glide
-                    .with(getContext())
-                    .load(defIcon)
-                    .into(this);
-        }
+
+        Glide.
+                with(getContext())
+                .load((item.getImage() == null ? defIcon:item.getImage()))
+                .into(this);
         DashIcon.setBounds(0, 0, ITEM_SIZE, (ITEM_SIZE*2)/3);
 
 
@@ -146,9 +137,9 @@ public class DashGridView extends View implements Target<Drawable> {
         DashAuthorPainter.setColor(AuthorColor);
         DashAuthorPainter.setTextSize(sp(10));
 
-        TypedValue outValue = new TypedValue();
-        getContext().getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
-        this.setBackground(ContextCompat.getDrawable(getContext(), outValue.resourceId));
+        TypedValue ripple = new TypedValue();
+        getContext().getTheme().resolveAttribute(android.R.attr.selectableItemBackground, ripple, true);
+        this.setBackground(ContextCompat.getDrawable(getContext(), ripple.resourceId));
         this.setClickable(true);
 
     }
@@ -225,11 +216,6 @@ public class DashGridView extends View implements Target<Drawable> {
     @Override
     public void onDestroy() {
 
-    }
-
-    @Override
-    protected boolean verifyDrawable(@NonNull Drawable who) {
-        return super.verifyDrawable(who);
     }
 
     private enum TextCache {

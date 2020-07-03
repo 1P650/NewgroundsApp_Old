@@ -25,10 +25,7 @@ public class DashGridAdapter extends RecyclerView.Adapter<DashGridAdapter.DashHo
     @Override
     public void onBindViewHolder(@NonNull DashHolder holder, int position) {
         DashGridItem item = items.get(position);
-
-
-
-       holder.view.setDashItem(item);
+        holder.view.setDashItem(item);
 
 
     }

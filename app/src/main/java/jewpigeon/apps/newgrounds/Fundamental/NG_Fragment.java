@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.ncapdevi.fragnav.FragNavController;
+
+import java.util.Objects;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
@@ -32,12 +35,11 @@ public class NG_Fragment extends Fragment {
 
         if(behavior != null)
             return;
+       // FrameLayout layout =(FrameLayout) getActivity().findViewById(R.id.content_container);
+       // CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) layout.getLayoutParams();
 
-        FrameLayout layout =(FrameLayout) getNGActivity().findViewById(R.id.content_container);
-        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) layout.getLayoutParams();
-
-        behavior = params.getBehavior();
-        params.setBehavior(null);
+        behavior = new AppBarLayout.ScrollingViewBehavior(getContext(), null);
+       // params.setBehavior(null);
 
     }
 
@@ -47,12 +49,12 @@ public class NG_Fragment extends Fragment {
         if(behavior == null)
             return;
 
-        FrameLayout layout =getNGActivity().findViewById(R.id.content_container);
+      /*  FrameLayout layout =getActivity().findViewById(R.id.content_container);
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) layout.getLayoutParams();
 
         params.setBehavior(behavior);
 
-        layout.setLayoutParams(params);
+        layout.setLayoutParams(params);*/
 
         behavior = null;
     }
