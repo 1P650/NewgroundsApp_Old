@@ -25,6 +25,7 @@ android {
         main.res.srcDirs += 'src/main/res-misc'
         main.res.srcDirs += 'src/main/res-views'
         main.res.srcDirs += 'src/main/res-icons'
+        main.res.srcDirs += 'src/main/res-anims'
     }
 
 }
@@ -39,7 +40,7 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.2.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
 
-    implementation 'com.ncapdevi:frag-nav:3.2.0'
+    implementation 'com.ncapdevi:frag-nav:2.4.0'
 
     implementation 'com.infideap.drawerbehavior:drawer-behavior:1.0.1'
 

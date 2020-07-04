@@ -13,4 +13,5 @@
     <color name="colorDashboardButtonLabelBackground">#131313</color>
     <color name="colorFeaturedItemTitleText">#F6F6F6</color>
     <color name="colorFeaturedItemAuthorText">#7E7E7E</color>
+    <color name="colorFeaturedItemSmallAuthorText">#CFCFCF</color>
 </resources>

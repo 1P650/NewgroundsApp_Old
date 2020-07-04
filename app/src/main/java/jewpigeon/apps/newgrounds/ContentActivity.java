@@ -2,6 +2,7 @@ package jewpigeon.apps.newgrounds;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -14,21 +15,27 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.infideap.drawerbehavior.AdvanceDrawerLayout;
 import com.ncapdevi.fragnav.FragNavController;
-
+import com.ncapdevi.fragnav.FragNavTransactionOptions;
 
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
+
 import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
+
+import androidx.fragment.app.FragmentTransaction;
 import jewpigeon.apps.newgrounds.ContentFragments.ArtPortal;
 import jewpigeon.apps.newgrounds.ContentFragments.AudioPortal;
 import jewpigeon.apps.newgrounds.ContentFragments.CommunityPortal;
@@ -59,7 +66,7 @@ public class ContentActivity extends NG_Activity implements
     private ActionBarDrawerToggle ContentDrawerToggle;
 
     private FragNavController ContentFragmentsController;
-    private ArrayList<NG_Fragment> ContentFragmentsList = new ArrayList<>(
+    private ArrayList<Fragment> ContentFragmentsList = new ArrayList<Fragment>(
             Arrays.asList(
                     MoviesPortal.newInstance(),
                     AudioPortal.newInstance(),
@@ -75,11 +82,25 @@ public class ContentActivity extends NG_Activity implements
         setContentView(R.layout.activity_content);
         establishViews();
 
-        ContentFragmentsController = new FragNavController(getSupportFragmentManager(), R.id.content_container);
-        ContentFragmentsController.setRootFragments(ContentFragmentsList);
-        ContentFragmentsController.initialize(FragNavController.TAB6, savedInstanceState);
-        super.setUpController(ContentFragmentsController);
 
+        //ContentFragmentsController = new FragNavController(getSupportFragmentManager(), R.id.content_container);
+        //ContentFragmentsController.setRootFragments(ContentFragmentsList);
+        //ContentFragmentsController.initialize(FragNavController.TAB6, savedInstanceState);
+
+        //FragNavTransactionOptions.Builder b = new FragNavTransactionOptions.Builder();
+        //b.setEnterAnimation(FragmentTransaction.TRANSIT_ENTER_MASK);
+        //b.setExitAnimation(FragmentTransaction.TRANSIT_EXIT_MASK);
+        //b.setPopExitAnimation(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        //b.setPopEnterAnimation(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+        //b.setAllowStateLoss(false);
+        //ContentFragmentsController.setDefaultTransactionOptions(b.build());
+        ContentFragmentsController = FragNavController.newBuilder(savedInstanceState, getSupportFragmentManager(), R.id.content_container)
+                .rootFragments(ContentFragmentsList)
+                .selectedTabIndex(FragNavController.NO_TAB)
+                .defaultTransactionOptions(FragNavTransactionOptions.newBuilder().customAnimations(R.anim.ng_frag_enter_anim, R.anim.ng_frag_leave_anim).build())
+                .build();
+        ContentFragmentsController.initialize(FragNavController.TAB6);
+        super.setUpController(ContentFragmentsController);
         setUpListeners();
 
 
@@ -172,10 +193,7 @@ public class ContentActivity extends NG_Activity implements
         ContentDrawerToggle.onConfigurationChanged(conf);
     }
 
-    @Override
-    public int getNumberOfRootFragments() {
-        return 5;
-    }
+
 
     @Override
     public Fragment getRootFragment(int identifier) {
@@ -233,10 +251,8 @@ public class ContentActivity extends NG_Activity implements
 
         contentAppBarLayout.setExpanded(true, true);
 
-
-
-
         if (ContentDrawerLayout.isDrawerOpen(ContentLeftMenu)) ContentDrawerLayout.closeDrawer(ContentLeftMenu);
+
 
         switch (item.getItemId()) {
             case R.id.bottom_content_movies:
@@ -289,4 +305,16 @@ public class ContentActivity extends NG_Activity implements
         }
         return false;
     }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        if (ContentFragmentsController != null) {
+
+            getController().onSaveInstanceState(outState);
+
+        }
+    }
+
+
 }

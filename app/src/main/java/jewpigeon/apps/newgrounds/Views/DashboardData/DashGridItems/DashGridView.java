@@ -55,7 +55,7 @@ public class DashGridView extends View implements Target<Drawable> {
 
     {
         TextCache.INSTANCE.changeWidth(ITEM_SIZE);
-        defIcon = ContextCompat.getDrawable(getContext(), R.drawable.ng_default_icon);
+        defIcon = ContextCompat.getDrawable(getContext(), R.drawable.ng_icon_undefined_cut);
         defIcon.setBounds(0,0,ITEM_SIZE,ITEM_SIZE*2/3);
     }
 

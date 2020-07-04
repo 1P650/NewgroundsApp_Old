@@ -12,25 +12,27 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import jewpigeon.apps.newgrounds.R;
 
-public class DashSmallGridAdapter extends RecyclerView.Adapter<DashSmallGridAdapter.Item> {
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
+public class DashSmallGridAdapter extends RecyclerView.Adapter<DashSmallGridAdapter.DashHolder> {
     private ArrayList<DashSmallGridItem> items;
 
     LayoutInflater inflater;
 
     @NonNull
     @Override
-    public DashSmallGridAdapter.Item onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.featured_dashboard_item_small, parent, false);
-        return new DashSmallGridAdapter.Item(v);
+    public DashSmallGridAdapter.DashHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ViewGroup.LayoutParams params = new RecyclerView.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
+        DashGridViewSmall itemView = new DashGridViewSmall(parent.getContext());
+        itemView.setLayoutParams(params);
+        return new DashSmallGridAdapter.DashHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DashSmallGridAdapter.Item holder, int position) {
+    public void onBindViewHolder(@NonNull DashSmallGridAdapter.DashHolder holder, int position) {
         DashSmallGridItem item = items.get(position);
-        holder.Author.setText(item.getAuthor());
-        if (item.getImage() != null) {
-            holder.Picture.setImageDrawable(item.getImage());
-        }
+        holder.view.setDashItem(item);
 
     }
 
@@ -44,15 +46,11 @@ public class DashSmallGridAdapter extends RecyclerView.Adapter<DashSmallGridAdap
         return items.size();
     }
 
-    public class Item extends RecyclerView.ViewHolder {
-        private TextView Author;
-        private ImageView Picture;
-
-        public Item(@NonNull View itemView) {
-            super(itemView);
-            Author = itemView.findViewById(R.id.featured_dashboard_item_author_small);
-            Picture = itemView.findViewById(R.id.featured_dashboard_item_picture_small);
-
+    final class DashHolder extends RecyclerView.ViewHolder {
+        private final DashGridViewSmall view;
+        public DashHolder(DashGridViewSmall view){
+            super(view);
+            this.view = view;
 
         }
     }

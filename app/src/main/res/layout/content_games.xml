@@ -32,7 +32,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/games_portal_brand_grid"
-                style="@style/AppTheme.DashboardPortalList"/>
+                style="@style/AppTheme.DashboardPortalGrid"/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
@@ -43,7 +43,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/games_portal_popular_grid"
-                style="@style/AppTheme.DashboardPortalList" />
+                style="@style/AppTheme.DashboardPortalGrid" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
@@ -54,7 +54,7 @@
             app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/games_portal_month_grid"
-                style="@style/AppTheme.DashboardPortalList" />
+                style="@style/AppTheme.DashboardPortalGrid" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
@@ -65,7 +65,7 @@
             app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/games_portal_year_grid"
-                style="@style/AppTheme.DashboardPortalList" />
+                style="@style/AppTheme.DashboardPortalGrid" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
 

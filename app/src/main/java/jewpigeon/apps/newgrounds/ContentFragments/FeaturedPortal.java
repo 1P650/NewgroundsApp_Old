@@ -112,7 +112,7 @@ public class FeaturedPortal extends NG_Fragment {
         FeaturedArt = (Dashboard) findViewById(R.id.featured_art);
         RecyclerView FeaturedArtList = (RecyclerView) findViewById(R.id.featured_art_grid);
         DashSmallGridAdapter art_adapter = new DashSmallGridAdapter(FeaturedArtArray);
-        FeaturedArtList.addItemDecoration(new GridDecorator(8, 4));
+        FeaturedArtList.addItemDecoration(new GridDecorator(8, 4, FeaturedArtArray.size()));
         FeaturedArtList.setLayoutManager(new GridLayoutManager(getContext(), 4));
         FeaturedArtList.setAdapter(art_adapter);
 

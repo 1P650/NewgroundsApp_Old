@@ -7,6 +7,7 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.Button;
@@ -29,6 +30,7 @@ private ConstraintLayout Label;
 private TextView LabelName;
 private ImageView LabelIcon;
 private LinearLayout ButtonPanelLayout;
+private TypedValue ripple = new TypedValue();
     public Dashboard(@NonNull Context context) {
         super(context);
         establishComponents(context, null);
@@ -49,6 +51,7 @@ private LinearLayout ButtonPanelLayout;
     @SuppressLint("RestrictedApi")
     private void establishComponents(Context context, @Nullable  AttributeSet attributeSet){
         inflate(getContext(), R.layout.dashboard, this);
+        getContext().getTheme().resolveAttribute(android.R.attr.selectableItemBackground, ripple, true);
         Label = this.findViewById(R.id.dashboard_label);
         LabelName = this.findViewById(R.id.dashboard_label_name);
         ButtonPanelLayout = this.findViewById(R.id.dashboard_buttons_panel);
@@ -91,6 +94,7 @@ private LinearLayout ButtonPanelLayout;
            buttons[i].setTextAlignment(TEXT_ALIGNMENT_CENTER);
            buttons[i].setTextSize(14);
            buttons[i].setAllCaps(false);
+           buttons[i].setForeground(ContextCompat.getDrawable(getContext(), ripple.resourceId));
            buttons[i].setClickable(true);
            this.ButtonPanelLayout.addView(buttons[i]);
        }
