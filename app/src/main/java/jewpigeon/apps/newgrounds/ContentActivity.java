@@ -81,26 +81,15 @@ public class ContentActivity extends NG_Activity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
         establishViews();
+        if(ContentFragmentsController == null){
+            ContentFragmentsController = FragNavController.newBuilder(savedInstanceState, getSupportFragmentManager(), R.id.content_container)
+                    .rootFragments(ContentFragmentsList)
+                    .selectedTabIndex(FragNavController.TAB6)
+                    .defaultTransactionOptions(FragNavTransactionOptions.newBuilder().customAnimations(R.anim.ng_frag_enter_anim, R.anim.ng_frag_leave_anim).build())
+                    .build();
+            super.setUpController(ContentFragmentsController);
+        }
 
-
-        //ContentFragmentsController = new FragNavController(getSupportFragmentManager(), R.id.content_container);
-        //ContentFragmentsController.setRootFragments(ContentFragmentsList);
-        //ContentFragmentsController.initialize(FragNavController.TAB6, savedInstanceState);
-
-        //FragNavTransactionOptions.Builder b = new FragNavTransactionOptions.Builder();
-        //b.setEnterAnimation(FragmentTransaction.TRANSIT_ENTER_MASK);
-        //b.setExitAnimation(FragmentTransaction.TRANSIT_EXIT_MASK);
-        //b.setPopExitAnimation(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        //b.setPopEnterAnimation(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
-        //b.setAllowStateLoss(false);
-        //ContentFragmentsController.setDefaultTransactionOptions(b.build());
-        ContentFragmentsController = FragNavController.newBuilder(savedInstanceState, getSupportFragmentManager(), R.id.content_container)
-                .rootFragments(ContentFragmentsList)
-                .selectedTabIndex(FragNavController.NO_TAB)
-                .defaultTransactionOptions(FragNavTransactionOptions.newBuilder().customAnimations(R.anim.ng_frag_enter_anim, R.anim.ng_frag_leave_anim).build())
-                .build();
-        ContentFragmentsController.initialize(FragNavController.TAB6);
-        super.setUpController(ContentFragmentsController);
         setUpListeners();
 
 
