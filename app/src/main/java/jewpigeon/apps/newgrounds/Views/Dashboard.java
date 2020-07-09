@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.google.android.material.card.MaterialCardView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.view.menu.MenuBuilder;
@@ -25,7 +27,7 @@ import androidx.core.content.ContextCompat;
 import jewpigeon.apps.newgrounds.R;
 
 
-public class Dashboard extends CardView {
+public class Dashboard extends MaterialCardView {
 private ConstraintLayout Label;
 private TextView LabelName;
 private ImageView LabelIcon;
@@ -92,7 +94,7 @@ private TypedValue ripple = new TypedValue();
            buttons[i].setBackground(ContextCompat.getDrawable(this.getContext(), R.drawable.dashboard_button_shape));
            buttons[i].setTextColor(ContextCompat.getColor(this.getContext(), R.color.colorAccent));
            buttons[i].setTextAlignment(TEXT_ALIGNMENT_CENTER);
-           buttons[i].setTextSize(14);
+           buttons[i].setTextSize(11);
            buttons[i].setAllCaps(false);
            buttons[i].setForeground(ContextCompat.getDrawable(getContext(), ripple.resourceId));
            buttons[i].setClickable(true);

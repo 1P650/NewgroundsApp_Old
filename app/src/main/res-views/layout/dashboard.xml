@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:parentTag="androidx.cardview.widget.CardView">
+    tools:parentTag="com.google.android.material.card.MaterialCardView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/dashboard_label"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dashboard_labelSize"
-        android:background="@color/colorDashboardLabelBackground"
+        android:background="@drawable/dashboard_label_gradient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

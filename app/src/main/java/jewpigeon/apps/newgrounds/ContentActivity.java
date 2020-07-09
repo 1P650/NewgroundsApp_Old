@@ -241,6 +241,7 @@ public class ContentActivity extends NG_Activity implements
         contentAppBarLayout.setExpanded(true, true);
 
         if (ContentDrawerLayout.isDrawerOpen(ContentLeftMenu)) ContentDrawerLayout.closeDrawer(ContentLeftMenu);
+        contentBottomBarBehaviour.slideUp(ContentBottomBar);
 
 
         switch (item.getItemId()) {
@@ -263,27 +264,22 @@ public class ContentActivity extends NG_Activity implements
 
 
             case R.id.leftmenu_content_movies:
-                contentBottomBarBehaviour.slideUp(ContentBottomBar);
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_movies);
                 getController().switchTab(FragNavController.TAB1);
                 return true;
             case R.id.leftmenu_content_audio:
-                contentBottomBarBehaviour.slideUp(ContentBottomBar);
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_audio);
                 getController().switchTab(FragNavController.TAB2);
                 return true;
             case R.id.leftmenu_content_art:
-                contentBottomBarBehaviour.slideUp(ContentBottomBar);
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_art);
                 getController().switchTab(FragNavController.TAB3);
                 return true;
             case R.id.leftmenu_content_games:
-                contentBottomBarBehaviour.slideUp(ContentBottomBar);
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_games);
                 getController().switchTab(FragNavController.TAB4);
                 return true;
             case R.id.leftmenu_content_community:
-                contentBottomBarBehaviour.slideUp(ContentBottomBar);
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_community);
                 getController().switchTab(FragNavController.TAB5);
                 return true;

@@ -57,6 +57,8 @@ public class DashGridView extends View implements Target<Drawable> {
         TextCache.INSTANCE.changeWidth(ITEM_SIZE);
         defIcon = ContextCompat.getDrawable(getContext(), R.drawable.ng_icon_undefined_cut);
         defIcon.setBounds(0,0,ITEM_SIZE,ITEM_SIZE*2/3);
+        DashTextBackground = new ColorDrawable(ContextCompat.getColor(getContext(), R.color.colorDashboardItemLabelBackground));
+        DashTextBackground.setBounds(0,0,ITEM_SIZE,ITEM_SIZE/3);
     }
 
     @Override
@@ -93,12 +95,13 @@ public class DashGridView extends View implements Target<Drawable> {
     protected void onDraw(Canvas canvas) {
         DashIcon.draw(canvas);
         canvas.save();
-        canvas.translate(0, (ITEM_SIZE/3) *2);
+        canvas.translate(0, ITEM_SIZE*2/3);
         DashTextBackground.draw(canvas);
         canvas.save();
         DashTitle.draw(canvas);
         canvas.translate(0, DashTitle.getHeight());
         DashAuthor.draw(canvas);
+        canvas.translate(0,-(DashTitle.getHeight() + ITEM_SIZE*2/3));
         canvas.save();
         canvas.restore();
     }
@@ -109,20 +112,18 @@ public class DashGridView extends View implements Target<Drawable> {
 
 
     public void setDashItem(DashGridItem item){
-        DashIcon = new ColorDrawable(Color.BLACK);
-        DashTextBackground = new ColorDrawable(ContextCompat.getColor(getContext(), R.color.colorDashboardItemLabelBackground));
-
         Glide.
                 with(getContext())
-                .load((item.getImage() == null ? defIcon:item.getImage()))
+                .load(item.getImage())
+                .placeholder(defIcon)
+                .fallback(defIcon)
                 .into(this);
-        DashIcon.setBounds(0, 0, ITEM_SIZE, (ITEM_SIZE*2)/3);
 
 
         DashTitle = TextCache.INSTANCE.titleLayoutFor(item.getTitle());
         DashAuthor = TextCache.INSTANCE.authorLayoutFor(item.getAuthor());
 
-        DashTextBackground.setBounds(0,0,ITEM_SIZE,ITEM_SIZE/3);
+
         requestLayout();
         invalidate();
     }
@@ -137,9 +138,7 @@ public class DashGridView extends View implements Target<Drawable> {
         DashAuthorPainter.setColor(AuthorColor);
         DashAuthorPainter.setTextSize(sp(10));
 
-        TypedValue ripple = new TypedValue();
-        getContext().getTheme().resolveAttribute(android.R.attr.selectableItemBackground, ripple, true);
-        this.setBackground(ContextCompat.getDrawable(getContext(), ripple.resourceId));
+        this.setForeground(ContextCompat.getDrawable(getContext(), R.drawable.grid_item_ripple));
         this.setClickable(true);
 
     }
@@ -156,10 +155,14 @@ public class DashGridView extends View implements Target<Drawable> {
     public void onLoadStarted(@Nullable Drawable placeholder) {
         try {
             DashIcon = placeholder;
-            DashIcon.setBounds(0,0,ITEM_SIZE,(ITEM_SIZE*2)/3);
+
         }catch (NullPointerException e){
-            DashIcon = defIcon;
+            DashIcon = new ColorDrawable(Color.BLACK);
+        }finally {
+            DashIcon.setBounds(0,0,ITEM_SIZE,ITEM_SIZE*2/3);
         }
+
+        invalidate();
 
     }
 
@@ -168,19 +171,26 @@ public class DashGridView extends View implements Target<Drawable> {
         try {
             DashIcon = errorDrawable;
 
-            DashIcon.setBounds(0,0,ITEM_SIZE,(ITEM_SIZE*2)/3);
         }catch (NullPointerException e){
-            DashIcon = new ColorDrawable(Color.GRAY);
+            DashIcon = new ColorDrawable(Color.BLACK);
         }
+        finally {
+            DashIcon.setBounds(0,0,ITEM_SIZE,ITEM_SIZE*2/3);
+        }
+
+        invalidate();
     }
 
     @Override
     public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
         try {
             DashIcon = resource;
-            DashIcon.setBounds(0,0, ITEM_SIZE, (ITEM_SIZE*2)/3);
+
         }catch (NullPointerException e){
-            DashIcon = new ColorDrawable(Color.RED);
+            DashIcon = new ColorDrawable(Color.BLACK);
+        }
+        finally {
+            DashIcon.setBounds(0,0, ITEM_SIZE, ITEM_SIZE*2/3);
         }
         invalidate();
     }

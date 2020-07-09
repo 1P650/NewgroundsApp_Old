@@ -7,6 +7,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -30,13 +33,18 @@ import jewpigeon.apps.newgrounds.R;
 
 public class DashGridViewSmall extends View implements Target<Drawable> {
 
+    private final int ITEM_SIZE = (int) getResources().getDimension(R.dimen.dashboard_item_size_small);
+    private final int AUTHOR_COLOR = ContextCompat.getColor(getContext(), R.color.colorFeaturedItemSmallAuthorText);
+    private final int ITEM_LABEL_COLOR = ContextCompat.getColor(getContext(), R.color.colorDashboardItemLabelBackground);
+
+
     private  StaticLayout DashAuthor;
     private  Drawable DashIcon;
     private  Drawable DashTextBackground;
-    private  Drawable DashPegiBackground;
+    private  GradientDrawable DashPegiBackground;
     private  Drawable DashPegi;
-    private final int ITEM_SIZE = (int) getResources().getDimension(R.dimen.dashboard_item_size_small);
-    private final int AuthorColor = ContextCompat.getColor(getContext(), R.color.colorFeaturedItemSmallAuthorText);
+
+
 
     private static TextPaint DashAuthorPainter;
     private Drawable defIcon;
@@ -52,13 +60,16 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
         defIcon.setBounds(0,0,ITEM_SIZE,ITEM_SIZE);
 
         DashPegi = ContextCompat.getDrawable(getContext(), R.drawable.ng_pegi_everyone);
-        DashPegi.setBounds(0,0, ITEM_SIZE/5, ITEM_SIZE/5);
+        DashPegi.setBounds(0,0, ITEM_SIZE/6, ITEM_SIZE/6);
 
-        DashTextBackground = new ColorDrawable(ContextCompat.getColor(getContext(), R.color.colorDashboardItemLabelBackground));
+        DashTextBackground = new ColorDrawable(ITEM_LABEL_COLOR);
         DashTextBackground.setBounds(0,0,ITEM_SIZE,ITEM_SIZE/4);
 
-        DashPegiBackground = new ColorDrawable(ContextCompat.getColor(getContext(), R.color.colorDashboardItemLabelBackground));
-        DashPegiBackground.setBounds(0,0,ITEM_SIZE/5, ITEM_SIZE/5);
+        DashPegiBackground = new GradientDrawable();
+        DashPegiBackground.setShape(GradientDrawable.RECTANGLE);
+        DashPegiBackground.setCornerRadii(new float[] { 0, 0, 0, 0, 16 ,8 , 0, 0});
+        DashPegiBackground.setColor(ITEM_LABEL_COLOR);
+        DashPegiBackground.setBounds(0,0, (int) (ITEM_SIZE/(4.5)), (int) (ITEM_SIZE/4.5));
     }
 
     @Override
@@ -95,15 +106,15 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
     protected void onDraw(Canvas canvas) {
         DashIcon.draw(canvas);
         canvas.save();
-        canvas.translate(0, (ITEM_SIZE/4) *3);
+        canvas.translate(0, (int)(ITEM_SIZE*0.75f)+1);
         DashTextBackground.draw(canvas);
         canvas.save();
         DashAuthor.draw(canvas);
-        canvas.translate(0,-ITEM_SIZE*3/4);
+        canvas.translate(0,(int)(-ITEM_SIZE*0.75f)-1);
         DashPegiBackground.draw(canvas);
+        canvas.translate(2,4);
         DashPegi.draw(canvas);
         canvas.save();
-
         canvas.restore();
     }
 
@@ -113,11 +124,11 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
 
 
     public void setDashItem(DashSmallGridItem item){
-        DashIcon = new ColorDrawable(Color.BLACK);
-
         Glide.
                 with(getContext())
-                .load((item.getImage() == null ? defIcon:item.getImage()))
+                .load(item.getImage())
+                .placeholder(defIcon)
+                .fallback(defIcon)
                 .into(this);
         DashIcon.setBounds(0, 0, ITEM_SIZE, ITEM_SIZE);
 
@@ -131,12 +142,11 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
 
     private void establishState(){
         DashAuthorPainter = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        DashAuthorPainter.setColor(AuthorColor);
+        DashAuthorPainter.setColor(AUTHOR_COLOR);
         DashAuthorPainter.setTextSize(sp(15));
 
-        TypedValue ripple = new TypedValue();
-        getContext().getTheme().resolveAttribute(android.R.attr.selectableItemBackground, ripple, true);
-        this.setForeground(ContextCompat.getDrawable(getContext(), ripple.resourceId));
+
+        this.setForeground(ContextCompat.getDrawable(getContext(), R.drawable.grid_item_ripple));
         this.setClickable(true);
 
     }
@@ -153,10 +163,14 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
     public void onLoadStarted(@Nullable Drawable placeholder) {
         try {
             DashIcon = placeholder;
-            DashIcon.setBounds(0,0,ITEM_SIZE,ITEM_SIZE);
+
         }catch (NullPointerException e){
-            DashIcon = defIcon;
+            DashIcon = new ColorDrawable(Color.BLACK);
+        }finally {
+            DashIcon.setBounds(0,0,ITEM_SIZE,ITEM_SIZE);
         }
+
+        invalidate();
 
     }
 
@@ -165,19 +179,26 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
         try {
             DashIcon = errorDrawable;
 
-            DashIcon.setBounds(0,0,ITEM_SIZE,ITEM_SIZE);
         }catch (NullPointerException e){
-            DashIcon = new ColorDrawable(Color.GRAY);
+            DashIcon = new ColorDrawable(Color.BLACK);
         }
+        finally {
+            DashIcon.setBounds(0,0,ITEM_SIZE,ITEM_SIZE);
+        }
+
+        invalidate();
     }
 
     @Override
     public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
         try {
             DashIcon = resource;
-            DashIcon.setBounds(0,0, ITEM_SIZE, ITEM_SIZE);
+
         }catch (NullPointerException e){
-            DashIcon = new ColorDrawable(Color.RED);
+            DashIcon = new ColorDrawable(Color.BLACK);
+        }
+        finally {
+            DashIcon.setBounds(0,0, ITEM_SIZE, ITEM_SIZE);
         }
         invalidate();
     }

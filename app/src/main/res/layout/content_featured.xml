@@ -8,6 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <!-- Header text-->
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,6 +26,7 @@
                 android:textAlignment="center"/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
+        <!-- Featured pucture -->
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_picture"
             style="@style/AppTheme.Dashboard"
@@ -38,7 +41,7 @@
                 android:src="@drawable/main_header">
             </ImageView>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
-
+        <!-- Featured movies -->
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_movies"
             style="@style/AppTheme.Dashboard"
@@ -50,10 +53,11 @@
                 android:id="@+id/featured_movies_grid"
                 style="@style/AppTheme.DashboardPortalGrid"/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
-
+        <!-- Featured games -->
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_games"
             style="@style/AppTheme.Dashboard"
+            app:labelText="Featured Games"
             app:labelIcon="@drawable/ng_games_icon"
             app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
 
@@ -61,7 +65,7 @@
                 android:id="@+id/featured_games_grid"
              style="@style/AppTheme.DashboardPortalGrid" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
-
+        <!-- Featured art -->
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_art"
             style="@style/AppTheme.Dashboard"
@@ -74,7 +78,7 @@
                 android:id="@+id/featured_art_grid"
                 style="@style/AppTheme.DashboardPortalGridSmall" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
-
+        <!-- Featured audio -->
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_audio"
             style="@style/AppTheme.Dashboard"
@@ -86,7 +90,7 @@
                 android:id="@+id/featured_audio_list"
                 style="@style/AppTheme.DashboardPortalList"/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
-
+        <!-- Bottom sity-->
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
