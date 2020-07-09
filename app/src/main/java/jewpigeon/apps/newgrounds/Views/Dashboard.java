@@ -58,7 +58,6 @@ private TypedValue ripple = new TypedValue();
         LabelName = this.findViewById(R.id.dashboard_label_name);
         ButtonPanelLayout = this.findViewById(R.id.dashboard_buttons_panel);
         LabelIcon = this.findViewById(R.id.dashboard_label_icon);
-        //this.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorDashboardBackground));
 
 
         TypedArray attributes = context.obtainStyledAttributes(attributeSet, R.styleable.Dashboard, 0, 0);
@@ -91,6 +90,7 @@ private TypedValue ripple = new TypedValue();
        for (int i = 0; i < menu.size(); i++){
            buttons[i] = new Button(getContext());
            buttons[i].setText(menu.getItem(i).getTitle());
+           //buttons[i].setLayoutParams(new LinearLayout.LayoutParams(3, 3));
            buttons[i].setBackground(ContextCompat.getDrawable(this.getContext(), R.drawable.dashboard_button_shape));
            buttons[i].setTextColor(ContextCompat.getColor(this.getContext(), R.color.colorAccent));
            buttons[i].setTextAlignment(TEXT_ALIGNMENT_CENTER);

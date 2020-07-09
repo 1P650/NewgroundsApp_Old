@@ -81,7 +81,7 @@ public class MoviesPortal extends NG_Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        postponeEnterTransition();
+
         rootView = inflater.inflate(R.layout.content_movies, container, false);
         setSeekerView(rootView);
 
@@ -119,7 +119,7 @@ public class MoviesPortal extends NG_Fragment {
         ClassicMoviesList.addItemDecoration(new GridDecorator(8, 3));
         ClassicMoviesList.setLayoutManager(new GridLayoutManager(getContext(), 3));
         ClassicMoviesList.setAdapter(classic_adapter);
-        startPostponedEnterTransition();
+
         return rootView;
     }
 }

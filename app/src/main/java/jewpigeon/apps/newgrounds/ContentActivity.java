@@ -1,5 +1,6 @@
 package jewpigeon.apps.newgrounds;
 
+import android.content.ContentResolver;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -32,6 +33,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -102,8 +104,8 @@ public class ContentActivity extends NG_Activity implements
         
 
         ContentBottomBar = findViewById(R.id.content_bottombar);
-        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) ContentBottomBar.getLayoutParams();
-        contentBottomBarBehaviour = (HideBottomViewOnScrollBehavior) layoutParams.getBehavior();
+        contentBottomBarBehaviour = (HideBottomViewOnScrollBehavior) ((CoordinatorLayout.LayoutParams) ContentBottomBar.getLayoutParams()).getBehavior();;
+        ContentBottomBar.getMenu().getItem(0).setCheckable(false);
 
         ContentDrawerLayout = (AdvanceDrawerLayout) findViewById(R.id.content_drawerlayout);
         ContentLeftMenu = findViewById(R.id.content_left_menu);
@@ -137,13 +139,14 @@ public class ContentActivity extends NG_Activity implements
     private void setUpListeners() {
         ContentBottomBar.setOnNavigationItemSelectedListener(this);
         ContentLeftMenu.setNavigationItemSelectedListener(this);
+
         HomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getController().clearStack();
                 getController().switchTab(FragNavController.TAB6);
             }
         });
+
         SearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -239,7 +242,7 @@ public class ContentActivity extends NG_Activity implements
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         contentAppBarLayout.setExpanded(true, true);
-
+        item.setCheckable(true);
         if (ContentDrawerLayout.isDrawerOpen(ContentLeftMenu)) ContentDrawerLayout.closeDrawer(ContentLeftMenu);
         contentBottomBarBehaviour.slideUp(ContentBottomBar);
 
@@ -250,20 +253,24 @@ public class ContentActivity extends NG_Activity implements
                 getController().switchTab(FragNavController.TAB1);
                 return true;
             case R.id.bottom_content_audio:
+
                 getController().switchTab(FragNavController.TAB2);
                 return true;
             case R.id.bottom_content_art:
                 getController().switchTab(FragNavController.TAB3);
                 return true;
             case R.id.bottom_content_games:
+
                 getController().switchTab(FragNavController.TAB4);
                 return true;
             case R.id.bottom_content_community:
+
                 getController().switchTab(FragNavController.TAB5);
                 return true;
 
 
             case R.id.leftmenu_content_movies:
+
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_movies);
                 getController().switchTab(FragNavController.TAB1);
                 return true;

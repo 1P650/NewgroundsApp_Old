@@ -28,7 +28,8 @@
             android:id="@+id/games_portal_brand_movies"
             style="@style/AppTheme.Dashboard"
             app:labelIcon="@drawable/ng_movies_icon"
-            app:labelText="Brand Spankin' New Games">
+            app:labelText="Brand Spankin' New Games"
+            app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/games_portal_brand_grid"
@@ -39,7 +40,8 @@
             android:id="@+id/games_portal_popular_movies"
             style="@style/AppTheme.Dashboard"
             app:labelIcon="@drawable/ng_movies_icon"
-            app:labelText="Popular Games">
+            app:labelText="Popular Games"
+            app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/games_portal_popular_grid"

@@ -102,7 +102,7 @@ public class FeaturedPortal extends NG_Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        postponeEnterTransition();
+        //postponeEnterTransition();
         rootView = inflater.inflate(R.layout.content_featured, container, false);
         setSeekerView(rootView);
 
@@ -143,7 +143,7 @@ public class FeaturedPortal extends NG_Fragment {
 
         FeaturedAudioList.setLayoutManager(new LinearLayoutManager(getContext()));
         FeaturedAudioList.setAdapter(audio_adapter);
-      startPostponedEnterTransition();
+        //startPostponedEnterTransition();
         return rootView;
     }
 

@@ -27,7 +27,8 @@
             android:id="@+id/movies_portal_brand_movies"
             style="@style/AppTheme.Dashboard"
             app:labelIcon="@drawable/ng_movies_icon"
-            app:labelText="Brand Spankin' New Movies">
+            app:labelText="Brand Spankin' New Movies"
+            app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/movies_portal_brand_grid"
@@ -38,7 +39,8 @@
             android:id="@+id/movies_portal_popular_movies"
             style="@style/AppTheme.Dashboard"
             app:labelIcon="@drawable/ng_movies_icon"
-            app:labelText="Popular Movies">
+            app:labelText="Popular Movies"
+            app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/movies_portal_popular_grid"
