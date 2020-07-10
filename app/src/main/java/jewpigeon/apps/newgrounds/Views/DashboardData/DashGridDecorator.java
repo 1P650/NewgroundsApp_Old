@@ -1,10 +1,11 @@
 package jewpigeon.apps.newgrounds.Views.DashboardData;
 
-import android.content.res.Resources;
 import android.graphics.Rect;
 import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import static jewpigeon.apps.newgrounds.Utils.MeasureConverter.dpToPx;
 
 public class DashGridDecorator extends RecyclerView.ItemDecoration {
 
@@ -20,32 +21,30 @@ public class DashGridDecorator extends RecyclerView.ItemDecoration {
         this.includeEdge = includeEdge;
     }
 
+
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-        int position = parent.getChildAdapterPosition(view); // item position
-        int column = position % spanCount; // item column
+        int position = parent.getChildAdapterPosition(view);
+        int column = position % spanCount;
 
         if (includeEdge) {
-            outRect.left = horizontalSpasing - column * horizontalSpasing / spanCount; // spacing - column * ((1f / spanCount) * spacing)
-            outRect.right = (column + 1) * horizontalSpasing / spanCount; // (column + 1) * ((1f / spanCount) * spacing)
+            outRect.left = horizontalSpasing - column * horizontalSpasing / spanCount;
+            outRect.right = (column + 1) * horizontalSpasing / spanCount;
 
             if (position < spanCount) { // top edge
                 outRect.top = verticalSpasing;
             }
             outRect.bottom = verticalSpasing; // item bottom
         } else {
-            outRect.left = column * horizontalSpasing / spanCount; // column * ((1f / spanCount) * spacing)
-            outRect.right = horizontalSpasing - (column + 1) * horizontalSpasing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
+            outRect.left = column * horizontalSpasing / spanCount;
+            outRect.right = horizontalSpasing - (column + 1) * horizontalSpasing / spanCount;
             if (position >= spanCount) {
-                outRect.top = verticalSpasing; // item top
+                outRect.top = verticalSpasing;
             }
         }
     }
 
-    private int dpToPx(int dp)
-    {
-        return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
-    }
+
 
 
 }

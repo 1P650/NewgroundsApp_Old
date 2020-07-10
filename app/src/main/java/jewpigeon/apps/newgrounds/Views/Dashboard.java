@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -87,13 +88,26 @@ private TypedValue ripple = new TypedValue();
        Button[] buttons = new Button[menu.size()];
        for (int i = 0; i < menu.size(); i++){
            buttons[i] = new Button(getContext());
+           buttons[i].setIncludeFontPadding(false);
+
+           buttons[i].setMinHeight(0);
+           buttons[i].setMinimumHeight(0);
+
+           buttons[i].setMinWidth(0);
+           buttons[i].setMinimumWidth(0);
+
+           buttons[i].setPadding(50,buttons[i].getPaddingTop(),50,buttons[i].getPaddingBottom());
+
+           buttons[i].setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
            buttons[i].setText(menu.getItem(i).getTitle());
-           buttons[i].setLayoutParams(new LayoutParams(200, 100));
+
            buttons[i].setBackground(ContextCompat.getDrawable(this.getContext(), R.drawable.dashboard_button_shape));
            buttons[i].setTextColor(ContextCompat.getColor(this.getContext(), R.color.colorAccent));
            buttons[i].setTextAlignment(TEXT_ALIGNMENT_CENTER);
-           buttons[i].setTextSize(10);
+           buttons[i].setTextSize(12);
            buttons[i].setAllCaps(false);
+           buttons[i].setForeground(ContextCompat.getDrawable(getContext(), ripple.resourceId));
            buttons[i].setClickable(true);
            this.ButtonPanelLayout.addView(buttons[i]);
        }
