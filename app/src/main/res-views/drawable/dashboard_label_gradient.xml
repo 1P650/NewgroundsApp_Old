@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+        <shape 
             android:shape="rectangle">
             <gradient
                 android:endColor="@color/colorDashboardLabelGradientStart"
@@ -15,7 +15,7 @@
         <shape android:shape="rectangle">
             <gradient
                 android:endColor="@color/colorDashboardLabelGradientEnd"
-                android:startColor="@color/colorDashboardLabelGradientStart"
+                android:startColor="@color/colorPrimaryBackground"
                 android:type="linear"
                 android:angle="270"
                 />

@@ -29,7 +29,7 @@
         <!-- Featured pucture -->
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_picture"
-            style="@style/AppTheme.Dashboard"
+            style="@style/NG_DefaultTheme.Dashboard"
             app:labelVisible="false">
 
             <ImageView
@@ -44,31 +44,31 @@
         <!-- Featured movies -->
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_movies"
-            style="@style/AppTheme.Dashboard"
+            style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="Featured Movies"
             app:labelIcon="@drawable/ng_movies_icon"
             app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_movies_grid"
-                style="@style/AppTheme.DashboardPortalGrid"/>
+                style="@style/NG_DefaultTheme.DashboardPortalGrid"/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
         <!-- Featured games -->
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_games"
-            style="@style/AppTheme.Dashboard"
+            style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="Featured Games"
             app:labelIcon="@drawable/ng_games_icon"
             app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_games_grid"
-             style="@style/AppTheme.DashboardPortalGrid" />
+             style="@style/NG_DefaultTheme.DashboardPortalGrid" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
         <!-- Featured art -->
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_art"
-            style="@style/AppTheme.Dashboard"
+            style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="Featured Art"
             app:labelIcon="@drawable/ng_art_icon"
 
@@ -76,19 +76,19 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_art_grid"
-                style="@style/AppTheme.DashboardPortalGridSmall" />
+                style="@style/NG_DefaultTheme.DashboardPortalGridSmall" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
         <!-- Featured audio -->
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_audio"
-            style="@style/AppTheme.Dashboard"
+            style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="Featured Audio"
             app:labelIcon="@drawable/ng_audio_icon"
             app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_audio_list"
-                style="@style/AppTheme.DashboardPortalList"/>
+                style="@style/NG_DefaultTheme.DashboardPortalList"/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
         <!-- Bottom sity-->
         <ImageView

@@ -33,11 +33,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
-import androidx.core.content.ContextCompat;
+
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 
-import androidx.fragment.app.FragmentTransaction;
+
 import jewpigeon.apps.newgrounds.ContentFragments.ArtPortal;
 import jewpigeon.apps.newgrounds.ContentFragments.AudioPortal;
 import jewpigeon.apps.newgrounds.ContentFragments.CommunityPortal;
@@ -45,7 +45,7 @@ import jewpigeon.apps.newgrounds.ContentFragments.FeaturedPortal;
 import jewpigeon.apps.newgrounds.ContentFragments.GamesPortal;
 import jewpigeon.apps.newgrounds.ContentFragments.MoviesPortal;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Activity;
-import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
+
 
 public class ContentActivity extends NG_Activity implements
         FragNavController.RootFragmentListener,
@@ -105,7 +105,7 @@ public class ContentActivity extends NG_Activity implements
 
         ContentBottomBar = findViewById(R.id.content_bottombar);
         contentBottomBarBehaviour = (HideBottomViewOnScrollBehavior) ((CoordinatorLayout.LayoutParams) ContentBottomBar.getLayoutParams()).getBehavior();;
-        ContentBottomBar.getMenu().getItem(0).setCheckable(false);
+        ContentBottomBar.getMenu().setGroupCheckable(0,false,false);
 
         ContentDrawerLayout = (AdvanceDrawerLayout) findViewById(R.id.content_drawerlayout);
         ContentLeftMenu = findViewById(R.id.content_left_menu);
@@ -144,6 +144,7 @@ public class ContentActivity extends NG_Activity implements
             @Override
             public void onClick(View view) {
                 getController().switchTab(FragNavController.TAB6);
+                ContentBottomBar.getMenu().setGroupCheckable(0,false,false);
             }
         });
 
@@ -230,6 +231,7 @@ public class ContentActivity extends NG_Activity implements
                 return false;
             } else {
                 getController().switchTab(FragNavController.TAB6);
+                ContentBottomBar.getMenu().setGroupCheckable(0,false,false);
                 return true;
             }
         } else {
@@ -242,14 +244,14 @@ public class ContentActivity extends NG_Activity implements
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         contentAppBarLayout.setExpanded(true, true);
-        item.setCheckable(true);
         if (ContentDrawerLayout.isDrawerOpen(ContentLeftMenu)) ContentDrawerLayout.closeDrawer(ContentLeftMenu);
+
+        ContentBottomBar.getMenu().setGroupCheckable(0,true,true);
         contentBottomBarBehaviour.slideUp(ContentBottomBar);
 
 
         switch (item.getItemId()) {
             case R.id.bottom_content_movies:
-
                 getController().switchTab(FragNavController.TAB1);
                 return true;
             case R.id.bottom_content_audio:

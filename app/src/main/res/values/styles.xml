@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="NG_DefaultTheme" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -8,25 +8,35 @@
         <item name="android:windowBackground">@color/colorPrimaryBackground</item>
 
     </style>
-    <style name="ContentBottomBarStyle" parent="Widget.Design.BottomNavigationView">
+
+
+
+
+    <style name="NG_DefaultTheme.ContentBottomBarStyle" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="android:background">@color/colorBottomBar</item>
         <item name="itemTextColor">@color/colorBottomBarText</item>
         <item name="paddingStart">@dimen/ng_bottombar_padding</item>
         <item name="tabTextColor">@color/colorBottomBarText</item>
+        <item name="labelVisibilityMode">unlabeled</item>
+        <item name ="android:layout_width">match_parent</item>
+        <item name ="android:layout_height">@dimen/ng_content_bottombar_height</item>
+        <item name ="layout_behavior">@string/hide_bottom_view_on_scroll_behavior</item>
+        <item name="itemIconTint">@drawable/content_bottombar_selector</item>
+        <item name="android:layout_gravity">bottom</item>
 
     </style>
     
 
-    <style name="AppTheme.Launcher">
+    <style name="NG_DefaultTheme.Launcher">
         <item name="android:windowBackground">@drawable/laucher_back</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
     </style>
 
-    <style name="AppTheme.Toolbar">
+    <style name="NG_DefaultTheme.Toolbar">
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
-    <style name="AppTheme.Dashboard" parent="CardView">
+    <style name="NG_DefaultTheme.Dashboard" parent="CardView">
         <item name="cardBackgroundColor">@color/colorDashboardBackground</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -34,12 +44,12 @@
         <item name="android:layout_marginTop">@dimen/dashboard_margin_top_bottom</item>
         <item name="android:layout_marginRight">@dimen/dashboard_margin_corners</item>
         <item name="cardCornerRadius">@dimen/dashboard_corner_radius</item>
-        <item name="cardElevation">3dp</item>
+        <item name="cardElevation">@dimen/dashboard_elevation</item>
         <item name="strokeColor">@color/colorPrimaryDark</item>
-        <item name="strokeWidth">2dp</item>
+        <item name="strokeWidth">@dimen/dashboard_stroke_width</item>
     </style>
 
-    <style name="AppTheme.DashboardPortalGrid">
+    <style name="NG_DefaultTheme.DashboardPortalGrid">
         <item name = "android:layout_width"> match_parent </item>
         <item name = "android:layout_height"> wrap_content</item>
         <item name = "android:layout_marginTop"> @dimen/dashboard_labelSize</item>
@@ -48,7 +58,7 @@
         <item name = "android:scrollbars"> none</item>
     </style>
 
-    <style name="AppTheme.DashboardPortalGridSmall">
+    <style name="NG_DefaultTheme.DashboardPortalGridSmall">
         <item name = "android:layout_width"> match_parent </item>
         <item name = "android:layout_height"> wrap_content</item>
         <item name = "android:layout_marginTop"> @dimen/dashboard_labelSize</item>
@@ -57,7 +67,7 @@
         <item name = "android:scrollbars"> none</item>
     </style>
 
-    <style name="AppTheme.DashboardPortalList">
+    <style name="NG_DefaultTheme.DashboardPortalList">
         <item name = "android:layout_width">match_parent</item>
         <item name = "android:layout_height">wrap_content</item>
         <item name = "android:layout_marginTop">@dimen/dashboard_labelSize</item>

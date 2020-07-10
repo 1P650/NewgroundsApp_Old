@@ -11,10 +11,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/newgrounds_logo_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/NG_DefaultTheme"
         android:usesCleartextTraffic="true">
         <activity android:name="jewpigeon.apps.newgrounds.SplashScreen"
-            android:theme="@style/AppTheme.Launcher">
+            android:theme="@style/NG_DefaultTheme.Launcher">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
                <action android:name="android.intent.action.MAIN" />

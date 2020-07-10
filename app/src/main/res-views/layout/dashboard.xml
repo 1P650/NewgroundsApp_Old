@@ -22,7 +22,7 @@
             android:layout_marginStart="8dp"
             android:padding="2dp"
             android:tint="@color/colorAccent"
-            android:background="@drawable/dashboard_icon_drawable"
+            android:background="@drawable/dashboard_button_shape"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

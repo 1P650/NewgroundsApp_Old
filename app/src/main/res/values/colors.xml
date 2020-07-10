@@ -7,8 +7,8 @@
     <color name="colorBottomBar">#1C1F22</color>
     <color name="colorBottomBarText">#E1EAF3</color>
     <color name="colorLeftMenuShadow">#2F000000</color>
-    <color name="colorDashboardBackground">#0F0B0C</color>
-    <color name="colorDashboardLabelBackground">#191919</color>
+    <color name="colorDashboardBackground">#101010</color>
+    <color name="colorDashboardLabelBackground">#1E1E1E</color>
     <color name="colorDashboardItemLabelBackground">#CC1B1B1B</color>
     <color name="colorDashboardButtonLabelBackground">#131313</color>
     <color name="colorDashboardLabelGradientStart">#1B1B1B</color>

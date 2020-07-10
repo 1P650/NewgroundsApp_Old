@@ -25,59 +25,59 @@
         </jewpigeon.apps.newgrounds.Views.Dashboard>
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/movies_portal_brand_movies"
-            style="@style/AppTheme.Dashboard"
+            style="@style/NG_DefaultTheme.Dashboard"
             app:labelIcon="@drawable/ng_movies_icon"
             app:labelText="Brand Spankin' New Movies"
             app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/movies_portal_brand_grid"
-                style="@style/AppTheme.DashboardPortalGrid"/>/>
+                style="@style/NG_DefaultTheme.DashboardPortalGrid"/>/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/movies_portal_popular_movies"
-            style="@style/AppTheme.Dashboard"
+            style="@style/NG_DefaultTheme.Dashboard"
             app:labelIcon="@drawable/ng_movies_icon"
             app:labelText="Popular Movies"
             app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/movies_portal_popular_grid"
-                style="@style/AppTheme.DashboardPortalGrid"/>/>
+                style="@style/NG_DefaultTheme.DashboardPortalGrid"/>/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/movies_portal_month_movies"
-            style="@style/AppTheme.Dashboard"
+            style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="Best Movies This Month"
             app:labelIcon="@drawable/ng_movies_icon"
             app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/movies_portal_month_grid"
-                style="@style/AppTheme.DashboardPortalGrid"/> />
+                style="@style/NG_DefaultTheme.DashboardPortalGrid"/> />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/movies_portal_year_movies"
-            style="@style/AppTheme.Dashboard"
+            style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="Best Movies This Year"
             app:labelIcon="@drawable/ng_movies_icon"
             app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/movies_portal_year_grid"
-                style="@style/AppTheme.DashboardPortalGrid"/> />
+                style="@style/NG_DefaultTheme.DashboardPortalGrid"/> />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/movies_portal_classic_movies"
-            style="@style/AppTheme.Dashboard"
+            style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="High Ranking Classics"
             app:labelIcon="@drawable/ng_movies_icon"
             app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/movies_portal_classic_grid"
-                style="@style/AppTheme.DashboardPortalGrid"/>/>
+                style="@style/NG_DefaultTheme.DashboardPortalGrid"/>/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <ImageView

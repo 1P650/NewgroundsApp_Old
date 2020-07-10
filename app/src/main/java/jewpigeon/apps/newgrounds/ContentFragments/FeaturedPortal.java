@@ -107,6 +107,7 @@ public class FeaturedPortal extends NG_Fragment {
         setSeekerView(rootView);
 
 
+
         FeaturedImage = (Dashboard) findViewById(R.id.featured_picture);
 
         FeaturedMovies = (Dashboard) findViewById(R.id.featured_movies);
