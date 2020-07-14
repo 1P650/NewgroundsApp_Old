@@ -4,18 +4,18 @@
         <shape 
             android:shape="rectangle">
             <gradient
-                android:endColor="@color/colorDashboardLabelGradientStart"
-                android:startColor="@color/colorDashboardLabelGradientCenter"
+                android:startColor="@color/colorDashboardLabelGradientLower_start"
+                android:endColor="@color/colorDashboardLabelGradientLower_end"
                 android:type="linear"
                 android:angle="90"
                 />
         </shape>
     </item>
-    <item android:bottom="20dp">
+    <item android:gravity="top" android:height="22dp">
         <shape android:shape="rectangle">
             <gradient
-                android:endColor="@color/colorDashboardLabelGradientEnd"
-                android:startColor="@color/colorPrimaryBackground"
+                android:startColor="@color/colorDashboardLabelGradientHigher_start"
+                android:endColor="@color/colorDashboardLabelGradientHigher_end"
                 android:type="linear"
                 android:angle="270"
                 />
@@ -25,7 +25,7 @@
     <item android:height="2dp"
         android:gravity="bottom">
         <shape android:shape="rectangle">
-            <solid android:color="@color/colorPrimaryDark"></solid>
+            <solid android:color="@color/colorDashboardBorderline"></solid>
         </shape>
     </item>
 

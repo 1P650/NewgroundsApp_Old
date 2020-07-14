@@ -1,9 +1,12 @@
 package jewpigeon.apps.newgrounds;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -34,7 +37,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 
@@ -64,7 +69,7 @@ public class ContentActivity extends NG_Activity implements
     private HideBottomViewOnScrollBehavior contentBottomBarBehaviour;
 
     private NavigationView ContentLeftMenu;
-    private AdvanceDrawerLayout ContentDrawerLayout;
+    private DrawerLayout ContentDrawerLayout;
     private ActionBarDrawerToggle ContentDrawerToggle;
 
     private FragNavController ContentFragmentsController;
@@ -80,6 +85,7 @@ public class ContentActivity extends NG_Activity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
         establishViews();
@@ -107,7 +113,7 @@ public class ContentActivity extends NG_Activity implements
         contentBottomBarBehaviour = (HideBottomViewOnScrollBehavior) ((CoordinatorLayout.LayoutParams) ContentBottomBar.getLayoutParams()).getBehavior();;
         ContentBottomBar.getMenu().setGroupCheckable(0,false,false);
 
-        ContentDrawerLayout = (AdvanceDrawerLayout) findViewById(R.id.content_drawerlayout);
+        ContentDrawerLayout = findViewById(R.id.content_drawerlayout);
         ContentLeftMenu = findViewById(R.id.content_left_menu);
 
         HomeButton = findViewById(R.id.NG_appbar_home);
@@ -127,9 +133,6 @@ public class ContentActivity extends NG_Activity implements
         ContentDrawerToggle.setDrawerIndicatorEnabled(true);
         ContentDrawerToggle.syncState();
 
-        ContentDrawerLayout.useCustomBehavior(GravityCompat.START);
-        ContentDrawerLayout.setViewScrimColor(GravityCompat.START, getResources().getColor(R.color.colorLeftMenuShadow));
-        ContentDrawerLayout.setDrawerElevation(GravityCompat.START, 20);
 
 
 
@@ -309,6 +312,4 @@ public class ContentActivity extends NG_Activity implements
 
         }
     }
-
-
 }

@@ -6,6 +6,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/colorPrimaryBackground</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+
 
     </style>
 
@@ -45,17 +47,17 @@
         <item name="android:layout_marginRight">@dimen/dashboard_margin_corners</item>
         <item name="cardCornerRadius">@dimen/dashboard_corner_radius</item>
         <item name="cardElevation">@dimen/dashboard_elevation</item>
-        <item name="strokeColor">@color/colorPrimaryDark</item>
+        <item name="strokeColor">@color/colorDashboardBorderline</item>
         <item name="strokeWidth">@dimen/dashboard_stroke_width</item>
     </style>
 
     <style name="NG_DefaultTheme.DashboardPortalGrid">
-        <item name = "android:layout_width"> match_parent </item>
-        <item name = "android:layout_height"> wrap_content</item>
-        <item name = "android:layout_marginTop"> @dimen/dashboard_labelSize</item>
-        <item name = "android:clipToPadding"> false</item>
-        <item name = "android:overScrollMode"> never</item>
-        <item name = "android:scrollbars"> none</item>
+        <item name = "android:layout_width">match_parent </item>
+        <item name = "android:layout_height">wrap_content</item>
+        <item name = "android:layout_marginTop">@dimen/dashboard_labelSize</item>
+        <item name = "android:clipToPadding">false</item>
+        <item name = "android:overScrollMode">never</item>
+        <item name = "android:scrollbars">none</item>
     </style>
 
     <style name="NG_DefaultTheme.DashboardPortalGridSmall">

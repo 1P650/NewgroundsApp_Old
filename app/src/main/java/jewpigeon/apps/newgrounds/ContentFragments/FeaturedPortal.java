@@ -1,11 +1,17 @@
 package jewpigeon.apps.newgrounds.ContentFragments;
 
+import android.app.Activity;
+import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Canvas;
 import android.os.Bundle;
+import android.service.voice.VoiceInteractionSession;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +24,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.R;
+import jewpigeon.apps.newgrounds.Utils.DimensionTool;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridDecorator;
 import jewpigeon.apps.newgrounds.Views.DashboardData.Dash_ItemList_Adapter;
@@ -27,6 +34,12 @@ import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridAdapt
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashSmallGridItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.GridDecorator;
 
+import static jewpigeon.apps.newgrounds.Utils.DimensionTool.GRID_ITEM_SIZE;
+import static jewpigeon.apps.newgrounds.Utils.DimensionTool.GRID_PADDING;
+import static jewpigeon.apps.newgrounds.Utils.DimensionTool.pxToDp;
+import static jewpigeon.apps.newgrounds.Utils.DimensionTool.screenHeight;
+import static jewpigeon.apps.newgrounds.Utils.DimensionTool.screenWidth;
+
 
 public class FeaturedPortal extends NG_Fragment {
     View rootView;
@@ -35,6 +48,9 @@ public class FeaturedPortal extends NG_Fragment {
     Dashboard FeaturedGames;
     Dashboard FeaturedArt;
     Dashboard FeaturedAudio;
+
+
+    /*private int SPACING;*/
 
     ArrayList<DashGridItem> FeaturedMoviesArray = new ArrayList<>(Arrays.asList(
     new DashGridItem(null, "Elon Musk's first day on mars", "chrisNG"),
@@ -49,6 +65,9 @@ public class FeaturedPortal extends NG_Fragment {
     private DashGridAdapter games_adapter;
     private DashSmallGridAdapter art_adapter;
     private Dash_ItemList_Adapter audio_adapter;
+
+/*    int COLUMNS;
+    int COLUMNS_SMALL;*/
 
     ArrayList<DashGridItem> FeaturedGamesArray = new ArrayList<>(Arrays.asList(
             new DashGridItem(null, "DEFAULT", "DEFAULT"),
@@ -97,6 +116,11 @@ public class FeaturedPortal extends NG_Fragment {
         games_adapter = new DashGridAdapter(FeaturedGamesArray);
         art_adapter = new DashSmallGridAdapter(FeaturedArtArray);
         audio_adapter = new Dash_ItemList_Adapter(FeaturedAudioArray);
+
+    /*    dmTool = new DimensionTool(getContext());
+
+      SPACING = ((dmTool.screenWidth() - dmTool.GRID_PADDING*2) - (dmTool.GRID_ITEM_SIZE+30)*3)/2;
+      Log.i("MYTAG","" + SPACING);*/
     }
 
     @Nullable
@@ -106,6 +130,14 @@ public class FeaturedPortal extends NG_Fragment {
         rootView = inflater.inflate(R.layout.content_featured, container, false);
         setSeekerView(rootView);
 
+/*        COLUMNS = DimensionTool.calculateNoOfColumns(this.getContext(), pxToDp((int) getContext().getResources().getDimension(R.dimen.dashboard_item_size)));
+        COLUMNS_SMALL = DimensionTool.calculateNoOfColumns(this.getContext(),pxToDp((int) getContext().getResources().getDimension(R.dimen.dashboard_item_size_small)) -1);
+        if(getContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            SPACING = ((screenWidth(getContext()) - GRID_PADDING(getContext())*2) - (GRID_ITEM_SIZE(getContext())+GRID_ITEM_SIZE(getContext())/10)*COLUMNS)/2;
+        }
+        else {
+            SPACING = ((screenHeight(getContext()) - GRID_PADDING(getContext())*2) - (GRID_ITEM_SIZE(getContext())-GRID_ITEM_SIZE(getContext())/10)*COLUMNS)/2;
+        }*/
 
 
         FeaturedImage = (Dashboard) findViewById(R.id.featured_picture);
@@ -115,9 +147,12 @@ public class FeaturedPortal extends NG_Fragment {
         RecyclerView FeaturedMoviesList = (RecyclerView) findViewById(R.id.featured_movies_grid);
 
         FeaturedMoviesList.setAdapter(movies_adapter);
+        DisplayMetrics metrics = new DisplayMetrics();
+        ((Activity) getContext()).getWindowManager()
+                .getDefaultDisplay()
+                .getMetrics(metrics);
         FeaturedMoviesList.setLayoutManager(new GridLayoutManager(getContext(), 3));
-        FeaturedMoviesList.addItemDecoration(new DashGridDecorator(3, 12,16,  true));
-
+        FeaturedMoviesList.addItemDecoration(new DashGridDecorator(3, 12, 16,  true));
 
         FeaturedGames = (Dashboard) findViewById(R.id.featured_games);
         RecyclerView FeaturedGamesList = (RecyclerView) findViewById(R.id.featured_games_grid);

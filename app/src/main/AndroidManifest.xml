@@ -20,7 +20,7 @@
                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name="jewpigeon.apps.newgrounds.ContentActivity"/>
+        <activity android:name="jewpigeon.apps.newgrounds.ContentActivity" />
 
     </application>
 

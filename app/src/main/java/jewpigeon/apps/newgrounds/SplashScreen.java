@@ -10,7 +10,6 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         startActivity(new Intent(SplashScreen.this, ContentActivity.class));
         finish();
 

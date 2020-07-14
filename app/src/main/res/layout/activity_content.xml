@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.infideap.drawerbehavior.AdvanceDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_drawerlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false"
+    android:fitsSystemWindows="true"
     tools:context=".ContentActivity"
     tools:openDrawer="start">
 
@@ -26,18 +26,18 @@
                 layout="@layout/content_toolbar" />
 
 
-            <include
-                layout="@layout/content_search"
-                android:id="@+id/content_search">
-            </include>
-
         </com.google.android.material.appbar.AppBarLayout>
 
 
         <FrameLayout
             android:id="@+id/content_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" >
+
+            <include
+                android:id="@+id/content_search"
+                layout="@layout/content_search" />
+        </FrameLayout>
 
         <include
             android:id="@+id/content_bottombar"
@@ -48,4 +48,4 @@
     <include
         android:id="@+id/content_left_menu"
         layout="@layout/content_navigationview" />
-</com.infideap.drawerbehavior.AdvanceDrawerLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -5,7 +5,7 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import static jewpigeon.apps.newgrounds.Utils.MeasureConverter.dpToPx;
+import static jewpigeon.apps.newgrounds.Utils.DimensionTool.dpToPx;
 
 public class DashGridDecorator extends RecyclerView.ItemDecoration {
 
