@@ -15,28 +15,28 @@ import jewpigeon.apps.newgrounds.R;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
-public class DashSmallGridAdapter extends RecyclerView.Adapter<DashSmallGridAdapter.DashHolder> {
-    private ArrayList<DashSmallGridItem> items;
+public class DashGridAdapterSmall extends RecyclerView.Adapter<DashGridAdapterSmall.DashHolder> {
+    private ArrayList<DashGridItemSmall> items;
 
     LayoutInflater inflater;
 
     @NonNull
     @Override
-    public DashSmallGridAdapter.DashHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DashGridAdapterSmall.DashHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ViewGroup.LayoutParams params = new RecyclerView.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
         DashGridViewSmall itemView = new DashGridViewSmall(parent.getContext());
         itemView.setLayoutParams(params);
-        return new DashSmallGridAdapter.DashHolder(itemView);
+        return new DashGridAdapterSmall.DashHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DashSmallGridAdapter.DashHolder holder, int position) {
-        DashSmallGridItem item = items.get(position);
+    public void onBindViewHolder(@NonNull DashGridAdapterSmall.DashHolder holder, int position) {
+        DashGridItemSmall item = items.get(position);
         holder.view.setDashItem(item);
 
     }
 
-    public DashSmallGridAdapter(ArrayList<DashSmallGridItem> items) {
+    public DashGridAdapterSmall(ArrayList<DashGridItemSmall> items) {
         this.items = items;
     }
 

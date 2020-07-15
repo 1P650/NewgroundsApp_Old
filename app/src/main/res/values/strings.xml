@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">Newgrounds</string>
     <string name="app_slogan">Everything by everyone</string>
+
+    <string name="ng_featured_movies">Featured movies</string>
+    <string name="ng_featured_games">Featured games</string>
+    <string name="ng_featured_art">Featured art</string>
+    <string name="ng_featured_audio">Featured audio</string>
+
+    <string name="ng_moviesPortal_brand">Brand Spankin\' New Movies</string>
+    <string name="ng_moviesPortal_popular">Popular movies</string>
+    <string name="ng_moviesPortal_bestMonth">Best Movies This Month</string>
+    <string name="ng_moviesPortal_bestYear">Best Movies This Year</string>
+    <string name="ng_moviesPortal_classic">High Ranking Classics</string>
+
+    <string name="ng_gamesPortal_brand">Brand Spankin\' New Movies</string>
+    <string name="ng_gamesPortal_popular">Popular movies</string>
+    <string name="ng_gamesPortal_bestMonth">Best Movies This Month</string>
+    <string name="ng_gamesPortal_bestYear">Best Movies This Year</string>
+    <string name="ng_gamesPortal_classic">High Ranking Classics</string>
+
 </resources>

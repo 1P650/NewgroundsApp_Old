@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#202427</color>
-    <color name="colorPrimaryDark">#0C0909</color>
+    <color name="colorPrimaryDark">#090A0C</color>
     <color name="colorAccent">#FDA238</color>
     <color name="colorPrimaryBackground">#4D5153</color>
     <color name="colorBottomBar">#1C1F22</color>
@@ -9,24 +9,23 @@
     <color name="colorLeftMenuShadow">#2F000000</color>
 
 
-    <color name="colorDashboardBackground">#111112</color>
-    <color name="colorDashboardLabelBackground">#1E1E1E</color>
-    <color name="colorDashboardItemLabelBackground">#1B1B1B</color>
-    <color name="colorDashboardButtonLabelBackground">#131313</color>
-
-    <color name="colorDashboardLabelGradientLower_start">#25282C</color>
-    <color name="colorDashboardLabelGradientLower_end">#1D1E22</color>
-    <color name="colorDashboardLabelGradientHigher_start">#3D4249</color>
-    <color name="colorDashboardLabelGradientHigher_end">#43484F</color>
-
+    <color name="colorDashboardBackground">#0F0B0C</color>
+    <color name="colorDashboardItemLabelBackground">#151515</color>
     <color name="colorDashboardIconBackground">#101010</color>
+    <color name="colorDashboardBorderline">#0C0C0C</color>
 
+    <color name="colorDashboardLabelGradientLower_start">#23262A</color>
+    <color name="colorDashboardLabelGradientLower_end">#272A2E</color>
+
+    <color name="colorDashboardLabelGradientHigher_start">#444C51</color>
+    <color name="colorDashboardLabelGradientHigher_end">#3E4449</color>
 
     <color name="colorFeaturedItemTitleText">#F6F6F6</color>
     <color name="colorFeaturedItemAuthorText">#7E7E7E</color>
     <color name="colorFeaturedItemSmallAuthorText">#CFCFCF</color>
+
     <color name="colorGridRippleEffect">#40E6E1DA</color>
-    <color name="colorDashboardBorderline">#0C0C0C</color>
+
 
 
 </resources>

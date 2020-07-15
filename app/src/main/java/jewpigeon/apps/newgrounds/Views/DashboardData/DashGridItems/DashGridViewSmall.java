@@ -123,7 +123,7 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
 
 
 
-    public void setDashItem(DashSmallGridItem item){
+    public void setDashItem(DashGridItemSmall item){
         Glide.
                 with(getContext())
                 .load(item.getImage())

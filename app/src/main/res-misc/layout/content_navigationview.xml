@@ -5,5 +5,6 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
+    android:layout_marginTop="@dimen/ng_toolbar_top_margin"
     app:menu="@menu/content_leftmenu_categories"
     android:layout_gravity="start" />

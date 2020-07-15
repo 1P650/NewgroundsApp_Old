@@ -17,7 +17,6 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.infideap.drawerbehavior.AdvanceDrawerLayout;
 import com.ncapdevi.fragnav.FragNavController;
 import com.ncapdevi.fragnav.FragNavTransactionOptions;
 
@@ -132,6 +131,9 @@ public class ContentActivity extends NG_Activity implements
 
         ContentDrawerToggle.setDrawerIndicatorEnabled(true);
         ContentDrawerToggle.syncState();
+
+        ContentDrawerLayout.setScrimColor(getColor(android.R.color.transparent));
+        ContentDrawerLayout.setDrawerElevation(0);
 
 
 

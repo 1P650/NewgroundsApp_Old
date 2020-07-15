@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <dimen name="dashboard_textSize">16sp</dimen>
-    <dimen name="dashboard_iconSize">30dp</dimen>
+    <dimen name="dashboard_iconSize">32dp</dimen>
     <dimen name="dashboard_labelSize">44dp</dimen>
     <dimen name="content_padding">16dp</dimen>
     <dimen name="content_padding_small">13dp</dimen>
 
-    <dimen name="dashboard_margin_corners">2dp</dimen>
+    <dimen name="dashboard_margin_corners">4dp</dimen>
     <dimen name="dashboard_margin_top_bottom">6dp</dimen>
-    <dimen name="dashboard_corner_radius">8dp</dimen>
+    <dimen name="dashboard_corner_radius">6dp</dimen>
 
     <dimen name="dashboard_item_size">108dp</dimen>
     <dimen name="dashboard_item_size_small">78dp</dimen>
 
     <dimen name="dashboard_stroke_width">2dp</dimen>
-    <dimen name="dashboard_elevation">4dp</dimen>
+    <dimen name="dashboard_elevation">0dp</dimen>
 
 </resources>

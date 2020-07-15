@@ -3,12 +3,12 @@ package jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems;
 import android.graphics.drawable.Drawable;
 
 
-public class DashSmallGridItem {
+public class DashGridItemSmall {
 
     private Drawable image;
     private String author;
 
-    public DashSmallGridItem(Drawable image, String author) {
+    public DashGridItemSmall(Drawable image, String author) {
         this.image = image;
         this.author = author;
     }

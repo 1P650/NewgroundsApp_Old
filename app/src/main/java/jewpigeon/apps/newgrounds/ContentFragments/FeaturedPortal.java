@@ -27,11 +27,14 @@ import jewpigeon.apps.newgrounds.R;
 import jewpigeon.apps.newgrounds.Utils.DimensionTool;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridDecorator;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridAdapterSmall;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridItemSmall;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridViewSmall;
 import jewpigeon.apps.newgrounds.Views.DashboardData.Dash_ItemList_Adapter;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashSmallGridAdapter;
+
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridAdapter;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashSmallGridItem;
+
 import jewpigeon.apps.newgrounds.Views.DashboardData.GridDecorator;
 
 import static jewpigeon.apps.newgrounds.Utils.DimensionTool.GRID_ITEM_SIZE;
@@ -63,7 +66,7 @@ public class FeaturedPortal extends NG_Fragment {
 
     private DashGridAdapter movies_adapter;
     private DashGridAdapter games_adapter;
-    private DashSmallGridAdapter art_adapter;
+    private DashGridAdapterSmall art_adapter;
     private Dash_ItemList_Adapter audio_adapter;
 
 /*    int COLUMNS;
@@ -77,19 +80,19 @@ public class FeaturedPortal extends NG_Fragment {
             new DashGridItem(null, "DEFAULT", "DEFAULT"),
             new DashGridItem(null, "DEFAULT", "DEFAULT")));
 
-    ArrayList<DashSmallGridItem> FeaturedArtArray = new ArrayList<>(Arrays.asList(
-            new DashSmallGridItem(null, "DEFAULT"),
-            new DashSmallGridItem(null, "DEFAULT"),
-            new DashSmallGridItem(null, "DEFAULT"),
-            new DashSmallGridItem(null, "DEFAULT"),
-            new DashSmallGridItem(null, "DEFAULT"),
-            new DashSmallGridItem(null, "DEFAULT"),
-            new DashSmallGridItem(null, "DEFAULT"),
-            new DashSmallGridItem(null, "DEFAULT"),
-            new DashSmallGridItem(null, "DEFAULT"),
-            new DashSmallGridItem(null, "DEFAULT"),
-            new DashSmallGridItem(null, "DEFAULT"),
-            new DashSmallGridItem(null, "DEFAULT")));
+    ArrayList<DashGridItemSmall> FeaturedArtArray = new ArrayList<>(Arrays.asList(
+            new DashGridItemSmall(null, "DEFAULT"),
+            new DashGridItemSmall(null, "DEFAULT"),
+            new DashGridItemSmall(null, "DEFAULT"),
+            new DashGridItemSmall(null, "DEFAULT"),
+            new DashGridItemSmall(null, "DEFAULT"),
+            new DashGridItemSmall(null, "DEFAULT"),
+            new DashGridItemSmall(null, "DEFAULT"),
+            new DashGridItemSmall(null, "DEFAULT"),
+            new DashGridItemSmall(null, "DEFAULT"),
+            new DashGridItemSmall(null, "DEFAULT"),
+            new DashGridItemSmall(null, "DEFAULT"),
+            new DashGridItemSmall(null, "DEFAULT")));
 
     ArrayList<DashGridItem> FeaturedAudioArray = new ArrayList<>(Arrays.asList(
             new DashGridItem(null, "DEFAULT", "DEFAULT"),
@@ -114,7 +117,7 @@ public class FeaturedPortal extends NG_Fragment {
         setRetainInstance(true);
         movies_adapter = new DashGridAdapter(FeaturedMoviesArray);
         games_adapter = new DashGridAdapter(FeaturedGamesArray);
-        art_adapter = new DashSmallGridAdapter(FeaturedArtArray);
+        art_adapter = new DashGridAdapterSmall(FeaturedArtArray);
         audio_adapter = new Dash_ItemList_Adapter(FeaturedAudioArray);
 
     /*    dmTool = new DimensionTool(getContext());
@@ -166,7 +169,6 @@ public class FeaturedPortal extends NG_Fragment {
 
         FeaturedArt = (Dashboard) findViewById(R.id.featured_art);
         RecyclerView FeaturedArtList = (RecyclerView) findViewById(R.id.featured_art_grid);
-        DashSmallGridAdapter art_adapter = new DashSmallGridAdapter(FeaturedArtArray);
 
         FeaturedArtList.setAdapter(art_adapter);
         FeaturedArtList.setLayoutManager(new GridLayoutManager(getContext(), 4));
