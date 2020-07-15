@@ -11,20 +11,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Header text-->
-        <jewpigeon.apps.newgrounds.Views.Dashboard
+        <!-- Header space-->
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="@android:color/transparent"
-            app:labelVisible="false">
+            android:layout_height="@dimen/ng_toolbar_top_margin">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/ng_content_toolbar_height"
-                android:paddingTop="8dp"
-                android:layout_gravity="center_horizontal"
-                android:textAlignment="center"/>
-        </jewpigeon.apps.newgrounds.Views.Dashboard>
+        </View>
 
         <!-- Featured pucture -->
         <jewpigeon.apps.newgrounds.Views.Dashboard
@@ -38,7 +30,7 @@
                 android:layout_margin="16dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/main_header">
+                android:src="@drawable/ng_header">
             </ImageView>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
         <!-- Featured movies -->
