@@ -12,6 +12,7 @@
 
     <dimen name="dashboard_item_size">108dp</dimen>
     <dimen name="dashboard_item_size_small">78dp</dimen>
+    <dimen name="dashboard_item_size_audio_list">38dp</dimen>
 
     <dimen name="dashboard_stroke_width">2dp</dimen>
     <dimen name="dashboard_elevation">0dp</dimen>

@@ -41,7 +41,7 @@
             app:labelIcon="@drawable/ng_movies_icon"
             app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <jewpigeon.apps.newgrounds.Views.DashAutofitGrid
                 android:id="@+id/featured_movies_grid"
                 style="@style/NG_DefaultTheme.DashboardPortalGrid"/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
@@ -53,7 +53,7 @@
             app:labelIcon="@drawable/ng_games_icon"
             app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <jewpigeon.apps.newgrounds.Views.DashAutofitGrid
                 android:id="@+id/featured_games_grid"
              style="@style/NG_DefaultTheme.DashboardPortalGrid" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
@@ -66,7 +66,7 @@
 
             app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <jewpigeon.apps.newgrounds.Views.DashAutofitGrid
                 android:id="@+id/featured_art_grid"
                 style="@style/NG_DefaultTheme.DashboardPortalGridSmall" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>

@@ -18,7 +18,6 @@ import jewpigeon.apps.newgrounds.Views.Dashboard;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridDecorator;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridAdapter;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridItem;
-import jewpigeon.apps.newgrounds.Views.DashboardData.GridDecorator;
 
 public class GamesPortal extends NG_Fragment {
     View rootView;
@@ -81,28 +80,28 @@ public class GamesPortal extends NG_Fragment {
         BrandGames = (Dashboard) findViewById(R.id.games_portal_brand_movies);
         RecyclerView BrandGamesList = (RecyclerView) findViewById(R.id.games_portal_brand_grid);
         DashGridAdapter brand_adapter = new DashGridAdapter(BrandGamesArray);
-        BrandGamesList.addItemDecoration(new DashGridDecorator(3, 12,16,  true));
+        BrandGamesList.addItemDecoration(new DashGridDecorator(3, 12,16));
         BrandGamesList.setLayoutManager(new GridLayoutManager(getContext(), 3));
         BrandGamesList.setAdapter(brand_adapter);
 
         PopularGames = (Dashboard) findViewById(R.id.games_portal_popular_movies);
         RecyclerView PopularGamesList = (RecyclerView) findViewById(R.id.games_portal_popular_grid);
         DashGridAdapter popular_adapter = new DashGridAdapter(PopularGamesArray);
-        PopularGamesList.addItemDecoration(new DashGridDecorator(3, 12,16,  true));
+        PopularGamesList.addItemDecoration(new DashGridDecorator(3, 12,16));
         PopularGamesList.setLayoutManager(new GridLayoutManager(getContext(), 3));
         PopularGamesList.setAdapter(popular_adapter);
 
         MonthGames = (Dashboard) findViewById(R.id.games_portal_month_movies);
         RecyclerView MonthGamesList = (RecyclerView) findViewById(R.id.games_portal_month_grid);
         DashGridAdapter month_adapter = new DashGridAdapter(MonthGamesArray);
-        MonthGamesList.addItemDecoration(new DashGridDecorator(3, 12,16,  true));
+        MonthGamesList.addItemDecoration(new DashGridDecorator(3, 12,16));
         MonthGamesList.setLayoutManager(new GridLayoutManager(getContext(), 3));
         MonthGamesList.setAdapter(month_adapter);
 
         YearGames = (Dashboard) findViewById(R.id.games_portal_year_movies);
         RecyclerView YearGamesList = (RecyclerView) findViewById(R.id.games_portal_year_grid);
         DashGridAdapter year_adapter = new DashGridAdapter(YearGamesArray);
-        YearGamesList.addItemDecoration(new DashGridDecorator(3, 12,16,  true));
+        YearGamesList.addItemDecoration(new DashGridDecorator(3, 12,16));
         YearGamesList.setLayoutManager(new GridLayoutManager(getContext(), 3));
         YearGamesList.setAdapter(year_adapter);
 

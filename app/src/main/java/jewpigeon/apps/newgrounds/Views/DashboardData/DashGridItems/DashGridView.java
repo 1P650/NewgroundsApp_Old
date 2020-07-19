@@ -34,6 +34,8 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import jewpigeon.apps.newgrounds.R;
 
+import static jewpigeon.apps.newgrounds.Utils.DimensionTool.sp;
+
 
 public class DashGridView extends View implements Target<Drawable> {
 
@@ -132,23 +134,23 @@ public class DashGridView extends View implements Target<Drawable> {
     private void establishState(){
         DashTitlePainter = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         DashTitlePainter.setColor(TitleColor);
-        DashTitlePainter.setTextSize(sp(13));
+        DashTitlePainter.setTextSize(sp(getContext(),13));
 
         DashAuthorPainter = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         DashAuthorPainter.setColor(AuthorColor);
-        DashAuthorPainter.setTextSize(sp(10));
+        DashAuthorPainter.setTextSize(sp(getContext(),10));
 
         this.setForeground(ContextCompat.getDrawable(getContext(), R.drawable.grid_item_ripple));
         this.setClickable(true);
 
     }
-    private float sp(float sp) {
+ /*   private float sp(float sp) {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, getResources().getDisplayMetrics());
     }
 
     private float dp(float dp) {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
-    }
+    }*/
 
 
     @Override

@@ -1,6 +1,8 @@
 package jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems;
 import android.view.ViewGroup;
 
+import com.google.android.material.card.MaterialCardView;
+
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -16,9 +18,9 @@ public class DashGridAdapter extends RecyclerView.Adapter<DashGridAdapter.DashHo
     @Override
     public DashHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        ViewGroup.LayoutParams params = new RecyclerView.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
+
         DashGridView itemView = new DashGridView(parent.getContext());
-        itemView.setLayoutParams(params);
+
         return new DashHolder(itemView);
     }
 

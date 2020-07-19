@@ -30,6 +30,8 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import jewpigeon.apps.newgrounds.R;
 
+import static jewpigeon.apps.newgrounds.Utils.DimensionTool.sp;
+
 
 public class DashGridViewSmall extends View implements Target<Drawable> {
 
@@ -143,20 +145,20 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
     private void establishState(){
         DashAuthorPainter = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         DashAuthorPainter.setColor(AUTHOR_COLOR);
-        DashAuthorPainter.setTextSize(sp(15));
+        DashAuthorPainter.setTextSize(sp(getContext(),15));
 
 
         this.setForeground(ContextCompat.getDrawable(getContext(), R.drawable.grid_item_ripple));
         this.setClickable(true);
 
     }
-    private float sp(float sp) {
+ /*   private float sp(float sp) {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, getResources().getDisplayMetrics());
     }
 
     private float dp(float dp) {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
-    }
+    }*/
 
 
     @Override

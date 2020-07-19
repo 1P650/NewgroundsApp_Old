@@ -5,25 +5,15 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-
-import java.util.PropertyResourceBundle;
-
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
+import android.util.Log;
+import android.util.TypedValue;
 import jewpigeon.apps.newgrounds.R;
 
 public class DimensionTool {
-    public static int GRID_PADDING(Context ctx){
-        return ctx.getResources().getDimensionPixelSize(R.dimen.dashboard_margin_corners);
-    }
 
-    public static int GRID_ITEM_SIZE(Context ctx){
-        return ctx.getResources().getDimensionPixelSize(R.dimen.dashboard_item_size);
-    }
 
-    public static int GRID_ITEM_SIZE_SMALL(Context ctx){
-        return ctx.getResources().getDimensionPixelSize(R.dimen.dashboard_item_size_small);
-
+    private static int GRID_CORNERS(Context context){
+        return context.getResources().getDimensionPixelSize(R.dimen.dashboard_margin_corners);
     }
 
     public static int dpToPx(int dp) {
@@ -41,13 +31,24 @@ public class DimensionTool {
         return  context.getResources().getDisplayMetrics().heightPixels;
     }
 
-    public static int calculateNoOfColumns(Context context, float columnWidthDp) { // For example columnWidthdp=180
-        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-            float screenWidthDp = displayMetrics.widthPixels / displayMetrics.density;
-            int noOfColumns = (int) (screenWidthDp / columnWidthDp); // +0.5 for correct rounding to int.
-            return noOfColumns;
+  public static int GRID_calcColumsFor(int columnWidth, Context context){
+      int parentDim = screenWidth(context) - GRID_CORNERS(context) * 2;
+      int columnNum =  parentDim / columnWidth;
+      return columnNum;
+  }
 
 
+  public static int GRID_calcSpacing(int columnWidth, int columnNum,  Context context){
+      return ((screenWidth(context) - GRID_CORNERS(context)*2 - ((columnWidth)*columnNum))/(columnNum+1));
+  }
+
+
+    public static float sp(Context context, float sp) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, context.getResources().getDisplayMetrics());
+    }
+
+    public static float dp(Context context, float dp) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
     }
 
 

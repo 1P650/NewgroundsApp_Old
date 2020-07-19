@@ -17,12 +17,13 @@
     <color name="colorDashboardLabelGradientLower_start">#23262A</color>
     <color name="colorDashboardLabelGradientLower_end">#272A2E</color>
 
-    <color name="colorDashboardLabelGradientHigher_start">#444C51</color>
-    <color name="colorDashboardLabelGradientHigher_end">#3E4449</color>
+    <color name="colorDashboardLabelGradientHigher_end">#444C51</color>
+    <color name="colorDashboardLabelGradientHigher_start">#3E4449</color>
 
     <color name="colorFeaturedItemTitleText">#F6F6F6</color>
     <color name="colorFeaturedItemAuthorText">#7E7E7E</color>
     <color name="colorFeaturedItemSmallAuthorText">#CFCFCF</color>
+    <color name="colorFeaturedAudioItemBackground">#333031</color>
 
     <color name="colorGridRippleEffect">#40E6E1DA</color>
 
