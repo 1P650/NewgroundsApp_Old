@@ -49,6 +49,8 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+
+
     <include
         android:id="@+id/content_left_menu"
         layout="@layout/content_navigationview" />

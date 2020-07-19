@@ -26,6 +26,7 @@ android {
         main.res.srcDirs += 'src/main/res-views'
         main.res.srcDirs += 'src/main/res-icons'
         main.res.srcDirs += 'src/main/res-anims'
+        main.res.srcDirs += 'src/main/res-fonts'
     }
 
 }

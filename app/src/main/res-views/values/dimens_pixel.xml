@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<dimen name="dashboard_textSize">16sp</dimen>
-    <dimen name="dashboard_iconSize">32dp</dimen>
-    <dimen name="dashboard_labelSize">44dp</dimen>
+    <dimen name="dashboard_textSize">20sp</dimen>
+    <dimen name="dashboard_iconSize">28dp</dimen>
+    <dimen name="dashboard_labelSize">38dp</dimen>
+    <dimen name="dashboard_labelSizeHalf">19dp</dimen>
     <dimen name="content_padding">16dp</dimen>
     <dimen name="content_padding_small">13dp</dimen>
 
@@ -15,6 +16,8 @@
     <dimen name="dashboard_item_size_audio_list">38dp</dimen>
 
     <dimen name="dashboard_stroke_width">2dp</dimen>
-    <dimen name="dashboard_elevation">0dp</dimen>
+    <dimen name="dashboard_elevation">2dp</dimen>
+
+    <dimen name="dashgrid_vertical_spacing">12dp</dimen>
 
 </resources>

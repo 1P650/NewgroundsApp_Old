@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:top="22dp">
+    <item android:top="@dimen/dashboard_labelSizeHalf">
         <shape 
             android:shape="rectangle" >
             <gradient
@@ -11,7 +11,7 @@
             </gradient>
         </shape>
     </item>
-    <item android:gravity="top" android:height="22dp">
+    <item android:gravity="top" android:height="@dimen/dashboard_labelSizeHalf">
         <shape android:shape="rectangle" >
             <gradient
                 android:startColor="@color/colorDashboardLabelGradientHigher_start"

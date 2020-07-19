@@ -4,16 +4,17 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.widget.Button;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 
 import androidx.annotation.NonNull;
@@ -21,8 +22,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.core.view.ViewCompat;
 import jewpigeon.apps.newgrounds.R;
 
 
@@ -42,7 +41,6 @@ public class Dashboard extends MaterialCardView {
             new int[]{
                     COLOR_BP,
                     COLOR_BD
-
 
 
             });
@@ -110,32 +108,26 @@ public class Dashboard extends MaterialCardView {
     }
 
     private void establishButtons(Menu menu) {
-        Button[] buttons = new Button[menu.size()];
-        for (int i = 0; i < menu.size(); i++) {
-            buttons[i] = new Button(getContext());
-            buttons[i].setIncludeFontPadding(false);
+        MaterialButton[] buttons = new MaterialButton[menu.size()];
 
-            buttons[i].setMinHeight(0);
-            buttons[i].setMinimumHeight(0);
+        for (int i = 0; i < menu.size(); ++i) {
+            buttons[i] = new MaterialButton(getContext());
+            buttons[i].setIncludeFontPadding(false);
+            buttons[i].setCornerRadius(10);
+            buttons[i].setRippleColorResource(android.R.color.transparent);
+
+
 
             buttons[i].setMinWidth(0);
             buttons[i].setMinimumWidth(0);
-
-            buttons[i].setPadding(50, buttons[i].getPaddingTop(), 50, buttons[i].getPaddingBottom());
-
-            buttons[i].setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-
-            buttons[i].setText(menu.getItem(i).getTitle());
-
-            buttons[i].setBackground(ContextCompat.getDrawable(getContext(), R.drawable.dashboard_icon_shape));
             buttons[i].setBackgroundTintList(BUTTON_STATE_LIST);
-
+            buttons[i].setText(menu.getItem(i).getTitle());
             buttons[i].setTextColor(BUTTON_TEXT_STATE_LIST);
             buttons[i].setTextAlignment(TEXT_ALIGNMENT_CENTER);
-            buttons[i].setTextSize(11);
+            buttons[i].setTextSize(12);
+            buttons[i].setTypeface(getResources().getFont(R.font.pakeham));
             buttons[i].setAllCaps(false);
             buttons[i].setClickable(true);
-
             this.ButtonPanelLayout.addView(buttons[i]);
         }
     }

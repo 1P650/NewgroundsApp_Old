@@ -1,47 +1,32 @@
 package jewpigeon.apps.newgrounds;
 
-import android.content.ContentResolver;
-import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.view.Gravity;
+import android.view.DragEvent;
 import android.view.MenuItem;
 import android.view.View;
-
 import android.widget.ImageButton;
-
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.ncapdevi.fragnav.FragNavController;
 import com.ncapdevi.fragnav.FragNavTransactionOptions;
-
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
-
 import androidx.annotation.NonNull;
-
 import androidx.appcompat.app.ActionBarDrawerToggle;
-
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-
-
-import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-
-
 import jewpigeon.apps.newgrounds.ContentFragments.ArtPortal;
 import jewpigeon.apps.newgrounds.ContentFragments.AudioPortal;
 import jewpigeon.apps.newgrounds.ContentFragments.CommunityPortal;
@@ -61,7 +46,6 @@ public class ContentActivity extends NG_Activity implements
     private ImageButton SearchButton;
     private SearchView ContentSearch;
     private AppBarLayout contentAppBarLayout;
-
 
 
     private BottomNavigationView ContentBottomBar;
@@ -88,7 +72,7 @@ public class ContentActivity extends NG_Activity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
         establishViews();
-        if(ContentFragmentsController == null){
+        if (ContentFragmentsController == null) {
             ContentFragmentsController = FragNavController.newBuilder(savedInstanceState, getSupportFragmentManager(), R.id.content_container)
                     .rootFragments(ContentFragmentsList)
                     .selectedTabIndex(FragNavController.TAB6)
@@ -100,17 +84,19 @@ public class ContentActivity extends NG_Activity implements
         setUpListeners();
 
 
+
     }
 
     private void establishViews() {
 
         ContentToolbar = findViewById(R.id.content_toolbar);
         contentAppBarLayout = findViewById(R.id.content_appbarlayout);
-        
+
 
         ContentBottomBar = findViewById(R.id.content_bottombar);
-        contentBottomBarBehaviour = (HideBottomViewOnScrollBehavior) ((CoordinatorLayout.LayoutParams) ContentBottomBar.getLayoutParams()).getBehavior();;
-        ContentBottomBar.getMenu().setGroupCheckable(0,false,false);
+        contentBottomBarBehaviour = (HideBottomViewOnScrollBehavior) ((CoordinatorLayout.LayoutParams) ContentBottomBar.getLayoutParams()).getBehavior();
+        ;
+        ContentBottomBar.getMenu().setGroupCheckable(0, false, false);
 
         ContentDrawerLayout = findViewById(R.id.content_drawerlayout);
         ContentLeftMenu = findViewById(R.id.content_left_menu);
@@ -125,8 +111,14 @@ public class ContentActivity extends NG_Activity implements
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
+        ContentDrawerToggle = new ActionBarDrawerToggle(this, ContentDrawerLayout, ContentToolbar, 0, 0){
 
-        ContentDrawerToggle = new ActionBarDrawerToggle(this, ContentDrawerLayout, ContentToolbar, 0, 0);
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                contentAppBarLayout.setExpanded(true, true);
+            }
+        };
         ContentDrawerLayout.addDrawerListener(ContentDrawerToggle);
 
         ContentDrawerToggle.setDrawerIndicatorEnabled(true);
@@ -134,9 +126,6 @@ public class ContentActivity extends NG_Activity implements
 
         ContentDrawerLayout.setScrimColor(getColor(android.R.color.transparent));
         ContentDrawerLayout.setDrawerElevation(0);
-
-
-
 
 
     }
@@ -149,18 +138,17 @@ public class ContentActivity extends NG_Activity implements
             @Override
             public void onClick(View view) {
                 getController().switchTab(FragNavController.TAB6);
-                ContentBottomBar.getMenu().setGroupCheckable(0,false,false);
+                ContentBottomBar.getMenu().setGroupCheckable(0, false, false);
             }
         });
 
         SearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(ContentSearch.getVisibility() == View.GONE){
+                if (ContentSearch.getVisibility() == View.GONE) {
                     ContentSearch.setVisibility(View.VISIBLE);
                     ContentSearch.setIconified(false);
-                }
-                else{
+                } else {
                     ContentSearch.setIconified(true);
                     ContentSearch.setVisibility(View.GONE);
 
@@ -175,6 +163,8 @@ public class ContentActivity extends NG_Activity implements
                 return false;
             }
         });
+
+
     }
 
 
@@ -190,7 +180,6 @@ public class ContentActivity extends NG_Activity implements
         super.onConfigurationChanged(conf);
         ContentDrawerToggle.onConfigurationChanged(conf);
     }
-
 
 
     @Override
@@ -222,7 +211,8 @@ public class ContentActivity extends NG_Activity implements
     public void onBackPressed() {
         if (ContentDrawerLayout.isDrawerVisible(ContentLeftMenu))
             ContentDrawerLayout.closeDrawer(ContentLeftMenu);
-        if(ContentSearch.getVisibility() == View.VISIBLE && ContentSearch.isIconified()) ContentSearch.setVisibility(View.GONE);
+        if (ContentSearch.getVisibility() == View.VISIBLE && ContentSearch.isIconified())
+            ContentSearch.setVisibility(View.GONE);
         else if (!HandleBackpressed()) {
             super.onBackPressed();
         }
@@ -236,7 +226,7 @@ public class ContentActivity extends NG_Activity implements
                 return false;
             } else {
                 getController().switchTab(FragNavController.TAB6);
-                ContentBottomBar.getMenu().setGroupCheckable(0,false,false);
+                ContentBottomBar.getMenu().setGroupCheckable(0, false, false);
                 return true;
             }
         } else {
@@ -249,9 +239,10 @@ public class ContentActivity extends NG_Activity implements
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         contentAppBarLayout.setExpanded(true, true);
-        if (ContentDrawerLayout.isDrawerOpen(ContentLeftMenu)) ContentDrawerLayout.closeDrawer(ContentLeftMenu);
+        if (ContentDrawerLayout.isDrawerOpen(ContentLeftMenu))
+            ContentDrawerLayout.closeDrawer(ContentLeftMenu);
 
-        ContentBottomBar.getMenu().setGroupCheckable(0,true,true);
+        ContentBottomBar.getMenu().setGroupCheckable(0, true, true);
         contentBottomBarBehaviour.slideUp(ContentBottomBar);
 
 
@@ -309,7 +300,6 @@ public class ContentActivity extends NG_Activity implements
     public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
         if (ContentFragmentsController != null) {
-
             getController().onSaveInstanceState(outState);
 
         }

@@ -8,7 +8,6 @@
         <item name="android:windowBackground">@color/colorPrimaryBackground</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
 
-
     </style>
 
 
@@ -38,6 +37,7 @@
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
+
     <style name="NG_DefaultTheme.Dashboard" parent="CardView">
         <item name="cardBackgroundColor">@color/colorDashboardBackground</item>
         <item name="android:layout_width">match_parent</item>
@@ -49,6 +49,7 @@
         <item name="cardElevation">@dimen/dashboard_elevation</item>
         <item name="strokeColor">@color/colorDashboardBorderline</item>
         <item name="strokeWidth">@dimen/dashboard_stroke_width</item>
+        <item name="cardPreventCornerOverlap">false</item>
     </style>
 
     <style name="NG_DefaultTheme.DashboardPortalGrid">

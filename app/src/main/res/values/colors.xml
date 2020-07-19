@@ -15,7 +15,8 @@
     <color name="colorDashboardBorderline">#0C0C0C</color>
 
     <color name="colorDashboardLabelGradientLower_start">#23262A</color>
-    <color name="colorDashboardLabelGradientLower_end">#272A2E</color>
+    <color name="colorDashboardLabelGradientLower_center">#272A2E</color>
+    <color name="colorDashboardLabelGradientLower_end">#2F3337</color>
 
     <color name="colorDashboardLabelGradientHigher_end">#444C51</color>
     <color name="colorDashboardLabelGradientHigher_start">#3E4449</color>

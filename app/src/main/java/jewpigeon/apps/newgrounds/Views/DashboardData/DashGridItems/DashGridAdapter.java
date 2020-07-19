@@ -1,19 +1,16 @@
 package jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems;
+import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import jewpigeon.apps.newgrounds.Views.DashboardData.ItemClickListener;
 
 public class DashGridAdapter extends RecyclerView.Adapter<DashGridAdapter.DashHolder> {
     private ArrayList<DashGridItem> items;
+    private ItemClickListener ItemClickListener;
     @NonNull
     @Override
     public DashHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -23,6 +20,12 @@ public class DashGridAdapter extends RecyclerView.Adapter<DashGridAdapter.DashHo
 
         return new DashHolder(itemView);
     }
+
+    public void setOnItemClickListener(ItemClickListener itemClickListener){
+        this.ItemClickListener = itemClickListener;
+    }
+
+
 
     @Override
     public void onBindViewHolder(@NonNull DashHolder holder, int position) {
@@ -36,6 +39,10 @@ public class DashGridAdapter extends RecyclerView.Adapter<DashGridAdapter.DashHo
         this.items = items;
     }
 
+    public void setItems(ArrayList<DashGridItem> items){
+        this.items = items;
+    }
+
 
 
     @Override
@@ -43,14 +50,20 @@ public class DashGridAdapter extends RecyclerView.Adapter<DashGridAdapter.DashHo
         return items.size();
     }
 
-     final class DashHolder extends RecyclerView.ViewHolder {
+     final class DashHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private final DashGridView view;
       public DashHolder(DashGridView view){
           super(view);
           this.view = view;
-
+          this.view.setOnClickListener(this);
       }
-    }
+
+
+         @Override
+         public void onClick(View view) {
+             ItemClickListener.OnItemClick(view,getAdapterPosition());
+         }
+     }
 
 
 }
