@@ -21,9 +21,13 @@
 
     <string name="ng_PassportButton_signIn">Sing in with Newgrounds</string>
     <string name="ng_PassportButton_signUp">Create my account!</string>
+    <string name="ng_PassportButton_Recover">Recover my account</string>
 
     <string name="ng_PassportLabel_SignIn">Sign in</string>
     <string name="ng_PassportLabel_SignUp">Sign up</string>
     <string name="ng_PassportLabel_ForgotPassword">Forgot password?</string>
+
+    <string name="ng_PassportText_ForgotHint">Enter your username or email address below. \n
+We will email you instructions on recovering your account.</string>
 
 </resources>

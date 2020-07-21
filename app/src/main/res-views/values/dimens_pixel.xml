@@ -24,5 +24,6 @@
     <dimen name="passport_text_corners">4dp</dimen>
     <dimen name="passport_button_iconSize">32dp</dimen>
     <dimen name="passport_textViewSize">12sp</dimen>
+    <dimen name="passport_textActionSize">15sp</dimen>
 
 </resources>

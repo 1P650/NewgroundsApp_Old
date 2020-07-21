@@ -1,16 +1,8 @@
 package jewpigeon.apps.newgrounds;
 
 import androidx.fragment.app.Fragment;
-import jewpigeon.apps.newgrounds.ContentFragments.ArtPortal;
-import jewpigeon.apps.newgrounds.ContentFragments.AudioPortal;
-import jewpigeon.apps.newgrounds.ContentFragments.CommunityPortal;
-import jewpigeon.apps.newgrounds.ContentFragments.FeaturedPortal;
-import jewpigeon.apps.newgrounds.ContentFragments.GamesPortal;
-import jewpigeon.apps.newgrounds.ContentFragments.MoviesPortal;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Activity;
-import jewpigeon.apps.newgrounds.PassportFragments.PassportForgotFragment;
 import jewpigeon.apps.newgrounds.PassportFragments.PassportSignInFragment;
-import jewpigeon.apps.newgrounds.PassportFragments.PassportSignUpFragment;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
 
 import android.os.Bundle;
@@ -24,6 +16,7 @@ import java.util.Arrays;
 public class PassportActivity extends NG_Activity {
     private Dashboard PassportDashboard;
     private FragNavController PassportController;
+    public String DEF_LABEL = "";
     private ArrayList<Fragment> PassportFragmentsList = new ArrayList<Fragment>(
             Arrays.asList(
                     PassportSignInFragment.newInstance()
@@ -32,6 +25,7 @@ public class PassportActivity extends NG_Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passport);
+        DEF_LABEL = this.getResources().getString(R.string.ng_PassportLabel_SignIn);
         establishViews();
         if(PassportController == null) {
             PassportController = FragNavController.newBuilder(savedInstanceState, getSupportFragmentManager(), R.id.passport_content)
@@ -39,7 +33,7 @@ public class PassportActivity extends NG_Activity {
                     .selectedTabIndex(FragNavController.TAB1)
                     .defaultTransactionOptions(
                             FragNavTransactionOptions.newBuilder()
-                            .customAnimations(R.anim.ng_frag_enter_anim, R.anim.ng_frag_leave_anim)
+                            .customAnimations(R.anim.ng_passport_enter_anim,R.anim.ng_passport_leave_anim)
                             .build())
                     .build();
             setUpController(PassportController);
@@ -51,17 +45,16 @@ public class PassportActivity extends NG_Activity {
     public void onBackPressed() {
         if(!PassportController.isRootFragment()){
             PassportController.popFragment();
-            setDashboardTitle("Sign In");
+            setDashboardLabel(DEF_LABEL);
         }
         else super.onBackPressed();
     }
 
     private void establishViews() {
         PassportDashboard = findViewById(R.id.passport_dashboard);
-        setDashboardTitle("Sign in");
     }
 
-    public void setDashboardTitle(String title){
+    public void setDashboardLabel(String title){
         PassportDashboard.setLabelTitle(title);
     }
 }

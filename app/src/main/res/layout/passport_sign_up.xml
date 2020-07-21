@@ -8,18 +8,10 @@
 
     <EditText
         android:id="@+id/SignUp_Username"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/ng_loginButton_height"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="48dp"
-        android:background="@drawable/ng_passport_text_background"
         android:hint="Select a Username"
         android:inputType="textPersonName"
-        android:padding="4dp"
-        android:textColor="@color/colorPassportTextColor"
-        android:textColorHint="@color/colorPassportTextHintColor"
-        android:textStyle="bold"
+        style="@style/NG_DefaultTheme.Passport.EditText"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -29,55 +21,34 @@
 
     <EditText
         android:id="@+id/SignUp_Password"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/ng_loginButton_height"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/ng_passport_text_background"
+        style="@style/NG_DefaultTheme.Passport.EditText"
         android:hint="Create password"
         android:inputType="textPassword"
-        android:padding="4dp"
-        android:textColor="@color/colorPassportTextColor"
-        android:textColorHint="@color/colorPassportTextHintColor"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/SignUp_Username"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/SignUp_Username"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SignUp_Username" />
 
     <EditText
         android:id="@+id/SignUp_RetypePassword"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/ng_loginButton_height"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/ng_passport_text_background"
+        style="@style/NG_DefaultTheme.Passport.EditText"
         android:hint="Re-type Password"
         android:inputType="textPassword"
-        android:padding="4dp"
-        android:textColor="@color/colorPassportTextColor"
-        android:textColorHint="@color/colorPassportTextHintColor"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/SignUp_Password"
-        app:layout_constraintStart_toStartOf="@+id/SignUp_Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SignUp_Password" />
 
     <EditText
         android:id="@+id/SignUp_Email"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/ng_loginButton_height"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/ng_passport_text_background"
+        style="@style/NG_DefaultTheme.Passport.EditText"
         android:hint="Your email adress"
         android:inputType="textEmailAddress"
-        android:padding="4dp"
-        android:textColor="@color/colorPassportTextColor"
-        android:textColorHint="@color/colorPassportTextHintColor"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/SignUp_RetypePassword"
-        app:layout_constraintStart_toStartOf="@+id/SignUp_RetypePassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SignUp_RetypePassword" />
 
     <CheckBox
-        android:id="@+id/SignUp_recieve_email"
+        android:id="@+id/SignUp_RecieveEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -96,7 +67,7 @@
         app:backgroundTint="@color/colorAccentAlt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUp_recieve_email" />
+        app:layout_constraintTop_toBottomOf="@+id/SignUp_RecieveEmail" />
 
     <View
         android:id="@+id/signUp_stroke"
@@ -113,7 +84,7 @@
     </View>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/SignUp_toSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -121,7 +92,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
-        android:padding="4dp"
+        android:paddingHorizontal="4dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp"
         android:text="Already have an account? Sign in!"
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/passport_textViewSize"

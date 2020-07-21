@@ -15,7 +15,7 @@ import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.PassportActivity;
 import jewpigeon.apps.newgrounds.R;
 
-public class PassportSignInFragment extends NG_Fragment {
+public class PassportSignInFragment extends NG_Fragment implements View.OnClickListener {
     private EditText Username;
     private EditText Password;
 
@@ -23,40 +23,22 @@ public class PassportSignInFragment extends NG_Fragment {
     private MaterialButton LoginByFacebook;
     private MaterialButton LoginByGoogle;
 
-    private TextView ForgotPassport;
-    private TextView SignUp;
-    @Nullable
+    private TextView toForgotPassport;
+    private TextView toSignUp;
+
+    private String LABEL = "";
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.passport_sign_in, container, false);
-        setSeekerView(root);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        LABEL = getContext().getResources().getString(R.string.ng_PassportLabel_SignIn);
+        try {
+            getPassportActivity().setDashboardLabel(LABEL);
+        }catch (NullPointerException e){
 
-        Username = (EditText) findViewById(R.id.SignIn_User);
-        Password = (EditText) findViewById(R.id.SignIn_Password);
-
-        LoginByNewgrounds = (MaterialButton) findViewById(R.id.SignIn_LoginByNG);
-        LoginByFacebook = (MaterialButton) findViewById(R.id.SignIn_LoginByFacebook);
-        LoginByGoogle = (MaterialButton) findViewById(R.id.SignIn_LoginByGoogle);
-
-        ForgotPassport = (TextView) findViewById(R.id.SignIn_toForgotPassword);
-        SignUp = (TextView) findViewById(R.id.SignIn_toSignUp);
-
-        SignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getController().pushFragment(PassportSignUpFragment.newInstance());
-            }
-        });
-
-        ForgotPassport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getController().pushFragment(PassportForgotFragment.newInstance());
-            }
-        });
-
-        return root;
+        }
     }
+
 
     public static PassportSignInFragment newInstance() {
 
@@ -67,7 +49,76 @@ public class PassportSignInFragment extends NG_Fragment {
         return fragment;
     }
 
-    private PassportActivity getPassportActivity(){
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.passport_sign_in, container, false);
+        setSeekerView(root);
+
+        establishViews();
+        setUpListeners();
+
+        return root;
+    }
+
+    private void establishViews() {
+        Username = (EditText) findViewById(R.id.SignIn_User);
+        Password = (EditText) findViewById(R.id.SignIn_Password);
+
+        LoginByNewgrounds = (MaterialButton) findViewById(R.id.SignIn_LoginByNG);
+        LoginByFacebook = (MaterialButton) findViewById(R.id.SignIn_LoginByFacebook);
+        LoginByGoogle = (MaterialButton) findViewById(R.id.SignIn_LoginByGoogle);
+
+        toForgotPassport = (TextView) findViewById(R.id.SignIn_toForgotPassword);
+        toSignUp = (TextView) findViewById(R.id.SignIn_toSignUp);
+    }
+
+    private void setUpListeners() {
+        toSignUp.setOnClickListener(this);
+        toForgotPassport.setOnClickListener(this);
+        LoginByNewgrounds.setOnClickListener(this);
+        LoginByGoogle.setOnClickListener(this);
+        LoginByFacebook.setOnClickListener(this);
+        LoginByNewgrounds.setOnClickListener(this);
+
+    }
+
+
+    private PassportActivity getPassportActivity() {
         return (PassportActivity) getNGActivity();
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.SignIn_toSignUp: {
+                getController().pushFragment(PassportSignUpFragment.newInstance());
+                break;
+            }
+            case R.id.SignIn_toForgotPassword: {
+                getController().pushFragment(PassportForgotFragment.newInstance());
+                break;
+            }
+            case R.id.SignIn_LoginByNG: {
+                if (checkFields()) {
+                    getActivity().finish();
+                }
+                break;
+            }
+
+            case R.id.SignIn_LoginByGoogle:
+            case R.id.SignIn_LoginByFacebook: {
+                makeErrorSnackbar("ERROR: Not supported");
+                break;
+            }
+        }
+    }
+
+    private boolean checkFields() {
+        if (Username.getText().toString().isEmpty() || Password.getText().toString().isEmpty()) {
+            makeErrorSnackbar("ERROR: Not all fields are filled!");
+            return false;
+        }
+        return true;
     }
 }
