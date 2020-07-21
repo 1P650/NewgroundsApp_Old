@@ -3,10 +3,13 @@
     <color name="colorPrimary">#202427</color>
     <color name="colorPrimaryDark">#090A0C</color>
     <color name="colorAccent">#FDA238</color>
+    <color name="colorAccentAlt">#f67807</color>
     <color name="colorPrimaryBackground">#4D5153</color>
     <color name="colorBottomBar">#1C1F22</color>
     <color name="colorBottomBarText">#E1EAF3</color>
     <color name="colorLeftMenuShadow">#2F000000</color>
+    <color name="colorPassportNavigationBar">#1B0A03</color>
+    <color name="colorPassportStatusBar">#0c0704</color>
 
 
     <color name="colorDashboardBackground">#0F0B0C</color>
@@ -27,6 +30,19 @@
     <color name="colorFeaturedAudioItemBackground">#333031</color>
 
     <color name="colorGridRippleEffect">#40E6E1DA</color>
+
+    <color name="colorPassportTextBackgroundGradient_start">#6A7B85</color>
+    <color name="colorPassportTextBackgroundGradient_end">#91A1A9</color>
+    <color name="colorPassportTextStroke">#1A1D1E</color>
+    <color name="colorPassportTextColor">#202425</color>
+    <color name="colorPassportTextHintColor">#454B4E</color>
+
+
+    <color name="colorPassportFacebook">#4F7CD6</color>
+    <color name="colorPassportGoogle">#4285F4</color>
+
+    <color name="colorPassportDivider">#171314</color>
+
 
 
 

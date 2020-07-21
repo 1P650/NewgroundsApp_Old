@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jewpigeon.apps.newgrounds"
-    >
+    package="jewpigeon.apps.newgrounds">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:name="jewpigeon.apps.newgrounds.Fundamental.NG_Application"
+        android:name=".Fundamental.NG_Application"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/newgrounds_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/newgrounds_logo_round"
         android:supportsRtl="true"
         android:theme="@style/NG_DefaultTheme"
-        android:usesCleartextTraffic="true"
-        android:hardwareAccelerated="true">
-        <activity android:name="jewpigeon.apps.newgrounds.SplashScreen"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".PassportActivity" android:theme="@style/NG_DefaultTheme.Passport">
+
+        </activity>
+        <activity
+            android:name=".SplashScreen"
             android:theme="@style/NG_DefaultTheme.Launcher">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
-               <action android:name="android.intent.action.MAIN" />
+
+                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name="jewpigeon.apps.newgrounds.ContentActivity" />
-
+        <activity android:name=".ContentActivity" />
     </application>
 
 </manifest>

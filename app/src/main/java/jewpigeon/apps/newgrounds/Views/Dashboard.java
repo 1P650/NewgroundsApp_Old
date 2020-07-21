@@ -115,9 +115,6 @@ public class Dashboard extends MaterialCardView {
             buttons[i].setIncludeFontPadding(false);
             buttons[i].setCornerRadius(10);
             buttons[i].setRippleColorResource(android.R.color.transparent);
-
-
-
             buttons[i].setMinWidth(0);
             buttons[i].setMinimumWidth(0);
             buttons[i].setBackgroundTintList(BUTTON_STATE_LIST);
@@ -136,6 +133,11 @@ public class Dashboard extends MaterialCardView {
     public void removeLabel() {
         this.Label.setVisibility(GONE);
 
+    }
+
+
+    public void setLabelTitle(String title){
+        this.LabelName.setText(title);
     }
 
 }

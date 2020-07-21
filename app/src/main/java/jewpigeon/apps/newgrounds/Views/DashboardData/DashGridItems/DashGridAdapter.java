@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import jewpigeon.apps.newgrounds.Views.DashboardData.ItemClickListener;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItemClickListener;
 
 public class DashGridAdapter extends RecyclerView.Adapter<DashGridAdapter.DashHolder> {
     private ArrayList<DashGridItem> items;
-    private ItemClickListener ItemClickListener;
+    private DashItemClickListener ItemClickListener;
     @NonNull
     @Override
     public DashHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -21,7 +21,7 @@ public class DashGridAdapter extends RecyclerView.Adapter<DashGridAdapter.DashHo
         return new DashHolder(itemView);
     }
 
-    public void setOnItemClickListener(ItemClickListener itemClickListener){
+    public void setOnItemClickListener(DashItemClickListener itemClickListener){
         this.ItemClickListener = itemClickListener;
     }
 
@@ -57,11 +57,9 @@ public class DashGridAdapter extends RecyclerView.Adapter<DashGridAdapter.DashHo
           this.view = view;
           this.view.setOnClickListener(this);
       }
-
-
          @Override
          public void onClick(View view) {
-             ItemClickListener.OnItemClick(view,getAdapterPosition());
+          if(ItemClickListener != null) ItemClickListener.OnItemClick(view,getAdapterPosition());
          }
      }
 

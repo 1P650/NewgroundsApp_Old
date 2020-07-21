@@ -3,4 +3,6 @@
     <dimen name="ng_content_bottombar_height">64dp</dimen>
     <dimen name="ng_bottombar_padding">15dp</dimen>
     <dimen name="ng_toolbar_top_margin">56dp</dimen>
+
+    <dimen name="ng_loginButton_height">40dp</dimen>
 </resources>

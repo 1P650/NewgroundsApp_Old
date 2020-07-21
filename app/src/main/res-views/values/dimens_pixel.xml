@@ -20,4 +20,9 @@
 
     <dimen name="dashgrid_vertical_spacing">12dp</dimen>
 
+    <dimen name="passport_text_strokewidth">2dp</dimen>
+    <dimen name="passport_text_corners">4dp</dimen>
+    <dimen name="passport_button_iconSize">32dp</dimen>
+    <dimen name="passport_textViewSize">12sp</dimen>
+
 </resources>

@@ -1,9 +1,9 @@
 package jewpigeon.apps.newgrounds;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.view.DragEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -12,8 +12,7 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textview.MaterialTextView;
 import com.ncapdevi.fragnav.FragNavController;
 import com.ncapdevi.fragnav.FragNavTransactionOptions;
 
@@ -44,6 +43,7 @@ public class ContentActivity extends NG_Activity implements
     private Toolbar ContentToolbar;
     private ImageButton HomeButton;
     private ImageButton SearchButton;
+    private MaterialTextView LoginButton;
     private SearchView ContentSearch;
     private AppBarLayout contentAppBarLayout;
 
@@ -76,7 +76,10 @@ public class ContentActivity extends NG_Activity implements
             ContentFragmentsController = FragNavController.newBuilder(savedInstanceState, getSupportFragmentManager(), R.id.content_container)
                     .rootFragments(ContentFragmentsList)
                     .selectedTabIndex(FragNavController.TAB6)
-                    .defaultTransactionOptions(FragNavTransactionOptions.newBuilder().customAnimations(R.anim.ng_frag_enter_anim, R.anim.ng_frag_leave_anim).build())
+                    .defaultTransactionOptions(
+                            FragNavTransactionOptions.newBuilder()
+                                    .customAnimations(R.anim.ng_frag_enter_anim, R.anim.ng_frag_leave_anim)
+                                    .build())
                     .build();
             super.setUpController(ContentFragmentsController);
         }
@@ -95,7 +98,6 @@ public class ContentActivity extends NG_Activity implements
 
         ContentBottomBar = findViewById(R.id.content_bottombar);
         contentBottomBarBehaviour = (HideBottomViewOnScrollBehavior) ((CoordinatorLayout.LayoutParams) ContentBottomBar.getLayoutParams()).getBehavior();
-        ;
         ContentBottomBar.getMenu().setGroupCheckable(0, false, false);
 
         ContentDrawerLayout = findViewById(R.id.content_drawerlayout);
@@ -103,7 +105,9 @@ public class ContentActivity extends NG_Activity implements
 
         HomeButton = findViewById(R.id.NG_appbar_home);
         SearchButton = findViewById(R.id.NG_appbar_search);
+        LoginButton = findViewById(R.id.NG_LoginOrSignUp);
         ContentSearch = findViewById(R.id.content_search);
+
 
 
         setSupportActionBar(ContentToolbar);
@@ -164,6 +168,15 @@ public class ContentActivity extends NG_Activity implements
             }
         });
 
+        LoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(
+                        new Intent(ContentActivity.this, PassportActivity.class));
+            }
+
+        });
+
 
     }
 
@@ -209,11 +222,10 @@ public class ContentActivity extends NG_Activity implements
 
     @Override
     public void onBackPressed() {
-        if (ContentDrawerLayout.isDrawerVisible(ContentLeftMenu))
-            ContentDrawerLayout.closeDrawer(ContentLeftMenu);
-        if (ContentSearch.getVisibility() == View.VISIBLE && ContentSearch.isIconified())
-            ContentSearch.setVisibility(View.GONE);
-        else if (!HandleBackpressed()) {
+        if (ContentDrawerLayout.isDrawerVisible(ContentLeftMenu)) ContentDrawerLayout.closeDrawer(ContentLeftMenu);
+        if (ContentSearch.getVisibility() == View.VISIBLE && ContentSearch.isIconified()){ ContentSearch.setVisibility(View.GONE);}
+
+        if (!HandleBackpressed()) {
             super.onBackPressed();
         }
 

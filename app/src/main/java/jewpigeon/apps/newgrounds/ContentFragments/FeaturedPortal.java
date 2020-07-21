@@ -25,10 +25,10 @@ import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridAudio
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridAudioItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridItemSmall;
-import jewpigeon.apps.newgrounds.Views.DashboardData.ItemClickListener;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItemClickListener;
 
 
-public class FeaturedPortal extends NG_Fragment implements ItemClickListener {
+public class FeaturedPortal extends NG_Fragment implements DashItemClickListener {
     View rootView;
     Dashboard FeaturedImage;
     Dashboard FeaturedMovies;
@@ -143,7 +143,7 @@ public class FeaturedPortal extends NG_Fragment implements ItemClickListener {
     @Override
     public void OnItemClick(View view, int position) {
         DashGridItem item = FeaturedMoviesArray.get(position);
-        getController().pushFragment(
-                GenericFragment.newInstance());
+        getController().pushFragment(GenericFragment.newInstance());
+
     }
 }

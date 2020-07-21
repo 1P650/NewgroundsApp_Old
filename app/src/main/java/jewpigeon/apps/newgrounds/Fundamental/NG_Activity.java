@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import com.ncapdevi.fragnav.FragNavController;
 
 import androidx.appcompat.app.AppCompatActivity;
+import jewpigeon.apps.newgrounds.PassportActivity;
 
 public class NG_Activity extends AppCompatActivity {
     FragNavController controller;
@@ -14,13 +15,5 @@ public class NG_Activity extends AppCompatActivity {
     }
     public FragNavController getController(){
         return this.controller;
-    }
-
-    public static void setMargins (View v, int l, int t, int r, int b) {
-        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
-            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
-            p.setMargins(l, t, r, b);
-            v.requestLayout();
-        }
     }
 }

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <EditText
+        android:id="@+id/SignIn_User"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ng_loginButton_height"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="42dp"
+        android:background="@drawable/ng_passport_text_background"
+        android:hint="Username or Email"
+        android:inputType="textPersonName"
+        android:padding="4dp"
+        android:textColor="@color/colorPassportTextColor"
+        android:textColorHint="@color/colorPassportTextHintColor"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/SignIn_Password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ng_loginButton_height"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="42dp"
+        android:background="@drawable/ng_passport_text_background"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="4dp"
+        android:textColor="@color/colorPassportTextColor"
+        android:textColorHint="@color/colorPassportTextHintColor"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/SignIn_User"
+        app:layout_constraintStart_toStartOf="@+id/SignIn_User"
+        app:layout_constraintTop_toBottomOf="@+id/SignIn_User" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/SignIn_LoginByNG"
+        style="@style/NG_DefaultTheme.Passport.Button"
+        android:layout_marginTop="4dp"
+        android:text="@string/ng_PassportButton_signIn"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@color/colorAccentAlt"
+        app:layout_constraintEnd_toEndOf="@+id/SignIn_Password"
+        app:layout_constraintStart_toStartOf="@+id/SignIn_Password"
+        app:layout_constraintTop_toBottomOf="@+id/SignIn_Password">
+
+    </com.google.android.material.button.MaterialButton>
+
+    <TextView
+        android:id="@+id/Passport_OR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="— Or —"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/SignIn_LoginByNG"
+        app:layout_constraintStart_toStartOf="@+id/SignIn_LoginByNG"
+        app:layout_constraintTop_toBottomOf="@+id/SignIn_LoginByNG" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/SignIn_LoginByFacebook"
+        style="@style/NG_DefaultTheme.Passport.Button"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorPassportFacebook"
+        android:text="Sign in with Facebook"
+        android:textColor="@android:color/white"
+        app:icon="@drawable/facebook_logo"
+        app:iconGravity="start"
+        app:iconSize="@dimen/passport_button_iconSize"
+        app:iconTint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/SignIn_LoginByNG"
+        app:layout_constraintStart_toStartOf="@+id/SignIn_LoginByNG"
+        app:layout_constraintTop_toBottomOf="@+id/Passport_OR" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/SignIn_LoginByGoogle"
+        style="@style/NG_DefaultTheme.Passport.Button"
+        android:layout_marginTop="2dp"
+        android:backgroundTint="@color/colorPassportGoogle"
+        android:text="Sign in with Google"
+        android:textColor="@android:color/white"
+        app:icon="@drawable/google_logo"
+        app:iconGravity="start"
+        app:iconSize="@dimen/passport_button_iconSize"
+        app:iconTint="@android:color/white"
+        app:iconTintMode="multiply"
+        app:layout_constraintEnd_toEndOf="@+id/SignIn_LoginByFacebook"
+        app:layout_constraintStart_toStartOf="@+id/SignIn_LoginByFacebook"
+        app:layout_constraintTop_toBottomOf="@+id/SignIn_LoginByFacebook" />
+
+    <View
+        android:id="@+id/signIn_stroke"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/passport_text_strokewidth"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="2dp"
+        android:background="@color/colorPassportDivider"
+        app:layout_constraintEnd_toEndOf="@+id/SignIn_LoginByGoogle"
+        app:layout_constraintStart_toStartOf="@+id/SignIn_LoginByGoogle"
+        app:layout_constraintTop_toBottomOf="@+id/SignIn_LoginByGoogle">
+
+    </View>
+
+    <TextView
+        android:id="@+id/SignIn_toForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:padding="4dp"
+        android:text="Forgot your password?"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/passport_textViewSize"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/signIn_stroke"
+        app:layout_constraintHorizontal_bias="0.015"
+        app:layout_constraintStart_toStartOf="@+id/signIn_stroke"
+        app:layout_constraintTop_toBottomOf="@+id/signIn_stroke"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/SignIn_toSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:padding="4dp"
+        android:text="No account? Sign up"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/passport_textViewSize"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/signIn_stroke"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/SignIn_toForgotPassword"
+        app:layout_constraintTop_toTopOf="@+id/SignIn_toForgotPassword"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
