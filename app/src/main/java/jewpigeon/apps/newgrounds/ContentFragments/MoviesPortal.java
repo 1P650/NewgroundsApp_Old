@@ -5,18 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.R;
+import jewpigeon.apps.newgrounds.Views.DashAutofitGrid;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridDecorator;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridAdapter;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGenericAdapter;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridItem;
 
 public class MoviesPortal extends NG_Fragment {
@@ -86,38 +85,28 @@ public class MoviesPortal extends NG_Fragment {
         setSeekerView(rootView);
 
         BrandMovies = (Dashboard) findViewById(R.id.movies_portal_brand_movies);
-        RecyclerView BrandMoviesList = (RecyclerView) findViewById(R.id.movies_portal_brand_grid);
-        DashGridAdapter brand_adapter = new DashGridAdapter(BrandMoviesArray);
-        BrandMoviesList.addItemDecoration(new DashGridDecorator(3, 12,16));
-        BrandMoviesList.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        DashAutofitGrid BrandMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_brand_grid);
+        DashGenericAdapter brand_adapter = new DashGenericAdapter(BrandMoviesArray);
         BrandMoviesList.setAdapter(brand_adapter);
 
         PopularMovies = (Dashboard) findViewById(R.id.movies_portal_popular_movies);
-        RecyclerView PopularMoviesList = (RecyclerView) findViewById(R.id.movies_portal_popular_grid);
-        DashGridAdapter popular_adapter = new DashGridAdapter(PopularMoviesArray);
-        PopularMoviesList.addItemDecoration(new DashGridDecorator(3, 12,16));
-        PopularMoviesList.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        DashAutofitGrid PopularMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_popular_grid);
+        DashGenericAdapter popular_adapter = new DashGenericAdapter(PopularMoviesArray);
         PopularMoviesList.setAdapter(popular_adapter);
 
         MonthMovies = (Dashboard) findViewById(R.id.movies_portal_month_movies);
-        RecyclerView MonthMoviesList = (RecyclerView) findViewById(R.id.movies_portal_month_grid);
-        DashGridAdapter month_adapter = new DashGridAdapter(MonthMoviesArray);
-        MonthMoviesList.addItemDecoration(new DashGridDecorator(3, 12,16));
-        MonthMoviesList.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        DashAutofitGrid MonthMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_month_grid);
+        DashGenericAdapter month_adapter = new DashGenericAdapter(MonthMoviesArray);
         MonthMoviesList.setAdapter(month_adapter);
 
         YearMovies = (Dashboard) findViewById(R.id.movies_portal_year_movies);
-        RecyclerView YearMoviesList = (RecyclerView) findViewById(R.id.movies_portal_year_grid);
-        DashGridAdapter year_adapter = new DashGridAdapter(YearMoviesArray);
-        YearMoviesList.addItemDecoration(new DashGridDecorator(3, 12,16));
-        YearMoviesList.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        DashAutofitGrid YearMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_year_grid);
+        DashGenericAdapter year_adapter = new DashGenericAdapter(YearMoviesArray);
         YearMoviesList.setAdapter(year_adapter);
 
         ClassicMovies = (Dashboard) findViewById(R.id.movies_portal_classic_movies);
-        RecyclerView ClassicMoviesList = (RecyclerView) findViewById(R.id.movies_portal_classic_grid);
-        DashGridAdapter classic_adapter = new DashGridAdapter(ClassicMoviesArray);
-        ClassicMoviesList.addItemDecoration(new DashGridDecorator(3, 12,16));
-        ClassicMoviesList.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        DashAutofitGrid ClassicMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_classic_grid);
+        DashGenericAdapter classic_adapter = new DashGenericAdapter(ClassicMoviesArray);
         ClassicMoviesList.setAdapter(classic_adapter);
 
         return rootView;

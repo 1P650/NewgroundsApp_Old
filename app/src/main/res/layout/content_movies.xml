@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,6 +23,7 @@
             android:layout_gravity="center_horizontal"
             android:textAlignment="center"/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
+
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/movies_portal_brand_movies"
             style="@style/NG_DefaultTheme.Dashboard"
@@ -29,7 +31,7 @@
             app:labelText="Brand Spankin' New Movies"
             app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <jewpigeon.apps.newgrounds.Views.DashAutofitGrid
                 android:id="@+id/movies_portal_brand_grid"
                 style="@style/NG_DefaultTheme.DashboardPortalGrid"/>/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
@@ -41,7 +43,7 @@
             app:labelText="Popular Movies"
             app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <jewpigeon.apps.newgrounds.Views.DashAutofitGrid
                 android:id="@+id/movies_portal_popular_grid"
                 style="@style/NG_DefaultTheme.DashboardPortalGrid"/>/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
@@ -52,7 +54,7 @@
             app:labelText="Best Movies This Month"
             app:labelIcon="@drawable/ng_movies_icon"
             app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
-            <androidx.recyclerview.widget.RecyclerView
+            <jewpigeon.apps.newgrounds.Views.DashAutofitGrid
                 android:id="@+id/movies_portal_month_grid"
                 style="@style/NG_DefaultTheme.DashboardPortalGrid"/> />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
@@ -63,7 +65,7 @@
             app:labelText="Best Movies This Year"
             app:labelIcon="@drawable/ng_movies_icon"
             app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
-            <androidx.recyclerview.widget.RecyclerView
+            <jewpigeon.apps.newgrounds.Views.DashAutofitGrid
                 android:id="@+id/movies_portal_year_grid"
                 style="@style/NG_DefaultTheme.DashboardPortalGrid"/> />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
@@ -74,7 +76,7 @@
             app:labelText="High Ranking Classics"
             app:labelIcon="@drawable/ng_movies_icon"
             app:PanelButtonsList="@menu/dashboard_portals_stardart_buttons">
-            <androidx.recyclerview.widget.RecyclerView
+            <jewpigeon.apps.newgrounds.Views.DashAutofitGrid
                 android:id="@+id/movies_portal_classic_grid"
                 style="@style/NG_DefaultTheme.DashboardPortalGrid"/>/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>

@@ -1,11 +1,10 @@
 package jewpigeon.apps.newgrounds.ContentFragments;
 
-import android.content.ClipData;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,10 +18,8 @@ import jewpigeon.apps.newgrounds.GenericLayouts.GenericFragment;
 import jewpigeon.apps.newgrounds.R;
 import jewpigeon.apps.newgrounds.Views.DashAutofitGrid;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridAdapter;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridAdapterSmall;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridAudioAdapter;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridAudioItem;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashAudioItem;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGenericAdapter;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridItemSmall;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItemClickListener;
@@ -37,8 +34,6 @@ public class FeaturedPortal extends NG_Fragment implements DashItemClickListener
     Dashboard FeaturedAudio;
 
 
-    /*private int SPACING;*/
-
     ArrayList<DashGridItem> FeaturedMoviesArray = new ArrayList<>(Arrays.asList(
             new DashGridItem(null, "DEFAULT", "DEFAULT"),
             new DashGridItem(null, "DEFAULT", "DEFAULT"),
@@ -48,10 +43,10 @@ public class FeaturedPortal extends NG_Fragment implements DashItemClickListener
             new DashGridItem(null, "DEFAULT", "DEFAULT")));
 
 
-    private DashGridAdapter movies_adapter;
-    private DashGridAdapter games_adapter;
-    private DashGridAdapterSmall art_adapter;
-    private DashGridAudioAdapter audio_adapter;
+    private DashGenericAdapter movies_adapter;
+    private DashGenericAdapter games_adapter;
+    private DashGenericAdapter art_adapter;
+    private DashGenericAdapter audio_adapter;
 
     private DashAutofitGrid FeaturedMoviesList;
     private DashAutofitGrid FeaturedGamesList;
@@ -82,13 +77,13 @@ public class FeaturedPortal extends NG_Fragment implements DashItemClickListener
             new DashGridItemSmall(null, "DEFAULT")));
 
 
-    ArrayList<DashGridAudioItem> FeaturedAudioArray = new ArrayList<>(Arrays.asList(
-            new DashGridAudioItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridAudioItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridAudioItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridAudioItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridAudioItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridAudioItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<DashAudioItem> FeaturedAudioArray = new ArrayList<>(Arrays.asList(
+            new DashAudioItem(null, "DEFAULT", "DEFAULT"),
+            new DashAudioItem(null, "DEFAULT", "DEFAULT"),
+            new DashAudioItem(null, "DEFAULT", "DEFAULT"),
+            new DashAudioItem(null, "DEFAULT", "DEFAULT"),
+            new DashAudioItem(null, "DEFAULT", "DEFAULT"),
+            new DashAudioItem(null, "DEFAULT", "DEFAULT")));
 
     public static FeaturedPortal newInstance() {
 
@@ -103,10 +98,10 @@ public class FeaturedPortal extends NG_Fragment implements DashItemClickListener
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        movies_adapter = new DashGridAdapter(FeaturedMoviesArray);
-        games_adapter = new DashGridAdapter(FeaturedGamesArray);
-        art_adapter = new DashGridAdapterSmall(FeaturedArtArray);
-        audio_adapter = new DashGridAudioAdapter(FeaturedAudioArray);
+        movies_adapter = new DashGenericAdapter(DashGenericAdapter.PORTAL_GRID_REGULAR, FeaturedMoviesArray);
+        games_adapter = new DashGenericAdapter(DashGenericAdapter.PORTAL_GRID_REGULAR, FeaturedGamesArray);
+        art_adapter = new DashGenericAdapter(DashGenericAdapter.PORTAL_GRID_SMALL, FeaturedArtArray);
+        audio_adapter = new DashGenericAdapter(DashGenericAdapter.PORTAL_AUDIO_LIST, FeaturedAudioArray);
     }
 
     @Nullable
@@ -120,7 +115,6 @@ public class FeaturedPortal extends NG_Fragment implements DashItemClickListener
 
         FeaturedMovies = (Dashboard) findViewById(R.id.featured_movies);
         FeaturedMoviesList = (DashAutofitGrid) findViewById(R.id.featured_movies_grid);
-        movies_adapter.setOnItemClickListener(this);
         FeaturedMoviesList.setAdapter(movies_adapter);
 
 

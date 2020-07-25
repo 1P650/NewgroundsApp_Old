@@ -1,8 +1,13 @@
 package jewpigeon.apps.newgrounds.Views;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.util.LruCache;
+
+import java.util.PropertyResourceBundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,7 +21,7 @@ public class DashAutofitGrid extends RecyclerView {
     private DashAutofitGridLayoutManager ColumnManager;
     private DashGridDecorator ColumnDecorator;
     private final int DASH_ITEMSIZE_AVERAGE = getResources().getDimensionPixelSize(R.dimen.dashboard_item_size);
-    private final int DASH_VERTICAL_SPACING = getResources().getDimensionPixelSize(R.dimen.dashgrid_vertical_spacing);
+    private final int DASH_VERTICAL_SPACING = getResources().getDimensionPixelSize(R.dimen.dashboard_grid_vertical_spacing);
 
     public enum DASH_ITEM {
         AVERAGE, SMALL
@@ -65,6 +70,11 @@ public class DashAutofitGrid extends RecyclerView {
                 )
 
         );
+        Log.v("DASHGRID", "ITEM_SIZE" + ITEM_SIZE);
+        Log.v("DASHGRID", "COLUMN_NUM" + COLUMN_NUM);
+        Log.v("DASHGRID", "SPACING" +  DimensionTool.GRID_calcSpacing(
+                ITEM_SIZE, COLUMN_NUM, getContext()
+        ));
         setLayoutManager(ColumnManager);
         addItemDecoration(ColumnDecorator);
     }

@@ -5,4 +5,10 @@
     <dimen name="ng_toolbar_top_margin">56dp</dimen>
 
     <dimen name="ng_loginButton_height">40dp</dimen>
+
+    <dimen name="passport_text_strokewidth">2dp</dimen>
+    <dimen name="passport_text_corners">4dp</dimen>
+    <dimen name="passport_button_iconSize">32dp</dimen>
+    <dimen name="passport_textViewSize">12sp</dimen>
+    <dimen name="passport_textActionSize">15sp</dimen>
 </resources>

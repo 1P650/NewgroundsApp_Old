@@ -2,12 +2,12 @@ package jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems;
 
 import android.graphics.drawable.Drawable;
 
-public class DashGridAudioItem {
+public class DashAudioItem {
     private Drawable AudioIcon;
     private String Title;
     private String Author;
 
-    public DashGridAudioItem(Drawable audioIcon, String title, String author) {
+    public DashAudioItem(Drawable audioIcon, String title, String author) {
         AudioIcon = audioIcon;
         Title = title;
         Author = author;

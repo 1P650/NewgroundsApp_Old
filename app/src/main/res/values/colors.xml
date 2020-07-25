@@ -11,9 +11,14 @@
     <color name="colorPassportNavigationBar">#1B0A03</color>
     <color name="colorPassportStatusBar">#0c0704</color>
 
+    <color name="colorProfileWidgetPanelBackground">#1C1F22</color>
+    <color name="colorProfileWidgetMenuBackground">#18191E</color>
+    <color name="colorProfileWidgetBordeline">#101315</color>
+
 
     <color name="colorDashboardBackground">#0F0B0C</color>
     <color name="colorDashboardItemLabelBackground">#151515</color>
+    <color name="colorDashboardItemLabelTransparentBackground">#BF151515</color>
     <color name="colorDashboardIconBackground">#101010</color>
     <color name="colorDashboardBorderline">#0C0C0C</color>
 
@@ -27,7 +32,7 @@
     <color name="colorFeaturedItemTitleText">#F6F6F6</color>
     <color name="colorFeaturedItemAuthorText">#7E7E7E</color>
     <color name="colorFeaturedItemSmallAuthorText">#CFCFCF</color>
-    <color name="colorFeaturedAudioItemBackground">#333031</color>
+    <color name="colorFeaturedAudioItemBackground">#221E1F</color>
 
     <color name="colorGridRippleEffect">#40E6E1DA</color>
 

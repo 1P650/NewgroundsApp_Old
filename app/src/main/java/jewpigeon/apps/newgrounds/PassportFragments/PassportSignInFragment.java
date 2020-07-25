@@ -1,6 +1,7 @@
 package jewpigeon.apps.newgrounds.PassportFragments;
 
 import android.os.Bundle;
+import android.telephony.AccessNetworkConstants;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,11 @@ import com.google.android.material.button.MaterialButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import jewpigeon.apps.newgrounds.Fundamental.NG_BoxStore;
+import jewpigeon.apps.newgrounds.Fundamental.NG_Bus;
+import jewpigeon.apps.newgrounds.Fundamental.NG_Events;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
+import jewpigeon.apps.newgrounds.Fundamental.NG_PreferencesData;
 import jewpigeon.apps.newgrounds.PassportActivity;
 import jewpigeon.apps.newgrounds.R;
 
@@ -101,6 +106,11 @@ public class PassportSignInFragment extends NG_Fragment implements View.OnClickL
             }
             case R.id.SignIn_LoginByNG: {
                 if (checkFields()) {
+                    NG_PreferencesData preferencesData = getNGActivity().getPreferencesFromStore();
+                    if(preferencesData == null) preferencesData = new NG_PreferencesData();
+                    preferencesData.setLogged(true);
+                    getNGActivity().updatePreferences(preferencesData);
+                    NG_Bus.get().post(new NG_Events.NG_UserLoggedIn());
                     getActivity().finish();
                 }
                 break;

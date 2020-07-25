@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.Layout;
@@ -12,7 +11,6 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.LruCache;
 import android.view.View;
 
@@ -21,7 +19,6 @@ import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.target.SizeReadyCallback;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
-import com.google.android.material.card.MaterialCardView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,7 +27,7 @@ import jewpigeon.apps.newgrounds.R;
 
 import static jewpigeon.apps.newgrounds.Utils.DimensionTool.sp;
 
-public class DashGridAudioView extends View implements Target<Drawable> {
+public class DashAudioView extends View implements Target<Drawable> {
 
     private Drawable DashAudioIcon;
     private StaticLayout DashTitle;
@@ -54,30 +51,30 @@ public class DashGridAudioView extends View implements Target<Drawable> {
 
 
     {
-            defIcon = ContextCompat.getDrawable(getContext(), R.drawable.ng_default_icon);
-            defIcon.setTint(ContextCompat.getColor(getContext(),R.color.colorAccent));
-            defIcon.setBounds(0, 0, ICON_SIZE, ICON_SIZE);
+            defIcon = ContextCompat.getDrawable(getContext(), R.drawable.ng_icon_undefined);
             DashBackground = new ColorDrawable(DashBackgroundEnabledColor);
 
     }
 
 
-    public DashGridAudioView(Context context) {
+
+
+    public DashAudioView(Context context) {
         super(context);
         establishState();
     }
 
-    public DashGridAudioView(Context context, @Nullable AttributeSet attrs) {
+    public DashAudioView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         establishState();
     }
 
-    public DashGridAudioView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public DashAudioView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         establishState();
     }
 
-    public DashGridAudioView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public DashAudioView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         establishState();
     }
@@ -92,16 +89,17 @@ public class DashGridAudioView extends View implements Target<Drawable> {
         super.onSizeChanged(w, h, oldw, oldh);
     }
 
-    public void setDashItem(DashGridAudioItem item) {
+    public void setDashItem(DashAudioItem item) {
         Glide.
                 with(getContext())
                 .load(item.getAudioIcon())
+                .circleCrop()
                 .placeholder(defIcon)
                 .fallback(defIcon)
                 .into(this);
 
-        DashTitle = DashGridAudioView.TextCache.INSTANCE.titleLayoutFor(item.getTitle());
-        DashAuthor = DashGridAudioView.TextCache.INSTANCE.authorLayoutFor("by " + item.getAuthor());
+        DashTitle = DashAudioView.TextCache.INSTANCE.titleLayoutFor(item.getTitle());
+        DashAuthor = DashAudioView.TextCache.INSTANCE.authorLayoutFor("by " + item.getAuthor());
 
         requestLayout();
         invalidate();
@@ -195,7 +193,7 @@ public class DashGridAudioView extends View implements Target<Drawable> {
     }
     @Override
     public void getSize(@NonNull SizeReadyCallback cb) {
-        cb.onSizeReady(ICON_SIZE, ICON_SIZE);
+        cb.onSizeReady(getWidth(), getHeight());
     }
     @Override
     public void removeCallback(@NonNull SizeReadyCallback cb) {

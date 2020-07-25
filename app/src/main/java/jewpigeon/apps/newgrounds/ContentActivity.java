@@ -16,6 +16,9 @@ import com.google.android.material.textview.MaterialTextView;
 import com.ncapdevi.fragnav.FragNavController;
 import com.ncapdevi.fragnav.FragNavTransactionOptions;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -33,6 +36,10 @@ import jewpigeon.apps.newgrounds.ContentFragments.FeaturedPortal;
 import jewpigeon.apps.newgrounds.ContentFragments.GamesPortal;
 import jewpigeon.apps.newgrounds.ContentFragments.MoviesPortal;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Activity;
+import jewpigeon.apps.newgrounds.Fundamental.NG_Bus;
+import jewpigeon.apps.newgrounds.Fundamental.NG_Events;
+import jewpigeon.apps.newgrounds.Fundamental.NG_PreferencesData;
+import jewpigeon.apps.newgrounds.Views.ProfileWidget;
 
 
 public class ContentActivity extends NG_Activity implements
@@ -46,6 +53,7 @@ public class ContentActivity extends NG_Activity implements
     private MaterialTextView LoginButton;
     private SearchView ContentSearch;
     private AppBarLayout contentAppBarLayout;
+    private ProfileWidget ProfileMenu;
 
 
     private BottomNavigationView ContentBottomBar;
@@ -84,13 +92,22 @@ public class ContentActivity extends NG_Activity implements
             super.setUpController(ContentFragmentsController);
         }
 
+        NG_Bus.get().register(this);
+
         setUpListeners();
 
 
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        NG_Bus.get().unregister(this);
+    }
+
     private void establishViews() {
+        NG_PreferencesData preferences = getPreferencesFromStore();
 
         ContentToolbar = findViewById(R.id.content_toolbar);
         contentAppBarLayout = findViewById(R.id.content_appbarlayout);
@@ -106,6 +123,13 @@ public class ContentActivity extends NG_Activity implements
         HomeButton = findViewById(R.id.NG_appbar_home);
         SearchButton = findViewById(R.id.NG_appbar_search);
         LoginButton = findViewById(R.id.NG_LoginOrSignUp);
+        ProfileMenu = findViewById(R.id.NG_ProfileWidget);
+
+        if(preferences != null && preferences.isUserLogged()){
+            LoginButton.setVisibility(View.GONE);
+            ProfileMenu.setVisibility(View.VISIBLE);
+        }
+
         ContentSearch = findViewById(R.id.content_search);
 
 
@@ -315,5 +339,12 @@ public class ContentActivity extends NG_Activity implements
             getController().onSaveInstanceState(outState);
 
         }
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onUserLoggedIn(NG_Events.NG_UserLoggedIn ULI){
+        LoginButton.setVisibility(View.GONE);
+        ProfileMenu.setVisibility(View.VISIBLE);
     }
 }

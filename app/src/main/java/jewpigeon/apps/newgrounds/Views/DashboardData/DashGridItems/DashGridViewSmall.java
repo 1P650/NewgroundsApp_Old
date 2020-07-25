@@ -8,15 +8,12 @@ import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.LruCache;
-import android.util.TypedValue;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
@@ -37,7 +34,7 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
 
     private final int ITEM_SIZE = (int) getResources().getDimension(R.dimen.dashboard_item_size_small);
     private final int AUTHOR_COLOR = ContextCompat.getColor(getContext(), R.color.colorFeaturedItemSmallAuthorText);
-    private final int ITEM_LABEL_COLOR = ContextCompat.getColor(getContext(), R.color.colorDashboardItemLabelBackground);
+    private final int ITEM_LABEL_COLOR = ContextCompat.getColor(getContext(), R.color.colorDashboardItemLabelTransparentBackground);
 
 
     private  StaticLayout DashAuthor;

@@ -22,7 +22,7 @@
             android:layout_height="40dp"
             android:background="@null"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/NG_ProfileWidget"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/NG_appbar_home"
             app:layout_constraintTop_toTopOf="parent"
@@ -33,7 +33,7 @@
             android:layout_width="35dp"
             android:layout_height="30dp"
             android:adjustViewBounds="true"
-            android:background="@drawable/ng_mobile"
+            android:background="@drawable/ng_toolbar_home"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -57,6 +57,17 @@
             app:layout_constraintStart_toEndOf="@+id/NG_appbar_home"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <jewpigeon.apps.newgrounds.Views.ProfileWidget
+            android:id="@+id/NG_ProfileWidget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </jewpigeon.apps.newgrounds.Views.ProfileWidget>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.appcompat.widget.Toolbar>

@@ -8,6 +8,7 @@
         <item name="android:windowBackground">@color/colorPrimaryBackground</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
         <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:spotShadowAlpha">0.15</item>
 
     </style>
 
@@ -65,6 +66,7 @@
     </style>
 
     <style name="NG_DefaultTheme.DashboardPortalGridSmall">
+        <item name="cardBackgroundColor">@color/colorDashboardBackground</item>
         <item name = "android:layout_width"> match_parent </item>
         <item name = "android:layout_height"> wrap_content</item>
         <item name = "android:layout_marginTop"> @dimen/dashboard_labelSize</item>

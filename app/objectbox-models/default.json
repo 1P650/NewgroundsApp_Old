@@ -1,0 +1,41 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:7726941476291535823",
+      "lastPropertyId": "4:8312297685925338464",
+      "name": "NG_PreferencesData",
+      "properties": [
+        {
+          "id": "1:4591407511303584013",
+          "name": "ID",
+          "type": 6,
+          "flags": 129
+        },
+        {
+          "id": "4:8312297685925338464",
+          "name": "isUserLogged",
+          "type": 1,
+          "flags": 4
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "1:7726941476291535823",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [
+    4872685943241968314,
+    4112880385034428399
+  ],
+  "retiredRelationUids": [],
+  "version": 1
+}

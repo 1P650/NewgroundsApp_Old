@@ -5,7 +5,10 @@
         <attr name="content" format="reference" />
         <attr name="labelText" format="string" />
         <attr name="labelIcon" format="reference" />
-        <attr name="PanelButtonsList" format="reference"></attr>
+        <attr name="PanelButtonsList" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="ProfileWidgetTemp">
 
     </declare-styleable>
 </resources>

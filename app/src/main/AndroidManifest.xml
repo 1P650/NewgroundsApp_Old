@@ -8,9 +8,8 @@
         android:name=".Fundamental.NG_Application"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/newgrounds_logo"
+        android:icon="@mipmap/ng_app_ico"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/newgrounds_logo_round"
         android:supportsRtl="true"
         android:theme="@style/NG_DefaultTheme"
         android:usesCleartextTraffic="true">

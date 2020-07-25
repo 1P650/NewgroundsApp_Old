@@ -16,14 +16,20 @@
     <dimen name="dashboard_item_size_audio_list">38dp</dimen>
 
     <dimen name="dashboard_stroke_width">2dp</dimen>
-    <dimen name="dashboard_elevation">2dp</dimen>
+    <dimen name="dashboard_elevation">4dp</dimen>
 
-    <dimen name="dashgrid_vertical_spacing">12dp</dimen>
+    <dimen name="dashboard_grid_vertical_spacing">12dp</dimen>
 
-    <dimen name="passport_text_strokewidth">2dp</dimen>
-    <dimen name="passport_text_corners">4dp</dimen>
-    <dimen name="passport_button_iconSize">32dp</dimen>
-    <dimen name="passport_textViewSize">12sp</dimen>
-    <dimen name="passport_textActionSize">15sp</dimen>
+    <dimen name="profileWidget_ProfileIcon_size">48dp</dimen>
+    <dimen name="profileWidget_SelfHeight">48dp</dimen>
+    <dimen name="profileWidget_PanelUnexpandedWidth">24dp</dimen>
+    <dimen name="profileWidget_PanelExpandedMaxWidth">200dp</dimen>
+    <dimen name="profileWidget_PanelStrokeWidth">1.5dp</dimen>
+    <dimen name="profileWidget_PanelArrowSize">32dp</dimen>
+
+
+
+
+
 
 </resources>

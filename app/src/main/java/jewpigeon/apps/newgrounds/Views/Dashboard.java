@@ -4,12 +4,15 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Outline;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,6 +26,7 @@ import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import jewpigeon.apps.newgrounds.R;
+import jewpigeon.apps.newgrounds.Utils.DimensionTool;
 
 
 public class Dashboard extends MaterialCardView {
@@ -35,23 +39,34 @@ public class Dashboard extends MaterialCardView {
     private int COLOR_BD = ContextCompat.getColor(getContext(), R.color.colorDashboardIconBackground);
     private int COLOR_BP = ContextCompat.getColor(getContext(), R.color.colorAccent);
     private ColorStateList BUTTON_STATE_LIST = new ColorStateList(new int[][]{
+
             new int[]{android.R.attr.state_pressed},
+            new int[]{android.R.attr.state_enabled},
+            new int[]{android.R.attr.state_focused, android.R.attr.state_pressed},
+            new int[]{-android.R.attr.state_enabled},
             new int[]{}
     },
             new int[]{
                     COLOR_BP,
+                    COLOR_BD,
+                    COLOR_BP,
+                    COLOR_BD,
                     COLOR_BD
-
-
             });
 
 
     private ColorStateList BUTTON_TEXT_STATE_LIST = new ColorStateList(new int[][]{
             new int[]{android.R.attr.state_pressed},
+            new int[]{android.R.attr.state_enabled},
+            new int[]{android.R.attr.state_focused, android.R.attr.state_pressed},
+            new int[]{-android.R.attr.state_enabled},
             new int[]{}
     },
             new int[]{
                     COLOR_BD,
+                    COLOR_BP,
+                    COLOR_BD,
+                    COLOR_BP,
                     COLOR_BP
             });
 
@@ -77,6 +92,7 @@ public class Dashboard extends MaterialCardView {
     @SuppressLint("RestrictedApi")
     private void establishComponents(Context context, @Nullable AttributeSet attributeSet) {
         inflate(getContext(), R.layout.dashboard, this);
+
         Label = this.findViewById(R.id.dashboard_label);
         LabelName = this.findViewById(R.id.dashboard_label_name);
         ButtonPanelLayout = this.findViewById(R.id.dashboard_buttons_panel);
@@ -134,6 +150,7 @@ public class Dashboard extends MaterialCardView {
         this.Label.setVisibility(GONE);
 
     }
+
 
 
     public void setLabelTitle(String title){
