@@ -1,3 +1,3 @@
 # NewgroundsApp
 A WIP Newgrounds client for Android. Init.
-Just starting the project.
+Making it more groovy and less efficient
