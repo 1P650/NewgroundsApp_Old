@@ -3,6 +3,6 @@ A WIP Newgrounds client for Android. Only UI/UX for now, since the site does not
 NG be like: 
 -Hey, catch that HTML!
 -But I wanted raw JSON-responce!
--It's not my problem, it's YOUURS.
+-That's not my problem, it's YOUURS.
 
 Making it more groovy and less performance-friendly.
