@@ -11,12 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Header space-->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/ng_toolbar_top_margin">
 
-        </View>
 
         <!-- Featured pucture -->
         <jewpigeon.apps.newgrounds.Views.Dashboard
@@ -43,6 +38,8 @@
 
             <jewpigeon.apps.newgrounds.Views.DashAutofitGrid
                 android:id="@+id/featured_movies_grid"
+                android:layout_marginTop="0dp"
+                android:background="@null"
                 style="@style/NG_DefaultTheme.DashboardPortalGrid"/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
         <!-- Featured games -->

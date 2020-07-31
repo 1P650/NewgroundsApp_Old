@@ -24,7 +24,7 @@
     <dimen name="profileWidget_SelfHeight">48dp</dimen>
     <dimen name="profileWidget_PanelUnexpandedWidth">24dp</dimen>
     <dimen name="profileWidget_PanelExpandedMaxWidth">200dp</dimen>
-    <dimen name="profileWidget_PanelStrokeWidth">1.5dp</dimen>
+    <dimen name="profileWidget_PanelStrokeWidth">2dp</dimen>
     <dimen name="profileWidget_PanelArrowSize">32dp</dimen>
 
 

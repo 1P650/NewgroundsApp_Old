@@ -1,41 +1,21 @@
 package jewpigeon.apps.newgrounds.Views;
-
-import android.animation.ValueAnimator;
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Transformation;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.button.MaterialButton;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.view.menu.MenuBuilder;
-import androidx.constraintlayout.solver.ArrayRow;
 import androidx.core.content.ContextCompat;
 import jewpigeon.apps.newgrounds.R;
+import jewpigeon.apps.newgrounds.Views.ProfileWidgetData.ProfileIconClickListener;
+import jewpigeon.apps.newgrounds.Views.ProfileWidgetData.SliderItemClickListener;
 import jewpigeon.apps.newgrounds.Views.ProfileWidgetData.SlidingPanel;
 
-public class ProfileWidget extends ViewGroup{
+public class ProfileWidget extends ViewGroup implements View.OnClickListener {
 
     private static int PROFILE_ICON_SIZE;
     private static int WIDGET_HEIGHT;
@@ -43,6 +23,7 @@ public class ProfileWidget extends ViewGroup{
     private static int PANEL_MAX_WIDTH;
     private static int PANEL_STROKE;
     private static int PANEL_ARROW_SIZE;
+    private ProfileIconClickListener listener;
     private GradientDrawable cornerBackground;
     private Drawable defIcon = ContextCompat.getDrawable(getContext(), R.drawable.ng_icon_undefined);
 
@@ -57,6 +38,15 @@ public class ProfileWidget extends ViewGroup{
         cornerBackground = new GradientDrawable();
         cornerBackground.setShape(GradientDrawable.OVAL);
         cornerBackground.setColor(ContextCompat.getColor(getContext(),R.color.colorProfileWidgetBordeline));
+    }
+
+
+    public void setMenuClickListener(SliderItemClickListener listener){
+        ProfileSlidingMenu.setMenuClickListener(listener);
+    }
+
+    public void setOnProfileIconClickListener(ProfileIconClickListener listener){
+        this.listener = listener;
     }
 
     private ImageView ProfileIcon;
@@ -127,13 +117,13 @@ public class ProfileWidget extends ViewGroup{
 
 
     private void establishSelf(final Context context) {
-
         ProfileSlidingMenu = new SlidingPanel(context);
         ProfileSlidingMenu.collapse();
         addView(ProfileSlidingMenu);
         ProfileIcon = new ImageView(context);
         ProfileIcon.setBackground(cornerBackground);
-        ProfileIcon.setPadding(8,8,8,8);
+        ProfileIcon.setPadding(6,6,6,6);
+        ProfileIcon.setTag("PROFILE_ICON");
         setProfileIcon(defIcon);
         addView(ProfileIcon);
         ProfileIcon.setOnLongClickListener(new OnLongClickListener() {
@@ -145,11 +135,15 @@ public class ProfileWidget extends ViewGroup{
             };
         });
 
-    }
-
-
-
-
+        ProfileIcon.setOnClickListener(this);
 
     }
+
+
+    @Override
+    public void onClick(View view) {
+        listener.onClick(view);
+    }
+
+}
 

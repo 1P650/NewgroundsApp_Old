@@ -8,4 +8,8 @@
     <string name="portal">Portal</string>
     <string name="feed">Your feed</string>
     <string name="wiki">Wiki</string>
+
+    <string name="loginOrSignUp">Login/Sign up</string>
+    <string name="contentDescription_search">Browse Newgrounds</string>
+    <string name="contentDescription_home">To home page</string>
 </resources>

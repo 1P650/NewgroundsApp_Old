@@ -11,20 +11,6 @@
         android:orientation="vertical">
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:labelVisible="false">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/ng_content_toolbar_height"
-            android:textSize="@dimen/dashboard_textSize"
-            android:paddingTop="8dp"
-            android:layout_gravity="center_horizontal"
-            android:textAlignment="center"/>
-        </jewpigeon.apps.newgrounds.Views.Dashboard>
-
-        <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/movies_portal_brand_movies"
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelIcon="@drawable/ng_movies_icon"

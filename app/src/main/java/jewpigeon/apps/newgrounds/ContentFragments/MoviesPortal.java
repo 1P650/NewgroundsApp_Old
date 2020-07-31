@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -25,6 +24,8 @@ public class MoviesPortal extends NG_Fragment {
     Dashboard MonthMovies;
     Dashboard YearMovies;
     Dashboard ClassicMovies;
+
+
 
     ArrayList<DashGridItem> BrandMoviesArray = new ArrayList<>(Arrays.asList(
             new DashGridItem(null, "DEFAULT", "DEFAULT"),
@@ -62,6 +63,13 @@ public class MoviesPortal extends NG_Fragment {
             new DashGridItem(null, "DEFAULT", "DEFAULT"),
             new DashGridItem(null, "DEFAULT", "DEFAULT")));
 
+
+    DashAutofitGrid BrandMoviesList;
+    DashAutofitGrid PopularMoviesList;
+    DashAutofitGrid MonthMoviesList;
+    DashAutofitGrid YearMoviesList;
+    DashAutofitGrid ClassicMoviesList;
+
     public static MoviesPortal newInstance() {
 
         Bundle args = new Bundle();
@@ -85,30 +93,36 @@ public class MoviesPortal extends NG_Fragment {
         setSeekerView(rootView);
 
         BrandMovies = (Dashboard) findViewById(R.id.movies_portal_brand_movies);
-        DashAutofitGrid BrandMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_brand_grid);
+         BrandMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_brand_grid);
         DashGenericAdapter brand_adapter = new DashGenericAdapter(BrandMoviesArray);
         BrandMoviesList.setAdapter(brand_adapter);
 
         PopularMovies = (Dashboard) findViewById(R.id.movies_portal_popular_movies);
-        DashAutofitGrid PopularMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_popular_grid);
+         PopularMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_popular_grid);
         DashGenericAdapter popular_adapter = new DashGenericAdapter(PopularMoviesArray);
         PopularMoviesList.setAdapter(popular_adapter);
 
         MonthMovies = (Dashboard) findViewById(R.id.movies_portal_month_movies);
-        DashAutofitGrid MonthMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_month_grid);
+         MonthMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_month_grid);
         DashGenericAdapter month_adapter = new DashGenericAdapter(MonthMoviesArray);
         MonthMoviesList.setAdapter(month_adapter);
 
         YearMovies = (Dashboard) findViewById(R.id.movies_portal_year_movies);
-        DashAutofitGrid YearMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_year_grid);
+         YearMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_year_grid);
         DashGenericAdapter year_adapter = new DashGenericAdapter(YearMoviesArray);
         YearMoviesList.setAdapter(year_adapter);
 
         ClassicMovies = (Dashboard) findViewById(R.id.movies_portal_classic_movies);
-        DashAutofitGrid ClassicMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_classic_grid);
+         ClassicMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_classic_grid);
         DashGenericAdapter classic_adapter = new DashGenericAdapter(ClassicMoviesArray);
         ClassicMoviesList.setAdapter(classic_adapter);
 
+
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 }

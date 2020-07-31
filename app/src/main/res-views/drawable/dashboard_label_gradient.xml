@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:top="@dimen/dashboard_labelSizeHalf">
-        <shape 
+
+    <item android:top="@dimen/dashboard_labelSizeHalf" android:start="1dp" android:end="1dp">
+        <shape
             android:shape="rectangle" >
             <gradient
                 android:startColor="@color/colorDashboardLabelGradientLower_start"
@@ -11,7 +12,8 @@
             </gradient>
         </shape>
     </item>
-    <item android:gravity="top" android:height="@dimen/dashboard_labelSizeHalf">
+
+    <item android:gravity="top" android:height="@dimen/dashboard_labelSizeHalf" android:start="1dp" android:end="1dp">
         <shape android:shape="rectangle" >
             <gradient
                 android:startColor="@color/colorDashboardLabelGradientHigher_start"
@@ -20,17 +22,24 @@
                 android:angle="90"
                 />
             <corners android:topLeftRadius="@dimen/dashboard_corner_radius"
-          android:topRightRadius="@dimen/dashboard_corner_radius">
+                android:topRightRadius="@dimen/dashboard_corner_radius">
 
             </corners>
         </shape>
     </item>
 
-    <item android:height="2dp"
-        android:gravity="bottom">
+    <item android:bottom="-4dp">
         <shape android:shape="rectangle">
-            <solid android:color="@color/colorDashboardBorderline"></solid>
+            <stroke
+                android:color="@color/colorDashboardBorderline"
+                android:width="2dp" />
+            <corners android:topLeftRadius="6dp"
+                android:topRightRadius="6dp"/>
+
         </shape>
     </item>
+
+
+
 
 </layer-list>

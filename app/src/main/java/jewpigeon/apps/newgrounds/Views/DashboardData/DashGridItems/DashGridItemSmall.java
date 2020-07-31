@@ -10,7 +10,7 @@ public class DashGridItemSmall {
 
     public DashGridItemSmall(Drawable image, String author) {
         this.image = image;
-        this.author = author;
+        this.author = "by " + author;
     }
 
     public Drawable getImage() {

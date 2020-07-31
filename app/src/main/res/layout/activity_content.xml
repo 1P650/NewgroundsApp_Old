@@ -28,20 +28,18 @@
             <include
                 android:id="@+id/content_search"
                 layout="@layout/content_search" />
-
-
+            <include
+                android:id="@+id/content_search"
+                layout="@layout/content_search" />
         </com.google.android.material.appbar.AppBarLayout>
-
 
         <FrameLayout
             android:id="@+id/content_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <include
-                android:id="@+id/content_search"
-                layout="@layout/content_search" />
+            android:layout_height="wrap_content"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
         </FrameLayout>
+
 
         <include
             android:id="@+id/content_bottombar"
@@ -54,4 +52,10 @@
     <include
         android:id="@+id/content_left_menu"
         layout="@layout/content_navigationview" />
+
+    <include
+        android:id="@+id/content_profile_menu"
+        layout="@layout/content_profilemenu">
+
+    </include>
 </androidx.drawerlayout.widget.DrawerLayout>

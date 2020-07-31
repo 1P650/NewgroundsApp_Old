@@ -1,12 +1,20 @@
 package jewpigeon.apps.newgrounds;
 
+import android.animation.LayoutTransition;
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior;
@@ -23,12 +31,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import jewpigeon.apps.newgrounds.ContentFragments.ArtPortal;
 import jewpigeon.apps.newgrounds.ContentFragments.AudioPortal;
 import jewpigeon.apps.newgrounds.ContentFragments.CommunityPortal;
@@ -40,12 +52,14 @@ import jewpigeon.apps.newgrounds.Fundamental.NG_Bus;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Events;
 import jewpigeon.apps.newgrounds.Fundamental.NG_PreferencesData;
 import jewpigeon.apps.newgrounds.Views.ProfileWidget;
+import jewpigeon.apps.newgrounds.Views.ProfileWidgetData.ProfileIconClickListener;
+import jewpigeon.apps.newgrounds.Views.ProfileWidgetData.SliderItemClickListener;
 
 
 public class ContentActivity extends NG_Activity implements
-        FragNavController.RootFragmentListener,
-        BottomNavigationView.OnNavigationItemSelectedListener,
-        NavigationView.OnNavigationItemSelectedListener {
+        FragNavController.RootFragmentListener, FragNavController.TransactionListener,
+
+        BottomNavigationView.OnNavigationItemSelectedListener, NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar ContentToolbar;
     private ImageButton HomeButton;
@@ -54,12 +68,15 @@ public class ContentActivity extends NG_Activity implements
     private SearchView ContentSearch;
     private AppBarLayout contentAppBarLayout;
     private ProfileWidget ProfileMenu;
+    private TextView Logout;
 
 
     private BottomNavigationView ContentBottomBar;
     private HideBottomViewOnScrollBehavior contentBottomBarBehaviour;
 
     private NavigationView ContentLeftMenu;
+    private NavigationView ProfileDrawer;
+
     private DrawerLayout ContentDrawerLayout;
     private ActionBarDrawerToggle ContentDrawerToggle;
 
@@ -74,6 +91,7 @@ public class ContentActivity extends NG_Activity implements
                     FeaturedPortal.newInstance()
             ));
 
+    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -83,22 +101,25 @@ public class ContentActivity extends NG_Activity implements
         if (ContentFragmentsController == null) {
             ContentFragmentsController = FragNavController.newBuilder(savedInstanceState, getSupportFragmentManager(), R.id.content_container)
                     .rootFragments(ContentFragmentsList)
+                    .rootFragmentListener(this, ContentFragmentsList.size())
+                    .transactionListener(this)
                     .selectedTabIndex(FragNavController.TAB6)
                     .defaultTransactionOptions(
                             FragNavTransactionOptions.newBuilder()
-                                    .customAnimations(R.anim.ng_frag_enter_anim, R.anim.ng_frag_leave_anim)
+                                    .transition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                                     .build())
                     .build();
+
             super.setUpController(ContentFragmentsController);
         }
 
-        NG_Bus.get().register(this);
-
         setUpListeners();
-
+        NG_Bus.get().register(this);
 
 
     }
+
+
 
     @Override
     protected void onDestroy() {
@@ -120,23 +141,32 @@ public class ContentActivity extends NG_Activity implements
         ContentDrawerLayout = findViewById(R.id.content_drawerlayout);
         ContentLeftMenu = findViewById(R.id.content_left_menu);
 
-        HomeButton = findViewById(R.id.NG_appbar_home);
-        SearchButton = findViewById(R.id.NG_appbar_search);
-        LoginButton = findViewById(R.id.NG_LoginOrSignUp);
-        ProfileMenu = findViewById(R.id.NG_ProfileWidget);
+        HomeButton = ContentToolbar.findViewById(R.id.NG_appbar_home);
+        SearchButton = ContentToolbar.findViewById(R.id.NG_appbar_search);
+        LoginButton = ContentToolbar.findViewById(R.id.NG_LoginOrSignUp);
+        ProfileMenu = ContentToolbar.findViewById(R.id.NG_ProfileWidget);
+        ProfileDrawer = findViewById(R.id.content_profile_menu);
+        Logout = findViewById(R.id.ProfileMenu_Logout);
+
 
         if(preferences != null && preferences.isUserLogged()){
             LoginButton.setVisibility(View.GONE);
             ProfileMenu.setVisibility(View.VISIBLE);
+            ProfileDrawer.setVisibility(View.VISIBLE);
+
         }
 
         ContentSearch = findViewById(R.id.content_search);
-
+        EditText searchEditText = (EditText) ContentSearch.findViewById(androidx.appcompat.R.id.search_src_text);
+        searchEditText.setHintTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        ImageView close_button = ContentSearch.findViewById(androidx.appcompat.R.id.search_close_btn);
+        close_button.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorPrimary)));
 
 
         setSupportActionBar(ContentToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ng_menu_icon);
 
 
         ContentDrawerToggle = new ActionBarDrawerToggle(this, ContentDrawerLayout, ContentToolbar, 0, 0){
@@ -149,14 +179,25 @@ public class ContentActivity extends NG_Activity implements
         };
         ContentDrawerLayout.addDrawerListener(ContentDrawerToggle);
 
-        ContentDrawerToggle.setDrawerIndicatorEnabled(true);
+        ContentDrawerToggle.setDrawerIndicatorEnabled(false);
+        ContentDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                   checkDrawer();
+            }
+        });
         ContentDrawerToggle.syncState();
 
         ContentDrawerLayout.setScrimColor(getColor(android.R.color.transparent));
         ContentDrawerLayout.setDrawerElevation(0);
 
+        ContentDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, GravityCompat.END);
+
 
     }
+
+
+
 
     private void setUpListeners() {
         ContentBottomBar.setOnNavigationItemSelectedListener(this);
@@ -192,6 +233,7 @@ public class ContentActivity extends NG_Activity implements
             }
         });
 
+
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -199,6 +241,48 @@ public class ContentActivity extends NG_Activity implements
                         new Intent(ContentActivity.this, PassportActivity.class));
             }
 
+        });
+
+        ProfileMenu.setMenuClickListener(new SliderItemClickListener() {
+            @Override
+            public void onItemClick(View view) {
+                switch (view.getId()){
+                    case R.id.profileWidget_Messages:{
+
+                        break;
+                    }
+
+
+                    case R.id.profileWidget_Upload:{
+
+                        break;
+                    }
+
+                    case R.id.profileWidget_Notification:{
+
+                        break;
+                    }
+
+                }
+            }
+        });
+
+        ProfileMenu.setOnProfileIconClickListener(new ProfileIconClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(ContentDrawerLayout.isDrawerOpen(ProfileDrawer)) ContentDrawerLayout.closeDrawer(ProfileDrawer);
+                else ContentDrawerLayout.openDrawer(ProfileDrawer);
+            }
+        });
+        Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NG_PreferencesData preferencesData = getPreferencesFromStore();
+                if(preferencesData == null) preferencesData = new NG_PreferencesData();
+                preferencesData.setLogged(false);
+                updatePreferences(preferencesData);
+                NG_Bus.get().post(new NG_Events.NG_UserLoggedOut());
+            }
         });
 
 
@@ -210,15 +294,11 @@ public class ContentActivity extends NG_Activity implements
         super.onPostCreate(savedInstanceState);
         ContentDrawerToggle.syncState();
     }
-
-
     @Override
     public void onConfigurationChanged(Configuration conf) {
         super.onConfigurationChanged(conf);
         ContentDrawerToggle.onConfigurationChanged(conf);
     }
-
-
     @Override
     public Fragment getRootFragment(int identifier) {
         switch (identifier) {
@@ -238,6 +318,8 @@ public class ContentActivity extends NG_Activity implements
         throw new IllegalArgumentException("No such index");
     }
 
+
+
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -248,7 +330,6 @@ public class ContentActivity extends NG_Activity implements
     public void onBackPressed() {
         if (ContentDrawerLayout.isDrawerVisible(ContentLeftMenu)) ContentDrawerLayout.closeDrawer(ContentLeftMenu);
         if (ContentSearch.getVisibility() == View.VISIBLE && ContentSearch.isIconified()){ ContentSearch.setVisibility(View.GONE);}
-
         if (!HandleBackpressed()) {
             super.onBackPressed();
         }
@@ -346,5 +427,35 @@ public class ContentActivity extends NG_Activity implements
     public void onUserLoggedIn(NG_Events.NG_UserLoggedIn ULI){
         LoginButton.setVisibility(View.GONE);
         ProfileMenu.setVisibility(View.VISIBLE);
+        ProfileDrawer.setVisibility(View.VISIBLE);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onUserLoggedOut(NG_Events.NG_UserLoggedOut ULO){
+        if(ContentDrawerLayout.isDrawerOpen(ProfileDrawer)) ContentDrawerLayout.closeDrawer(ProfileDrawer);
+        LoginButton.setVisibility(View.VISIBLE);
+        ProfileMenu.setVisibility(View.GONE);
+        ProfileDrawer.setVisibility(View.GONE);
+    }
+
+
+    private void checkDrawer(){
+        if(ContentDrawerLayout.isDrawerOpen(ContentLeftMenu)) ContentDrawerLayout.closeDrawer(ContentLeftMenu);
+        else ContentDrawerLayout.openDrawer(ContentLeftMenu);
+    }
+
+    @Override
+    public void onTabTransaction(@Nullable Fragment fragment, int i) {
+
+    }
+
+    @Override
+    public void onFragmentTransaction(Fragment fragment, FragNavController.TransactionType transactionType) {
+        ContentDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 }

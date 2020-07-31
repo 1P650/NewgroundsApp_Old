@@ -1,10 +1,13 @@
 package jewpigeon.apps.newgrounds;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Activity;
 import jewpigeon.apps.newgrounds.PassportFragments.PassportSignInFragment;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
 
+import android.animation.LayoutTransition;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.ncapdevi.fragnav.FragNavController;
@@ -21,6 +24,7 @@ public class PassportActivity extends NG_Activity {
             Arrays.asList(
                     PassportSignInFragment.newInstance()
             ));
+    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +37,7 @@ public class PassportActivity extends NG_Activity {
                     .selectedTabIndex(FragNavController.TAB1)
                     .defaultTransactionOptions(
                             FragNavTransactionOptions.newBuilder()
-                            .customAnimations(R.anim.ng_passport_enter_anim,R.anim.ng_passport_leave_anim)
+                                    .transition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                             .build())
                     .build();
             setUpController(PassportController);
@@ -52,6 +56,9 @@ public class PassportActivity extends NG_Activity {
 
     private void establishViews() {
         PassportDashboard = findViewById(R.id.passport_dashboard);
+        LayoutTransition lt = new LayoutTransition();
+        lt.enableTransitionType(LayoutTransition.CHANGING);
+        PassportDashboard.setLayoutTransition(lt);
     }
 
     public void setDashboardLabel(String title){

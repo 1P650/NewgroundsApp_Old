@@ -7,6 +7,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.util.LruCache;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.PropertyResourceBundle;
 
 import androidx.annotation.NonNull;
@@ -60,23 +62,55 @@ public class DashAutofitGrid extends RecyclerView {
     }
 
     private void establish(int ITEM_SIZE) {
+        int COLUMN_SPACING = 0;
         int COLUMN_NUM = DimensionTool.GRID_calcColumsFor(ITEM_SIZE, getContext());
+        boolean isLandscape = getContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+        if(Cache.getInstanceFor(ITEM_SIZE).getLru().get(isLandscape)==null){
+            COLUMN_SPACING = DimensionTool.GRID_calcSpacing(ITEM_SIZE,COLUMN_NUM,getContext());
+            Cache.getInstanceFor(ITEM_SIZE).getLru().put(isLandscape,COLUMN_SPACING);
+        }
+        else {
+            COLUMN_SPACING = Cache.getInstanceFor(ITEM_SIZE).getLru().get(isLandscape);
+        }
+
         ColumnManager = new DashAutofitGridLayoutManager(getContext(), ITEM_SIZE);
         ColumnDecorator = new DashGridDecorator(
                 COLUMN_NUM,
                 DASH_VERTICAL_SPACING,
-                DimensionTool.GRID_calcSpacing(
-                        ITEM_SIZE, COLUMN_NUM, getContext()
-                )
+            COLUMN_SPACING
 
         );
-        Log.v("DASHGRID", "ITEM_SIZE" + ITEM_SIZE);
-        Log.v("DASHGRID", "COLUMN_NUM" + COLUMN_NUM);
-        Log.v("DASHGRID", "SPACING" +  DimensionTool.GRID_calcSpacing(
-                ITEM_SIZE, COLUMN_NUM, getContext()
-        ));
         setLayoutManager(ColumnManager);
         addItemDecoration(ColumnDecorator);
+    }
+
+
+    private static class Cache {
+
+        private static LinkedHashMap<Integer,Cache> instances;
+        private LruCache<Boolean, Integer> lru;
+
+        private Cache() {
+
+            lru = new LruCache<>(128);
+
+        }
+
+        public static Cache getInstanceFor(int size) {
+
+            if (instances == null || instances.get(size) == null) {
+                instances = new LinkedHashMap<>();
+                Cache cache = new Cache();
+                instances.put(size, cache);
+                return cache;
+            }
+            return instances.get(size);
+
+        }
+
+        public LruCache<Boolean, Integer> getLru() {
+            return lru;
+        }
     }
 
 }

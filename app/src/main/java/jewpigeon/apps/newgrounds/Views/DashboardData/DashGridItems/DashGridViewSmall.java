@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -47,6 +48,7 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
 
     private static TextPaint DashAuthorPainter;
     private Drawable defIcon;
+    private StateListDrawable DashForeground;
 
 
 
@@ -54,7 +56,7 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
 
 
     {
-        TextCache.INSTANCE.changeWidth(ITEM_SIZE);
+        TextCache.INSTANCE().changeWidth(ITEM_SIZE);
         defIcon = ContextCompat.getDrawable(getContext(), R.drawable.ng_icon_undefined);
         defIcon.setBounds(0,0,ITEM_SIZE,ITEM_SIZE);
 
@@ -69,12 +71,18 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
         DashPegiBackground.setCornerRadii(new float[] { 0, 0, 0, 0, 16 ,8 , 0, 0});
         DashPegiBackground.setColor(ITEM_LABEL_COLOR);
         DashPegiBackground.setBounds(0,0, (int) (ITEM_SIZE/(4.5)), (int) (ITEM_SIZE/4.5));
+
+        DashForeground = new StateListDrawable();
+
+        DashForeground.setEnterFadeDuration(150);
+        DashForeground.setExitFadeDuration(300);
+
+        DashForeground.addState(new int[]{android.R.attr.state_pressed}, ContextCompat.getDrawable(getContext(), R.color.colorGridRippleEffect));
+
+        DashForeground.setCallback(this);
     }
 
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-    }
+
 
     public DashGridViewSmall(Context context) {
         super(context);
@@ -114,13 +122,27 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
         canvas.translate(2,4);
         DashPegi.draw(canvas);
         canvas.save();
+        canvas.translate(-2,-4);
+        DashForeground.draw(canvas);
         canvas.restore();
     }
 
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        DashForeground.setBounds(0, 0, w, h);
+    }
 
+    @Override
+    protected boolean verifyDrawable(@NonNull Drawable who) {
+        return super.verifyDrawable(who) || (who == DashForeground);
+    }
 
-
-
+    @Override
+    public void jumpDrawablesToCurrentState() {
+        super.jumpDrawablesToCurrentState();
+        DashForeground.jumpToCurrentState();
+    }
 
     public void setDashItem(DashGridItemSmall item){
         Glide.
@@ -132,9 +154,16 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
         DashIcon.setBounds(0, 0, ITEM_SIZE, ITEM_SIZE);
 
 
-        DashAuthor = TextCache.INSTANCE.authorLayoutFor(item.getAuthor());
+        DashAuthor = TextCache.INSTANCE().authorLayoutFor(item.getAuthor());
 
         requestLayout();
+        invalidate();
+    }
+
+    @Override
+    protected void drawableStateChanged() {
+        super.drawableStateChanged();
+        DashForeground.setState(getDrawableState());
         invalidate();
     }
 
@@ -145,17 +174,10 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
         DashAuthorPainter.setTextSize(sp(getContext(),15));
 
 
-        this.setForeground(ContextCompat.getDrawable(getContext(), R.drawable.grid_item_ripple));
+
         this.setClickable(true);
 
     }
- /*   private float sp(float sp) {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, getResources().getDisplayMetrics());
-    }
-
-    private float dp(float dp) {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
-    }*/
 
 
     @Override
@@ -235,8 +257,13 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
 
     }
 
-    private enum TextCache {
-        INSTANCE;
+    private static class TextCache {
+        private static TextCache instance;
+
+        public static TextCache INSTANCE(){
+            if(instance == null){instance = new TextCache();}
+            return instance;
+        }
 
         private int width;
         private final LruCache<CharSequence, StaticLayout> authorCache = new LruCache<CharSequence, StaticLayout>(100) {

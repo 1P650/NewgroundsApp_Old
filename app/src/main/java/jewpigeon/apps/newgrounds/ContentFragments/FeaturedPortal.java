@@ -1,7 +1,6 @@
 package jewpigeon.apps.newgrounds.ContentFragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,21 +10,21 @@ import java.util.Arrays;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
-import jewpigeon.apps.newgrounds.GenericLayouts.GenericFragment;
 import jewpigeon.apps.newgrounds.R;
 import jewpigeon.apps.newgrounds.Views.DashAutofitGrid;
-import jewpigeon.apps.newgrounds.Views.Dashboard;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashAudioItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGenericAdapter;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridItemSmall;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItemClickListener;
+import jewpigeon.apps.newgrounds.Views.Dashboard;
 
 
-public class FeaturedPortal extends NG_Fragment implements DashItemClickListener {
+public class FeaturedPortal extends NG_Fragment {
     View rootView;
     Dashboard FeaturedImage;
     Dashboard FeaturedMovies;
@@ -36,11 +35,12 @@ public class FeaturedPortal extends NG_Fragment implements DashItemClickListener
 
     ArrayList<DashGridItem> FeaturedMoviesArray = new ArrayList<>(Arrays.asList(
             new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT")));
+            new DashGridItem(null, "DEFAULT","DEFAULT"),
+            new DashGridItem(null, "DEFAULT","DEFAULT"),
+            new DashGridItem(null, "DEFAULT","DEFAULT"),
+            new DashGridItem(null, "DEFAULT","DEFAULT"),
+            new DashGridItem(null, "DEFAULT", "DEFAULT")
+    ));
 
 
     private DashGenericAdapter movies_adapter;
@@ -60,7 +60,8 @@ public class FeaturedPortal extends NG_Fragment implements DashItemClickListener
             new DashGridItem(null, "DEFAULT", "DEFAULT"),
             new DashGridItem(null, "DEFAULT", "DEFAULT"),
             new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT")));
+            new DashGridItem(null, "DEFAULT", "DEFAULT")
+    ));
 
     ArrayList<DashGridItemSmall> FeaturedArtArray = new ArrayList<>(Arrays.asList(
             new DashGridItemSmall(null, "DEFAULT"),
@@ -107,7 +108,7 @@ public class FeaturedPortal extends NG_Fragment implements DashItemClickListener
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        postponeEnterTransition();
         rootView = inflater.inflate(R.layout.content_featured, container, false);
         setSeekerView(rootView);
 
@@ -115,29 +116,38 @@ public class FeaturedPortal extends NG_Fragment implements DashItemClickListener
 
         FeaturedMovies = (Dashboard) findViewById(R.id.featured_movies);
         FeaturedMoviesList = (DashAutofitGrid) findViewById(R.id.featured_movies_grid);
-        FeaturedMoviesList.setAdapter(movies_adapter);
-
 
         FeaturedGames = (Dashboard) findViewById(R.id.featured_games);
         FeaturedGamesList = (DashAutofitGrid) findViewById(R.id.featured_games_grid);
-        FeaturedGamesList.setAdapter(games_adapter);
+
 
         FeaturedArt = (Dashboard) findViewById(R.id.featured_art);
         FeaturedArtList = (DashAutofitGrid) findViewById(R.id.featured_art_grid);
-        FeaturedArtList.setAdapter(art_adapter);
+
 
         FeaturedAudio = (Dashboard) findViewById(R.id.featured_audio);
         FeaturedAudioList = (RecyclerView) findViewById(R.id.featured_audio_list);
-        FeaturedAudioList.setLayoutManager(new LinearLayoutManager(getContext()));
-        FeaturedAudioList.setAdapter(audio_adapter);
-
+        startPostponedEnterTransition();
         return rootView;
     }
 
     @Override
-    public void OnItemClick(View view, int position) {
-        DashGridItem item = FeaturedMoviesArray.get(position);
-        getController().pushFragment(GenericFragment.newInstance());
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
+        movies_adapter.setOnItemClickListener(new DashItemClickListener() {
+            @Override
+            public void OnItemClick(View view, int position) {
+
+            }
+        });
+        FeaturedMoviesList.setAdapter(movies_adapter);
+
+        FeaturedGamesList.setAdapter(games_adapter);
+
+        FeaturedArtList.setAdapter(art_adapter);
+
+        FeaturedAudioList.setLayoutManager(new LinearLayoutManager(getContext()));
+        FeaturedAudioList.setAdapter(audio_adapter);
     }
 }

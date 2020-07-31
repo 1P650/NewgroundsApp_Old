@@ -9,6 +9,7 @@
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ng_app_ico"
+        android:roundIcon="@mipmap/ng_app_ico"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/NG_DefaultTheme"

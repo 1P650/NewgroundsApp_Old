@@ -35,36 +35,6 @@ public class NG_Fragment extends Fragment {
           return rootView;
     }
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-
-        if(behavior != null)
-            return;
-       // FrameLayout layout =(FrameLayout) getActivity().findViewById(R.id.content_container);
-       // CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) layout.getLayoutParams();
-
-        behavior = new AppBarLayout.ScrollingViewBehavior(getContext(), null);
-       // params.setBehavior(null);
-
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        if(behavior == null)
-            return;
-
-      /*  FrameLayout layout =getActivity().findViewById(R.id.content_container);
-        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) layout.getLayoutParams();
-
-        params.setBehavior(behavior);
-
-        layout.setLayoutParams(params);*/
-
-        behavior = null;
-    }
-
     public View findViewById(int id){
         return rootView.findViewById(id);
     }

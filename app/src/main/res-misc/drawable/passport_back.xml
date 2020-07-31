@@ -4,16 +4,11 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:opacity="opaque">
 
-    <!-- Цвет фона, предпочтительно как в главной теме -->
-    <item android:drawable="@color/colorPrimaryDark" />
-
     <!-- Лого приложения - 144dp версия иконки приложения -->
-    <item
-        android:gravity="center"
-        android:height="256dp"
-        android:width="256dp"
-        android:drawable="@drawable/ng_background_logo">
-
+    <item>
+        <bitmap
+            android:src="@drawable/ng_passport_background"
+            android:gravity="center" />
     </item>
 
 </layer-list>

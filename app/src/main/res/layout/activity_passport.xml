@@ -24,8 +24,7 @@
         <FrameLayout
             android:id="@+id/passport_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dashboard_labelSize">
+            android:layout_height="wrap_content">
 
         </FrameLayout>
     </jewpigeon.apps.newgrounds.Views.Dashboard>

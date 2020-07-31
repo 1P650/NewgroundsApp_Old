@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/ng_content_toolbar_height"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_gravity="top"
     app:contentInsetStart="0dp"
     app:contentInsetStartWithNavigation="0dp"
@@ -14,19 +14,24 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@null">
 
         <ImageButton
             android:id="@+id/NG_appbar_search"
-            android:layout_width="49dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
             android:background="@null"
+            android:contentDescription="@string/contentDescription_search"
+            android:padding="8dp"
+            android:scaleType="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/NG_ProfileWidget"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/NG_appbar_home"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_search" />
+            app:srcCompat="@drawable/ng_search_icon" />
 
         <ImageButton
             android:id="@+id/NG_appbar_home"
@@ -38,24 +43,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/contentDescription_home" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/NG_LoginOrSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
             android:padding="8dp"
-            android:text="Login/Sign up"
+            android:text="@string/loginOrSignUp"
+            android:textColor="@color/colorAccent"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@color/colorAccent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/NG_appbar_home"
             app:layout_constraintEnd_toStartOf="@+id/NG_appbar_search"
             app:layout_constraintStart_toEndOf="@+id/NG_appbar_home"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/NG_appbar_home" />
 
         <jewpigeon.apps.newgrounds.Views.ProfileWidget
             android:id="@+id/NG_ProfileWidget"

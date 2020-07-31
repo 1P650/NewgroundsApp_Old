@@ -1,14 +1,8 @@
 package jewpigeon.apps.newgrounds.Utils;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import jewpigeon.apps.newgrounds.R;
-import jewpigeon.apps.newgrounds.Views.Dashboard;
 
 public class DimensionTool {
 
@@ -17,12 +11,12 @@ public class DimensionTool {
     }
 
 
-    public static int dpToPx(int dp) {
+/*    public static int dpToPx(int dp) {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
     public static int pxToDp(int px) {
         return (int) (px / Resources.getSystem().getDisplayMetrics().density);
-    }
+    }*/
 
     public  static int screenWidth(Context context){
         return context.getResources().getDisplayMetrics().widthPixels;
@@ -43,7 +37,7 @@ public class DimensionTool {
     public static int GRID_calcColumsFor(int columnWidth, int width){
         int parentDim = width;
         int columnNum =  parentDim / columnWidth;
-        int parentDimMinSpacing = parentDim - 25*columnNum;
+        int parentDimMinSpacing = parentDim - 30*columnNum;
         if(parentDimMinSpacing / columnWidth < columnNum) columnNum--;
         return columnNum;
     }

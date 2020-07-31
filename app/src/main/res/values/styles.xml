@@ -41,24 +41,17 @@
     </style>
 
 
-    <style name="NG_DefaultTheme.Dashboard" parent="CardView">
-        <item name="cardBackgroundColor">@color/colorDashboardBackground</item>
+    <style name="NG_DefaultTheme.Dashboard" >
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">@dimen/dashboard_margin_corners</item>
         <item name="android:layout_marginTop">@dimen/dashboard_margin_top_bottom</item>
         <item name="android:layout_marginRight">@dimen/dashboard_margin_corners</item>
-        <item name="cardCornerRadius">@dimen/dashboard_corner_radius</item>
-        <item name="cardElevation">@dimen/dashboard_elevation</item>
-        <item name="strokeColor">@color/colorDashboardBorderline</item>
-        <item name="strokeWidth">@dimen/dashboard_stroke_width</item>
-        <item name="cardPreventCornerOverlap">false</item>
     </style>
 
     <style name="NG_DefaultTheme.DashboardPortalGrid">
         <item name = "android:layout_width">match_parent </item>
         <item name = "android:layout_height">wrap_content</item>
-        <item name = "android:layout_marginTop">@dimen/dashboard_labelSize</item>
         <item name = "android:clipToPadding">false</item>
         <item name = "android:overScrollMode">never</item>
         <item name = "android:scrollbars">none</item>
@@ -69,7 +62,6 @@
         <item name="cardBackgroundColor">@color/colorDashboardBackground</item>
         <item name = "android:layout_width"> match_parent </item>
         <item name = "android:layout_height"> wrap_content</item>
-        <item name = "android:layout_marginTop"> @dimen/dashboard_labelSize</item>
         <item name = "android:clipToPadding"> false</item>
         <item name = "android:overScrollMode"> never</item>
         <item name = "android:scrollbars"> none</item>
@@ -79,7 +71,6 @@
     <style name="NG_DefaultTheme.DashboardPortalList">
         <item name = "android:layout_width">match_parent</item>
         <item name = "android:layout_height">wrap_content</item>
-        <item name = "android:layout_marginTop">@dimen/dashboard_labelSize</item>
         <item name = "android:clipToPadding">false</item>
         <item name = "android:paddingBottom">8dp</item>
         <item name = "android:paddingLeft">8dp</item>
@@ -91,7 +82,7 @@
 
 
     <style name="NG_DefaultTheme.Passport">
-        <item name="android:windowBackground">@drawable/ng_passport_background</item>
+        <item name="android:windowBackground">@drawable/passport_back</item>
         <item name="android:navigationBarColor">@color/colorPassportNavigationBar</item>
         <item name="android:statusBarColor">@color/colorPassportStatusBar</item>
     </style>

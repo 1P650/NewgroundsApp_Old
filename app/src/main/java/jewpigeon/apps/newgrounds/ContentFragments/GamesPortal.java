@@ -71,7 +71,7 @@ public class GamesPortal extends NG_Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        postponeEnterTransition();
         rootView = inflater.inflate(R.layout.content_games, container, false);
         setSeekerView(rootView);
 
@@ -96,7 +96,7 @@ public class GamesPortal extends NG_Fragment {
         DashGenericAdapter year_adapter = new DashGenericAdapter(BrandGamesArray);
         YearGamesList.setAdapter(year_adapter);
 
-
+        startPostponedEnterTransition();
         return rootView;
     }
 }
