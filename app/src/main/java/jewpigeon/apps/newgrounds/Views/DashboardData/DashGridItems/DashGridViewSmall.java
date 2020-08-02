@@ -68,7 +68,7 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
 
         DashPegiBackground = new GradientDrawable();
         DashPegiBackground.setShape(GradientDrawable.RECTANGLE);
-        DashPegiBackground.setCornerRadii(new float[] { 0, 0, 0, 0, 16 ,8 , 0, 0});
+        DashPegiBackground.setCornerRadii(new float[] { 0, 0, 0, 0, 16 ,16 , 0, 0});
         DashPegiBackground.setColor(ITEM_LABEL_COLOR);
         DashPegiBackground.setBounds(0,0, (int) (ITEM_SIZE/(4.5)), (int) (ITEM_SIZE/4.5));
 
@@ -171,7 +171,7 @@ public class DashGridViewSmall extends View implements Target<Drawable> {
     private void establishState(){
         DashAuthorPainter = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         DashAuthorPainter.setColor(AUTHOR_COLOR);
-        DashAuthorPainter.setTextSize(sp(getContext(),15));
+        DashAuthorPainter.setTextSize(sp(getContext(),13));
 
 
 

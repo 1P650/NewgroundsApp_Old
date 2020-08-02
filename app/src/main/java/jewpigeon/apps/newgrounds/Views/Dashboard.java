@@ -4,14 +4,19 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Outline;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Region;
 import android.graphics.Xfermode;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
@@ -105,13 +110,9 @@ public class Dashboard extends LinearLayout {
         MainBackground.setColor(ContextCompat.getColor(getContext(), R.color.colorDashboardBackground));
         MainBackground.setShape(GradientDrawable.RECTANGLE);
         MainBackground.setCornerRadii(new float[]{0,0,0,0,CORNER_RADIUS,CORNER_RADIUS,CORNER_RADIUS,CORNER_RADIUS});
-        MainBackground.setStroke(STROKE_WIDTH, ContextCompat.getColor(getContext(), R.color.colorDashboardBorderline));
 
 
         LabelBackground = ContextCompat.getDrawable(getContext(), R.drawable.dashboard_label_gradient);
-
-
-
     }
 
     public Dashboard(Context context) {
@@ -144,11 +145,17 @@ public class Dashboard extends LinearLayout {
         this.setOutlineProvider(new ViewOutlineProvider() {
             @Override
             public void getOutline(View view, Outline outline) {
-                outline.setRoundRect(0, getHeight() - STROKE_WIDTH*4, getWidth(), getHeight(), CORNER_RADIUS);
+                Path path = new Path();
+                path.moveTo(0,getHeight()-STROKE_WIDTH*4);
+                path.addRoundRect(0,getHeight()-STROKE_WIDTH*4,getWidth(), getHeight(), new float[] {0,0, 0,0, CORNER_RADIUS,CORNER_RADIUS, CORNER_RADIUS/2,CORNER_RADIUS/2},Path.Direction.CW);
+                path.close();
+                outline.setConvexPath(path);
+                outline.offset(0,STROKE_WIDTH);
+                outline.setAlpha(0.75f);
 
             }
         });
-        this.setElevation(DimensionTool.dp(getContext(), 4));
+        this.setElevation(DimensionTool.dp(getContext(), 2));
 
     }
 
@@ -200,7 +207,7 @@ public class Dashboard extends LinearLayout {
         
         labelConstraints.clone(DashboardLabel);
         
-        labelConstraints.connect(LabelIcon.getId(), ConstraintSet.BOTTOM, DashboardLabel.getId(), ConstraintSet.BOTTOM, (int) DimensionTool.dp(context, 8));
+        labelConstraints.connect(LabelIcon.getId(), ConstraintSet.BOTTOM, DashboardLabel.getId(), ConstraintSet.BOTTOM, (int) DimensionTool.dp(context, 6));
         labelConstraints.connect(LabelIcon.getId(), ConstraintSet.TOP, DashboardLabel.getId(), ConstraintSet.TOP, (int) DimensionTool.dp(context, 8));
         labelConstraints.connect(LabelIcon.getId(), ConstraintSet.START, DashboardLabel.getId(), ConstraintSet.START, (int) DimensionTool.dp(context, 8));
 
@@ -300,12 +307,9 @@ public class Dashboard extends LinearLayout {
     @Override
     protected void dispatchDraw(Canvas canvas) {
         DashboardPainter painter = new DashboardPainter();
-        Paint shadowPaint = new Paint();
-        shadowPaint.setStyle(Paint.Style.STROKE);
-        shadowPaint.setColor(Color.RED);
         if(IS_LABEL_VISIBLE){
             LabelBackground.setBounds(0,0,getWidth(), LABEL_HEIGHT);
-            MainBackground.setBounds(0,0, getWidth(), getHeight()-LABEL_HEIGHT);
+            MainBackground.setBounds(STROKE_WIDTH,0, getWidth()-STROKE_WIDTH, getHeight()-LABEL_HEIGHT);
             LabelBackground.draw(canvas);
             canvas.translate(0,LABEL_HEIGHT);
             MainBackground.draw(canvas);
@@ -319,52 +323,40 @@ public class Dashboard extends LinearLayout {
         }
         if(IS_LABEL_VISIBLE){
             painter.drawInnerBorder(canvas);
+            painter.drawOuterBorder(canvas);
         }
-        else painter.drawInnerBorder(canvas, true);
-
+        else {
+            painter.drawInnerBorder(canvas, true);
+            painter.drawOuterBorder(canvas,true);
+        }
         super.dispatchDraw(canvas);
+
     }
+
 
     private class DashboardPainter{
         private final int LABEL_HEIGHT = getContext().getResources().getDimensionPixelSize(R.dimen.dashboard_labelSize);
-        private final int STROKE_PADDING = STROKE_WIDTH*3/2;
+        private final float STROKE_PADDING = STROKE_WIDTH*1.35f+1;
         private final int CORNER_RADIUS = getContext().getResources().getDimensionPixelSize(R.dimen.dashboard_corner_radius);
-        private final float CORNER_PADDING = CORNER_RADIUS*1.6f;
+        private final float CORNER_PADDING = CORNER_RADIUS*2/3;
         private final float CORNER_LINE_PADDING_VERTICAL = CORNER_PADDING/2-1;
         private final float CORNER_LINE_PADDING_HORIZONTAL =CORNER_PADDING/2-1;
 
         private void drawInnerBorder(Canvas canvas){
             Paint innerlinePaint = new Paint();
-            innerlinePaint.setAntiAlias(true);
             innerlinePaint.setColor(ContextCompat.getColor(getContext(), R.color.colorDashboardInnerBorderline));
             innerlinePaint.setStrokeWidth(STROKE_WIDTH);
             innerlinePaint.setStyle(Paint.Style.STROKE);
 
+            canvas.save();
+            canvas.clipRect(0, LABEL_HEIGHT+STROKE_WIDTH, getWidth(), getHeight());
+                 canvas.drawRoundRect(STROKE_PADDING,   STROKE_PADDING,
+                    getWidth() - STROKE_PADDING, getHeight() - STROKE_PADDING,
+                    CORNER_RADIUS*2/3, CORNER_RADIUS*2/3, innerlinePaint);
+            canvas.drawLine(STROKE_WIDTH, LABEL_HEIGHT+STROKE_PADDING, getWidth()-STROKE_PADDING, LABEL_HEIGHT + STROKE_PADDING, innerlinePaint);
+            canvas.restore();
 
-            canvas.drawLine(STROKE_PADDING, LABEL_HEIGHT+STROKE_PADDING, getWidth()-STROKE_PADDING, LABEL_HEIGHT + STROKE_PADDING, innerlinePaint);
 
-            canvas.drawLine(STROKE_PADDING, LABEL_HEIGHT+STROKE_WIDTH, STROKE_PADDING, getHeight() - STROKE_PADDING - CORNER_LINE_PADDING_VERTICAL, innerlinePaint);
-
-            canvas.drawArc(
-                    STROKE_PADDING , getHeight() - STROKE_PADDING - CORNER_PADDING,
-                    STROKE_PADDING+CORNER_PADDING, getHeight() - STROKE_PADDING  ,
-                    90,
-                    90,
-                    false,
-                    innerlinePaint);
-
-            canvas.drawLine(STROKE_PADDING + CORNER_LINE_PADDING_HORIZONTAL, getHeight() - STROKE_PADDING,
-                    getWidth() - STROKE_PADDING - CORNER_LINE_PADDING_HORIZONTAL, getHeight() - STROKE_PADDING, innerlinePaint);
-
-            canvas.drawArc(
-                    getWidth() - STROKE_PADDING-CORNER_PADDING, getHeight() - STROKE_PADDING - CORNER_PADDING,
-                    getWidth() - STROKE_PADDING, getHeight() - STROKE_PADDING  ,
-                    0,
-                    90,
-                    false,
-                    innerlinePaint);
-
-            canvas.drawLine(getWidth() - STROKE_PADDING, LABEL_HEIGHT+STROKE_WIDTH, getWidth() - STROKE_PADDING, getHeight() - STROKE_WIDTH - CORNER_LINE_PADDING_VERTICAL, innerlinePaint);
 
         }
         private void drawInnerBorder(Canvas canvas, boolean NoBorders){
@@ -374,52 +366,42 @@ public class Dashboard extends LinearLayout {
             innerlinePaint.setStrokeWidth(STROKE_WIDTH);
             innerlinePaint.setStyle(Paint.Style.STROKE);
 
-            canvas.drawLine(STROKE_PADDING + CORNER_LINE_PADDING_HORIZONTAL, STROKE_PADDING,
-                    getWidth()-STROKE_PADDING - CORNER_LINE_PADDING_HORIZONTAL,  STROKE_PADDING,
-                    innerlinePaint);
+            canvas.drawRoundRect(STROKE_PADDING,   STROKE_PADDING,
+                    getWidth() - STROKE_PADDING, getHeight() - STROKE_PADDING,
+                    CORNER_RADIUS*2/3, CORNER_RADIUS*2/3, innerlinePaint);
 
-            canvas.drawArc(STROKE_PADDING, STROKE_PADDING,
-                    STROKE_PADDING + CORNER_PADDING, STROKE_PADDING+ CORNER_PADDING,
-                    180,
-                    90,
-                    false,
-                    innerlinePaint);
+        }
 
-            canvas.drawLine(STROKE_PADDING, STROKE_WIDTH + CORNER_LINE_PADDING_VERTICAL,
-                    STROKE_PADDING, getHeight() - STROKE_PADDING - CORNER_LINE_PADDING_VERTICAL,
-                    innerlinePaint);
+        private void drawOuterBorder(Canvas canvas){
+            Paint outerlinePaint = new Paint();
+            outerlinePaint.setColor(ContextCompat.getColor(getContext(), R.color.colorDashboardBorderline));
+            outerlinePaint.setStrokeWidth(STROKE_WIDTH);
+            outerlinePaint.setAntiAlias(true);
+            outerlinePaint.setStyle(Paint.Style.STROKE);
 
-            canvas.drawArc(
-                    STROKE_PADDING , getHeight() - STROKE_PADDING - CORNER_PADDING,
-                    STROKE_PADDING+CORNER_PADDING, getHeight() - STROKE_PADDING  ,
-                    90,
-                    90,
-                    false,
-                    innerlinePaint);
+        /*    canvas.save();
+            canvas.clipRect(0, LABEL_HEIGHT, getWidth(), getHeight());
+            canvas.drawRoundRect(STROKE_WIDTH/2, STROKE_WIDTH/2,
+                    getWidth()-STROKE_WIDTH/2, getHeight()-STROKE_WIDTH/2-0.5f,
+                    CORNER_RADIUS, CORNER_RADIUS, outerlinePaint);
+            canvas.drawLine(STROKE_WIDTH-1, LABEL_HEIGHT+STROKE_WIDTH/2+0.5f, getWidth()-STROKE_WIDTH+1,  LABEL_HEIGHT+STROKE_WIDTH/2+0.5f, outerlinePaint);
+            canvas.restore();*/
 
-            canvas.drawLine(STROKE_PADDING + CORNER_LINE_PADDING_HORIZONTAL, getHeight() - STROKE_PADDING,
-                    getWidth() - STROKE_PADDING - CORNER_LINE_PADDING_HORIZONTAL, getHeight() - STROKE_PADDING, innerlinePaint);
+            canvas.drawRoundRect(STROKE_WIDTH/2+0.5f,   STROKE_WIDTH/2+0.5f,
+                    getWidth()-STROKE_WIDTH/2, getHeight()-STROKE_WIDTH/2-0.5f,
+                    CORNER_RADIUS, CORNER_RADIUS, outerlinePaint);
+            canvas.drawLine(STROKE_WIDTH-1, LABEL_HEIGHT+STROKE_WIDTH/2, getWidth()-STROKE_WIDTH+1,  LABEL_HEIGHT+STROKE_WIDTH/2, outerlinePaint);
 
-            canvas.drawArc(
-                    getWidth() - STROKE_PADDING-CORNER_PADDING, getHeight() - STROKE_PADDING - CORNER_PADDING,
-                    getWidth() - STROKE_PADDING, getHeight() - STROKE_PADDING  ,
-                    0,
-                    90,
-                    false,
-                    innerlinePaint);
+        }
+        private void drawOuterBorder(Canvas canvas, boolean NoBorders){
 
-            canvas.drawLine(getWidth() - STROKE_PADDING, STROKE_WIDTH + CORNER_LINE_PADDING_VERTICAL,
-                    getWidth() - STROKE_PADDING, getHeight() - STROKE_WIDTH - CORNER_LINE_PADDING_VERTICAL,
-                    innerlinePaint);
-
-            canvas.drawArc(
-                    getWidth() - STROKE_PADDING-CORNER_PADDING, STROKE_PADDING,
-                    getWidth() - STROKE_PADDING, STROKE_PADDING + CORNER_PADDING  ,
-                    270,
-                    90,
-                    false,
-                    innerlinePaint);
-
+            Paint outerlinePaint = new Paint();
+            outerlinePaint.setColor(ContextCompat.getColor(getContext(), R.color.colorDashboardBorderline));
+            outerlinePaint.setStrokeWidth(STROKE_WIDTH);
+            outerlinePaint.setStyle(Paint.Style.STROKE);
+            canvas.drawRoundRect(STROKE_WIDTH/2+0.5f,   STROKE_WIDTH/2+0.5f,
+                    getWidth()-STROKE_WIDTH/2, getHeight()-STROKE_WIDTH/2-0.5f,
+                    CORNER_RADIUS, CORNER_RADIUS, outerlinePaint);
         }
     }
 

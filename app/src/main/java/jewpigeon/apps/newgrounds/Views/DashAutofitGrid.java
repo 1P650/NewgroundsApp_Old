@@ -84,6 +84,10 @@ public class DashAutofitGrid extends RecyclerView {
         addItemDecoration(ColumnDecorator);
     }
 
+    public DashAutofitGridLayoutManager getManager(){
+        return ColumnManager;
+    }
+
 
     private static class Cache {
 

@@ -84,8 +84,9 @@ public class PassportForgotFragment extends NG_Fragment implements View.OnClickL
                 break;
             }
             case R.id.ForgotPassword_toSignIn: {
-                getPassportActivity().setDashboardLabel(getPassportActivity().DEF_LABEL);
-                getController().popFragment();
+                    getPassportActivity().setDashboardLabel(getPassportActivity().DEF_LABEL);
+                    getController().popFragment();
+
                 break;
             }
         }

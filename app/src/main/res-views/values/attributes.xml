@@ -2,7 +2,6 @@
 <resources>
     <declare-styleable name="Dashboard">
         <attr name="labelVisible" format="boolean"/>
-        <attr name="content" format="reference" />
         <attr name="labelText" format="string" />
         <attr name="labelIcon" format="reference" />
         <attr name="PanelButtonsList" format="reference" />

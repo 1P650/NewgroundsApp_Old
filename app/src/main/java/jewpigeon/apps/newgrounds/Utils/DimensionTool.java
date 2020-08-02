@@ -30,15 +30,15 @@ public class DimensionTool {
         int parentDim = screenWidth(context) - GRID_CORNERS(context) * 2;
         int columnNum =  parentDim / columnWidth;
         int parentDimMinSpacing = parentDim - 25*columnNum;
-        if(parentDimMinSpacing / columnWidth < columnNum) columnNum--;
+        if((parentDimMinSpacing / columnWidth < columnNum) && columnWidth <= 272) columnNum--;
         return columnNum;
     }
 
     public static int GRID_calcColumsFor(int columnWidth, int width){
         int parentDim = width;
         int columnNum =  parentDim / columnWidth;
-        int parentDimMinSpacing = parentDim - 30*columnNum;
-        if(parentDimMinSpacing / columnWidth < columnNum) columnNum--;
+        int parentDimMinSpacing = parentDim - 25*columnNum;
+        if((parentDimMinSpacing / columnWidth < columnNum) && columnWidth <= 272) columnNum--;
         return columnNum;
     }
 

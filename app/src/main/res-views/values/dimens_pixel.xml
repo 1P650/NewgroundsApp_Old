@@ -3,7 +3,7 @@
     <dimen name="dashboard_textSize">20sp</dimen>
     <dimen name="dashboard_iconSize">28dp</dimen>
     <dimen name="dashboard_labelSize">38dp</dimen>
-    <dimen name="dashboard_labelSizeHalf">19dp</dimen>
+    <dimen name="dashboard_labelSizeHalf">20dp</dimen>
     <dimen name="content_padding">16dp</dimen>
     <dimen name="content_padding_small">13dp</dimen>
 
@@ -14,6 +14,9 @@
     <dimen name="dashboard_item_size">108dp</dimen>
     <dimen name="dashboard_item_size_small">78dp</dimen>
     <dimen name="dashboard_item_size_audio_list">38dp</dimen>
+    <dimen name="dashboard_item_size_art">198dp</dimen>
+    <dimen name="dashboard_item_width_art">180dp</dimen>
+
 
     <dimen name="dashboard_stroke_width">2dp</dimen>
     <dimen name="dashboard_elevation">4dp</dimen>

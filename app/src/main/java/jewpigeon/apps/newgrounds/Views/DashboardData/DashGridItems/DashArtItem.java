@@ -3,22 +3,22 @@ package jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems;
 import android.graphics.drawable.Drawable;
 
 public class DashArtItem {
-    private Drawable AudioIcon;
+    private Drawable ArtIcon;
     private String Title;
     private String Author;
 
-    public DashArtItem(Drawable audioIcon, String title, String author) {
-        AudioIcon = audioIcon;
+    public DashArtItem(Drawable artIcon, String title, String author) {
+        ArtIcon = artIcon;
         Title = title;
         Author = "by " + author;
     }
 
-    public Drawable getAudioIcon() {
-        return AudioIcon;
+    public Drawable getArtIcon() {
+        return ArtIcon;
     }
 
-    public void setAudioIcon(Drawable audioIcon) {
-        AudioIcon = audioIcon;
+    public void setArtIcon(Drawable artIcon) {
+        ArtIcon = artIcon;
     }
 
     public String getTitle() {

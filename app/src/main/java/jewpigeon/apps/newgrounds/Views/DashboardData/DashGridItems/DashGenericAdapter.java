@@ -13,6 +13,7 @@ public class DashGenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public static final byte PORTAL_GRID_REGULAR = 0;
     public static final byte PORTAL_GRID_SMALL = 1;
     public static final byte PORTAL_AUDIO_LIST = 2;
+    public static final byte PORTAL_ART_GRID = 3;
 
 
     private ArrayList items;
@@ -44,6 +45,10 @@ public class DashGenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 DashAudioView itemView = new DashAudioView(parent.getContext());
                 return new DashGridHolder_Audio(itemView);
             }
+            case PORTAL_ART_GRID:{
+                DashArtItemView itemView = new DashArtItemView(parent.getContext());
+                return new DashGridHolder_Art(itemView);
+            }
             default: {
                 DashGridView itemView = new DashGridView(parent.getContext());
                 return new DashGridHolder_Regular(itemView);
@@ -64,6 +69,12 @@ public class DashGenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 DashAudioItem item = (DashAudioItem) items.get(position);
                 ((DashGridHolder_Audio) holder).view.setDashItem(item);
                 if (position % 2 == 0) ((DashGridHolder_Audio) holder).view.enableBackground();
+                break;
+            }
+
+            case PORTAL_ART_GRID: {
+                DashArtItem item = (DashArtItem) items.get(position);
+                ((DashGridHolder_Art) holder).view.setDashItem(item);
                 break;
             }
 
@@ -133,6 +144,22 @@ public class DashGenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         private final DashAudioView view;
 
         public DashGridHolder_Audio(DashAudioView view) {
+            super(view);
+            this.view = view;
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (ItemClickListener != null)
+                ItemClickListener.OnItemClick(view, getAdapterPosition());
+        }
+    }
+
+    private final class DashGridHolder_Art extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private final DashArtItemView view;
+
+        public DashGridHolder_Art(DashArtItemView view) {
             super(view);
             this.view = view;
 

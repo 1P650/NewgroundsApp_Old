@@ -13,7 +13,7 @@
         </shape>
     </item>
 
-    <item android:gravity="top" android:height="@dimen/dashboard_labelSizeHalf" android:start="1dp" android:end="1dp">
+    <item android:gravity="top" android:height="@dimen/dashboard_labelSizeHalf" android:start="1dp" android:end="1dp" android:top="1dp">
         <shape android:shape="rectangle" >
             <gradient
                 android:startColor="@color/colorDashboardLabelGradientHigher_start"
@@ -28,16 +28,7 @@
         </shape>
     </item>
 
-    <item android:bottom="-4dp">
-        <shape android:shape="rectangle">
-            <stroke
-                android:color="@color/colorDashboardBorderline"
-                android:width="2dp" />
-            <corners android:topLeftRadius="6dp"
-                android:topRightRadius="6dp"/>
 
-        </shape>
-    </item>
 
 
 
