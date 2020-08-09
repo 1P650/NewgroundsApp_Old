@@ -1,12 +1,9 @@
 package jewpigeon.apps.newgrounds;
 
-import android.animation.LayoutTransition;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.MenuItem;
@@ -14,7 +11,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.behavior.HideBottomViewOnScrollBehavior;
@@ -68,14 +64,12 @@ public class ContentActivity extends NG_Activity implements
     private SearchView ContentSearch;
     private AppBarLayout contentAppBarLayout;
     private ProfileWidget ProfileMenu;
-    private TextView Logout;
-
 
     private BottomNavigationView ContentBottomBar;
     private HideBottomViewOnScrollBehavior contentBottomBarBehaviour;
 
     private NavigationView ContentLeftMenu;
-    private NavigationView ProfileDrawer;
+    private NavigationView ProfileActionMenu;
 
     private DrawerLayout ContentDrawerLayout;
     private ActionBarDrawerToggle ContentDrawerToggle;
@@ -145,14 +139,13 @@ public class ContentActivity extends NG_Activity implements
         SearchButton = ContentToolbar.findViewById(R.id.NG_appbar_search);
         LoginButton = ContentToolbar.findViewById(R.id.NG_LoginOrSignUp);
         ProfileMenu = ContentToolbar.findViewById(R.id.NG_ProfileWidget);
-        ProfileDrawer = findViewById(R.id.content_profile_menu);
-        Logout = findViewById(R.id.ProfileMenu_Logout);
+        ProfileActionMenu = findViewById(R.id.content_profile_menu);
 
 
         if(preferences != null && preferences.isUserLogged()){
             LoginButton.setVisibility(View.GONE);
             ProfileMenu.setVisibility(View.VISIBLE);
-            ProfileDrawer.setVisibility(View.VISIBLE);
+            ProfileActionMenu.setVisibility(View.VISIBLE);
 
         }
 
@@ -202,6 +195,7 @@ public class ContentActivity extends NG_Activity implements
     private void setUpListeners() {
         ContentBottomBar.setOnNavigationItemSelectedListener(this);
         ContentLeftMenu.setNavigationItemSelectedListener(this);
+        ProfileActionMenu.setNavigationItemSelectedListener(this);
 
         HomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -270,18 +264,8 @@ public class ContentActivity extends NG_Activity implements
         ProfileMenu.setOnProfileIconClickListener(new ProfileIconClickListener() {
             @Override
             public void onClick(View view) {
-                if(ContentDrawerLayout.isDrawerOpen(ProfileDrawer)) ContentDrawerLayout.closeDrawer(ProfileDrawer);
-                else ContentDrawerLayout.openDrawer(ProfileDrawer);
-            }
-        });
-        Logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NG_PreferencesData preferencesData = getPreferencesFromStore();
-                if(preferencesData == null) preferencesData = new NG_PreferencesData();
-                preferencesData.setLogged(false);
-                updatePreferences(preferencesData);
-                NG_Bus.get().post(new NG_Events.NG_UserLoggedOut());
+                if(ContentDrawerLayout.isDrawerOpen(ProfileActionMenu)) ContentDrawerLayout.closeDrawer(ProfileActionMenu);
+                else ContentDrawerLayout.openDrawer(ProfileActionMenu);
             }
         });
 
@@ -359,56 +343,76 @@ public class ContentActivity extends NG_Activity implements
         if (ContentDrawerLayout.isDrawerOpen(ContentLeftMenu))
             ContentDrawerLayout.closeDrawer(ContentLeftMenu);
 
-        ContentBottomBar.getMenu().setGroupCheckable(0, true, true);
+
         contentBottomBarBehaviour.slideUp(ContentBottomBar);
 
 
         switch (item.getItemId()) {
-            case R.id.bottom_content_movies:
+            case R.id.bottom_content_movies:{
+                ContentBottomBar.getMenu().setGroupCheckable(0, true, true);
                 getController().switchTab(FragNavController.TAB1);
-                return true;
-            case R.id.bottom_content_audio:
-
+                return true;}
+            case R.id.bottom_content_audio:{
+                ContentBottomBar.getMenu().setGroupCheckable(0, true, true);
                 getController().switchTab(FragNavController.TAB2);
-                return true;
-            case R.id.bottom_content_art:
+                return true;}
+            case R.id.bottom_content_art:{
+                ContentBottomBar.getMenu().setGroupCheckable(0, true, true);
                 getController().switchTab(FragNavController.TAB3);
-                return true;
-            case R.id.bottom_content_games:
-
+                return true;}
+            case R.id.bottom_content_games:{
+                ContentBottomBar.getMenu().setGroupCheckable(0, true, true);
                 getController().switchTab(FragNavController.TAB4);
-                return true;
-            case R.id.bottom_content_community:
-
+                return true;}
+            case R.id.bottom_content_community:{
+                ContentBottomBar.getMenu().setGroupCheckable(0, true, true);
                 getController().switchTab(FragNavController.TAB5);
-                return true;
+                return true;}
 
 
-            case R.id.leftmenu_content_movies:
-
+            case R.id.leftmenu_content_movies: {
+                ContentBottomBar.getMenu().setGroupCheckable(0, true, true);
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_movies);
                 getController().switchTab(FragNavController.TAB1);
                 return true;
-            case R.id.leftmenu_content_audio:
+            }
+            case R.id.leftmenu_content_audio: {
+                ContentBottomBar.getMenu().setGroupCheckable(0, true, true);
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_audio);
                 getController().switchTab(FragNavController.TAB2);
                 return true;
-            case R.id.leftmenu_content_art:
+            }
+            case R.id.leftmenu_content_art:{
+                ContentBottomBar.getMenu().setGroupCheckable(0, true, true);
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_art);
                 getController().switchTab(FragNavController.TAB3);
-                return true;
-            case R.id.leftmenu_content_games:
+                return true;}
+            case R.id.leftmenu_content_games:{
+                ContentBottomBar.getMenu().setGroupCheckable(0, true, true);
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_games);
                 getController().switchTab(FragNavController.TAB4);
-                return true;
-            case R.id.leftmenu_content_community:
+                return true;}
+            case R.id.leftmenu_content_community:{
+                ContentBottomBar.getMenu().setGroupCheckable(0, true, true);
                 ContentBottomBar.setSelectedItemId(R.id.bottom_content_community);
                 getController().switchTab(FragNavController.TAB5);
-                return true;
+                return true;}
 
 
-            default:
-                ContentBottomBar.setSelected(false);
+
+
+            case R.id.profileMenu_menu_actionLogOut:{
+                NG_PreferencesData preferencesData = getPreferencesFromStore();
+                if(preferencesData == null) preferencesData = new NG_PreferencesData();
+                preferencesData.setLogged(false);
+                updatePreferences(preferencesData);
+                ContentDrawerLayout.closeDrawer(ProfileActionMenu);
+                NG_Bus.get().post(new NG_Events.NG_UserLoggedOut());
+            }
+
+
+                default:{
+                ContentBottomBar.setSelected(false);}
         }
         return false;
     }
@@ -427,15 +431,15 @@ public class ContentActivity extends NG_Activity implements
     public void onUserLoggedIn(NG_Events.NG_UserLoggedIn ULI){
         LoginButton.setVisibility(View.GONE);
         ProfileMenu.setVisibility(View.VISIBLE);
-        ProfileDrawer.setVisibility(View.VISIBLE);
+        ProfileActionMenu.setVisibility(View.VISIBLE);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onUserLoggedOut(NG_Events.NG_UserLoggedOut ULO){
-        if(ContentDrawerLayout.isDrawerOpen(ProfileDrawer)) ContentDrawerLayout.closeDrawer(ProfileDrawer);
+        if(ContentDrawerLayout.isDrawerOpen(ProfileActionMenu)) ContentDrawerLayout.closeDrawer(ProfileActionMenu);
         LoginButton.setVisibility(View.VISIBLE);
         ProfileMenu.setVisibility(View.GONE);
-        ProfileDrawer.setVisibility(View.GONE);
+        ProfileActionMenu.setVisibility(View.GONE);
     }
 
 

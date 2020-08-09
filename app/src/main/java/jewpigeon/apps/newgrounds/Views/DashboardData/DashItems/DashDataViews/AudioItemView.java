@@ -1,9 +1,10 @@
-package jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems;
+package jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataViews;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.Layout;
@@ -24,14 +25,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import jewpigeon.apps.newgrounds.R;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.AudioItem;
 
 import static jewpigeon.apps.newgrounds.Utils.DimensionTool.sp;
 
-public class DashAudioView extends View implements Target<Drawable> {
+public class AudioItemView extends View implements Target<Drawable> {
+
+    private final int ITEM_HEIGHT = (int) getResources().getDimension(R.dimen.dashboard_item_size_audio_list);
+    private final int ICON_SIZE = ITEM_HEIGHT*8/9;
 
     private Drawable DashAudioIcon;
     private StaticLayout DashTitle;
     private StaticLayout DashAuthor;
+    private StaticLayout DashSongType;
     private ColorDrawable DashBackground;
 
 
@@ -39,42 +45,63 @@ public class DashAudioView extends View implements Target<Drawable> {
     private final int AuthorColor = ContextCompat.getColor(getContext(), R.color.colorFeaturedItemAuthorText);
     private final int DashBackgroundEnabledColor = ContextCompat.getColor(getContext(), R.color.colorFeaturedAudioItemBackground);
 
-    private final int ITEM_HEIGHT = (int) getResources().getDimension(R.dimen.dashboard_item_size_audio_list);
-    private final int ICON_SIZE = ITEM_HEIGHT * 3 / 4;
-
 
     private static TextPaint DashTitlePainter;
     private static TextPaint DashAuthorPainter;
+    private static TextPaint DashTypePainter;
     private Drawable defIcon;
 
     private boolean isBackgroundEnabled = false;
 
 
     {
-            defIcon = ContextCompat.getDrawable(getContext(), R.drawable.ng_icon_undefined);
-            DashBackground = new ColorDrawable(DashBackgroundEnabledColor);
-
+        defIcon = ContextCompat.getDrawable(getContext(), R.drawable.ng_icon_undefined_circle);
+        DashBackground = new ColorDrawable(DashBackgroundEnabledColor);
     }
 
 
+    @Override
+    protected void onDraw(Canvas canvas) {
+        if (isBackgroundEnabled) {
+            DashBackground.setBounds(0, 0, getWidth(), ITEM_HEIGHT);
+            DashBackground.draw(canvas);
+        }
 
+        canvas.save();
+        canvas.translate(0, (getHeight() - DashAudioIcon.getBounds().bottom)/2);
+        DashAudioIcon.draw(canvas);
+        canvas.restore();
 
-    public DashAudioView(Context context) {
+        canvas.save();
+        canvas.translate(8+DashAudioIcon.getBounds().width(), 2);
+        DashTitle.draw(canvas);
+        canvas.save();
+        canvas.translate(DashTitle.getWidth()+8, 4);
+        DashAuthor.draw(canvas);
+        canvas.restore();
+        canvas.translate(0,  DashAudioIcon.getBounds().bottom*0.6f);
+        DashSongType.draw(canvas);
+        canvas.restore();
+
+    }
+
+    public AudioItemView(Context context) {
         super(context);
         establishState();
     }
 
-    public DashAudioView(Context context, @Nullable AttributeSet attrs) {
+
+    public AudioItemView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         establishState();
     }
 
-    public DashAudioView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public AudioItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         establishState();
     }
 
-    public DashAudioView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public AudioItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         establishState();
     }
@@ -84,64 +111,44 @@ public class DashAudioView extends View implements Target<Drawable> {
         setMeasuredDimension(MeasureSpec.makeMeasureSpec(widthMeasureSpec, MeasureSpec.AT_MOST), ITEM_HEIGHT);
     }
 
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
+    public void enableBackground() {
+        isBackgroundEnabled = true;
     }
 
-    public void setDashItem(DashAudioItem item) {
+    public void setDashItem(AudioItem item) {
         Glide.
                 with(getContext())
                 .load(item.getAudioIcon())
                 .circleCrop()
-                .placeholder(defIcon)
+                .placeholder(new ColorDrawable(Color.BLACK))
                 .fallback(defIcon)
                 .into(this);
 
-        DashTitle = DashAudioView.TextCache.INSTANCE.titleLayoutFor(item.getTitle());
-        DashAuthor = DashAudioView.TextCache.INSTANCE.authorLayoutFor("by " + item.getAuthor());
-
+        DashTitle = TextCache.INSTANCE().titleLayoutFor(item.getTitle());
+        DashAuthor = TextCache.INSTANCE().authorLayoutFor(item.getAuthor());
+        DashSongType = TextCache.INSTANCE().typeLayoutFor(item.getType());
         requestLayout();
         invalidate();
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        if (isBackgroundEnabled) {
-            DashBackground.setBounds(0, 0, getWidth(), ITEM_HEIGHT);
-            DashBackground.draw(canvas);
-            canvas.save();
-        }
-        canvas.translate((ITEM_HEIGHT - ICON_SIZE)/2, (ITEM_HEIGHT - ICON_SIZE)/2);
-        DashAudioIcon.draw(canvas);
-        canvas.save();
-        canvas.translate(ICON_SIZE*5/4, (ITEM_HEIGHT - ICON_SIZE)/2);
-        DashTitle.draw(canvas);
-        canvas.save();
-        canvas.translate(DashTitle.getWidth() + ICON_SIZE*5/4, 0);
-        DashAuthor.draw(canvas);
-        canvas.translate(-((ITEM_HEIGHT - ICON_SIZE) + ICON_SIZE*5/2 + DashTitle.getWidth()),0);
-        canvas.save();
-        canvas.restore();
-    }
+
 
     private void establishState() {
         DashTitlePainter = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         DashTitlePainter.setColor(TitleColor);
-        DashTitlePainter.setTextSize(sp(getContext(), 14));
+        DashTitlePainter.setTypeface(Typeface.DEFAULT_BOLD);
+        DashTitlePainter.setTextSize(sp(16));
 
         DashAuthorPainter = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         DashAuthorPainter.setColor(AuthorColor);
-        DashAuthorPainter.setTextSize(sp(getContext(), 14));
+        DashAuthorPainter.setTextSize(sp(14));
+
+        DashTypePainter = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        DashTypePainter.setColor(AuthorColor);
+        DashTypePainter.setTextSize(sp(13));
 
         this.setForeground(ContextCompat.getDrawable(getContext(), R.drawable.grid_item_ripple));
         this.setClickable(true);
-
-
-    }
-
-    public void enableBackground() {
-        isBackgroundEnabled = true;
     }
 
     @Override
@@ -193,7 +200,7 @@ public class DashAudioView extends View implements Target<Drawable> {
     }
     @Override
     public void getSize(@NonNull SizeReadyCallback cb) {
-        cb.onSizeReady(getWidth(), getHeight());
+        cb.onSizeReady(ICON_SIZE, ICON_SIZE);
     }
     @Override
     public void removeCallback(@NonNull SizeReadyCallback cb) {
@@ -221,11 +228,18 @@ public class DashAudioView extends View implements Target<Drawable> {
 
     }
 
-    private enum TextCache {
-        INSTANCE;
+
+    private static class TextCache {
+        public static TextCache instance;
+
+        public static TextCache INSTANCE(){
+            if(instance == null) instance = new TextCache();
+            return instance;
+        }
 
         private int MaxAuthorWidth = 400;
         private int MaxTitleWidth = 400;
+        private int MaxTypeWidth = 300;
         private final LruCache<CharSequence, StaticLayout> titleCache = new LruCache<CharSequence, StaticLayout>(100) {
             @Override
             protected StaticLayout create(CharSequence key) {
@@ -249,6 +263,17 @@ public class DashAudioView extends View implements Target<Drawable> {
             }
         };
 
+        private final LruCache<CharSequence, StaticLayout> typeCache = new LruCache<CharSequence, StaticLayout>(100) {
+            @Override
+            protected StaticLayout create(CharSequence key) {
+                int TEXT_WIDTH = (int) Math.min(MaxTypeWidth, DashTypePainter.measureText(String.valueOf(key)));
+                CharSequence typeEllipisized = TextUtils.ellipsize(key, DashTypePainter, TEXT_WIDTH, TextUtils.TruncateAt.END);
+                return StaticLayout.Builder.obtain(typeEllipisized, 0, typeEllipisized.length(), DashTypePainter, TEXT_WIDTH)
+                        .setAlignment(Layout.Alignment.ALIGN_NORMAL)
+                        .build();
+            }
+        };
+
         public void changeMaxTitleWidth(int newWidth) {
             if (MaxTitleWidth != newWidth) {
                 MaxTitleWidth = newWidth;
@@ -262,12 +287,23 @@ public class DashAudioView extends View implements Target<Drawable> {
             }
         }
 
+        public void changeMaxTypeWidth(int newWidth){
+            if (MaxTypeWidth != newWidth) {
+                MaxTypeWidth = newWidth;
+                typeCache.evictAll();
+            }
+        }
+
         public StaticLayout titleLayoutFor(CharSequence text) {
             return titleCache.get(text);
         }
 
         public StaticLayout authorLayoutFor(CharSequence text) {
             return authorCache.get(text);
+        }
+
+        public StaticLayout typeLayoutFor(CharSequence text) {
+            return typeCache.get(text);
         }
     }
 }

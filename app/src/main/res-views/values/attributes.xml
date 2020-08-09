@@ -4,10 +4,11 @@
         <attr name="labelVisible" format="boolean"/>
         <attr name="labelText" format="string" />
         <attr name="labelIcon" format="reference" />
-        <attr name="PanelButtonsList" format="reference" />
+        <attr name="labelMenu" format="reference" />
+        <attr name="labelMenuStrings" format="reference" />
     </declare-styleable>
 
-    <declare-styleable name="ProfileWidgetTemp">
-
+    <declare-styleable name="ProfileWidget">
+        <attr name="showNotification" format="boolean" />
     </declare-styleable>
 </resources>

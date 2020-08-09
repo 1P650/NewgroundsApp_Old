@@ -7,16 +7,15 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.R;
 
-public class GenericFragment extends NG_Fragment {
-    public static GenericFragment newInstance() {
+public class GenericMovieFragment extends NG_Fragment {
+    public static GenericMovieFragment newInstance() {
 
         Bundle args = new Bundle();
 
-        GenericFragment fragment = new GenericFragment();
+        GenericMovieFragment fragment = new GenericMovieFragment();
         fragment.setArguments(args);
         return fragment;
     }

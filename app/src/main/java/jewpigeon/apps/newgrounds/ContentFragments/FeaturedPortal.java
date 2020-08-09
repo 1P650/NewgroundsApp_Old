@@ -10,16 +10,15 @@ import java.util.Arrays;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.R;
-import jewpigeon.apps.newgrounds.Views.DashAutofitGrid;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashAudioItem;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGenericAdapter;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridItem;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridItemSmall;
+import jewpigeon.apps.newgrounds.Views.AutofitGrid;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ListItem;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.ItemGenericAdapter;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.GridItem;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.GridItemSmall;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItemClickListener;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
 
@@ -33,58 +32,58 @@ public class FeaturedPortal extends NG_Fragment {
     Dashboard FeaturedAudio;
 
 
-    ArrayList<DashGridItem> FeaturedMoviesArray = new ArrayList<>(Arrays.asList(
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT","DEFAULT"),
-            new DashGridItem(null, "DEFAULT","DEFAULT"),
-            new DashGridItem(null, "DEFAULT","DEFAULT"),
-            new DashGridItem(null, "DEFAULT","DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT")
+    ArrayList<GridItem> FeaturedMoviesArray = new ArrayList<>(Arrays.asList(
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT","DEFAULT"),
+            new GridItem(null, "DEFAULT","DEFAULT"),
+            new GridItem(null, "DEFAULT","DEFAULT"),
+            new GridItem(null, "DEFAULT","DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT")
     ));
 
 
-    private DashGenericAdapter movies_adapter;
-    private DashGenericAdapter games_adapter;
-    private DashGenericAdapter art_adapter;
-    private DashGenericAdapter audio_adapter;
+    private ItemGenericAdapter movies_adapter;
+    private ItemGenericAdapter games_adapter;
+    private ItemGenericAdapter art_adapter;
+    private ItemGenericAdapter audio_adapter;
 
-    private DashAutofitGrid FeaturedMoviesList;
-    private DashAutofitGrid FeaturedGamesList;
-    private DashAutofitGrid FeaturedArtList;
+    private AutofitGrid FeaturedMoviesList;
+    private AutofitGrid FeaturedGamesList;
+    private AutofitGrid FeaturedArtList;
     private RecyclerView FeaturedAudioList;
 
 
-    ArrayList<DashGridItem> FeaturedGamesArray = new ArrayList<>(Arrays.asList(
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT")
+    ArrayList<GridItem> FeaturedGamesArray = new ArrayList<>(Arrays.asList(
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT")
     ));
 
-    ArrayList<DashGridItemSmall> FeaturedArtArray = new ArrayList<>(Arrays.asList(
-            new DashGridItemSmall(null, "DEFAULT"),
-            new DashGridItemSmall(null, "DEFAULT"),
-            new DashGridItemSmall(null, "DEFAULT"),
-            new DashGridItemSmall(null, "DEFAULT"),
-            new DashGridItemSmall(null, "DEFAULT"),
-            new DashGridItemSmall(null, "DEFAULT"),
-            new DashGridItemSmall(null, "DEFAULT"),
-            new DashGridItemSmall(null, "DEFAULT"),
-            new DashGridItemSmall(null, "DEFAULT"),
-            new DashGridItemSmall(null, "DEFAULT"),
-            new DashGridItemSmall(null, "DEFAULT"),
-            new DashGridItemSmall(null, "DEFAULT")));
+    ArrayList<GridItemSmall> FeaturedArtArray = new ArrayList<>(Arrays.asList(
+            new GridItemSmall(null, "DEFAULT"),
+            new GridItemSmall(null, "DEFAULT"),
+            new GridItemSmall(null, "DEFAULT"),
+            new GridItemSmall(null, "DEFAULT"),
+            new GridItemSmall(null, "DEFAULT"),
+            new GridItemSmall(null, "DEFAULT"),
+            new GridItemSmall(null, "DEFAULT"),
+            new GridItemSmall(null, "DEFAULT"),
+            new GridItemSmall(null, "DEFAULT"),
+            new GridItemSmall(null, "DEFAULT"),
+            new GridItemSmall(null, "DEFAULT"),
+            new GridItemSmall(null, "DEFAULT")));
 
 
-    ArrayList<DashAudioItem> FeaturedAudioArray = new ArrayList<>(Arrays.asList(
-            new DashAudioItem(null, "DEFAULT", "DEFAULT"),
-            new DashAudioItem(null, "DEFAULT", "DEFAULT"),
-            new DashAudioItem(null, "DEFAULT", "DEFAULT"),
-            new DashAudioItem(null, "DEFAULT", "DEFAULT"),
-            new DashAudioItem(null, "DEFAULT", "DEFAULT"),
-            new DashAudioItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<ListItem> FeaturedAudioArray = new ArrayList<>(Arrays.asList(
+            new ListItem(null, "DEFAULT", "DEFAULT"),
+            new ListItem(null, "DEFAULT", "DEFAULT"),
+            new ListItem(null, "DEFAULT", "DEFAULT"),
+            new ListItem(null, "DEFAULT", "DEFAULT"),
+            new ListItem(null, "DEFAULT", "DEFAULT"),
+            new ListItem(null, "DEFAULT", "DEFAULT")));
 
     public static FeaturedPortal newInstance() {
 
@@ -99,10 +98,10 @@ public class FeaturedPortal extends NG_Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        movies_adapter = new DashGenericAdapter(DashGenericAdapter.PORTAL_GRID_REGULAR, FeaturedMoviesArray);
-        games_adapter = new DashGenericAdapter(DashGenericAdapter.PORTAL_GRID_REGULAR, FeaturedGamesArray);
-        art_adapter = new DashGenericAdapter(DashGenericAdapter.PORTAL_GRID_SMALL, FeaturedArtArray);
-        audio_adapter = new DashGenericAdapter(DashGenericAdapter.PORTAL_AUDIO_LIST, FeaturedAudioArray);
+        movies_adapter = new ItemGenericAdapter(ItemGenericAdapter.PORTAL_GRID_REGULAR, FeaturedMoviesArray);
+        games_adapter = new ItemGenericAdapter(ItemGenericAdapter.PORTAL_GRID_REGULAR, FeaturedGamesArray);
+        art_adapter = new ItemGenericAdapter(ItemGenericAdapter.PORTAL_GRID_SMALL, FeaturedArtArray);
+        audio_adapter = new ItemGenericAdapter(ItemGenericAdapter.PORTAL_FEATURED_AUDIO_LIST, FeaturedAudioArray);
     }
 
     @Nullable
@@ -115,14 +114,14 @@ public class FeaturedPortal extends NG_Fragment {
         FeaturedImage = (Dashboard) findViewById(R.id.featured_picture);
 
         FeaturedMovies = (Dashboard) findViewById(R.id.featured_movies);
-        FeaturedMoviesList = (DashAutofitGrid) findViewById(R.id.featured_movies_grid);
+        FeaturedMoviesList = (AutofitGrid) findViewById(R.id.featured_movies_grid);
 
         FeaturedGames = (Dashboard) findViewById(R.id.featured_games);
-        FeaturedGamesList = (DashAutofitGrid) findViewById(R.id.featured_games_grid);
+        FeaturedGamesList = (AutofitGrid) findViewById(R.id.featured_games_grid);
 
 
         FeaturedArt = (Dashboard) findViewById(R.id.featured_art);
-        FeaturedArtList = (DashAutofitGrid) findViewById(R.id.featured_art_grid);
+        FeaturedArtList = (AutofitGrid) findViewById(R.id.featured_art_grid);
 
 
         FeaturedAudio = (Dashboard) findViewById(R.id.featured_audio);

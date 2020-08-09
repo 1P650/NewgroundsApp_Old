@@ -5,7 +5,7 @@ import android.graphics.Rect;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class DashGridDecorator extends RecyclerView.ItemDecoration {
+public class AutofitGridDecorator extends RecyclerView.ItemDecoration {
 
     private int spanCount;
     private int verticalSpasing;
@@ -13,7 +13,7 @@ public class DashGridDecorator extends RecyclerView.ItemDecoration {
     private boolean includeEdge;
 
 
-    public DashGridDecorator(int spanCount, int verticalSpasing, int horizontalSpasing) {
+    public AutofitGridDecorator(int spanCount, int verticalSpasing, int horizontalSpasing) {
         this.spanCount = spanCount;
         this.verticalSpasing = verticalSpasing;
         this.horizontalSpasing = (horizontalSpasing);

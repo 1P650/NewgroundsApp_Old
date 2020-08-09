@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group android:id="@+id/group_actions" android:checkableBehavior="single">
+
+        <item
+            android:title="Account settings"
+            android:icon="@drawable/ng_settings_icon"
+            android:id="@+id/profileMenu_menu_userAccountSettings" />
+
+        <item
+            android:title="Your projects"
+            android:icon="@drawable/ng_person_icon"
+            android:id="@+id/profileMenu_menu_userProjects" />
+
+        <item
+            android:title="Private messages"
+            android:icon="@drawable/ng_messages_icon"
+            android:id="@+id/profileMenu_menu_privateMessages" />
+
+        <item
+            android:title="Your file dump"
+            android:icon="@drawable/ng_upload_icon"
+            android:id="@+id/profileMenu_menu_userFileDump" />
+        <item
+            android:title="Friends"
+            android:icon="@drawable/ng_community_icon"
+            android:id="@+id/profileMenu_menu_userFriends" />
+        <item
+            android:title="Requests"
+            android:icon="@drawable/ng_attention_icon"
+            android:id="@+id/profileMenu_menu_userRequests" />
+    </group>
+<group android:id="@+id/group_app_actions" android:checkableBehavior="single">
+    <item
+        android:title="App settings"
+        android:icon="@drawable/ng_settings_icon"
+        android:id="@+id/profileMenu_menu_appSettings" />
+</group>
+<group android:id="@+id/group_logout" android:checkableBehavior="single">
+    <item
+        android:title="Log Out"
+        android:icon="@drawable/ng_logout_icon"
+        android:id="@+id/profileMenu_menu_actionLogOut" />
+</group>
+
+</menu>

@@ -12,10 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.R;
-import jewpigeon.apps.newgrounds.Views.DashAutofitGrid;
+import jewpigeon.apps.newgrounds.Views.AutofitGrid;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGenericAdapter;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridItem;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.ItemGenericAdapter;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.GridItem;
 
 public class GamesPortal extends NG_Fragment {
     View rootView;
@@ -25,34 +25,34 @@ public class GamesPortal extends NG_Fragment {
     Dashboard YearGames;
 
 
-    ArrayList<DashGridItem> BrandGamesArray = new ArrayList<>(Arrays.asList(
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT")));
-    ArrayList<DashGridItem> PopularGamesArray = new ArrayList<>(Arrays.asList(
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT")));
-    ArrayList<DashGridItem> MonthGamesArray = new ArrayList<>(Arrays.asList(
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT")));
-    ArrayList<DashGridItem> YearGamesArray = new ArrayList<>(Arrays.asList(
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<GridItem> BrandGamesArray = new ArrayList<>(Arrays.asList(
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<GridItem> PopularGamesArray = new ArrayList<>(Arrays.asList(
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<GridItem> MonthGamesArray = new ArrayList<>(Arrays.asList(
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<GridItem> YearGamesArray = new ArrayList<>(Arrays.asList(
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT")));
     public static GamesPortal newInstance() {
 
         Bundle args = new Bundle();
@@ -77,23 +77,23 @@ public class GamesPortal extends NG_Fragment {
 
 
         BrandGames = (Dashboard) findViewById(R.id.games_portal_brand_movies);
-        DashAutofitGrid BrandGamesList = (DashAutofitGrid) findViewById(R.id.games_portal_brand_grid);
-        DashGenericAdapter brand_adapter = new DashGenericAdapter(BrandGamesArray);
+        AutofitGrid BrandGamesList = (AutofitGrid) findViewById(R.id.games_portal_brand_grid);
+        ItemGenericAdapter brand_adapter = new ItemGenericAdapter(BrandGamesArray);
         BrandGamesList.setAdapter(brand_adapter);
 
         PopularGames = (Dashboard) findViewById(R.id.games_portal_popular_movies);
-        DashAutofitGrid PopularGamesList = (DashAutofitGrid) findViewById(R.id.games_portal_popular_grid);
-        DashGenericAdapter popular_adapter = new DashGenericAdapter(PopularGamesArray);
+        AutofitGrid PopularGamesList = (AutofitGrid) findViewById(R.id.games_portal_popular_grid);
+        ItemGenericAdapter popular_adapter = new ItemGenericAdapter(PopularGamesArray);
         PopularGamesList.setAdapter(popular_adapter);
 
         MonthGames = (Dashboard) findViewById(R.id.games_portal_month_movies);
-        DashAutofitGrid MonthGamesList = (DashAutofitGrid) findViewById(R.id.games_portal_month_grid);
-        DashGenericAdapter month_adapter = new DashGenericAdapter(MonthGamesArray);
+        AutofitGrid MonthGamesList = (AutofitGrid) findViewById(R.id.games_portal_month_grid);
+        ItemGenericAdapter month_adapter = new ItemGenericAdapter(MonthGamesArray);
         MonthGamesList.setAdapter(month_adapter);
 
         YearGames = (Dashboard) findViewById(R.id.games_portal_year_movies);
-        DashAutofitGrid YearGamesList = (DashAutofitGrid) findViewById(R.id.games_portal_year_grid);
-        DashGenericAdapter year_adapter = new DashGenericAdapter(BrandGamesArray);
+        AutofitGrid YearGamesList = (AutofitGrid) findViewById(R.id.games_portal_year_grid);
+        ItemGenericAdapter year_adapter = new ItemGenericAdapter(BrandGamesArray);
         YearGamesList.setAdapter(year_adapter);
 
         startPostponedEnterTransition();

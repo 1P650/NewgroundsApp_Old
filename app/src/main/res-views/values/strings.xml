@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="LabelNameDefault">Label name</string>
+
+    <string-array name="featured_buttons">
+        <item>Past features</item>
+        <item>More</item>
+
+    </string-array>
+
+    <string-array name="portal_buttons">
+        <item>More</item>
+    </string-array>
+
+    <string-array name="community_ArtistNews_buttons">
+        <item>More news</item>
+    </string-array>
+
+    <string-array name="community_UserOfTheDay_buttons">
+        <item>Archive</item>
+    </string-array>
+
+    <string-array name="community_MoversShakers_buttons">
+        <item>All rankings</item>
+    </string-array>
+
+    <string-array name="community_HelpWanted_buttons">
+        <item>Browse All</item>
+    </string-array>
+
+    <string-array name="community_Forums_buttons">
+        <item>Jump to…</item>
+        <item>All forums</item>
+    </string-array>
+
     <string name="more">More</string>
     <string name="past_features">Past features</string>
 </resources>

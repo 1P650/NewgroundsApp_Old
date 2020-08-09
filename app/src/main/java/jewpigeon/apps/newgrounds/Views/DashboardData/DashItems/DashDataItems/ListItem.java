@@ -1,24 +1,24 @@
-package jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems;
+package jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems;
 
 import android.graphics.drawable.Drawable;
 
-public class DashArtItem {
-    private Drawable ArtIcon;
+public class ListItem {
+    private Drawable AudioIcon;
     private String Title;
     private String Author;
 
-    public DashArtItem(Drawable artIcon, String title, String author) {
-        ArtIcon = artIcon;
+    public ListItem(Drawable audioIcon, String title, String author) {
+        AudioIcon = audioIcon;
         Title = title;
         Author = "by " + author;
     }
 
-    public Drawable getArtIcon() {
-        return ArtIcon;
+    public Drawable getAudioIcon() {
+        return AudioIcon;
     }
 
-    public void setArtIcon(Drawable artIcon) {
-        ArtIcon = artIcon;
+    public void setAudioIcon(Drawable audioIcon) {
+        AudioIcon = audioIcon;
     }
 
     public String getTitle() {
@@ -36,4 +36,6 @@ public class DashArtItem {
     public void setAuthor(String author) {
         Author = author;
     }
+
+
 }

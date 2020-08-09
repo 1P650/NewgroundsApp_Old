@@ -11,8 +11,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-
         <!-- Featured pucture -->
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/featured_picture"
@@ -34,9 +32,9 @@
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="@string/ng_featured_movies"
             app:labelIcon="@drawable/ng_movies_icon"
-            app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
+            app:labelMenuStrings="@array/featured_buttons">
 
-            <jewpigeon.apps.newgrounds.Views.DashAutofitGrid
+            <jewpigeon.apps.newgrounds.Views.AutofitGrid
                 android:id="@+id/featured_movies_grid"
                 android:layout_marginTop="0dp"
                 android:background="@null"
@@ -48,9 +46,9 @@
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="@string/ng_featured_games"
             app:labelIcon="@drawable/ng_games_icon"
-            app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
+            app:labelMenuStrings="@array/featured_buttons">
 
-            <jewpigeon.apps.newgrounds.Views.DashAutofitGrid
+            <jewpigeon.apps.newgrounds.Views.AutofitGrid
                 android:id="@+id/featured_games_grid"
              style="@style/NG_DefaultTheme.DashboardPortalGrid" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
@@ -60,10 +58,9 @@
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="@string/ng_featured_art"
             app:labelIcon="@drawable/ng_art_icon"
+            app:labelMenuStrings="@array/featured_buttons">
 
-            app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
-
-            <jewpigeon.apps.newgrounds.Views.DashAutofitGrid
+            <jewpigeon.apps.newgrounds.Views.AutofitGrid
                 android:id="@+id/featured_art_grid"
                 style="@style/NG_DefaultTheme.DashboardPortalGridSmall" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
@@ -73,7 +70,7 @@
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="@string/ng_featured_audio"
             app:labelIcon="@drawable/ng_audio_icon"
-            app:PanelButtonsList="@menu/dashboard_featured_standart_buttons">
+            app:labelMenuStrings="@array/featured_buttons">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_audio_list"

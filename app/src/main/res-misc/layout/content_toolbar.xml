@@ -19,13 +19,13 @@
 
         <ImageButton
             android:id="@+id/NG_appbar_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:layout_marginEnd="4dp"
             android:background="@null"
             android:contentDescription="@string/contentDescription_search"
             android:padding="8dp"
-            android:scaleType="center"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/NG_ProfileWidget"
             app:layout_constraintHorizontal_bias="1.0"

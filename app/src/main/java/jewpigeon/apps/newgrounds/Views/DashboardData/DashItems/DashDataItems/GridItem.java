@@ -1,15 +1,15 @@
-package jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems;
+package jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems;
 
 import android.graphics.drawable.Drawable;
 
 
-public class DashGridItem {
+public class GridItem {
 
     private Drawable image;
     private String title;
     private String author;
 
-    public DashGridItem(Drawable image, String title, String author) {
+    public GridItem(Drawable image, String title, String author) {
         if(image == null){
 
         }

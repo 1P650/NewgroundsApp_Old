@@ -16,13 +16,13 @@
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelIcon="@drawable/ng_art_icon"
             app:labelVisible="true"
-            app:labelText="Featured art">
+            app:labelText="Browse art">
 
-            <jewpigeon.apps.newgrounds.Views.DashAutofitGrid
+            <jewpigeon.apps.newgrounds.Views.AutofitGrid
                 android:id="@+id/art_portal_browser_grid"
                 android:columnWidth = "@dimen/dashboard_item_width_art"
                 style="@style/NG_DefaultTheme.DashboardPortalGridSmall">
-            </jewpigeon.apps.newgrounds.Views.DashAutofitGrid>
+            </jewpigeon.apps.newgrounds.Views.AutofitGrid>
 
             <ProgressBar
                 android:id="@+id/art_portal_loading"
@@ -41,6 +41,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/footer_skyline"
             android:layout_marginTop="8dp"
+            android:layout_gravity="bottom"
             android:adjustViewBounds="true"/>
 
 

@@ -1,4 +1,4 @@
-package jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems;
+package jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataViews;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -31,15 +31,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import jewpigeon.apps.newgrounds.R;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ArtItem;
 
 import static jewpigeon.apps.newgrounds.Utils.DimensionTool.sp;
 
-public class DashArtItemView extends View implements Target<Drawable> {
+public class ArtItemView extends View implements Target<Drawable> {
 
 
 
     private final int ITEM_HEIGHT = getContext().getResources().getDimensionPixelSize(R.dimen.dashboard_item_size_art);
     private final int ITEM_WIDTH = getContext().getResources().getDimensionPixelSize(R.dimen.dashboard_item_width_art);
+    private final int ICON_SIZE = ITEM_WIDTH*15/16;
 
     private final int BACKGROUND_COLOR = ContextCompat.getColor(getContext(), R.color.colorDashboardItemLabelBackground);
 
@@ -78,7 +80,7 @@ public class DashArtItemView extends View implements Target<Drawable> {
         DashPegi.setBounds(0,0, ITEM_WIDTH/11, ITEM_WIDTH/11);
 
         defIcon = ContextCompat.getDrawable(getContext(), R.drawable.ng_icon_undefined);
-        defIcon.setBounds(0,0, ITEM_WIDTH*5/6, ITEM_WIDTH*5/6);
+        defIcon.setBounds(0,0, ICON_SIZE, ICON_SIZE);
 
         DashForeground = new StateListDrawable();
 
@@ -120,24 +122,25 @@ public class DashArtItemView extends View implements Target<Drawable> {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        int icon_padding = (ITEM_WIDTH - ICON_SIZE)/2;
         DashBackground.draw(canvas);
         canvas.save();
-        canvas.translate((getWidth() - defIcon.getBounds().width())/2, 26);
+        canvas.translate((getWidth() - defIcon.getBounds().width())/2, icon_padding);
         DashArtIcon.draw(canvas);
         canvas.restore();
 
         canvas.save();
-        canvas.translate((getWidth() - DashTitle.getWidth())/2, 26 + DashArtIcon.getBounds().bottom);
+        canvas.translate((getWidth() - DashTitle.getWidth())/2, icon_padding + DashArtIcon.getBounds().bottom);
         DashTitle.draw(canvas);
         canvas.restore();
 
         canvas.save();
-        canvas.translate((getWidth() - DashAuthor.getWidth())/2, 26+ DashArtIcon.getBounds().bottom + DashTitle.getHeight());
+        canvas.translate((getWidth() - DashAuthor.getWidth())/2, icon_padding+ DashArtIcon.getBounds().bottom + DashTitle.getHeight());
         DashAuthor.draw(canvas);
         canvas.restore();
 
         canvas.save();
-        canvas.translate((getWidth() - defIcon.getBounds().width())/2, 26);
+        canvas.translate((getWidth() - defIcon.getBounds().width())/2, icon_padding);
         DashPegiBackground.draw(canvas);
         canvas.translate(4, 4);
         DashPegi.draw(canvas);
@@ -157,22 +160,22 @@ public class DashArtItemView extends View implements Target<Drawable> {
 
 
 
-    public DashArtItemView(Context context) {
+    public ArtItemView(Context context) {
         super(context);
         establishState();
     }
 
-    public DashArtItemView(Context context, @Nullable AttributeSet attrs) {
+    public ArtItemView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         establishState();
     }
 
-    public DashArtItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public ArtItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         establishState();
     }
 
-    public DashArtItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public ArtItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         establishState();
     }
@@ -181,26 +184,26 @@ public class DashArtItemView extends View implements Target<Drawable> {
         DashTitlePainter = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         DashTitlePainter.setColor(ContextCompat.getColor(getContext(), R.color.colorFeaturedItemTitleText));
         DashTitlePainter.setTypeface(Typeface.DEFAULT_BOLD);
-        DashTitlePainter.setTextSize(sp(getContext(), 13));
+        DashTitlePainter.setTextSize(sp(13));
 
         DashAuthorPainter = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         DashAuthorPainter.setColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
-        DashAuthorPainter.setTextSize(sp(getContext(), 10));
+        DashAuthorPainter.setTextSize(sp(10));
 
         this.setClickable(true);
     }
 
-    public void setDashItem(DashArtItem item){
+    public void setDashItem(ArtItem item){
         RequestOptions requestOptions = new RequestOptions();
         requestOptions = requestOptions.transforms(new CenterCrop(), new RoundedCorners(16));
         Glide.
                 with(getContext())
                 .load(item.getArtIcon())
-                .placeholder(defIcon)
+                .placeholder(new ColorDrawable(Color.BLACK))
                 .fallback(defIcon)
                 .apply(requestOptions)
                 .into(this);
-        DashArtIcon.setBounds(0,0, ITEM_WIDTH*6/7, ITEM_WIDTH*6/7);
+        DashArtIcon.setBounds(defIcon.copyBounds());
         DashTitle = TextCache.INSTANCE().titleLayoutFor(item.getTitle());
         DashAuthor = TextCache.INSTANCE().authorLayoutFor(item.getAuthor());
 

@@ -12,10 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.R;
-import jewpigeon.apps.newgrounds.Views.DashAutofitGrid;
+import jewpigeon.apps.newgrounds.Views.AutofitGrid;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGenericAdapter;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems.DashGridItem;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.ItemGenericAdapter;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.GridItem;
 
 public class MoviesPortal extends NG_Fragment {
     View rootView;
@@ -27,48 +27,48 @@ public class MoviesPortal extends NG_Fragment {
 
 
 
-    ArrayList<DashGridItem> BrandMoviesArray = new ArrayList<>(Arrays.asList(
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT")));
-    ArrayList<DashGridItem> PopularMoviesArray = new ArrayList<>(Arrays.asList(
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT")));
-    ArrayList<DashGridItem> MonthMoviesArray = new ArrayList<>(Arrays.asList(
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT")));
-    ArrayList<DashGridItem> YearMoviesArray = new ArrayList<>(Arrays.asList(
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT")));
-    ArrayList<DashGridItem> ClassicMoviesArray = new ArrayList<>(Arrays.asList(
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT"),
-            new DashGridItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<GridItem> BrandMoviesArray = new ArrayList<>(Arrays.asList(
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<GridItem> PopularMoviesArray = new ArrayList<>(Arrays.asList(
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<GridItem> MonthMoviesArray = new ArrayList<>(Arrays.asList(
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<GridItem> YearMoviesArray = new ArrayList<>(Arrays.asList(
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT")));
+    ArrayList<GridItem> ClassicMoviesArray = new ArrayList<>(Arrays.asList(
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT"),
+            new GridItem(null, "DEFAULT", "DEFAULT")));
 
 
-    DashAutofitGrid BrandMoviesList;
-    DashAutofitGrid PopularMoviesList;
-    DashAutofitGrid MonthMoviesList;
-    DashAutofitGrid YearMoviesList;
-    DashAutofitGrid ClassicMoviesList;
+    AutofitGrid BrandMoviesList;
+    AutofitGrid PopularMoviesList;
+    AutofitGrid MonthMoviesList;
+    AutofitGrid YearMoviesList;
+    AutofitGrid ClassicMoviesList;
 
     public static MoviesPortal newInstance() {
 
@@ -93,28 +93,28 @@ public class MoviesPortal extends NG_Fragment {
         setSeekerView(rootView);
 
         BrandMovies = (Dashboard) findViewById(R.id.movies_portal_brand_movies);
-         BrandMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_brand_grid);
-        DashGenericAdapter brand_adapter = new DashGenericAdapter(BrandMoviesArray);
+         BrandMoviesList = (AutofitGrid) findViewById(R.id.movies_portal_brand_grid);
+        ItemGenericAdapter brand_adapter = new ItemGenericAdapter(BrandMoviesArray);
         BrandMoviesList.setAdapter(brand_adapter);
 
         PopularMovies = (Dashboard) findViewById(R.id.movies_portal_popular_movies);
-         PopularMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_popular_grid);
-        DashGenericAdapter popular_adapter = new DashGenericAdapter(PopularMoviesArray);
+         PopularMoviesList = (AutofitGrid) findViewById(R.id.movies_portal_popular_grid);
+        ItemGenericAdapter popular_adapter = new ItemGenericAdapter(PopularMoviesArray);
         PopularMoviesList.setAdapter(popular_adapter);
 
         MonthMovies = (Dashboard) findViewById(R.id.movies_portal_month_movies);
-         MonthMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_month_grid);
-        DashGenericAdapter month_adapter = new DashGenericAdapter(MonthMoviesArray);
+         MonthMoviesList = (AutofitGrid) findViewById(R.id.movies_portal_month_grid);
+        ItemGenericAdapter month_adapter = new ItemGenericAdapter(MonthMoviesArray);
         MonthMoviesList.setAdapter(month_adapter);
 
         YearMovies = (Dashboard) findViewById(R.id.movies_portal_year_movies);
-         YearMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_year_grid);
-        DashGenericAdapter year_adapter = new DashGenericAdapter(YearMoviesArray);
+         YearMoviesList = (AutofitGrid) findViewById(R.id.movies_portal_year_grid);
+        ItemGenericAdapter year_adapter = new ItemGenericAdapter(YearMoviesArray);
         YearMoviesList.setAdapter(year_adapter);
 
         ClassicMovies = (Dashboard) findViewById(R.id.movies_portal_classic_movies);
-         ClassicMoviesList = (DashAutofitGrid) findViewById(R.id.movies_portal_classic_grid);
-        DashGenericAdapter classic_adapter = new DashGenericAdapter(ClassicMoviesArray);
+         ClassicMoviesList = (AutofitGrid) findViewById(R.id.movies_portal_classic_grid);
+        ItemGenericAdapter classic_adapter = new ItemGenericAdapter(ClassicMoviesArray);
         ClassicMoviesList.setAdapter(classic_adapter);
 
 

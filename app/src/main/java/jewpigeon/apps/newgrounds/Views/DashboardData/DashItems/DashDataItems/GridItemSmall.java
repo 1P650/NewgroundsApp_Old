@@ -1,14 +1,14 @@
-package jewpigeon.apps.newgrounds.Views.DashboardData.DashGridItems;
+package jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems;
 
 import android.graphics.drawable.Drawable;
 
 
-public class DashGridItemSmall {
+public class GridItemSmall {
 
     private Drawable image;
     private String author;
 
-    public DashGridItemSmall(Drawable image, String author) {
+    public GridItemSmall(Drawable image, String author) {
         this.image = image;
         this.author = "by " + author;
     }
