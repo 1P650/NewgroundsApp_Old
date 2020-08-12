@@ -2,8 +2,11 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
 
+
     <item android:gravity="top" android:height="19dp"
-        android:top="2dp">
+
+
+        >
         <shape android:shape="rectangle" >
             <gradient
                 android:startColor="@color/colorDashboardLabelGradientHigher_start"
@@ -18,8 +21,8 @@
         </shape>
     </item>
 
-
-    <item android:top="21dp">
+    <item android:top="19dp"
+        >
         <shape
             android:shape="rectangle" >
             <gradient

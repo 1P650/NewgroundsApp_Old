@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:id="@+id/generic_movie_scroller">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:clipChildren="false">
+
+ <jewpigeon.apps.newgrounds.Views.Dashboard
+     style="@style/NG_DefaultTheme.Dashboard"
+     android:id="@+id/generic_movie_player"
+     app:labelVisible="true"
+     app:labelText="Default movie"
+     app:labelIcon="@drawable/ng_pegi_everyone">
+
+     <ImageView
+         android:id="@+id/generic_movie_player_thumbnail"
+         android:layout_width="match_parent"
+         android:layout_height="200dp"
+         android:layout_margin="8dp"
+         android:scaleType="fitStart"
+         android:src="@drawable/ng_player_thumbnail" />
+ </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+        <jewpigeon.apps.newgrounds.Views.Dashboard
+            style="@style/NG_DefaultTheme.Dashboard"
+            android:id="@+id/generic_movie_author_comments"
+            app:labelVisible="true"
+            app:labelText="Author comments"
+            app:labelIcon="@drawable/ng_paper_icon">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+        <jewpigeon.apps.newgrounds.Views.Dashboard
+            style="@style/NG_DefaultTheme.Dashboard"
+            android:id="@+id/generic_movie_add_comment"
+            app:labelVisible="false">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/generic_movie_rating_layout">
+
+    <RatingBar
+        android:id="@+id/generic_movie_rating"
+        style="?android:attr/ratingBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:numStars="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/generic_movie_rating_reaction"
+        android:layout_width="76dp"
+        android:layout_height="76dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ng_rating_4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/generic_movie_rating"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ImageView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+            <EditText
+                style="@style/NG_DefaultTheme.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                android:layout_margin="8dp"
+                android:gravity="top"
+                android:hint="Enter your comment">
+
+            </EditText>
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+        <jewpigeon.apps.newgrounds.Views.Dashboard
+            style="@style/NG_DefaultTheme.Dashboard"
+            app:labelVisible="true"
+            app:labelText="Credits &amp; Info"
+            app:labelIcon="@drawable/ng_community_icon">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO INFFOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+                android:textSize="25dp"
+                android:padding="16dp">
+
+            </TextView>
+
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+        <jewpigeon.apps.newgrounds.Views.Dashboard
+            style="@style/NG_DefaultTheme.Dashboard"
+            app:labelVisible="true"
+            app:labelText="Comments"
+            app:labelIcon="@drawable/ng_punch_icon">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO COMMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEENTSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
+                android:textSize="25dp"
+                android:padding="16dp">
+
+            </TextView>
+
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/footer_skyline"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"/>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

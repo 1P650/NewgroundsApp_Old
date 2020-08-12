@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ng_passport_background"
+    android:clipChildren="false"
     android:fitsSystemWindows="false"
 
     tools:context=".PassportActivity">

@@ -323,6 +323,7 @@ public class ContentActivity extends NG_Activity implements
     private boolean HandleBackpressed() {
         if (getController().isRootFragment()) {
             if (getController().getCurrentFrag() instanceof FeaturedPortal) {
+
                 getController().clearStack();
                 return false;
             } else {

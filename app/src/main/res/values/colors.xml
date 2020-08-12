@@ -32,7 +32,7 @@
     <color name="colorDashboardLabelGradientLower_center">#272A2E</color>
     <color name="colorDashboardLabelGradientLower_end">#2F3337</color>
 
-    <color name="colorDashboardLabelGradientHigher_end">#444C51</color>
+    <color name="colorDashboardLabelGradientHigher_end">#4E565B</color>
     <color name="colorDashboardLabelGradientHigher_start">#3E4449</color>
 
     <color name="colorFeaturedItemTitleText">#F6F6F6</color>

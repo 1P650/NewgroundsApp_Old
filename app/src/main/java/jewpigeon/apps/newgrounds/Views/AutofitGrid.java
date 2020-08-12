@@ -126,34 +126,6 @@ public class AutofitGrid extends RecyclerView {
     }
 
 
-    private static class Cache {
-
-        private static LinkedHashMap<Integer,Cache> instances;
-        private LruCache<Boolean, Integer> lru;
-
-        private Cache() {
-
-            lru = new LruCache<>(128);
-
-        }
-
-        public static Cache getInstanceFor(int size) {
-
-            if (instances == null || instances.get(size) == null) {
-                instances = new LinkedHashMap<>();
-                Cache cache = new Cache();
-                instances.put(size, cache);
-                return cache;
-            }
-            return instances.get(size);
-
-        }
-
-        public LruCache<Boolean, Integer> getLru() {
-            return lru;
-        }
-    }
-
 
     private static class SpacingCache{
         private static SpacingCache instance;

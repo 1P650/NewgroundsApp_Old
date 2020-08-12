@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'io.objectbox'
 
 android {
+
+
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 
@@ -21,6 +23,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+
     sourceSets {
         main.res.srcDirs += 'src/main/res-misc'
         main.res.srcDirs += 'src/main/res-views'
@@ -28,11 +32,15 @@ android {
         main.res.srcDirs += 'src/main/res-anims'
         main.res.srcDirs += 'src/main/res-fonts'
         main.res.srcDirs += 'src/main/res-icons-emog'
+        main.res.srcDirs += 'src/main/res-generic'
     }
 
 
 
 }
+
+
+
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -45,8 +53,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
 
     implementation 'com.ncapdevi:frag-nav:2.4.0'
-
-
+    
 
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.google.android.material:material:1.1.0'

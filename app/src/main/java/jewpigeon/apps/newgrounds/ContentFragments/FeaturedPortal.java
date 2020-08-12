@@ -1,18 +1,26 @@
 package jewpigeon.apps.newgrounds.ContentFragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.ncapdevi.fragnav.FragNavTransactionOptions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.util.Pair;
+import androidx.core.view.ViewCompat;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
+import jewpigeon.apps.newgrounds.GenericLayouts.GenericMovieFragment;
 import jewpigeon.apps.newgrounds.R;
 import jewpigeon.apps.newgrounds.Views.AutofitGrid;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ListItem;
@@ -137,6 +145,17 @@ public class FeaturedPortal extends NG_Fragment {
         movies_adapter.setOnItemClickListener(new DashItemClickListener() {
             @Override
             public void OnItemClick(View view, int position) {
+                new Handler().postDelayed(new Runnable() {
+                    @SuppressLint("WrongConstant")
+                    @Override
+                    public void run() {
+                        Bundle bundle = new Bundle();
+                        getController().pushFragment(
+                                GenericMovieFragment.newInstance(bundle)
+                        );
+                    }
+                }, 300);
+
 
             }
         });
@@ -148,5 +167,6 @@ public class FeaturedPortal extends NG_Fragment {
 
         FeaturedAudioList.setLayoutManager(new LinearLayoutManager(getContext()));
         FeaturedAudioList.setAdapter(audio_adapter);
+
     }
 }
