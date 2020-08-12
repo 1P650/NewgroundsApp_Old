@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
-import java.lang.invoke.ConstantCallSite;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -24,10 +22,12 @@ public class GenericMovieFragment extends NG_Fragment {
 
     private Dashboard playerDashboard;
     private Dashboard commentDashboard;
+    private Dashboard creditsDashboard;
     private ImageView playerView;
     private ImageView ratingReaction;
     private RatingBar ratingBar;
     private ConstraintLayout ratingLayout;
+    private ConstraintLayout authorsLayout;
 
     public static GenericMovieFragment newInstance(Bundle args) {
         GenericMovieFragment fragment = new GenericMovieFragment();
@@ -47,6 +47,7 @@ public class GenericMovieFragment extends NG_Fragment {
         setSeekerView(rootView);
         playerDashboard = (Dashboard) findViewById(R.id.generic_movie_player);
         commentDashboard = (Dashboard) findViewById(R.id.generic_movie_add_comment);
+        creditsDashboard = (Dashboard) findViewById(R.id.generic_movie_credits);
         playerView = (ImageView) findViewById(R.id.generic_movie_player_thumbnail);
 
         ratingReaction = (ImageView) findViewById(R.id.generic_movie_rating_reaction);
@@ -59,6 +60,10 @@ public class GenericMovieFragment extends NG_Fragment {
         else {
             commentDashboard.inputChildWithSeparator(ratingLayout);
         }
+
+        authorsLayout = (ConstraintLayout) findViewById(R.id.generic_movie_authors);
+        creditsDashboard.inputChildWithSeparator(authorsLayout);
+
 
 
 

@@ -70,8 +70,8 @@
 
     <ImageView
         android:id="@+id/generic_movie_rating_reaction"
-        android:layout_width="76dp"
-        android:layout_height="76dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_gravity="end"
         android:layout_marginEnd="8dp"
         android:scaleType="fitXY"
@@ -98,38 +98,245 @@
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
+            android:id="@+id/generic_movie_credits"
             style="@style/NG_DefaultTheme.Dashboard"
-            app:labelVisible="true"
+            app:labelIcon="@drawable/ng_community_icon"
             app:labelText="Credits &amp; Info"
-            app:labelIcon="@drawable/ng_community_icon">
+            app:labelVisible="true">
 
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/generic_movie_authors"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO INFFOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
-                android:textSize="25dp"
-                android:padding="16dp">
+                android:padding="8dp"
+                android:layout_margin="8dp">
 
-            </TextView>
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ng_icon_undefined_circle" />
+
+                <TextView
+                    android:id="@+id/generic_movie_author_tmp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Default"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="@+id/imageView"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="default"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/generic_movie_author_tmp" />
+
+                <Button
+                    android:id="@+id/button"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@color/colorAccentAlt"
+                    android:fontFamily="sans-serif-medium"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Follow"
+                    android:textColor="@android:color/white"
+                    android:typeface="serif"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.444" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/generic_movie_metainfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+
+                <TextView
+                    android:id="@+id/generic_movie_views"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Views:"
+                    android:textColor="@color/colorFeaturedItemAuthorText"
+                    android:textSize="15sp"
+                    android:textStyle="italic"
+                    android:typeface="monospace"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/generic_movie_faves"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Faves:"
+                    android:textColor="@color/colorFeaturedItemAuthorText"
+                    android:textSize="15sp"
+                    android:textStyle="italic"
+                    android:typeface="monospace"
+                    app:layout_constraintEnd_toEndOf="@+id/generic_movie_views"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/generic_movie_views"
+                    app:layout_constraintTop_toBottomOf="@+id/generic_movie_views" />
+
+                <TextView
+                    android:id="@+id/generic_movie_faves2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Votes:"
+                    android:textColor="@color/colorFeaturedItemAuthorText"
+                    android:textSize="15sp"
+                    android:textStyle="italic"
+                    android:typeface="monospace"
+                    app:layout_constraintEnd_toEndOf="@+id/generic_movie_faves"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/generic_movie_faves"
+                    app:layout_constraintTop_toBottomOf="@+id/generic_movie_faves" />
+
+                <TextView
+                    android:id="@+id/generic_movie_faves3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Score:"
+                    android:textColor="@color/colorFeaturedItemAuthorText"
+                    android:textSize="15sp"
+                    android:textStyle="italic"
+                    android:typeface="monospace"
+                    app:layout_constraintEnd_toEndOf="@+id/generic_movie_faves2"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/generic_movie_faves2"
+                    app:layout_constraintTop_toBottomOf="@+id/generic_movie_faves2" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="0"
+                    app:layout_constraintBottom_toBottomOf="@+id/generic_movie_views"
+                    app:layout_constraintStart_toEndOf="@+id/generic_movie_views"
+                    app:layout_constraintTop_toTopOf="@+id/generic_movie_views" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    app:layout_constraintBottom_toBottomOf="@+id/generic_movie_faves2"
+                    app:layout_constraintEnd_toEndOf="@+id/textView6"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/textView6"
+                    app:layout_constraintTop_toTopOf="@+id/generic_movie_faves2" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="4.50/5.00"
+                    app:layout_constraintBottom_toBottomOf="@+id/generic_movie_faves3"
+                    app:layout_constraintEnd_toEndOf="@+id/textView7"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/textView7"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/colorAccent"
+                    app:layout_constraintBottom_toBottomOf="@+id/generic_movie_faves"
+                    app:layout_constraintEnd_toEndOf="@+id/textView4"
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toTopOf="@+id/generic_movie_faves" />
+
+                <RatingBar
+                    android:id="@+id/generic_movie_score"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:numStars="5"
+                    android:rating="4.5"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                    app:layout_constraintStart_toEndOf="@+id/textView8"
+                    app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+                <TextView
+                    android:id="@+id/generic_movie_faves4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Tags:"
+                    android:textColor="@color/colorFeaturedItemAuthorText"
+                    android:textSize="15sp"
+                    android:textStyle="italic"
+                    android:typeface="monospace"
+                    app:layout_constraintEnd_toEndOf="@+id/generic_movie_faves3"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/generic_movie_faves3"
+                    app:layout_constraintTop_toBottomOf="@+id/generic_movie_faves3" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:checkable="false"
+                    android:text="Alabama"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/generic_movie_faves4"
+                    app:layout_constraintStart_toEndOf="@+id/generic_movie_faves4"
+                    app:layout_constraintTop_toTopOf="@+id/generic_movie_faves4" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
-        <jewpigeon.apps.newgrounds.Views.Dashboard
-            style="@style/NG_DefaultTheme.Dashboard"
-            app:labelVisible="true"
-            app:labelText="Comments"
-            app:labelIcon="@drawable/ng_punch_icon">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO COMMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEENTSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
-                android:textSize="25dp"
-                android:padding="16dp">
-
-            </TextView>
-
-        </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <ImageView
             android:layout_width="match_parent"
