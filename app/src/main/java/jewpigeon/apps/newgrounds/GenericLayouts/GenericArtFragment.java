@@ -1,17 +1,11 @@
 package jewpigeon.apps.newgrounds.GenericLayouts;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
-import android.widget.TextView;
-
-import com.google.android.material.appbar.AppBarLayout;
-
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,67 +14,57 @@ import androidx.core.content.ContextCompat;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.R;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashLayouts.GenericAuthorLayout;
 
-public class GenericMovieFragment extends NG_Fragment {
+public class GenericArtFragment extends NG_Fragment {
     private View rootView;
 
-    private Dashboard playerDashboard;
+    private Dashboard containerDashboard;
     private Dashboard commentDashboard;
     private Dashboard creditsDashboard;
     private ImageView ratingReaction;
     private RatingBar ratingBar;
     private ConstraintLayout ratingLayout;
-    private GenericAuthorLayout authorsLayout;
-
-    private TextView AuthorCommentsText;
-
-    private String JerryJackson = "https://uploads.ungrounded.net/alternate/57000/57203_alternate_1371.360p.mp4?f1361463301";
-
-    private ImageView GenericPlayer;
+    private ConstraintLayout authorsLayout;
 
 
-    public static GenericMovieFragment newInstance(Bundle args) {
-        GenericMovieFragment fragment = new GenericMovieFragment();
+
+    private ImageView GenericArtView;
+
+
+    public static GenericArtFragment newInstance(Bundle args) {
+        GenericArtFragment fragment = new GenericArtFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-
+        super.onCreate(savedInstanceState);
     }
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.generic_movie_fragment, container, false);
+        rootView = inflater.inflate(R.layout.generic_art_fragment, container, false);
         setSeekerView(rootView);
-        playerDashboard = (Dashboard) findViewById(R.id.generic_movie_player_container);
-        commentDashboard = (Dashboard) findViewById(R.id.generic_movie_add_comment);
-        creditsDashboard = (Dashboard) findViewById(R.id.generic_movie_credits);
+        containerDashboard = (Dashboard) findViewById(R.id.generic_art_player_container);
+        commentDashboard = (Dashboard) findViewById(R.id.generic_art_add_comment);
+        creditsDashboard = (Dashboard) findViewById(R.id.generic_art_credits);
 
+        ratingReaction = (ImageView) findViewById(R.id.generic_art_rating_reaction);
+        ratingBar = (RatingBar) findViewById(R.id.generic_art_rating);
 
-        ratingReaction = (ImageView) findViewById(R.id.generic_movie_rating_reaction);
-        ratingBar = (RatingBar) findViewById(R.id.generic_movie_rating);
+        GenericArtView = (ImageView) findViewById(R.id.generic_art_view);
 
-        GenericPlayer = (ImageView) findViewById(R.id.generic_movie_player);
-
-        AuthorCommentsText = (TextView) findViewById(R.id.generic_movie_author_comments_text);
-
-
-        ratingLayout = (ConstraintLayout) findViewById(R.id.generic_movie_rating_layout);
-
-
+        ratingLayout = (ConstraintLayout) findViewById(R.id.generic_art_rating_layout);
         if (!getNGActivity().getPreferencesFromStore().isUserLogged()) {
             commentDashboard.setVisibility(View.GONE);
         } else {
             commentDashboard.inputChildWithSeparator(ratingLayout);
         }
 
-        authorsLayout = (GenericAuthorLayout) findViewById(R.id.generic_movie_authors);
+        authorsLayout = (ConstraintLayout) findViewById(R.id.generic_art_authors);
         creditsDashboard.inputChildWithSeparator(authorsLayout);
 
 
@@ -115,18 +99,6 @@ public class GenericMovieFragment extends NG_Fragment {
 
             }
         });
-
-
-
-        GenericPlayer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(JerryJackson)));
-            }
-        });
-
         return rootView;
     }
-
-
 }

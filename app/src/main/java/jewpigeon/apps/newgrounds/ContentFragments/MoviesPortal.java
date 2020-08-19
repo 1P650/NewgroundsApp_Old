@@ -60,17 +60,14 @@ public class MoviesPortal extends NG_Fragment {
     ArrayList<GridItem> YearMoviesArray = new ArrayList<>(Arrays.asList(
             new GridItem(null, "DEFAULT", "DEFAULT"),
             new GridItem(null, "DEFAULT", "DEFAULT"),
-            new GridItem(null, "DEFAULT", "DEFAULT"),
-            new GridItem(null, "DEFAULT", "DEFAULT"),
-            new GridItem(null, "DEFAULT", "DEFAULT"),
-            new GridItem(null, "DEFAULT", "DEFAULT")));
+            new GridItem(null, "DEFAULT", "DEFAULT")
+    ));
     ArrayList<GridItem> ClassicMoviesArray = new ArrayList<>(Arrays.asList(
             new GridItem(null, "DEFAULT", "DEFAULT"),
             new GridItem(null, "DEFAULT", "DEFAULT"),
-            new GridItem(null, "DEFAULT", "DEFAULT"),
-            new GridItem(null, "DEFAULT", "DEFAULT"),
-            new GridItem(null, "DEFAULT", "DEFAULT"),
-            new GridItem(null, "DEFAULT", "DEFAULT")));
+            new GridItem(null, "DEFAULT", "DEFAULT")
+    )
+    );
 
 
     AutofitGrid BrandMoviesList;

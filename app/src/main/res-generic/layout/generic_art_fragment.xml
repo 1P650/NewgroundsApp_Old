@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/generic_movie_scroller"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/generic_art_scroller"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false">
@@ -15,55 +16,47 @@
 
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
-            android:id="@+id/generic_movie_player_container"
+            android:id="@+id/generic_art_player_container"
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelIcon="@drawable/ng_pegi_everyone"
-            app:labelMenu="@menu/dash_movie_buttons"
-            app:labelText="Default movie"
+            app:labelText="Default art"
             app:labelVisible="true">
 
             <ImageView
-                android:id="@+id/generic_movie_player"
+                android:id="@+id/generic_art_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ng_icon_undefined"
+                android:layout_margin="8dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter">
+            </ImageView>
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:maxHeight="200dp"
-                android:padding="48dp"
-                android:src="@drawable/ng_player_play_icon" />
-
-
-        </jewpigeon.apps.newgrounds.Views.Dashboard>
-
-        <jewpigeon.apps.newgrounds.Views.Dashboard
-            android:id="@+id/generic_movie_author_comments"
-            style="@style/NG_DefaultTheme.Dashboard"
-            app:labelIcon="@drawable/ng_paper_icon"
-            app:labelText="Author comments"
-            app:labelVisible="true">
-
-            <TextView
-                android:id="@+id/generic_movie_author_comments_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:layout_marginHorizontal="8dp"
+                android:padding="8dp"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+
+
+
+
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
+
         <jewpigeon.apps.newgrounds.Views.Dashboard
-            android:id="@+id/generic_movie_add_comment"
+            android:id="@+id/generic_art_add_comment"
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelVisible="false">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/generic_movie_rating_layout"
+                android:id="@+id/generic_art_rating_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RatingBar
-                    android:id="@+id/generic_movie_rating"
+                    android:id="@+id/generic_art_rating"
                     style="?android:attr/ratingBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -76,9 +69,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
                 <ImageView
-                    android:id="@+id/generic_movie_rating_reaction"
+                    android:id="@+id/generic_art_rating_reaction"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_gravity="end"
@@ -88,62 +80,120 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/generic_movie_rating"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toEndOf="@+id/generic_art_rating"
+                    app:layout_constraintTop_toTopOf="parent">
 
+                </ImageView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <EditText
                 style="@style/NG_DefaultTheme.EditText"
                 android:layout_width="match_parent"
-                android:layout_height="64dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:gravity="top"
-                android:hint="Enter your comment">
+                android:hint="Enter your comment"
+                android:padding="8dp">
 
             </EditText>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/generic_movie_post_comment"
+                android:id="@+id/generic_art_post_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
                 android:layout_marginStart="8dp"
-                android:text="Post comment"
-                android:textColor="@android:color/white"
-                android:visibility="gone"
                 app:backgroundTint="@color/colorAccentAlt"
+                android:text="Post comment"
+                android:visibility="gone"
+                android:textColor="@android:color/white"
                 app:rippleColor="@color/colorAccent">
 
-            </com.google.android.material.button.MaterialButton>>
+            </com.google.android.material.button.MaterialButton>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
-            android:id="@+id/generic_movie_credits"
+            android:id="@+id/generic_art_credits"
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelIcon="@drawable/ng_community_icon"
             app:labelText="Credits &amp; Info"
             app:labelVisible="true">
 
-
-            <jewpigeon.apps.newgrounds.Views.DashboardData.DashLayouts.GenericAuthorLayout
-                android:id="@+id/generic_movie_authors"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/generic_art_authors"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="4dp"
-                android:layout_marginVertical="8dp">
+                android:layout_margin="8dp">
 
-            </jewpigeon.apps.newgrounds.Views.DashboardData.DashLayouts.GenericAuthorLayout>
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ng_icon_undefined_circle" />
+
+                <TextView
+                    android:id="@+id/generic_art_author_tmp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Default"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="@+id/imageView"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="default"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/generic_art_author_tmp" />
+
+                <Button
+                    android:id="@+id/button"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@color/colorAccentAlt"
+                    android:fontFamily="sans-serif-medium"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Follow"
+                    android:textColor="@android:color/white"
+                    android:typeface="serif"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.444" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/generic_movie_metainfo"
+                android:id="@+id/generic_art_metainfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp">
 
                 <TextView
-                    android:id="@+id/generic_movie_views"
+                    android:id="@+id/generic_art_views"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
@@ -162,7 +212,7 @@
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/generic_movie_faves"
+                    android:id="@+id/generic_art_faves"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -173,13 +223,13 @@
                     android:textSize="15sp"
                     android:textStyle="italic"
                     android:typeface="monospace"
-                    app:layout_constraintEnd_toEndOf="@+id/generic_movie_views"
+                    app:layout_constraintEnd_toEndOf="@+id/generic_art_views"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/generic_movie_views"
-                    app:layout_constraintTop_toBottomOf="@+id/generic_movie_views" />
+                    app:layout_constraintStart_toStartOf="@+id/generic_art_views"
+                    app:layout_constraintTop_toBottomOf="@+id/generic_art_views" />
 
                 <TextView
-                    android:id="@+id/generic_movie_faves2"
+                    android:id="@+id/generic_art_faves2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -190,13 +240,13 @@
                     android:textSize="15sp"
                     android:textStyle="italic"
                     android:typeface="monospace"
-                    app:layout_constraintEnd_toEndOf="@+id/generic_movie_faves"
+                    app:layout_constraintEnd_toEndOf="@+id/generic_art_faves"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="@+id/generic_movie_faves"
-                    app:layout_constraintTop_toBottomOf="@+id/generic_movie_faves" />
+                    app:layout_constraintStart_toStartOf="@+id/generic_art_faves"
+                    app:layout_constraintTop_toBottomOf="@+id/generic_art_faves" />
 
                 <TextView
-                    android:id="@+id/generic_movie_faves3"
+                    android:id="@+id/generic_art_faves3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -207,10 +257,10 @@
                     android:textSize="15sp"
                     android:textStyle="italic"
                     android:typeface="monospace"
-                    app:layout_constraintEnd_toEndOf="@+id/generic_movie_faves2"
+                    app:layout_constraintEnd_toEndOf="@+id/generic_art_faves2"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/generic_movie_faves2"
-                    app:layout_constraintTop_toBottomOf="@+id/generic_movie_faves2" />
+                    app:layout_constraintStart_toStartOf="@+id/generic_art_faves2"
+                    app:layout_constraintTop_toBottomOf="@+id/generic_art_faves2" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -218,20 +268,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="0"
-                    app:layout_constraintBottom_toBottomOf="@+id/generic_movie_views"
-                    app:layout_constraintStart_toEndOf="@+id/generic_movie_views"
-                    app:layout_constraintTop_toTopOf="@+id/generic_movie_views" />
+                    app:layout_constraintBottom_toBottomOf="@+id/generic_art_views"
+                    app:layout_constraintStart_toEndOf="@+id/generic_art_views"
+                    app:layout_constraintTop_toTopOf="@+id/generic_art_views" />
 
                 <TextView
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    app:layout_constraintBottom_toBottomOf="@+id/generic_movie_faves2"
+                    app:layout_constraintBottom_toBottomOf="@+id/generic_art_faves2"
                     app:layout_constraintEnd_toEndOf="@+id/textView6"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/textView6"
-                    app:layout_constraintTop_toTopOf="@+id/generic_movie_faves2" />
+                    app:layout_constraintTop_toTopOf="@+id/generic_art_faves2" />
 
                 <TextView
                     android:id="@+id/textView8"
@@ -239,7 +289,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="4.50/5.00"
-                    app:layout_constraintBottom_toBottomOf="@+id/generic_movie_faves3"
+                    app:layout_constraintBottom_toBottomOf="@+id/generic_art_faves3"
                     app:layout_constraintEnd_toEndOf="@+id/textView7"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -251,13 +301,13 @@
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:textColor="@color/colorAccent"
-                    app:layout_constraintBottom_toBottomOf="@+id/generic_movie_faves"
+                    app:layout_constraintBottom_toBottomOf="@+id/generic_art_faves"
                     app:layout_constraintEnd_toEndOf="@+id/textView4"
                     app:layout_constraintStart_toStartOf="@+id/textView4"
-                    app:layout_constraintTop_toTopOf="@+id/generic_movie_faves" />
+                    app:layout_constraintTop_toTopOf="@+id/generic_art_faves" />
 
                 <RatingBar
-                    android:id="@+id/generic_movie_score"
+                    android:id="@+id/generic_art_score"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -269,7 +319,7 @@
                     app:layout_constraintTop_toTopOf="@+id/textView8" />
 
                 <TextView
-                    android:id="@+id/generic_movie_faves4"
+                    android:id="@+id/generic_art_faves4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -280,10 +330,10 @@
                     android:textSize="15sp"
                     android:textStyle="italic"
                     android:typeface="monospace"
-                    app:layout_constraintEnd_toEndOf="@+id/generic_movie_faves3"
+                    app:layout_constraintEnd_toEndOf="@+id/generic_art_faves3"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/generic_movie_faves3"
-                    app:layout_constraintTop_toBottomOf="@+id/generic_movie_faves3" />
+                    app:layout_constraintStart_toStartOf="@+id/generic_art_faves3"
+                    app:layout_constraintTop_toBottomOf="@+id/generic_art_faves3" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip2"
@@ -296,9 +346,9 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/generic_movie_faves4"
-                    app:layout_constraintStart_toEndOf="@+id/generic_movie_faves4"
-                    app:layout_constraintTop_toTopOf="@+id/generic_movie_faves4" />
+                    app:layout_constraintBottom_toBottomOf="@+id/generic_art_faves4"
+                    app:layout_constraintStart_toEndOf="@+id/generic_art_faves4"
+                    app:layout_constraintTop_toTopOf="@+id/generic_art_faves4" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

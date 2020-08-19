@@ -36,7 +36,7 @@
     <color name="colorDashboardLabelGradientHigher_start">#3E4449</color>
 
     <color name="colorFeaturedItemTitleText">#F6F6F6</color>
-    <color name="colorFeaturedItemAuthorText">#7E7E7E</color>
+    <color name="colorItemAuthorText">#7E7E7E</color>
     <color name="colorFeaturedItemSmallAuthorText">#CFCFCF</color>
     <color name="colorFeaturedAudioItemBackground">#221E1F</color>
 

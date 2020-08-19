@@ -1,7 +1,9 @@
 package jewpigeon.apps.newgrounds.ContentFragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +17,12 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
+import jewpigeon.apps.newgrounds.GenericLayouts.GenericArtFragment;
+import jewpigeon.apps.newgrounds.GenericLayouts.GenericMovieFragment;
 import jewpigeon.apps.newgrounds.R;
 import jewpigeon.apps.newgrounds.Views.AutofitGrid;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItemClickListener;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ArtItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.ItemGenericAdapter;
 
@@ -84,8 +89,14 @@ public class ArtPortal extends NG_Fragment {
         }
 
         adapter = new ItemGenericAdapter(ItemGenericAdapter.PORTAL_ART_GRID, FeaturedArtArray);
-
+        adapter.setOnItemClickListener(new DashItemClickListener() {
+            @Override
+            public void OnItemClick(View view, int position) {
+                Log.i("MYTAG", "FUCK");
+            }
+        });
     }
+
 
     @Nullable
     @Override
@@ -96,6 +107,32 @@ public class ArtPortal extends NG_Fragment {
         FeaturedGrid = (AutofitGrid) findViewById(R.id.art_portal_browser_grid);
         FeaturedGridLoading = (ProgressBar) findViewById(R.id.art_portal_loading);
         scrollView = (NestedScrollView) findViewById(R.id.art_portal_scroller);
+
+
+
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        adapter.setOnItemClickListener(new DashItemClickListener() {
+            @Override
+            public void OnItemClick(View view, int position) {
+                new Handler().postDelayed(new Runnable() {
+                    @SuppressLint("WrongConstant")
+                    @Override
+                    public void run() {
+                        Bundle bundle = new Bundle();
+                        getController().pushFragment(
+                                GenericArtFragment.newInstance(bundle)
+                        );
+                    }
+                }, 400);
+            }
+        });
+        FeaturedGrid.setAdapter(adapter);
+
         scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
@@ -103,14 +140,11 @@ public class ArtPortal extends NG_Fragment {
                 if(v.getChildAt(v.getChildCount() - 1) != null) {
                     if ((scrollY >= (v.getChildAt(v.getChildCount() - 1).getMeasuredHeight() - v.getMeasuredHeight())) &&
                             scrollY > oldScrollY) {
-                      loadDefault();
+                        loadDefault();
                     }
                 }
             }
         });
-
-        FeaturedGrid.setAdapter(adapter);
-        return rootView;
     }
 
     private void loadDefault() {
@@ -134,7 +168,6 @@ public class ArtPortal extends NG_Fragment {
         }, 2500);
 
     }
-
 
 }
 

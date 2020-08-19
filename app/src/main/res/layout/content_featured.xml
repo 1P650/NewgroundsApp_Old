@@ -78,6 +78,21 @@
                 style="@style/NG_DefaultTheme.DashboardPortalList"/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
+        <jewpigeon.apps.newgrounds.Views.Dashboard
+            android:id="@+id/featured_artist_news"
+            style="@style/NG_DefaultTheme.Dashboard"
+            app:labelIcon="@drawable/ng_community_icon"
+            app:labelMenuStrings="@array/community_ArtistNews_buttons"
+            app:labelText="Artist news"
+            app:labelVisible="true">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/featured_artistNews_list"
+                style="@style/NG_DefaultTheme.DashboardPortalList">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </jewpigeon.apps.newgrounds.Views.Dashboard>
+
         <!-- Bottom city-->
         <ImageView
             android:layout_width="match_parent"

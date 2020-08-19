@@ -31,7 +31,7 @@ import static jewpigeon.apps.newgrounds.Utils.DimensionTool.sp;
 
 public class AudioItemView extends View implements Target<Drawable> {
 
-    private final int ITEM_HEIGHT = (int) getResources().getDimension(R.dimen.dashboard_item_size_audio_list);
+    private final int ITEM_HEIGHT = (int) getResources().getDimension(R.dimen.dashboard_item_size_medium_list);
     private final int ICON_SIZE = ITEM_HEIGHT*8/9;
 
     private Drawable DashAudioIcon;
@@ -42,7 +42,7 @@ public class AudioItemView extends View implements Target<Drawable> {
 
 
     private final int TitleColor = ContextCompat.getColor(getContext(), R.color.colorAccent);
-    private final int AuthorColor = ContextCompat.getColor(getContext(), R.color.colorFeaturedItemAuthorText);
+    private final int AuthorColor = ContextCompat.getColor(getContext(), R.color.colorItemAuthorText);
     private final int DashBackgroundEnabledColor = ContextCompat.getColor(getContext(), R.color.colorFeaturedAudioItemBackground);
 
 

@@ -37,10 +37,10 @@ public class ListItemView extends View implements Target<Drawable> {
 
 
     private final int TitleColor = ContextCompat.getColor(getContext(), R.color.colorAccent);
-    private final int AuthorColor = ContextCompat.getColor(getContext(), R.color.colorFeaturedItemAuthorText);
+    private final int AuthorColor = ContextCompat.getColor(getContext(), R.color.colorItemAuthorText);
     private final int DashBackgroundEnabledColor = ContextCompat.getColor(getContext(), R.color.colorFeaturedAudioItemBackground);
 
-    private int ITEM_HEIGHT = (int) getResources().getDimension(R.dimen.dashboard_item_size_featured_audio_list);
+    private int ITEM_HEIGHT = (int) getResources().getDimension(R.dimen.dashboard_item_size_featured_small_list);
     private final int ICON_SIZE = ITEM_HEIGHT * 3 / 4;
 
 

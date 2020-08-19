@@ -46,7 +46,7 @@ public class GridItemView extends View implements Target<Drawable> {
 
 
     private final int TitleColor = ContextCompat.getColor(selfContext, R.color.colorFeaturedItemTitleText);
-    private final int AuthorColor = ContextCompat.getColor(selfContext, R.color.colorFeaturedItemAuthorText);
+    private final int AuthorColor = ContextCompat.getColor(selfContext, R.color.colorItemAuthorText);
     private final int LabelBackgroundColor = ContextCompat.getColor(selfContext, R.color.colorDashboardItemLabelBackground);
 
     private static TextPaint DashTitlePainter;

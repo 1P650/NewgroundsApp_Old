@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dash_moviePlayer_report"
+        android:title=""
+        android:icon="@drawable/ng_report_icon"
+        />
+    <item
+        android:id="@+id/dash_moviePlayer_share"
+        android:title=""
+        android:icon="@drawable/ng_rss_icon"
+        />
+    <item
+        android:id="@+id/dash_moviePlayer_playlist"
+        android:title=""
+        android:icon="@drawable/ng_shortlist_icon"
+        />
+
+    <item
+        android:id="@+id/dash_moviePlayer_favorites"
+        android:title=""
+        android:icon="@drawable/ng_like_icon"
+        android:iconTint="@color/colorPassportError"
+        />
+</menu>

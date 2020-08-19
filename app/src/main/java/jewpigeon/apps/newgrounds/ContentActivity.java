@@ -31,6 +31,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
@@ -47,6 +48,7 @@ import jewpigeon.apps.newgrounds.Fundamental.NG_Activity;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Bus;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Events;
 import jewpigeon.apps.newgrounds.Fundamental.NG_PreferencesData;
+import jewpigeon.apps.newgrounds.GenericLayouts.GenericUserFragment;
 import jewpigeon.apps.newgrounds.Views.ProfileWidget;
 import jewpigeon.apps.newgrounds.Views.ProfileWidgetData.ProfileIconClickListener;
 import jewpigeon.apps.newgrounds.Views.ProfileWidgetData.SliderItemClickListener;
@@ -64,6 +66,7 @@ public class ContentActivity extends NG_Activity implements
     private SearchView ContentSearch;
     private AppBarLayout contentAppBarLayout;
     private ProfileWidget ProfileMenu;
+    private ConstraintLayout ProfileMenuHeader;
 
     private BottomNavigationView ContentBottomBar;
     private HideBottomViewOnScrollBehavior contentBottomBarBehaviour;
@@ -140,6 +143,8 @@ public class ContentActivity extends NG_Activity implements
         LoginButton = ContentToolbar.findViewById(R.id.NG_LoginOrSignUp);
         ProfileMenu = ContentToolbar.findViewById(R.id.NG_ProfileWidget);
         ProfileActionMenu = findViewById(R.id.content_profile_menu);
+        ProfileMenuHeader = (ConstraintLayout) ProfileActionMenu.getHeaderView(0);
+
 
 
         if(preferences != null && preferences.isUserLogged()){
@@ -200,8 +205,14 @@ public class ContentActivity extends NG_Activity implements
         HomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getController().switchTab(FragNavController.TAB6);
+                if(!(getController().getCurrentFrag() instanceof FeaturedPortal)){
+                    getController().switchTab(FragNavController.TAB6);
+                }
                 ContentBottomBar.getMenu().setGroupCheckable(0, false, false);
+                if(!(getController().getStack(FragNavController.TAB6).get(0) instanceof FeaturedPortal)){
+                    getController().popFragments(getController().getStack(FragNavController.TAB6).size());
+                }
+                getController().clearStack();
             }
         });
 
@@ -269,6 +280,15 @@ public class ContentActivity extends NG_Activity implements
             }
         });
 
+        ProfileMenuHeader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getController().pushFragment(GenericUserFragment.newInstance());
+                ContentDrawerLayout.closeDrawer(ProfileActionMenu);
+
+            }
+        });
+
 
     }
 
@@ -323,11 +343,11 @@ public class ContentActivity extends NG_Activity implements
     private boolean HandleBackpressed() {
         if (getController().isRootFragment()) {
             if (getController().getCurrentFrag() instanceof FeaturedPortal) {
-
                 getController().clearStack();
                 return false;
             } else {
                 getController().switchTab(FragNavController.TAB6);
+
                 ContentBottomBar.getMenu().setGroupCheckable(0, false, false);
                 return true;
             }
@@ -410,6 +430,8 @@ public class ContentActivity extends NG_Activity implements
                 ContentDrawerLayout.closeDrawer(ProfileActionMenu);
                 NG_Bus.get().post(new NG_Events.NG_UserLoggedOut());
             }
+
+
 
 
                 default:{

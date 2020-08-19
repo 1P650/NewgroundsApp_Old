@@ -9,6 +9,7 @@
     android:layout_marginTop="@dimen/ng_toolbar_top_margin"
     android:background="@color/colorPrimary"
 
+
     app:headerLayout="@layout/content_userheader"
     app:menu="@menu/content_profilemenu_actions"
     app:itemTextColor="@color/colorAccent"

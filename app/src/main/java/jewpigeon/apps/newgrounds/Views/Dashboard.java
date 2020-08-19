@@ -25,7 +25,6 @@ import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 
-
 import java.util.ArrayList;
 
 import androidx.appcompat.view.menu.MenuBuilder;
@@ -33,32 +32,25 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
-
 import jewpigeon.apps.newgrounds.R;
 import jewpigeon.apps.newgrounds.Utils.DimensionTool;
 
 public class Dashboard extends LinearLayout {
 
-    private ConstraintLayout DashboardLabel;
-    private TextView LabelHeader;
-    private ImageView LabelIcon;
-    private LinearLayout LabelButtons;
-
-    private boolean IS_LABEL_VISIBLE = true;
-
-    private ArrayList<Integer> childrenWithSeparators = new ArrayList<>();
-
-
-    private Drawable LabelBackground;
-    private GradientDrawable MainBackground;
     private final int LABEL_HEIGHT = (int) (getContext().getResources().getDimensionPixelSize(R.dimen.dashboard_labelSize));
     private final int STROKE_WIDTH = getContext().getResources().getDimensionPixelSize(R.dimen.dashboard_stroke_width);
     private final int ICON_SIZE = getContext().getResources().getDimensionPixelSize(R.dimen.dashboard_iconSize);
     private final int TEXT_SIZE = (int) getContext().getResources().getDimension(R.dimen.dashboard_textSize);
     private final int ICON_PADDING = (int) DimensionTool.dp(2);
     private final int CORNER_RADIUS = getContext().getResources().getDimensionPixelSize(R.dimen.dashboard_corner_radius);
-
-
+    private ConstraintLayout DashboardLabel;
+    private TextView LabelHeader;
+    private ImageView LabelIcon;
+    private LinearLayout LabelButtons;
+    private boolean IS_LABEL_VISIBLE = true;
+    private ArrayList<Integer> childrenWithSeparators = new ArrayList<>();
+    private Drawable LabelBackground;
+    private GradientDrawable MainBackground;
     private int COLOR_BD = ContextCompat.getColor(getContext(), R.color.colorDashboardIconBackground);
     private int COLOR_BP = ContextCompat.getColor(getContext(), R.color.colorAccent);
 
@@ -131,7 +123,7 @@ public class Dashboard extends LinearLayout {
 
     private void establishSelf(Context context, AttributeSet attributes) {
         setOrientation(VERTICAL);
-        setMinimumHeight(LABEL_HEIGHT*3/2);
+        setMinimumHeight(LABEL_HEIGHT * 3 / 2);
     }
 
 
@@ -189,7 +181,7 @@ public class Dashboard extends LinearLayout {
         labelConstraints.connect(LabelHeader.getId(), ConstraintSet.TOP, LabelIcon.getId(), ConstraintSet.TOP, (int) DimensionTool.dp(8));
 
         labelConstraints.connect(LabelButtons.getId(), ConstraintSet.BOTTOM, DashboardLabel.getId(), ConstraintSet.BOTTOM, 0);
-        labelConstraints.connect(LabelButtons.getId(), ConstraintSet.END, DashboardLabel.getId(), ConstraintSet.END,  (int) DimensionTool.dp(8));
+        labelConstraints.connect(LabelButtons.getId(), ConstraintSet.END, DashboardLabel.getId(), ConstraintSet.END, (int) DimensionTool.dp(8));
         labelConstraints.connect(LabelButtons.getId(), ConstraintSet.TOP, DashboardLabel.getId(), ConstraintSet.TOP, 6);
 
 
@@ -240,22 +232,55 @@ public class Dashboard extends LinearLayout {
 
         for (int i = 0; i < menu.size(); ++i) {
 
-
-
-
-
             buttons[i] = new MaterialButton(getContext());
             buttons[i].setIncludeFontPadding(false);
             buttons[i].setCornerRadius(10);
 
+
             buttons[i].setMinWidth(0);
             buttons[i].setMinimumWidth(0);
             buttons[i].setPadding(16, 12, 16, 12);
-
             buttons[i].setBackgroundTintList(BUTTON_STATE_LIST);
             buttons[i].setRippleColorResource(android.R.color.transparent);
+            if (!menu.getItem(i).getTitle().equals("")) {
+                buttons[i].setText(menu.getItem(i).getTitle());
+            }
+            if (menu.getItem(i).getIcon() != null) {
+                buttons[i].setIcon(menu.getItem(i).getIcon());
+                if (menu.getItem(i).getIconTintList() != null) {
+                    int color = menu.getItem(i).getIconTintList().getColorForState(new int[]{}, COLOR_BD);
+                    ColorStateList ICON_TINT_LIST = new ColorStateList(new int[][]{
+                            new int[]{android.R.attr.state_pressed},
+                            new int[]{android.R.attr.state_enabled},
+                            new int[]{android.R.attr.state_focused, android.R.attr.state_pressed},
+                            new int[]{-android.R.attr.state_enabled},
+                            new int[]{}
+                    },
+                            new int[]{
+                                    COLOR_BD,
+                                    color,
+                                    COLOR_BD,
+                                    color,
+                                    color
+                            });
+                    buttons[i].setIconTint(ICON_TINT_LIST);
 
-            buttons[i].setText(menu.getItem(i).getTitle());
+                } else {
+                    buttons[i].setIconTint(BUTTON_TEXT_STATE_LIST);
+                }
+
+                buttons[i].setIconGravity(MaterialButton.ICON_GRAVITY_START);
+                buttons[i].setIconSize((int) DimensionTool.dp(16));
+                buttons[i].setIconPadding(0);
+                buttons[i].setPadding(16, 12, 16, 12);
+
+            }
+
+            if (i != menu.size() - 1) {
+                buttons[i].setLayoutParams(ButtonParams);
+            }
+
+
             buttons[i].setTextColor(BUTTON_TEXT_STATE_LIST);
             buttons[i].setTextAlignment(TEXT_ALIGNMENT_CENTER);
             buttons[i].setTextSize(11);
@@ -321,8 +346,8 @@ public class Dashboard extends LinearLayout {
     }
 
 
-    public void inputChildWithSeparator(View view){
-        if(indexOfChild(view) != -1) childrenWithSeparators.add(indexOfChild(view));
+    public void inputChildWithSeparator(View view) {
+        if (indexOfChild(view) != -1) childrenWithSeparators.add(indexOfChild(view));
     }
 
     @Override
@@ -352,10 +377,9 @@ public class Dashboard extends LinearLayout {
                     CORNER_RADIUS, CORNER_RADIUS,
                     CORNER_RADIUS, CORNER_RADIUS,
                     CORNER_RADIUS, CORNER_RADIUS});
-            MainBackground.setBounds(0, 0, getWidth() , getHeight() );
+            MainBackground.setBounds(0, 0, getWidth(), getHeight());
             MainBackground.draw(canvas);
         }
-
 
 
         super.dispatchDraw(canvas);
@@ -368,13 +392,14 @@ public class Dashboard extends LinearLayout {
             painter.drawOuterBorder(canvas, true);
         }
 
-        if(!childrenWithSeparators.isEmpty()){
+        if (!childrenWithSeparators.isEmpty()) {
 
-            for (int child_index:childrenWithSeparators
-                 ) {
+            for (int child_index : childrenWithSeparators
+            ) {
                 View child = getChildAt(child_index);
-                if(child_index!=getChildCount()-1 && getChildAt(getChildCount()-1).getVisibility() == VISIBLE){
-                    painter.drawSeparator(canvas,child.getBottom());
+                if (child_index != getChildCount() - 1 && getChildAt(getChildCount() - 1).getVisibility() == VISIBLE) {
+                    painter.drawSeparator(canvas, child.getBottom() +
+                            ((LayoutParams)child.getLayoutParams()).bottomMargin);
                 }
 
             }
@@ -382,7 +407,6 @@ public class Dashboard extends LinearLayout {
 
 
     }
-
 
 
     private class DashboardPainter {
@@ -400,9 +424,9 @@ public class Dashboard extends LinearLayout {
             canvas.clipRect(0, LABEL_HEIGHT + STROKE_WIDTH, getWidth(), getHeight());
             canvas.drawRoundRect(STROKE_WIDTH, 0,
                     getWidth() - STROKE_WIDTH, getHeight() - STROKE_WIDTH,
-                    CORNER_RADIUS*0.5f , CORNER_RADIUS*0.5f, innerlinePaint);
+                    CORNER_RADIUS * 0.5f, CORNER_RADIUS * 0.5f, innerlinePaint);
             canvas.restore();
-            canvas.drawLine(STROKE_WIDTH, LABEL_HEIGHT+STROKE_WIDTH*1.25f, getWidth() - STROKE_WIDTH, LABEL_HEIGHT+STROKE_WIDTH*1.25f, innerlinePaint);
+            canvas.drawLine(STROKE_WIDTH, LABEL_HEIGHT + STROKE_WIDTH * 1.5f, getWidth() - STROKE_WIDTH, LABEL_HEIGHT + STROKE_WIDTH * 1.5f, innerlinePaint);
 
 
         }
@@ -416,7 +440,7 @@ public class Dashboard extends LinearLayout {
 
             canvas.drawRoundRect(STROKE_WIDTH, STROKE_WIDTH,
                     getWidth() - STROKE_WIDTH, getHeight() - STROKE_WIDTH,
-                    CORNER_RADIUS*0.5f , CORNER_RADIUS*0.5f, innerlinePaint);
+                    CORNER_RADIUS * 0.5f, CORNER_RADIUS * 0.5f, innerlinePaint);
 
         }
 
@@ -436,15 +460,15 @@ public class Dashboard extends LinearLayout {
             canvas.restore();*/
 
             canvas.drawRoundRect(
-                    0 ,
+                    0,
                     0,
                     getWidth(),
                     getHeight(),
                     CORNER_RADIUS, CORNER_RADIUS, outerlinePaint);
-            canvas.drawLine(STROKE_WIDTH/2,
-                    LABEL_HEIGHT+STROKE_WIDTH/2,
-                    getWidth()-STROKE_WIDTH/2,
-                    LABEL_HEIGHT+STROKE_WIDTH/2,
+            canvas.drawLine(STROKE_WIDTH / 2,
+                    LABEL_HEIGHT + STROKE_WIDTH / 2,
+                    getWidth() - STROKE_WIDTH / 2,
+                    LABEL_HEIGHT + STROKE_WIDTH / 2,
                     outerlinePaint);
 
         }
@@ -461,7 +485,7 @@ public class Dashboard extends LinearLayout {
                     CORNER_RADIUS, CORNER_RADIUS, outerlinePaint);
         }
 
-        private void drawSeparator(Canvas canvas, int childBottom){
+        private void drawSeparator(Canvas canvas, int childBottom) {
             Paint outerlinePaint = new Paint();
             outerlinePaint.setColor(ContextCompat.getColor(getContext(), R.color.colorDashboardBorderline));
             outerlinePaint.setAntiAlias(true);
@@ -474,26 +498,26 @@ public class Dashboard extends LinearLayout {
             innerlinePaint.setStyle(Paint.Style.STROKE);
 
             canvas.drawLine(0, childBottom, getWidth(), childBottom, outerlinePaint);
-            canvas.drawLine(STROKE_WIDTH, childBottom - outerlinePaint.getStrokeWidth(), getWidth()-STROKE_WIDTH, childBottom - outerlinePaint.getStrokeWidth(), innerlinePaint);
-            canvas.drawLine(STROKE_WIDTH, childBottom + outerlinePaint.getStrokeWidth(), getWidth()-STROKE_WIDTH, childBottom + outerlinePaint.getStrokeWidth(), innerlinePaint);
+            canvas.drawLine(STROKE_WIDTH, childBottom - outerlinePaint.getStrokeWidth(), getWidth() - STROKE_WIDTH, childBottom - outerlinePaint.getStrokeWidth(), innerlinePaint);
+            canvas.drawLine(STROKE_WIDTH, childBottom + outerlinePaint.getStrokeWidth(), getWidth() - STROKE_WIDTH, childBottom + outerlinePaint.getStrokeWidth(), innerlinePaint);
 
         }
 
 
-        private void drawShadow(Canvas canvas){
+        private void drawShadow(Canvas canvas) {
             Paint shadowPaint = new Paint();
             shadowPaint.setStyle(Paint.Style.STROKE);
             shadowPaint.setAntiAlias(true);
             shadowPaint.setColor(Color.BLACK);
-            shadowPaint.setStrokeWidth(STROKE_WIDTH*0.75f);
+            shadowPaint.setStrokeWidth(STROKE_WIDTH * 0.75f);
             shadowPaint.setMaskFilter(new BlurMaskFilter(DimensionTool.dp(3), BlurMaskFilter.Blur.NORMAL));
-            canvas.drawLine(getWidth()+STROKE_WIDTH, CORNER_RADIUS, getWidth()+STROKE_WIDTH, getHeight()-CORNER_RADIUS/2, shadowPaint);
-            canvas.drawLine(CORNER_RADIUS, getHeight()+STROKE_WIDTH, getWidth()-CORNER_RADIUS/2, getHeight()+STROKE_WIDTH, shadowPaint);
+            canvas.drawLine(getWidth() + STROKE_WIDTH, CORNER_RADIUS, getWidth() + STROKE_WIDTH, getHeight() - CORNER_RADIUS / 2, shadowPaint);
+            canvas.drawLine(CORNER_RADIUS, getHeight() + STROKE_WIDTH, getWidth() - CORNER_RADIUS / 2, getHeight() + STROKE_WIDTH, shadowPaint);
             canvas.drawArc(
-                    getWidth()-CORNER_RADIUS-STROKE_WIDTH,
-                    getHeight()-CORNER_RADIUS-STROKE_WIDTH,
-                    getWidth()+STROKE_WIDTH,
-                    getHeight()+STROKE_WIDTH,
+                    getWidth() - CORNER_RADIUS - STROKE_WIDTH,
+                    getHeight() - CORNER_RADIUS - STROKE_WIDTH,
+                    getWidth() + STROKE_WIDTH,
+                    getHeight() + STROKE_WIDTH,
                     0,
                     90,
                     false,
@@ -502,9 +526,6 @@ public class Dashboard extends LinearLayout {
             );
         }
     }
-
-
-
 
 
 }

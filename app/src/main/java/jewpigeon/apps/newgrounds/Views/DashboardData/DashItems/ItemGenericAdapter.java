@@ -1,7 +1,9 @@
 package jewpigeon.apps.newgrounds.Views.DashboardData.DashItems;
 
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -42,6 +44,8 @@ public class ItemGenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         setItems(items);
     }
 
+
+
     public ItemGenericAdapter(ArrayList items) {
         setItems(items);
     }
@@ -57,86 +61,90 @@ public class ItemGenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView;
         switch (viewType) {
             case PORTAL_GRID_SMALL: {
-                GridItemViewSmall itemView = new GridItemViewSmall(parent.getContext());
-                return new DashGridHolder_Small(itemView);
+                itemView = new GridItemViewSmall(parent.getContext());
+                return new DashGenericHolder(itemView);
             }
             case PORTAL_FEATURED_AUDIO_LIST: {
-                ListItemView itemView = new ListItemView(parent.getContext());
-                return new DashGridHolder_Featured_Audio(itemView);
+                itemView = new ListItemView(parent.getContext());
+                return new DashGenericHolder(itemView);
             }
             case PORTAL_ART_GRID:{
-                ArtItemView itemView = new ArtItemView(parent.getContext());
-                return new DashGridHolder_Art(itemView);
+                itemView = new ArtItemView(parent.getContext());
+                return new DashGenericHolder(itemView);
             }
 
             case PORTAL_AUDIO_LIST:{
-                AudioItemView itemView = new AudioItemView(parent.getContext());
-                return new DashGridHolder_Audio(itemView);
+                itemView = new AudioItemView(parent.getContext());
+                return new DashGenericHolder(itemView);
             }
 
             case PORTAL_NEWS_LIST:{
-                NewsItemView itemView = new NewsItemView(parent.getContext());
-                return new DashGridHolder_News(itemView);
+                itemView = new NewsItemView(parent.getContext());
+                return new DashGenericHolder(itemView);
             }
 
             case PORTAL_FORUMS_LIST:{
-                ForumItemView itemView = new ForumItemView(parent.getContext());
-                return new DashGridHolder_Forums(itemView);
+                itemView = new ForumItemView(parent.getContext());
+                return new DashGenericHolder(itemView);
             }
             default: {
-                GridItemView itemView = new GridItemView(parent.getContext());
-                return new DashGridHolder_Regular(itemView);
+                itemView = new GridItemView(parent.getContext());
+                return new DashGenericHolder(itemView);
             }
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        DashGenericHolder genHolder = (DashGenericHolder) holder;
         switch (holder.getItemViewType()) {
 
             case PORTAL_GRID_SMALL: {
                 GridItemSmall item = (GridItemSmall) items.get(position);
-                ((DashGridHolder_Small) holder).view.setDashItem(item);
+                ((GridItemViewSmall)(genHolder.view)).setDashItem(item);
                 break;
             }
             case PORTAL_FEATURED_AUDIO_LIST: {
                 ListItem item = (ListItem) items.get(position);
-                ((DashGridHolder_Featured_Audio) holder).view.setDashItem(item);
-                if (position % 2 == 0) ((DashGridHolder_Featured_Audio) holder).view.enableBackground();
+                ((ListItemView)(genHolder.view)).setDashItem(item);
+                if (position % 2 == 0) ((ListItemView) genHolder.view).enableBackground();
                 break;
             }
 
             case PORTAL_AUDIO_LIST: {
                 AudioItem item = (AudioItem) items.get(position);
-                ((DashGridHolder_Audio) holder).view.setDashItem(item);
-                if (position % 2 == 0) ((DashGridHolder_Audio) holder).view.enableBackground();
+                ((AudioItemView) genHolder.view).setDashItem(item);
+                if (position % 2 == 0) ((AudioItemView) genHolder.view).enableBackground();
                 break;
             }
 
             case PORTAL_ART_GRID: {
                 ArtItem item = (ArtItem) items.get(position);
-                ((DashGridHolder_Art) holder).view.setDashItem(item);
+                ((ArtItemView) genHolder.view).setDashItem(item);
                 break;
             }
 
             case PORTAL_NEWS_LIST:{
                 NewsItem item = (NewsItem) items.get(position);
-                if(position%2==0) ((DashGridHolder_News) holder).view.enableBackground();
-                ((DashGridHolder_News) holder).view.setDashItem(item);
+                ((NewsItemView) genHolder.view).setDashItem(item);
+                if(position%2==0)  ((NewsItemView) genHolder.view).enableBackground();
+
                 break;
             }
             case PORTAL_FORUMS_LIST:{
                 ForumItem item = (ForumItem) items.get(position);
-                if(position%2==0) ((DashGridHolder_Forums) holder).view.enableBackground();
-                ((DashGridHolder_Forums) holder).view.setDashItem(item);
+                ((ForumItemView) genHolder.view).setDashItem(item);
+                if(position%2==0)  ((ForumItemView) genHolder.view).enableBackground();
+
                 break;
             }
 
             default: {
                 GridItem item = (GridItem) items.get(position);
-                ((DashGridHolder_Regular) holder).view.setDashItem(item);
+                ((GridItemView) genHolder.view).setDashItem(item);
                 break;
             }
         }
@@ -157,11 +165,16 @@ public class ItemGenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         return ITEM_VIEW_TYPE;
 
     }
+    public void setOnItemClickListener(DashItemClickListener itemClickListener) {
+        this.ItemClickListener = itemClickListener;
+    }
 
-    private final class DashGridHolder_Regular extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private final GridItemView view;
 
-        public DashGridHolder_Regular(GridItemView view) {
+
+
+    private final class DashGenericHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private View view;
+        public DashGenericHolder(View view){
             super(view);
             this.view = view;
             this.view.setOnClickListener(this);
@@ -169,110 +182,7 @@ public class ItemGenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         @Override
         public void onClick(View view) {
-            if (ItemClickListener != null)
-                ItemClickListener.OnItemClick(view, getAdapterPosition());
-        }
-    }
-
-    public void setOnItemClickListener(DashItemClickListener itemClickListener) {
-        this.ItemClickListener = itemClickListener;
-    }
-
-
-    private final class DashGridHolder_Small extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private final GridItemViewSmall view;
-
-        public DashGridHolder_Small(GridItemViewSmall view) {
-            super(view);
-            this.view = view;
-
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (ItemClickListener != null)
-                ItemClickListener.OnItemClick(view, getAdapterPosition());
-
-        }
-    }
-
-    private final class DashGridHolder_Featured_Audio extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private final ListItemView view;
-
-        public DashGridHolder_Featured_Audio(ListItemView view) {
-            super(view);
-            this.view = view;
-
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (ItemClickListener != null)
-                ItemClickListener.OnItemClick(view, getAdapterPosition());
-        }
-    }
-
-    private final class DashGridHolder_Art extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private final ArtItemView view;
-
-        public DashGridHolder_Art(ArtItemView view) {
-            super(view);
-            this.view = view;
-
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (ItemClickListener != null)
-                ItemClickListener.OnItemClick(view, getAdapterPosition());
-        }
-    }
-
-    private final class DashGridHolder_Audio extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private final AudioItemView view;
-
-        public DashGridHolder_Audio(AudioItemView view) {
-            super(view);
-            this.view = view;
-
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (ItemClickListener != null)
-                ItemClickListener.OnItemClick(view, getAdapterPosition());
-        }
-    }
-
-    private final class DashGridHolder_News extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private final NewsItemView view;
-
-        public DashGridHolder_News(NewsItemView view) {
-            super(view);
-            this.view = view;
-
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (ItemClickListener != null)
-                ItemClickListener.OnItemClick(view, getAdapterPosition());
-        }
-    }
-
-    private final class DashGridHolder_Forums extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private final ForumItemView view;
-
-        public DashGridHolder_Forums(ForumItemView view) {
-            super(view);
-            this.view = view;
-
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (ItemClickListener != null)
-                ItemClickListener.OnItemClick(view, getAdapterPosition());
+            if(ItemClickListener != null) ItemClickListener.OnItemClick(view,getAdapterPosition());
         }
     }
 

@@ -11,8 +11,9 @@
 
     <dimen name="dashboard_item_size">108dp</dimen>
     <dimen name="dashboard_item_size_small">78dp</dimen>
-    <dimen name="dashboard_item_size_featured_audio_list">44dp</dimen>
-    <dimen name="dashboard_item_size_audio_list">48dp</dimen>
+    <dimen name="dashboard_item_size_featured_small_list">44dp</dimen>
+    <dimen name="dashboard_item_size_medium_list">48dp</dimen>
+    <dimen name="dashboard_item_size_list_big">84dp</dimen>
     <dimen name="dashboard_item_size_art">208dp</dimen>
     <dimen name="dashboard_item_width_art">180dp</dimen>
 

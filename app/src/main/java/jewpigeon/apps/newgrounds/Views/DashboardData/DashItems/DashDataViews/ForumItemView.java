@@ -28,7 +28,7 @@ public class ForumItemView extends ViewGroup {
     private final int MOOD_ICON_SIZE = ITEM_HEIGHT *6/7;
     private Drawable DashBackground;
     private final int TopicColor = ContextCompat.getColor(getContext(), R.color.colorAccent);
-    private final int AmbientColor = ContextCompat.getColor(getContext(), R.color.colorFeaturedItemAuthorText);
+    private final int AmbientColor = ContextCompat.getColor(getContext(), R.color.colorItemAuthorText);
     private final int DashBackgroundEnabledColor = ContextCompat.getColor(getContext(), R.color.colorFeaturedAudioItemBackground);
 
     private TextView ForumTopic;

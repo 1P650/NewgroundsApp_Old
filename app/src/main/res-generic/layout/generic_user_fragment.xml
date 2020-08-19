@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jewpigeon.apps.newgrounds.Views.NestedScrollCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/generic_account_coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="false"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/generic_account_appBarLayout"
+        android:fitsSystemWindows="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/generic_account_banner_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="false"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="false">
+
+
+            <TextView
+                android:id="@+id/generic_account_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:text="Default User"
+                android:textAlignment="center"
+                android:textColor="@color/colorBottomBarText"
+                android:textSize="24sp"
+                android:translationZ="8dp" />
+
+            <ImageButton
+                android:id="@+id/generic_account_profilePicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="40dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/imgv_border"
+                android:elevation="8dp"
+                android:fitsSystemWindows="true"
+
+                android:maxWidth="108dp"
+                android:maxHeight="108dp"
+                android:padding="2dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ng_icon_undefined_circle"
+                android:translationZ="8dp">
+
+            </ImageButton>
+
+            <ImageView
+                android:id="@+id/generic_account_bannerPicture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:fitsSystemWindows="false"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ng_user_banner"
+                app:layout_collapseMode="parallax" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/generic_button_follow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|top"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="4dp"
+                android:backgroundTint="@color/colorAccentAlt"
+                android:insetLeft="4dp"
+                android:insetTop="8dp"
+                android:insetRight="4dp"
+                android:insetBottom="8dp"
+                android:text="Follow"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                app:icon="@drawable/ng_punch_icon"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconSize="24dp"
+                app:iconTint="@color/colorBottomBarText" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom"
+            android:background="@color/colorDashboardBorderline"
+            android:elevation="2dp"
+            android:translationZ="8dp"
+            app:layout_collapseMode="pin" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/generic_account_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorDashboardBackground"
+            android:elevation="8dp"
+            android:paddingHorizontal="16dp"
+            app:layout_collapseMode="pin"
+            app:tabGravity="center"
+            app:tabIndicatorColor="@color/colorDashboardItemLabelBackground"
+            app:tabIndicatorGravity="stretch"
+            app:tabMode="scrollable"
+            app:tabPaddingStart="4dp"
+            app:tabRippleColor="@color/colorDashboardInnerBorderline"
+            app:tabTextColor="@android:color/white">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom"
+            android:background="@color/colorDashboardBorderline"
+            android:elevation="2dp"
+            android:translationZ="8dp"
+            app:layout_collapseMode="pin" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/generic_account_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="false"
+        android:clipChildren="false"
+        android:descendantFocusability="blocksDescendants"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical">
+
+            <jewpigeon.apps.newgrounds.Views.Dashboard
+                android:id="@+id/generic_account_mainInfo"
+                style="@style/NG_DefaultTheme.Dashboard"
+                android:layout_marginTop="4dp"
+                app:labelVisible="false">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="Joined on 1/01/00" />
+            </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+
+            <jewpigeon.apps.newgrounds.Views.Dashboard
+                android:id="@+id/generic_account_news"
+                style="@style/NG_DefaultTheme.Dashboard"
+                app:labelIcon="@drawable/ng_longlist_icon"
+                app:labelMenu="@menu/user_generic_menu_ext"
+                app:labelText="Latest news"
+                app:labelVisible="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="No news" />
+
+            </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+            <jewpigeon.apps.newgrounds.Views.Dashboard
+                android:id="@+id/generic_account_movies"
+                style="@style/NG_DefaultTheme.Dashboard"
+                app:labelIcon="@drawable/ng_movies_icon"
+                app:labelMenu="@menu/user_generic_menu"
+                app:labelText="Latest Movies"
+                app:labelVisible="true">
+
+                <jewpigeon.apps.newgrounds.Views.AutofitGrid
+                    android:id="@+id/generic_account_movies_grid"
+                    style="@style/NG_DefaultTheme.DashboardPortalGrid">
+
+                </jewpigeon.apps.newgrounds.Views.AutofitGrid>
+
+            </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+            <jewpigeon.apps.newgrounds.Views.Dashboard
+                android:id="@+id/generic_account_favMovies"
+                style="@style/NG_DefaultTheme.Dashboard"
+                app:labelIcon="@drawable/ng_movies_icon"
+                app:labelMenu="@menu/user_generic_menu"
+                app:labelText="Latest Favorite Movies"
+                app:labelVisible="true">
+
+                <jewpigeon.apps.newgrounds.Views.AutofitGrid
+                    android:id="@+id/generic_account_favMovies_grid"
+                    style="@style/NG_DefaultTheme.DashboardPortalGrid">
+
+                </jewpigeon.apps.newgrounds.Views.AutofitGrid>
+            </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+            <jewpigeon.apps.newgrounds.Views.Dashboard
+                android:id="@+id/generic_account_games"
+                style="@style/NG_DefaultTheme.Dashboard"
+                app:labelIcon="@drawable/ng_games_icon"
+                app:labelMenu="@menu/user_generic_menu"
+                app:labelText="Latest Games"
+                app:labelVisible="true">
+
+                <jewpigeon.apps.newgrounds.Views.AutofitGrid
+                    android:id="@+id/generic_account_games_grid"
+                    style="@style/NG_DefaultTheme.DashboardPortalGrid">
+
+                </jewpigeon.apps.newgrounds.Views.AutofitGrid>
+            </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+            <jewpigeon.apps.newgrounds.Views.Dashboard
+                android:id="@+id/generic_account_favGames"
+                style="@style/NG_DefaultTheme.Dashboard"
+                app:labelIcon="@drawable/ng_games_icon"
+                app:labelMenu="@menu/user_generic_menu"
+                app:labelText="Latest Favorite Games"
+                app:labelVisible="true">
+
+                <jewpigeon.apps.newgrounds.Views.AutofitGrid
+                    android:id="@+id/generic_account_favGames_grid"
+                    style="@style/NG_DefaultTheme.DashboardPortalGrid">
+
+                </jewpigeon.apps.newgrounds.Views.AutofitGrid>
+            </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+            <jewpigeon.apps.newgrounds.Views.Dashboard
+                android:id="@+id/generic_account_art"
+                style="@style/NG_DefaultTheme.Dashboard"
+                app:labelIcon="@drawable/ng_art_icon"
+                app:labelMenu="@menu/user_generic_menu"
+                app:labelText="Latest Art"
+                app:labelVisible="true">
+
+                <jewpigeon.apps.newgrounds.Views.AutofitGrid
+                    android:id="@+id/generic_account_art_grid"
+                    style="@style/NG_DefaultTheme.DashboardPortalGridSmall">
+
+                </jewpigeon.apps.newgrounds.Views.AutofitGrid>
+            </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+            <jewpigeon.apps.newgrounds.Views.Dashboard
+                android:id="@+id/generic_account_favArt"
+                style="@style/NG_DefaultTheme.Dashboard"
+                app:labelIcon="@drawable/ng_art_icon"
+                app:labelMenu="@menu/user_generic_menu"
+                app:labelText="Latest Favorite Art"
+                app:labelVisible="true">
+
+                <jewpigeon.apps.newgrounds.Views.AutofitGrid
+                    android:id="@+id/generic_account_favArt_grid"
+                    style="@style/NG_DefaultTheme.DashboardPortalGridSmall" />
+            </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+            <jewpigeon.apps.newgrounds.Views.Dashboard
+                android:id="@+id/generic_account_audio"
+                style="@style/NG_DefaultTheme.Dashboard"
+                app:labelIcon="@drawable/ng_audio_icon"
+                app:labelMenu="@menu/user_generic_menu"
+                app:labelText="Latest Audio"
+                app:labelVisible="true">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/generic_account_audio_list"
+                    style="@style/NG_DefaultTheme.DashboardPortalList">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+            <jewpigeon.apps.newgrounds.Views.Dashboard
+                android:id="@+id/generic_account_favAudio"
+                style="@style/NG_DefaultTheme.Dashboard"
+                app:labelIcon="@drawable/ng_audio_icon"
+                app:labelMenu="@menu/user_generic_menu"
+                app:labelText="Latest Favorite Audio"
+                app:labelVisible="true">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/generic_account_favAudio_list"
+                    style="@style/NG_DefaultTheme.DashboardPortalList">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="@dimen/ng_content_bottombar_height"
+                android:adjustViewBounds="true"
+                android:src="@drawable/footer_skyline" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</jewpigeon.apps.newgrounds.Views.NestedScrollCoordinatorLayout>

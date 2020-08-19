@@ -20,17 +20,16 @@ import com.bumptech.glide.Glide;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import jewpigeon.apps.newgrounds.R;
-import jewpigeon.apps.newgrounds.Utils.DimensionTool;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.NewsItem;
 
 
 public class NewsItemView extends ViewGroup {
 
-    private final int ITEM_HEIGHT = (int) DimensionTool.dp(84);
+    private final int ITEM_HEIGHT = getContext().getResources().getDimensionPixelSize(R.dimen.dashboard_item_size_list_big);
     private final int ICON_SIZE = ITEM_HEIGHT *8/9;
     private Drawable DashBackground;
     private final int TitleColor = ContextCompat.getColor(getContext(), R.color.colorAccent);
-    private final int FromColor = ContextCompat.getColor(getContext(), R.color.colorFeaturedItemAuthorText);
+    private final int FromColor = ContextCompat.getColor(getContext(), R.color.colorItemAuthorText);
     private final int DashBackgroundEnabledColor = ContextCompat.getColor(getContext(), R.color.colorFeaturedAudioItemBackground);
 
 
