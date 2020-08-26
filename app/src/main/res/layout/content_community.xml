@@ -17,7 +17,8 @@
             android:id="@+id/community_artistNews"
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelIcon="@drawable/ng_community_icon"
-            app:labelMenuStrings="@array/community_ArtistNews_buttons"
+            app:labelMenuType="strings"
+            app:labelMenu="@array/community_ArtistNews_buttons"
             app:labelText="Artist news"
             app:labelVisible="true">
 
@@ -33,7 +34,8 @@
             android:id="@+id/community_Forums"
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelIcon="@drawable/ng_shortlist_icon"
-            app:labelMenuStrings="@array/community_Forums_buttons"
+            app:labelMenu="@array/community_Forums_buttons"
+            app:labelMenuType="strings"
             app:labelText="From the forums..."
             app:labelVisible="true">
 
@@ -44,6 +46,9 @@
             </androidx.recyclerview.widget.RecyclerView>
 
         </jewpigeon.apps.newgrounds.Views.Dashboard>
+
+
+
 
         <ImageView
             android:layout_width="match_parent"

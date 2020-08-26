@@ -16,9 +16,10 @@
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelIcon="@drawable/ng_movies_icon"
             app:labelText="Brand Spankin' New Movies"
-            app:labelMenuStrings="@array/portal_buttons">
+            app:labelMenu="@array/portal_buttons"
+            app:labelMenuType="strings">
 
-            <jewpigeon.apps.newgrounds.Views.AutofitGrid
+            <jewpigeon.apps.newgrounds.Views.AutofitGridLayout
                 android:id="@+id/movies_portal_brand_grid"
                 style="@style/NG_DefaultTheme.DashboardPortalGrid"/>/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
@@ -28,9 +29,10 @@
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelIcon="@drawable/ng_movies_icon"
             app:labelText="Popular Movies"
-            app:labelMenuStrings="@array/portal_buttons">
+            app:labelMenu="@array/portal_buttons"
+            app:labelMenuType="strings">
 
-            <jewpigeon.apps.newgrounds.Views.AutofitGrid
+            <jewpigeon.apps.newgrounds.Views.AutofitGridLayout
                 android:id="@+id/movies_portal_popular_grid"
                 style="@style/NG_DefaultTheme.DashboardPortalGrid"/>/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>
@@ -40,8 +42,9 @@
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="Best Movies This Month"
             app:labelIcon="@drawable/ng_movies_icon"
-            app:labelMenuStrings="@array/portal_buttons">
-            <jewpigeon.apps.newgrounds.Views.AutofitGrid
+            app:labelMenu="@array/portal_buttons"
+            app:labelMenuType="strings">
+            <jewpigeon.apps.newgrounds.Views.AutofitGridLayout
                 android:id="@+id/movies_portal_month_grid"
                 style="@style/NG_DefaultTheme.DashboardPortalGrid"/> />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
@@ -51,8 +54,9 @@
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="Best Movies This Year"
             app:labelIcon="@drawable/ng_movies_icon"
-            app:labelMenuStrings="@array/portal_buttons">
-            <jewpigeon.apps.newgrounds.Views.AutofitGrid
+            app:labelMenu="@array/portal_buttons"
+            app:labelMenuType="strings">
+            <jewpigeon.apps.newgrounds.Views.AutofitGridLayout
                 android:id="@+id/movies_portal_year_grid"
                 style="@style/NG_DefaultTheme.DashboardPortalGrid"/> />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
@@ -62,8 +66,9 @@
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="High Ranking Classics"
             app:labelIcon="@drawable/ng_movies_icon"
-            app:labelMenuStrings="@array/portal_buttons">
-            <jewpigeon.apps.newgrounds.Views.AutofitGrid
+            app:labelMenu="@array/portal_buttons"
+            app:labelMenuType="strings">
+            <jewpigeon.apps.newgrounds.Views.AutofitGridLayout
                 android:id="@+id/movies_portal_classic_grid"
                 style="@style/NG_DefaultTheme.DashboardPortalGrid"/>/>
         </jewpigeon.apps.newgrounds.Views.Dashboard>

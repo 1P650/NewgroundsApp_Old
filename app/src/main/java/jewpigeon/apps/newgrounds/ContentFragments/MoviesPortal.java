@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.GenericLayouts.GenericMovieFragment;
 import jewpigeon.apps.newgrounds.R;
-import jewpigeon.apps.newgrounds.Views.AutofitGrid;
+import jewpigeon.apps.newgrounds.Views.AutofitGridLayout;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItemClickListener;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.GridItem;
@@ -70,11 +70,11 @@ public class MoviesPortal extends NG_Fragment {
     );
 
 
-    AutofitGrid BrandMoviesList;
-    AutofitGrid PopularMoviesList;
-    AutofitGrid MonthMoviesList;
-    AutofitGrid YearMoviesList;
-    AutofitGrid ClassicMoviesList;
+    AutofitGridLayout BrandMoviesList;
+    AutofitGridLayout PopularMoviesList;
+    AutofitGridLayout MonthMoviesList;
+    AutofitGridLayout YearMoviesList;
+    AutofitGridLayout ClassicMoviesList;
 
     public static MoviesPortal newInstance() {
 
@@ -99,27 +99,27 @@ public class MoviesPortal extends NG_Fragment {
         setSeekerView(rootView);
 
         BrandMovies = (Dashboard) findViewById(R.id.movies_portal_brand_movies);
-        BrandMoviesList = (AutofitGrid) findViewById(R.id.movies_portal_brand_grid);
+        BrandMoviesList = (AutofitGridLayout) findViewById(R.id.movies_portal_brand_grid);
         brand_adapter = new ItemGenericAdapter(BrandMoviesArray);
         BrandMoviesList.setAdapter(brand_adapter);
 
         PopularMovies = (Dashboard) findViewById(R.id.movies_portal_popular_movies);
-        PopularMoviesList = (AutofitGrid) findViewById(R.id.movies_portal_popular_grid);
+        PopularMoviesList = (AutofitGridLayout) findViewById(R.id.movies_portal_popular_grid);
         popular_adapter = new ItemGenericAdapter(PopularMoviesArray);
         PopularMoviesList.setAdapter(popular_adapter);
 
         MonthMovies = (Dashboard) findViewById(R.id.movies_portal_month_movies);
-        MonthMoviesList = (AutofitGrid) findViewById(R.id.movies_portal_month_grid);
+        MonthMoviesList = (AutofitGridLayout) findViewById(R.id.movies_portal_month_grid);
         month_adapter = new ItemGenericAdapter(MonthMoviesArray);
         MonthMoviesList.setAdapter(month_adapter);
 
         YearMovies = (Dashboard) findViewById(R.id.movies_portal_year_movies);
-        YearMoviesList = (AutofitGrid) findViewById(R.id.movies_portal_year_grid);
+        YearMoviesList = (AutofitGridLayout) findViewById(R.id.movies_portal_year_grid);
         year_adapter = new ItemGenericAdapter(YearMoviesArray);
         YearMoviesList.setAdapter(year_adapter);
 
         ClassicMovies = (Dashboard) findViewById(R.id.movies_portal_classic_movies);
-        ClassicMoviesList = (AutofitGrid) findViewById(R.id.movies_portal_classic_grid);
+        ClassicMoviesList = (AutofitGridLayout) findViewById(R.id.movies_portal_classic_grid);
         classic_adapter = new ItemGenericAdapter(ClassicMoviesArray);
         ClassicMoviesList.setAdapter(classic_adapter);
 

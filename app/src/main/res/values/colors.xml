@@ -5,6 +5,7 @@
     <color name="colorAccent">#FDA238</color>
     <color name="colorAccentAlt">#f67807</color>
     <color name="colorPrimaryBackground">#5E6168</color>
+
     <color name="colorBottomBar">#1C1F22</color>
     <color name="colorBottomBarText">#E1EAF3</color>
     <color name="colorLeftMenuShadow">#2F000000</color>
@@ -54,8 +55,6 @@
 
 
     <color name="colorPassportError">#F45454</color>
-
-
 
 
 </resources>

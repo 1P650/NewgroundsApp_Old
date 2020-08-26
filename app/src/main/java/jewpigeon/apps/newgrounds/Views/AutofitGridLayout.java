@@ -16,7 +16,7 @@ import jewpigeon.apps.newgrounds.Utils.DimensionTool;
 import jewpigeon.apps.newgrounds.Views.DashboardData.AutofitGridLayoutManager;
 import jewpigeon.apps.newgrounds.Views.DashboardData.AutofitGridDecorator;
 
-public class AutofitGrid extends RecyclerView {
+public class AutofitGridLayout extends RecyclerView {
     private AutofitGridLayoutManager ColumnManager;
     private AutofitGridDecorator ColumnDecorator;
     private final int DASH_ITEMSIZE_AVERAGE = getResources().getDimensionPixelSize(R.dimen.dashboard_item_size);
@@ -27,17 +27,17 @@ public class AutofitGrid extends RecyclerView {
         AVERAGE, SMALL
     }
 
-    public AutofitGrid(@NonNull Context context) {
+    public AutofitGridLayout(@NonNull Context context) {
         super(context);
         init(context, null);
     }
 
-    public AutofitGrid(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public AutofitGridLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
-    public AutofitGrid(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public AutofitGridLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }

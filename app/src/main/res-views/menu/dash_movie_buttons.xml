@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/dash_moviePlayer_report"
-        android:title=""
-        android:icon="@drawable/ng_report_icon"
-        />
-    <item
-        android:id="@+id/dash_moviePlayer_share"
-        android:title=""
-        android:icon="@drawable/ng_rss_icon"
-        />
-    <item
-        android:id="@+id/dash_moviePlayer_playlist"
-        android:title=""
-        android:icon="@drawable/ng_shortlist_icon"
-        />
+
+
 
     <item
-        android:id="@+id/dash_moviePlayer_favorites"
-        android:title=""
+        android:id="@+id/dash_moviePlayer_addFav"
+        android:title="Add to favourites"
         android:icon="@drawable/ng_like_icon"
         android:iconTint="@color/colorPassportError"
         />
+
+    <item
+        android:title="popups"
+        android:id="@+id/dash_moviePlayer_popup">
+        <menu>
+            <item
+                android:id="@+id/dash_moviePlayer_report"
+                android:title="Report"
+                android:icon="@drawable/ng_report_icon"
+                android:iconTint="@color/colorAccent"
+                />
+            <item
+                android:id="@+id/dash_moviePlayer_share"
+                android:title="Share"
+                android:icon="@drawable/ng_rss_icon"
+                android:iconTint="@color/colorAccent"
+                />
+            <item
+                android:id="@+id/dash_moviePlayer_playlist"
+                android:title="Add to playlist"
+                android:icon="@drawable/ng_shortlist_icon"
+                android:iconTint="@color/colorAccent"
+                />
+        </menu>
+
+    </item>
 </menu>

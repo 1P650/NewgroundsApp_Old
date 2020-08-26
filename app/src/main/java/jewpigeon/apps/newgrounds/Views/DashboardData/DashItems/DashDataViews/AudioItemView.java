@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -52,11 +53,43 @@ public class AudioItemView extends View implements Target<Drawable> {
     private Drawable defIcon;
 
     private boolean isBackgroundEnabled = false;
+    private StateListDrawable DashForeground;
 
 
     {
         defIcon = ContextCompat.getDrawable(getContext(), R.drawable.ng_icon_undefined_circle);
         DashBackground = new ColorDrawable(DashBackgroundEnabledColor);
+        DashForeground = new StateListDrawable();
+
+        DashForeground.setEnterFadeDuration(50);
+        DashForeground.setExitFadeDuration(300);
+
+        DashForeground.addState(new int[]{android.R.attr.state_pressed}, ContextCompat.getDrawable(getContext(), R.color.colorGridRippleEffect));
+
+        DashForeground.setCallback(this);
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        DashForeground.setBounds(0, 0, w, h);
+    }
+    @Override
+    protected void drawableStateChanged() {
+        super.drawableStateChanged();
+        DashForeground.setState(getDrawableState());
+        invalidate();
+    }
+
+    @Override
+    protected boolean verifyDrawable(@NonNull Drawable who) {
+        return super.verifyDrawable(who) || (who == DashForeground);
+    }
+
+    @Override
+    public void jumpDrawablesToCurrentState() {
+        super.jumpDrawablesToCurrentState();
+        DashForeground.jumpToCurrentState();
     }
 
 
@@ -70,6 +103,10 @@ public class AudioItemView extends View implements Target<Drawable> {
         canvas.save();
         canvas.translate(0, (getHeight() - DashAudioIcon.getBounds().bottom)/2);
         DashAudioIcon.draw(canvas);
+        canvas.restore();
+
+        canvas.save();
+        DashForeground.draw(canvas);
         canvas.restore();
 
         canvas.save();
@@ -147,7 +184,7 @@ public class AudioItemView extends View implements Target<Drawable> {
         DashTypePainter.setColor(AuthorColor);
         DashTypePainter.setTextSize(sp(13));
 
-        this.setForeground(ContextCompat.getDrawable(getContext(), R.drawable.grid_item_ripple));
+
         this.setClickable(true);
     }
 

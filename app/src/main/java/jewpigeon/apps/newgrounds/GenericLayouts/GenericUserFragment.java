@@ -1,9 +1,7 @@
 package jewpigeon.apps.newgrounds.GenericLayouts;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
@@ -13,20 +11,19 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
+import jewpigeon.apps.newgrounds.Fundamental.NG_HeavyFragment;
 import jewpigeon.apps.newgrounds.R;
-import jewpigeon.apps.newgrounds.Views.AutofitGrid;
+import jewpigeon.apps.newgrounds.Views.AutofitGridLayout;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.GridItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.GridItemSmall;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ListItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.ItemGenericAdapter;
 
-public class GenericUserFragment extends NG_Fragment {
+public class GenericUserFragment extends NG_HeavyFragment {
     private View rootView;
 
 
@@ -48,14 +45,14 @@ public class GenericUserFragment extends NG_Fragment {
 
 
 
-    private AutofitGrid UserMoviesGrid;
-    private AutofitGrid UserFavoriteMoviesGrid;
+    private AutofitGridLayout UserMoviesGrid;
+    private AutofitGridLayout UserFavoriteMoviesGrid;
 
-    private AutofitGrid UserGamesGrid;
-    private AutofitGrid UserFavoriteGamesGrid;
+    private AutofitGridLayout UserGamesGrid;
+    private AutofitGridLayout UserFavoriteGamesGrid;
 
-    private AutofitGrid UserArtGrid;
-    private AutofitGrid UserFavoriteArtGrid;
+    private AutofitGridLayout UserArtGrid;
+    private AutofitGridLayout UserFavoriteArtGrid;
 
     private RecyclerView UserAudioList;
     private RecyclerView UserFavoriteAudioList;
@@ -162,7 +159,7 @@ public class GenericUserFragment extends NG_Fragment {
             count.setText(counts[i]);
         }
     }
-    @Nullable
+/*    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.generic_user_fragment, container,false);
@@ -175,20 +172,20 @@ public class GenericUserFragment extends NG_Fragment {
         UserMovies = (Dashboard) findViewById(R.id.generic_account_movies);
         UserFavoriteMovies = (Dashboard) findViewById(R.id.generic_account_favMovies);
 
-        UserMoviesGrid = (AutofitGrid) findViewById(R.id.generic_account_movies_grid);
-        UserFavoriteMoviesGrid = (AutofitGrid) findViewById(R.id.generic_account_favMovies_grid);
+        UserMoviesGrid = (AutofitGridLayout) findViewById(R.id.generic_account_movies_grid);
+        UserFavoriteMoviesGrid = (AutofitGridLayout) findViewById(R.id.generic_account_favMovies_grid);
 
         UserGames = (Dashboard) findViewById(R.id.generic_account_games);
         UserFavoriteGames = (Dashboard) findViewById(R.id.generic_account_favGames);
 
-        UserGamesGrid = (AutofitGrid) findViewById(R.id.generic_account_games_grid);
-        UserFavoriteGamesGrid = (AutofitGrid) findViewById(R.id.generic_account_favGames_grid);
+        UserGamesGrid = (AutofitGridLayout) findViewById(R.id.generic_account_games_grid);
+        UserFavoriteGamesGrid = (AutofitGridLayout) findViewById(R.id.generic_account_favGames_grid);
 
         UserArt = (Dashboard) findViewById(R.id.generic_account_art);
         UserFavoriteArt = (Dashboard) findViewById(R.id.generic_account_favArt);
 
-        UserArtGrid = (AutofitGrid) findViewById(R.id.generic_account_art_grid);
-        UserFavoriteArtGrid = (AutofitGrid) findViewById(R.id.generic_account_favArt_grid);
+        UserArtGrid = (AutofitGridLayout) findViewById(R.id.generic_account_art_grid);
+        UserFavoriteArtGrid = (AutofitGridLayout) findViewById(R.id.generic_account_favArt_grid);
 
         UserAudio = (Dashboard) findViewById(R.id.generic_account_audio);
         UserFavoriteAudio = (Dashboard) findViewById(R.id.generic_account_favAudio);
@@ -197,9 +194,62 @@ public class GenericUserFragment extends NG_Fragment {
         UserFavoriteAudioList = (RecyclerView) findViewById(R.id.generic_account_favAudio_list);
         startPostponedEnterTransition();
         return rootView;
+    }*/
+
+    @Override
+    public int getResourceId() {
+        return R.layout.generic_user_fragment;
     }
 
     @Override
+    public void onCreateStubView(View rootView, Bundle savedInstanceState) {
+        setSeekerView(rootView);
+
+        UserTabs = (TabLayout) findViewById(R.id.generic_account_tabs);
+        setupTabView();
+
+        UserMovies = (Dashboard) findViewById(R.id.generic_account_movies);
+        UserFavoriteMovies = (Dashboard) findViewById(R.id.generic_account_favMovies);
+
+        UserMoviesGrid = (AutofitGridLayout) findViewById(R.id.generic_account_movies_grid);
+        UserFavoriteMoviesGrid = (AutofitGridLayout) findViewById(R.id.generic_account_favMovies_grid);
+
+        UserGames = (Dashboard) findViewById(R.id.generic_account_games);
+        UserFavoriteGames = (Dashboard) findViewById(R.id.generic_account_favGames);
+
+        UserGamesGrid = (AutofitGridLayout) findViewById(R.id.generic_account_games_grid);
+        UserFavoriteGamesGrid = (AutofitGridLayout) findViewById(R.id.generic_account_favGames_grid);
+
+        UserArt = (Dashboard) findViewById(R.id.generic_account_art);
+        UserFavoriteArt = (Dashboard) findViewById(R.id.generic_account_favArt);
+
+        UserArtGrid = (AutofitGridLayout) findViewById(R.id.generic_account_art_grid);
+        UserFavoriteArtGrid = (AutofitGridLayout) findViewById(R.id.generic_account_favArt_grid);
+
+        UserAudio = (Dashboard) findViewById(R.id.generic_account_audio);
+        UserFavoriteAudio = (Dashboard) findViewById(R.id.generic_account_favAudio);
+
+        UserAudioList = (RecyclerView) findViewById(R.id.generic_account_audio_list);
+        UserFavoriteAudioList = (RecyclerView) findViewById(R.id.generic_account_favAudio_list);
+
+        UserMoviesGrid.setAdapter(userMoviesAdapter);
+        UserFavoriteMoviesGrid.setAdapter(userFavMoviesAdapter);
+
+        UserGamesGrid.setAdapter(userGamesAdapter);
+        UserFavoriteGamesGrid.setAdapter(userFavGamesAdapter);
+
+        UserArtGrid.setAdapter(userArtAdapter);
+        UserFavoriteArtGrid.setAdapter(userFavArtAdapter);
+
+        UserAudioList.setAdapter(userAudioAdapter);
+        UserAudioList.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        UserFavoriteAudioList.setAdapter(userFavAudioAdapter);
+        UserFavoriteAudioList.setLayoutManager(new LinearLayoutManager(getContext()));
+
+    }
+
+    /*@Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -217,5 +267,5 @@ public class GenericUserFragment extends NG_Fragment {
 
         UserFavoriteAudioList.setAdapter(userFavAudioAdapter);
         UserFavoriteAudioList.setLayoutManager(new LinearLayoutManager(getContext()));
-    }
+    }*/
 }

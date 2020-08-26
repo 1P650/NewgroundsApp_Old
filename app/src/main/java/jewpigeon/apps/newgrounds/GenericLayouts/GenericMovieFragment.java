@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.google.android.material.appbar.AppBarLayout;
+
 
 
 import androidx.annotation.NonNull;
@@ -28,6 +28,9 @@ public class GenericMovieFragment extends NG_Fragment {
     private Dashboard playerDashboard;
     private Dashboard commentDashboard;
     private Dashboard creditsDashboard;
+    private Dashboard authorCommentsDashboard;
+
+
     private ImageView ratingReaction;
     private RatingBar ratingBar;
     private ConstraintLayout ratingLayout;
@@ -61,6 +64,14 @@ public class GenericMovieFragment extends NG_Fragment {
         playerDashboard = (Dashboard) findViewById(R.id.generic_movie_player_container);
         commentDashboard = (Dashboard) findViewById(R.id.generic_movie_add_comment);
         creditsDashboard = (Dashboard) findViewById(R.id.generic_movie_credits);
+        authorCommentsDashboard = (Dashboard) findViewById(R.id.generic_movie_author_comments);
+
+
+
+
+
+
+
 
 
         ratingReaction = (ImageView) findViewById(R.id.generic_movie_rating_reaction);
@@ -77,11 +88,11 @@ public class GenericMovieFragment extends NG_Fragment {
         if (!getNGActivity().getPreferencesFromStore().isUserLogged()) {
             commentDashboard.setVisibility(View.GONE);
         } else {
-            commentDashboard.inputChildWithSeparator(ratingLayout);
+            commentDashboard.addChildWithSeparator(ratingLayout);
         }
 
         authorsLayout = (GenericAuthorLayout) findViewById(R.id.generic_movie_authors);
-        creditsDashboard.inputChildWithSeparator(authorsLayout);
+        creditsDashboard.addChildWithSeparator(authorsLayout);
 
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {

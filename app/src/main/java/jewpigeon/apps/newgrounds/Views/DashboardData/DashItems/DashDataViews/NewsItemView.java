@@ -50,7 +50,7 @@ public class NewsItemView extends ViewGroup {
 
         DashForeground = new StateListDrawable();
 
-        DashForeground.setEnterFadeDuration(150);
+        DashForeground.setEnterFadeDuration(50);
         DashForeground.setExitFadeDuration(300);
 
         DashForeground.addState(new int[]{android.R.attr.state_pressed}, ContextCompat.getDrawable(getContext(), R.color.colorGridRippleEffect));
@@ -169,9 +169,9 @@ public class NewsItemView extends ViewGroup {
             canvas.restore();
         }
 
-        canvas.save();
+
         DashForeground.draw(canvas);
-        canvas.restore();
+
 
         super.dispatchDraw(canvas);
 

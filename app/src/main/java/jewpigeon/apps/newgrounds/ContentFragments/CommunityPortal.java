@@ -33,16 +33,16 @@ public class CommunityPortal extends NG_Fragment {
     ));
 
     private ArrayList<ForumItem> ForumsArray = new ArrayList<>(Arrays.asList(
-      new ForumItem(null, null, "DEFAULT", "DEFAULT", new Date(0, 0, 0), 0),
-      new ForumItem(null, null, "DEFAULT", "DEFAULT", new Date(0, 0, 0), 0),
-      new ForumItem(null, null, "DEFAULT", "DEFAULT", new Date(0, 0, 0), 0),
-      new ForumItem(null, null, "DEFAULT", "DEFAULT", new Date(0, 0, 0), 0),
-      new ForumItem(null, null, "DEFAULT", "DEFAULT", new Date(0, 0, 0), 0),
-      new ForumItem(null, null, "DEFAULT", "DEFAULT", new Date(0, 0, 0), 0),
-      new ForumItem(null, null, "DEFAULT", "DEFAULT", new Date(0, 0, 0), 0),
-      new ForumItem(null, null, "DEFAULT", "DEFAULT", new Date(0, 0, 0), 0),
-      new ForumItem(null, null, "DEFAULT", "DEFAULT", new Date(0, 0, 0), 0),
-      new ForumItem(null, null, "DEFAULT", "DEFAULT", new Date(0, 0, 0), 0)
+      new ForumItem(null, "DEFAULT", "DEFAULT", new Date(0, 0, 0)),
+      new ForumItem(null, "DEFAULT", "DEFAULT", new Date(0, 0, 0)),
+      new ForumItem(null, "DEFAULT", "DEFAULT", new Date(0, 0, 0)),
+      new ForumItem(null, "DEFAULT", "DEFAULT", new Date(0, 0, 0)),
+      new ForumItem(null, "DEFAULT", "DEFAULT", new Date(0, 0, 0)),
+      new ForumItem(null, "DEFAULT", "DEFAULT", new Date(0, 0, 0)),
+      new ForumItem(null, "DEFAULT", "DEFAULT", new Date(0, 0, 0)),
+      new ForumItem(null, "DEFAULT", "DEFAULT", new Date(0, 0, 0)),
+      new ForumItem(null, "DEFAULT", "DEFAULT", new Date(0, 0, 0)),
+      new ForumItem(null, "DEFAULT", "DEFAULT", new Date(0, 0, 0))
 
 
     ));

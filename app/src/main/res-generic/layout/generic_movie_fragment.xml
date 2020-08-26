@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/generic_movie_scroller"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:clipChildren="false">
 
 
@@ -11,14 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipChildren="false"
+        android:animateLayoutChanges="true"
         android:orientation="vertical">
 
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
             android:id="@+id/generic_movie_player_container"
             style="@style/NG_DefaultTheme.Dashboard"
+            android:layout_marginTop="6dp"
             app:labelIcon="@drawable/ng_pegi_everyone"
             app:labelMenu="@menu/dash_movie_buttons"
+            app:labelMenuType="complexContextMenu"
             app:labelText="Default movie"
             app:labelVisible="true">
 
@@ -28,9 +33,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
                 android:maxHeight="200dp"
                 android:padding="48dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/ng_player_play_icon" />
 
 
@@ -47,9 +52,11 @@
                 android:id="@+id/generic_movie_author_comments_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_marginHorizontal="8dp"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+                android:padding="4dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
 
         <jewpigeon.apps.newgrounds.Views.Dashboard
@@ -285,20 +292,15 @@
                     app:layout_constraintStart_toStartOf="@+id/generic_movie_faves3"
                     app:layout_constraintTop_toBottomOf="@+id/generic_movie_faves3" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip2"
+                <com.google.android.material.chip.ChipGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:checkable="false"
-                    android:text="Alabama"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
+                    android:layout_marginStart="16dp"
                     app:layout_constraintBottom_toBottomOf="@+id/generic_movie_faves4"
                     app:layout_constraintStart_toEndOf="@+id/generic_movie_faves4"
-                    app:layout_constraintTop_toTopOf="@+id/generic_movie_faves4" />
+                    app:layout_constraintTop_toTopOf="@+id/generic_movie_faves4">
+
+                </com.google.android.material.chip.ChipGroup>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

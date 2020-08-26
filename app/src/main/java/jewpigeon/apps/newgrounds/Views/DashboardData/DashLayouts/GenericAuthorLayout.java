@@ -31,14 +31,14 @@ public class GenericAuthorLayout extends ViewGroup {
     private final int ITEM_HEIGHT = getContext().getResources().getDimensionPixelSize(R.dimen.dashboard_item_size_medium_list);
     private final int ICON_SIZE = ITEM_HEIGHT *8/9;
 
-    private final int BUTTON_COLOR = ContextCompat.getColor(getContext(), R.color.colorAccentAlt);
-    private final int USERNAME_TEXT_COLOR = ContextCompat.getColor(getContext(), R.color.colorAccent);
-    private final int CREDIT_TEXT_COLOR = ContextCompat.getColor(getContext(), R.color.colorItemAuthorText);
+    private final int BUTTON_COLOR = ContextCompat.getColor(selfContext, R.color.colorAccentAlt);
+    private final int USERNAME_TEXT_COLOR = ContextCompat.getColor(selfContext, R.color.colorAccent);
+    private final int CREDIT_TEXT_COLOR = ContextCompat.getColor(selfContext, R.color.colorItemAuthorText);
 
     private Drawable defIcon;
 
     {
-        defIcon = ContextCompat.getDrawable(getContext(), R.drawable.ng_icon_undefined_circle);
+        defIcon = ContextCompat.getDrawable(selfContext, R.drawable.ng_icon_undefined_circle);
     }
 
 

@@ -61,11 +61,11 @@ public class GenericArtFragment extends NG_Fragment {
         if (!getNGActivity().getPreferencesFromStore().isUserLogged()) {
             commentDashboard.setVisibility(View.GONE);
         } else {
-            commentDashboard.inputChildWithSeparator(ratingLayout);
+            commentDashboard.addChildWithSeparator(ratingLayout);
         }
 
         authorsLayout = (ConstraintLayout) findViewById(R.id.generic_art_authors);
-        creditsDashboard.inputChildWithSeparator(authorsLayout);
+        creditsDashboard.addChildWithSeparator(authorsLayout);
 
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {

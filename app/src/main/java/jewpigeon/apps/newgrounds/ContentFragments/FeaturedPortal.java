@@ -18,7 +18,7 @@ import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.GenericLayouts.GenericArtFragment;
 import jewpigeon.apps.newgrounds.GenericLayouts.GenericMovieFragment;
 import jewpigeon.apps.newgrounds.R;
-import jewpigeon.apps.newgrounds.Views.AutofitGrid;
+import jewpigeon.apps.newgrounds.Views.AutofitGridLayout;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ListItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.NewsItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.ItemGenericAdapter;
@@ -43,9 +43,9 @@ public class FeaturedPortal extends NG_Fragment {
     private ItemGenericAdapter audio_adapter;
     private ItemGenericAdapter artistNews_adapter;
 
-    private AutofitGrid FeaturedMoviesList;
-    private AutofitGrid FeaturedGamesList;
-    private AutofitGrid FeaturedArtList;
+    private AutofitGridLayout FeaturedMoviesList;
+    private AutofitGridLayout FeaturedGamesList;
+    private AutofitGridLayout FeaturedArtList;
     private RecyclerView FeaturedAudioList;
     private RecyclerView FeaturedArtistNewsList;
 
@@ -126,14 +126,14 @@ public class FeaturedPortal extends NG_Fragment {
         FeaturedImage = (Dashboard) findViewById(R.id.featured_picture);
 
         FeaturedMovies = (Dashboard) findViewById(R.id.featured_movies);
-        FeaturedMoviesList = (AutofitGrid) findViewById(R.id.featured_movies_grid);
+        FeaturedMoviesList = (AutofitGridLayout) findViewById(R.id.featured_movies_grid);
 
         FeaturedGames = (Dashboard) findViewById(R.id.featured_games);
-        FeaturedGamesList = (AutofitGrid) findViewById(R.id.featured_games_grid);
+        FeaturedGamesList = (AutofitGridLayout) findViewById(R.id.featured_games_grid);
 
 
         FeaturedArt = (Dashboard) findViewById(R.id.featured_art);
-        FeaturedArtList = (AutofitGrid) findViewById(R.id.featured_art_grid);
+        FeaturedArtList = (AutofitGridLayout) findViewById(R.id.featured_art_grid);
 
 
         FeaturedAudio = (Dashboard) findViewById(R.id.featured_audio);

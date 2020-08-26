@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.R;
-import jewpigeon.apps.newgrounds.Views.AutofitGrid;
+import jewpigeon.apps.newgrounds.Views.AutofitGridLayout;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.ItemGenericAdapter;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.GridItem;
@@ -77,22 +77,22 @@ public class GamesPortal extends NG_Fragment {
 
 
         BrandGames = (Dashboard) findViewById(R.id.games_portal_brand_movies);
-        AutofitGrid BrandGamesList = (AutofitGrid) findViewById(R.id.games_portal_brand_grid);
+        AutofitGridLayout BrandGamesList = (AutofitGridLayout) findViewById(R.id.games_portal_brand_grid);
         ItemGenericAdapter brand_adapter = new ItemGenericAdapter(BrandGamesArray);
         BrandGamesList.setAdapter(brand_adapter);
 
         PopularGames = (Dashboard) findViewById(R.id.games_portal_popular_movies);
-        AutofitGrid PopularGamesList = (AutofitGrid) findViewById(R.id.games_portal_popular_grid);
+        AutofitGridLayout PopularGamesList = (AutofitGridLayout) findViewById(R.id.games_portal_popular_grid);
         ItemGenericAdapter popular_adapter = new ItemGenericAdapter(PopularGamesArray);
         PopularGamesList.setAdapter(popular_adapter);
 
         MonthGames = (Dashboard) findViewById(R.id.games_portal_month_movies);
-        AutofitGrid MonthGamesList = (AutofitGrid) findViewById(R.id.games_portal_month_grid);
+        AutofitGridLayout MonthGamesList = (AutofitGridLayout) findViewById(R.id.games_portal_month_grid);
         ItemGenericAdapter month_adapter = new ItemGenericAdapter(MonthGamesArray);
         MonthGamesList.setAdapter(month_adapter);
 
         YearGames = (Dashboard) findViewById(R.id.games_portal_year_movies);
-        AutofitGrid YearGamesList = (AutofitGrid) findViewById(R.id.games_portal_year_grid);
+        AutofitGridLayout YearGamesList = (AutofitGridLayout) findViewById(R.id.games_portal_year_grid);
         ItemGenericAdapter year_adapter = new ItemGenericAdapter(BrandGamesArray);
         YearGamesList.setAdapter(year_adapter);
 

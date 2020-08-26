@@ -21,6 +21,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.core.content.ContextCompat;
 import jewpigeon.apps.newgrounds.R;
+import jewpigeon.apps.newgrounds.Utils.DimensionTool;
 
 public class SlidingPanel extends LinearLayout implements View.OnClickListener {
     private GradientDrawable PanelBackground;
@@ -108,7 +109,7 @@ public class SlidingPanel extends LinearLayout implements View.OnClickListener {
         this.setOrientation(HORIZONTAL);
         this.setMinimumWidth(PANEL_MIN_WIDTH);
         this.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, PROFILE_ICON_SIZE));
-        this.setPadding(0, 0, PROFILE_ICON_SIZE * 2 / 3, 8);
+        this.setPadding(8, 0, 0, 8);
 
         MenuInflater v = new MenuInflater(getContext());
         Menu buttonsMenu = new MenuBuilder(getContext());

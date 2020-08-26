@@ -66,7 +66,7 @@ public class GridItemView extends View implements Target<Drawable> {
 
         DashForeground = new StateListDrawable();
 
-        DashForeground.setEnterFadeDuration(150);
+        DashForeground.setEnterFadeDuration(50);
         DashForeground.setExitFadeDuration(300);
 
         DashForeground.addState(new int[]{android.R.attr.state_pressed}, ContextCompat.getDrawable(selfContext, R.color.colorGridRippleEffect));
@@ -115,18 +115,17 @@ public class GridItemView extends View implements Target<Drawable> {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        DashIcon.draw(canvas);
-        canvas.save();
-        canvas.translate(0, ICON_HEIGHT);
-        DashTextBackground.draw(canvas);
-        canvas.save();
-        DashTitle.draw(canvas);
-        canvas.translate(0, DashTitle.getHeight());
-        DashAuthor.draw(canvas);
-        canvas.translate(0, -(DashTitle.getHeight() + ICON_HEIGHT));
-        canvas.save();
-        DashForeground.draw(canvas);
-        canvas.restore();
+      DashIcon.draw(canvas);
+      canvas.save();
+      canvas.translate(0, ICON_HEIGHT);
+      DashTextBackground.draw(canvas);
+      DashTitle.draw(canvas);
+      canvas.translate(0, DashTitle.getHeight());
+      DashAuthor.draw(canvas);
+      canvas.translate(0, -(DashTitle.getHeight() + ICON_HEIGHT));
+      canvas.restore();
+      DashForeground.draw(canvas);
+
     }
 
 

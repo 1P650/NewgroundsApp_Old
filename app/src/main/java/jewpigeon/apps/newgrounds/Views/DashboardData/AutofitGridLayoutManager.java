@@ -5,12 +5,12 @@ import android.content.Context;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import jewpigeon.apps.newgrounds.Utils.DimensionTool;
-import jewpigeon.apps.newgrounds.Views.AutofitGrid;
+import jewpigeon.apps.newgrounds.Views.AutofitGridLayout;
 
 public class AutofitGridLayoutManager extends GridLayoutManager {
 
     private int columnWidth;
-    private AutofitGrid grid;
+    private AutofitGridLayout grid;
     private AutofitGridDecorator gridDecorator;
     private boolean columnWidthChanged = true;
 

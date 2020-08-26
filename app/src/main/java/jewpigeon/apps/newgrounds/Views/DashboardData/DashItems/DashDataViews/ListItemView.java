@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -48,6 +49,8 @@ public class ListItemView extends View implements Target<Drawable> {
     private static TextPaint DashAuthorPainter;
     private Drawable defIcon;
 
+    private StateListDrawable DashForeground;
+
     private boolean isBackgroundEnabled = false;
 
 
@@ -55,9 +58,33 @@ public class ListItemView extends View implements Target<Drawable> {
             defIcon = ContextCompat.getDrawable(getContext(), R.drawable.ng_icon_undefined_circle);
             DashBackground = new ColorDrawable(DashBackgroundEnabledColor);
 
+        DashForeground = new StateListDrawable();
+
+        DashForeground.setEnterFadeDuration(50);
+        DashForeground.setExitFadeDuration(300);
+
+        DashForeground.addState(new int[]{android.R.attr.state_pressed}, ContextCompat.getDrawable(getContext(), R.color.colorGridRippleEffect));
+
+        DashForeground.setCallback(this);
+
     }
 
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        DashForeground.setBounds(0, 0, w, h);
+    }
 
+    @Override
+    protected boolean verifyDrawable(@NonNull Drawable who) {
+        return super.verifyDrawable(who) || (who == DashForeground);
+    }
+
+    @Override
+    public void jumpDrawablesToCurrentState() {
+        super.jumpDrawablesToCurrentState();
+        DashForeground.jumpToCurrentState();
+    }
 
 
     public ListItemView(Context context) {
@@ -85,11 +112,6 @@ public class ListItemView extends View implements Target<Drawable> {
         setMeasuredDimension(MeasureSpec.makeMeasureSpec(widthMeasureSpec, MeasureSpec.AT_MOST), ITEM_HEIGHT);
     }
 
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-    }
-
     public void setDashItem(ListItem item) {
         Glide.
                 with(getContext())
@@ -107,23 +129,31 @@ public class ListItemView extends View implements Target<Drawable> {
     }
 
     @Override
+    protected void drawableStateChanged() {
+        super.drawableStateChanged();
+        DashForeground.setState(getDrawableState());
+        invalidate();
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         if (isBackgroundEnabled) {
             DashBackground.setBounds(0, 0, getWidth(), ITEM_HEIGHT);
             DashBackground.draw(canvas);
-            canvas.save();
         }
+
+        canvas.save();
         canvas.translate((ITEM_HEIGHT - ICON_SIZE)/2, (ITEM_HEIGHT - ICON_SIZE)/2);
         DashAudioIcon.draw(canvas);
-        canvas.save();
         canvas.translate(ICON_SIZE*5/4, (ITEM_HEIGHT - ICON_SIZE)/2);
         DashTitle.draw(canvas);
-        canvas.save();
         canvas.translate(DashTitle.getWidth() + ICON_SIZE*5/4, 0);
         DashAuthor.draw(canvas);
         canvas.translate(-((ITEM_HEIGHT - ICON_SIZE) + ICON_SIZE*5/2 + DashTitle.getWidth()),0);
-        canvas.save();
         canvas.restore();
+
+        DashForeground.draw(canvas);
+
     }
 
     private void establishState() {
@@ -135,7 +165,7 @@ public class ListItemView extends View implements Target<Drawable> {
         DashAuthorPainter.setColor(AuthorColor);
         DashAuthorPainter.setTextSize(sp(14));
 
-        this.setForeground(ContextCompat.getDrawable(getContext(), R.drawable.grid_item_ripple));
+        //this.setForeground(ContextCompat.getDrawable(getContext(), R.drawable.grid_item_ripple));
         this.setClickable(true);
 
 

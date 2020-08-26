@@ -33,9 +33,10 @@
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="@string/ng_featured_movies"
             app:labelIcon="@drawable/ng_movies_icon"
-            app:labelMenuStrings="@array/featured_buttons">
+            app:labelMenu="@array/featured_buttons"
+            app:labelMenuType="strings">
 
-            <jewpigeon.apps.newgrounds.Views.AutofitGrid
+            <jewpigeon.apps.newgrounds.Views.AutofitGridLayout
                 android:id="@+id/featured_movies_grid"
                 android:layout_marginTop="0dp"
                 android:background="@null"
@@ -47,9 +48,10 @@
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="@string/ng_featured_games"
             app:labelIcon="@drawable/ng_games_icon"
-            app:labelMenuStrings="@array/featured_buttons">
+            app:labelMenu="@array/featured_buttons"
+            app:labelMenuType="strings">
 
-            <jewpigeon.apps.newgrounds.Views.AutofitGrid
+            <jewpigeon.apps.newgrounds.Views.AutofitGridLayout
                 android:id="@+id/featured_games_grid"
              style="@style/NG_DefaultTheme.DashboardPortalGrid" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
@@ -59,9 +61,10 @@
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="@string/ng_featured_art"
             app:labelIcon="@drawable/ng_art_icon"
-            app:labelMenuStrings="@array/featured_buttons">
+            app:labelMenu="@array/featured_buttons"
+            app:labelMenuType="strings">
 
-            <jewpigeon.apps.newgrounds.Views.AutofitGrid
+            <jewpigeon.apps.newgrounds.Views.AutofitGridLayout
                 android:id="@+id/featured_art_grid"
                 style="@style/NG_DefaultTheme.DashboardPortalGridSmall" />
         </jewpigeon.apps.newgrounds.Views.Dashboard>
@@ -71,7 +74,8 @@
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelText="@string/ng_featured_audio"
             app:labelIcon="@drawable/ng_audio_icon"
-            app:labelMenuStrings="@array/featured_buttons">
+            app:labelMenu="@array/featured_buttons"
+            app:labelMenuType="strings">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_audio_list"
@@ -82,9 +86,10 @@
             android:id="@+id/featured_artist_news"
             style="@style/NG_DefaultTheme.Dashboard"
             app:labelIcon="@drawable/ng_community_icon"
-            app:labelMenuStrings="@array/community_ArtistNews_buttons"
             app:labelText="Artist news"
-            app:labelVisible="true">
+            app:labelVisible="true"
+            app:labelMenu="@array/featured_buttons"
+            app:labelMenuType="strings">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/featured_artistNews_list"

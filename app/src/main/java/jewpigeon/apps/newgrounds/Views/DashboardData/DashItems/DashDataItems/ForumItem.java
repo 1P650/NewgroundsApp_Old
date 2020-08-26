@@ -7,32 +7,20 @@ import java.util.Date;
 
 public class ForumItem {
 
-    public ForumItem(Drawable status, Drawable mood, String topic, String topicStarter, Date topicStartDate, int replies) {
-        this.status = status;
+    public ForumItem(Drawable mood, String topic, String topicStarter, Date topicStartDate) {
         this.mood = mood;
         this.topic = topic;
         this.topicStarter = topicStarter;
         this.topicStartDate = topicStartDate;
-        this.replies = replies;
     }
 
 
-    private Drawable status;
     private Drawable mood;
     private String topic;
 
     private String topicStarter;
     private Date topicStartDate;
-    private int replies;
 
-
-    public Drawable getStatus() {
-        return status;
-    }
-
-    public void setStatus(Drawable status) {
-        this.status = status;
-    }
 
     public Drawable getMood() {
         return mood;
@@ -64,14 +52,6 @@ public class ForumItem {
 
     public void setTopicStartDate(Date topicStartDate) {
         this.topicStartDate = topicStartDate;
-    }
-
-    public int getReplies() {
-        return replies;
-    }
-
-    public void setReplies(int replies) {
-        this.replies = replies;
     }
 
 

@@ -88,14 +88,6 @@
                 app:iconTint="@color/colorBottomBarText" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_gravity="bottom"
-            android:background="@color/colorDashboardBorderline"
-            android:elevation="2dp"
-            android:translationZ="8dp"
-            app:layout_collapseMode="pin" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/generic_account_tabs"
@@ -104,7 +96,6 @@
             android:background="@color/colorDashboardBackground"
             android:elevation="8dp"
             android:paddingHorizontal="16dp"
-            app:layout_collapseMode="pin"
             app:tabGravity="center"
             app:tabIndicatorColor="@color/colorDashboardItemLabelBackground"
             app:tabIndicatorGravity="stretch"
@@ -145,15 +136,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </com.google.android.material.tabs.TabLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_gravity="bottom"
-            android:background="@color/colorDashboardBorderline"
-            android:elevation="2dp"
-            android:translationZ="8dp"
-            app:layout_collapseMode="pin" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -193,6 +175,7 @@
                 style="@style/NG_DefaultTheme.Dashboard"
                 app:labelIcon="@drawable/ng_longlist_icon"
                 app:labelMenu="@menu/user_generic_menu_ext"
+                app:labelMenuType="menu"
                 app:labelText="Latest news"
                 app:labelVisible="true">
 
@@ -209,14 +192,15 @@
                 style="@style/NG_DefaultTheme.Dashboard"
                 app:labelIcon="@drawable/ng_movies_icon"
                 app:labelMenu="@menu/user_generic_menu"
+                app:labelMenuType="menu"
                 app:labelText="Latest Movies"
                 app:labelVisible="true">
 
-                <jewpigeon.apps.newgrounds.Views.AutofitGrid
+                <jewpigeon.apps.newgrounds.Views.AutofitGridLayout
                     android:id="@+id/generic_account_movies_grid"
                     style="@style/NG_DefaultTheme.DashboardPortalGrid">
 
-                </jewpigeon.apps.newgrounds.Views.AutofitGrid>
+                </jewpigeon.apps.newgrounds.Views.AutofitGridLayout>
 
             </jewpigeon.apps.newgrounds.Views.Dashboard>
 
@@ -225,14 +209,15 @@
                 style="@style/NG_DefaultTheme.Dashboard"
                 app:labelIcon="@drawable/ng_movies_icon"
                 app:labelMenu="@menu/user_generic_menu"
+                app:labelMenuType="menu"
                 app:labelText="Latest Favorite Movies"
                 app:labelVisible="true">
 
-                <jewpigeon.apps.newgrounds.Views.AutofitGrid
+                <jewpigeon.apps.newgrounds.Views.AutofitGridLayout
                     android:id="@+id/generic_account_favMovies_grid"
                     style="@style/NG_DefaultTheme.DashboardPortalGrid">
 
-                </jewpigeon.apps.newgrounds.Views.AutofitGrid>
+                </jewpigeon.apps.newgrounds.Views.AutofitGridLayout>
             </jewpigeon.apps.newgrounds.Views.Dashboard>
 
             <jewpigeon.apps.newgrounds.Views.Dashboard
@@ -240,14 +225,15 @@
                 style="@style/NG_DefaultTheme.Dashboard"
                 app:labelIcon="@drawable/ng_games_icon"
                 app:labelMenu="@menu/user_generic_menu"
+                app:labelMenuType="menu"
                 app:labelText="Latest Games"
                 app:labelVisible="true">
 
-                <jewpigeon.apps.newgrounds.Views.AutofitGrid
+                <jewpigeon.apps.newgrounds.Views.AutofitGridLayout
                     android:id="@+id/generic_account_games_grid"
                     style="@style/NG_DefaultTheme.DashboardPortalGrid">
 
-                </jewpigeon.apps.newgrounds.Views.AutofitGrid>
+                </jewpigeon.apps.newgrounds.Views.AutofitGridLayout>
             </jewpigeon.apps.newgrounds.Views.Dashboard>
 
             <jewpigeon.apps.newgrounds.Views.Dashboard
@@ -255,14 +241,15 @@
                 style="@style/NG_DefaultTheme.Dashboard"
                 app:labelIcon="@drawable/ng_games_icon"
                 app:labelMenu="@menu/user_generic_menu"
+                app:labelMenuType="menu"
                 app:labelText="Latest Favorite Games"
                 app:labelVisible="true">
 
-                <jewpigeon.apps.newgrounds.Views.AutofitGrid
+                <jewpigeon.apps.newgrounds.Views.AutofitGridLayout
                     android:id="@+id/generic_account_favGames_grid"
                     style="@style/NG_DefaultTheme.DashboardPortalGrid">
 
-                </jewpigeon.apps.newgrounds.Views.AutofitGrid>
+                </jewpigeon.apps.newgrounds.Views.AutofitGridLayout>
             </jewpigeon.apps.newgrounds.Views.Dashboard>
 
             <jewpigeon.apps.newgrounds.Views.Dashboard
@@ -270,14 +257,15 @@
                 style="@style/NG_DefaultTheme.Dashboard"
                 app:labelIcon="@drawable/ng_art_icon"
                 app:labelMenu="@menu/user_generic_menu"
+                app:labelMenuType="menu"
                 app:labelText="Latest Art"
                 app:labelVisible="true">
 
-                <jewpigeon.apps.newgrounds.Views.AutofitGrid
+                <jewpigeon.apps.newgrounds.Views.AutofitGridLayout
                     android:id="@+id/generic_account_art_grid"
                     style="@style/NG_DefaultTheme.DashboardPortalGridSmall">
 
-                </jewpigeon.apps.newgrounds.Views.AutofitGrid>
+                </jewpigeon.apps.newgrounds.Views.AutofitGridLayout>
             </jewpigeon.apps.newgrounds.Views.Dashboard>
 
             <jewpigeon.apps.newgrounds.Views.Dashboard
@@ -285,10 +273,11 @@
                 style="@style/NG_DefaultTheme.Dashboard"
                 app:labelIcon="@drawable/ng_art_icon"
                 app:labelMenu="@menu/user_generic_menu"
+                app:labelMenuType="menu"
                 app:labelText="Latest Favorite Art"
                 app:labelVisible="true">
 
-                <jewpigeon.apps.newgrounds.Views.AutofitGrid
+                <jewpigeon.apps.newgrounds.Views.AutofitGridLayout
                     android:id="@+id/generic_account_favArt_grid"
                     style="@style/NG_DefaultTheme.DashboardPortalGridSmall" />
             </jewpigeon.apps.newgrounds.Views.Dashboard>
@@ -298,6 +287,7 @@
                 style="@style/NG_DefaultTheme.Dashboard"
                 app:labelIcon="@drawable/ng_audio_icon"
                 app:labelMenu="@menu/user_generic_menu"
+                app:labelMenuType="menu"
                 app:labelText="Latest Audio"
                 app:labelVisible="true">
 
@@ -313,6 +303,7 @@
                 style="@style/NG_DefaultTheme.Dashboard"
                 app:labelIcon="@drawable/ng_audio_icon"
                 app:labelMenu="@menu/user_generic_menu"
+                app:labelMenuType="menu"
                 app:labelText="Latest Favorite Audio"
                 app:labelVisible="true">
 

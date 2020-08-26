@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 
 import java.text.SimpleDateFormat;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import jewpigeon.apps.newgrounds.R;
 import jewpigeon.apps.newgrounds.Utils.DimensionTool;
@@ -34,9 +35,7 @@ public class ForumItemView extends ViewGroup {
     private TextView ForumTopic;
     private TextView ForumStarterUser;
     private TextView ForumStartDate;
-    private TextView ForumRepliesCount;
 
-    private ImageView ForumStatus;
     private ImageView ForumMood;
 
     private boolean isBackgroundEnabled = false;
@@ -54,12 +53,29 @@ public class ForumItemView extends ViewGroup {
 
         DashForeground = new StateListDrawable();
 
-        DashForeground.setEnterFadeDuration(150);
+        DashForeground.setEnterFadeDuration(50);
         DashForeground.setExitFadeDuration(300);
 
         DashForeground.addState(new int[]{android.R.attr.state_pressed}, ContextCompat.getDrawable(getContext(), R.color.colorGridRippleEffect));
 
         DashForeground.setCallback(this);
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        DashForeground.setBounds(0, 0, w, h);
+    }
+
+    @Override
+    protected boolean verifyDrawable(@NonNull Drawable who) {
+        return super.verifyDrawable(who) || (who == DashForeground);
+    }
+
+    @Override
+    public void jumpDrawablesToCurrentState() {
+        super.jumpDrawablesToCurrentState();
+        DashForeground.jumpToCurrentState();
     }
 
 
@@ -90,13 +106,10 @@ public class ForumItemView extends ViewGroup {
         ForumTopic = new TextView(context);
         ForumStarterUser = new TextView(context);
         ForumStartDate = new TextView(context);
-        ForumRepliesCount = new TextView(context);
 
 
-        ForumStatus = new ImageView(context);
         ForumMood = new ImageView(context);
 
-        ForumStatus.setImageDrawable(statusDefIcon);
         ForumMood.setImageDrawable(moodDefIcon);
 
         ForumTopic.setTextColor(TopicColor);
@@ -115,21 +128,20 @@ public class ForumItemView extends ViewGroup {
         ForumStartDate.setText("0/0/0");
 
 
-        ForumRepliesCount.setTextColor(AmbientColor);
-        ForumRepliesCount.setTextSize(DimensionTool.sp(4));
-        ForumRepliesCount.setInputType(InputType.TYPE_CLASS_NUMBER);
-        ForumRepliesCount.setTextAlignment(TEXT_ALIGNMENT_CENTER);
-        ForumRepliesCount.setText("0");
-
-
-        addView(ForumStatus);
         addView(ForumTopic);
         addView(ForumMood);
         addView(ForumStarterUser);
         addView(ForumStartDate);
-        addView(ForumRepliesCount);
+
 
         this.setClickable(true);
+    }
+
+    @Override
+    protected void drawableStateChanged() {
+        super.drawableStateChanged();
+        DashForeground.setState(getDrawableState());
+        invalidate();
     }
 
     @Override
@@ -137,9 +149,7 @@ public class ForumItemView extends ViewGroup {
         ForumTopic.measure(MeasureSpec.makeMeasureSpec(widthMeasureSpec, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(heightMeasureSpec, MeasureSpec.UNSPECIFIED));
         ForumStarterUser.measure(MeasureSpec.makeMeasureSpec(widthMeasureSpec, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(heightMeasureSpec, MeasureSpec.UNSPECIFIED));
         ForumStartDate.measure(MeasureSpec.makeMeasureSpec(widthMeasureSpec, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(heightMeasureSpec, MeasureSpec.UNSPECIFIED));
-        ForumRepliesCount.measure(MeasureSpec.makeMeasureSpec(widthMeasureSpec, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(heightMeasureSpec, MeasureSpec.UNSPECIFIED));
 
-        ForumStatus.measure(MeasureSpec.makeMeasureSpec(STATUS_ICON_SIZE, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(STATUS_ICON_SIZE, MeasureSpec.EXACTLY));
         ForumMood.measure(MeasureSpec.makeMeasureSpec(MOOD_ICON_SIZE, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(MOOD_ICON_SIZE, MeasureSpec.EXACTLY));
         setMeasuredDimension(MeasureSpec.makeMeasureSpec(widthMeasureSpec, MeasureSpec.AT_MOST), MeasureSpec.makeMeasureSpec(ITEM_HEIGHT, MeasureSpec.EXACTLY));
     }
@@ -149,49 +159,33 @@ public class ForumItemView extends ViewGroup {
         int width = right - left;
         int height = bottom - top;
 
-        ForumStatus.layout(STATUS_ICON_SIZE/8,
-                (ITEM_HEIGHT - STATUS_ICON_SIZE)/2,
-                STATUS_ICON_SIZE*9/8,
-                ITEM_HEIGHT - (ITEM_HEIGHT-STATUS_ICON_SIZE)/2
-        );
         ForumMood.layout(
-                STATUS_ICON_SIZE*5/4+4,
-                (ITEM_HEIGHT-MOOD_ICON_SIZE)/2,
-                STATUS_ICON_SIZE*5/4+4+MOOD_ICON_SIZE,
-                (ITEM_HEIGHT+MOOD_ICON_SIZE)/2
+                STATUS_ICON_SIZE/8,
+                (ITEM_HEIGHT - MOOD_ICON_SIZE)/2,
+                STATUS_ICON_SIZE*9/8,
+                ITEM_HEIGHT - (ITEM_HEIGHT-MOOD_ICON_SIZE)/2
         );
         ForumTopic.layout(
-                STATUS_ICON_SIZE*5/4 + MOOD_ICON_SIZE + 16,
+                STATUS_ICON_SIZE*2/8 + MOOD_ICON_SIZE + 16,
                 (MOOD_ICON_SIZE-ForumTopic.getMeasuredHeight())/2 + 4,
-                STATUS_ICON_SIZE*5/4 + MOOD_ICON_SIZE + 16 + ForumTopic.getMeasuredWidth(),
+                STATUS_ICON_SIZE*2/8 + MOOD_ICON_SIZE + 16 + ForumTopic.getMeasuredWidth(),
                 (MOOD_ICON_SIZE+ForumTopic.getMeasuredHeight())/2 + 4
         );
         ForumStarterUser.layout(
-                width/2,
+                width-ForumStarterUser.getMeasuredWidth()-64,
                 (height - ForumStarterUser.getMeasuredHeight())/6,
-                width/2 + ForumStarterUser.getMeasuredWidth(),
-                (height - ForumStarterUser.getMeasuredHeight())*5/6
+                width-64,
+                (height - ForumStarterUser.getMeasuredHeight())
         );
         ForumStartDate.layout(
-                width/2,
-                (height - ForumStarterUser.getMeasuredHeight())*5/6 + 4,
-                width/2 + ForumStartDate.getMeasuredWidth(),
-                (height - ForumStarterUser.getMeasuredHeight())*5/6+ 4 + ForumStartDate.getMeasuredHeight()
+                width-ForumStarterUser.getMeasuredWidth()-64,
+                (height - ForumStarterUser.getMeasuredHeight()) + 4,
+                width - 64,
+                (height - ForumStarterUser.getMeasuredHeight())+ 4 + ForumStartDate.getMeasuredHeight()
         );
-
-        ForumRepliesCount.layout(
-                width - ForumRepliesCount.getMeasuredWidth()-64,
-                (height - ForumRepliesCount.getMeasuredHeight())/2+4,
-                width-64,
-                (height + ForumRepliesCount.getMeasuredHeight())/2+4
-                );
     }
 
     public void setDashItem(ForumItem item){
-        Glide.with(getContext())
-                .load(item.getStatus())
-                .fallback(statusDefIcon)
-                .into(ForumStatus);
         Glide.with(getContext())
                 .load(item.getMood())
                 .fallback(moodDefIcon)
@@ -199,7 +193,6 @@ public class ForumItemView extends ViewGroup {
         ForumTopic.setText(item.getTopic());
         ForumStarterUser.setText(item.getTopicStarter());
         ForumStartDate.setText(new SimpleDateFormat("dd/mm/yy").format(item.getTopicStartDate()));
-        ForumRepliesCount.setText(Integer.toString(item.getReplies()));
         requestLayout();
         invalidate();
     }
@@ -212,6 +205,10 @@ public class ForumItemView extends ViewGroup {
             DashBackground.draw(canvas);
             canvas.restore();
         }
+
+
+        DashForeground.draw(canvas);
+
         super.dispatchDraw(canvas);
     }
 

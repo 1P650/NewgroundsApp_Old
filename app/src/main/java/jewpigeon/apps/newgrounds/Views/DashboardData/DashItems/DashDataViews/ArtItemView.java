@@ -1,6 +1,7 @@
 package jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataViews;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -17,7 +18,6 @@ import android.util.AttributeSet;
 import android.util.LruCache;
 import android.view.View;
 
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
@@ -31,66 +31,172 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import jewpigeon.apps.newgrounds.R;
+import jewpigeon.apps.newgrounds.Utils.DimensionTool;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ArtItem;
 
 import static jewpigeon.apps.newgrounds.Utils.DimensionTool.sp;
 
 public class ArtItemView extends View implements Target<Drawable> {
 
-
-
-    private final int ITEM_HEIGHT = getContext().getResources().getDimensionPixelSize(R.dimen.dashboard_item_size_art);
-    private final int ITEM_WIDTH = getContext().getResources().getDimensionPixelSize(R.dimen.dashboard_item_width_art);
-    private final int ICON_SIZE = ITEM_WIDTH*15/16;
-
-    private final int BACKGROUND_COLOR = ContextCompat.getColor(getContext(), R.color.colorDashboardItemLabelBackground);
-
-    private Drawable DashArtIcon;
-    private  Drawable DashPegi;
-    private StaticLayout DashTitle;
-    private StaticLayout DashAuthor;
-
-
     private static TextPaint DashTitlePainter;
     private static TextPaint DashAuthorPainter;
-
-
-
+    private final Context selfContext = getContext();
+    private final Resources selfResources = selfContext.getResources();
+    private final int ITEM_HEIGHT = selfResources.getDimensionPixelSize(R.dimen.dashboard_item_size_art);
+    private final int ITEM_WIDTH = selfResources.getDimensionPixelSize(R.dimen.dashboard_item_width_art);
+    private final int ICON_SIZE = ITEM_WIDTH * 15 / 16;
+    private final int BACKGROUND_COLOR = ContextCompat.getColor(selfContext, R.color.colorDashboardItemLabelBackground);
+    private final int FOREGROUND_COLOR = ContextCompat.getColor(selfContext, R.color.colorGridRippleEffect);
+    private Drawable DashArtIcon;
+    private Drawable DashPegi;
+    private StaticLayout DashTitle;
+    private StaticLayout DashAuthor;
     private Drawable defIcon;
     private GradientDrawable DashBackground;
     private GradientDrawable DashPegiBackground;
     private StateListDrawable DashForeground;
+    private GradientDrawable DashForegroundShape;
 
     {
 
         TextCache.INSTANCE().changeWidth(ITEM_WIDTH);
 
         DashBackground = new GradientDrawable();
-        DashBackground.setBounds(0,0,ITEM_WIDTH, ITEM_HEIGHT);
+        DashBackground.setBounds(0, 0, ITEM_WIDTH, ITEM_HEIGHT);
         DashBackground.setColor(BACKGROUND_COLOR);
-        DashBackground.setCornerRadius(16);
+        DashBackground.setCornerRadius(DimensionTool.dp(8));
 
         DashPegiBackground = new GradientDrawable();
         DashPegiBackground.setShape(GradientDrawable.RECTANGLE);
-        DashPegiBackground.setCornerRadii(new float[] { 0, 0, 0, 0, 8 ,8 , 0, 0});
+        DashPegiBackground.setCornerRadii(new float[]{0, 0, 0, 0, 8, 8, 0, 0});
         DashPegiBackground.setColor(BACKGROUND_COLOR);
-        DashPegiBackground.setBounds(0,0, (int) (ITEM_WIDTH/(8)), (int) (ITEM_WIDTH/8));
+        DashPegiBackground.setBounds(0, 0, (ITEM_WIDTH / (8)), (ITEM_WIDTH / 8));
 
-        DashPegi = ContextCompat.getDrawable(getContext(), R.drawable.ng_pegi_everyone);
-        DashPegi.setBounds(0,0, ITEM_WIDTH/11, ITEM_WIDTH/11);
 
-        defIcon = ContextCompat.getDrawable(getContext(), R.drawable.ng_icon_undefined);
-        defIcon.setBounds(0,0, ICON_SIZE, ICON_SIZE);
+        DashPegi = ContextCompat.getDrawable(selfContext, R.drawable.ng_pegi_everyone);
+        DashPegi.setBounds(0, 0, ITEM_WIDTH / 11, ITEM_WIDTH / 11);
+
+        defIcon = ContextCompat.getDrawable(selfContext, R.drawable.ng_icon_undefined);
+        defIcon.setBounds(0, 0, ICON_SIZE, ICON_SIZE);
+
+
+        DashForegroundShape = new GradientDrawable();
+        DashForegroundShape.setColor(FOREGROUND_COLOR);
+        DashForegroundShape.setBounds(0, 0, ITEM_WIDTH, ITEM_HEIGHT);
+        DashForegroundShape.setCornerRadius(DimensionTool.dp(8));
 
         DashForeground = new StateListDrawable();
 
-        DashForeground.setEnterFadeDuration(150);
+        DashForeground.setEnterFadeDuration(50);
         DashForeground.setExitFadeDuration(300);
 
-        DashForeground.addState(new int[]{android.R.attr.state_pressed}, ContextCompat.getDrawable(getContext(), R.color.colorGridRippleEffect));
+        DashForeground.addState(new int[]{android.R.attr.state_pressed}, DashForegroundShape);
 
         DashForeground.setCallback(this);
     }
+
+
+    public ArtItemView(Context context) {
+        super(context);
+        establishState();
+    }
+
+    public ArtItemView(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        establishState();
+    }
+
+    public ArtItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        establishState();
+    }
+
+
+    public ArtItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        establishState();
+    }
+
+
+    public void setDashItem(ArtItem item) {
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions = requestOptions.transforms(new CenterCrop(), new RoundedCorners(16));
+        Glide.
+                with(selfContext)
+                .load(item.getArtIcon())
+                .placeholder(new ColorDrawable(Color.BLACK))
+                .fallback(defIcon)
+                .apply(requestOptions)
+                .into(this);
+        DashArtIcon.setBounds(defIcon.copyBounds());
+        DashTitle = TextCache.INSTANCE().titleLayoutFor(item.getTitle());
+        DashAuthor = TextCache.INSTANCE().authorLayoutFor(item.getAuthor());
+
+        requestLayout();
+        invalidate();
+
+
+    }
+
+    private void establishState() {
+        DashTitlePainter = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        DashTitlePainter.setColor(ContextCompat.getColor(selfContext, R.color.colorFeaturedItemTitleText));
+        DashTitlePainter.setTypeface(Typeface.DEFAULT_BOLD);
+        DashTitlePainter.setTextSize(sp(13));
+
+        DashAuthorPainter = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        DashAuthorPainter.setColor(ContextCompat.getColor(selfContext, R.color.colorAccent));
+        DashAuthorPainter.setTextSize(sp(10));
+
+        this.setClickable(true);
+    }
+
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        setMeasuredDimension(ITEM_WIDTH, ITEM_HEIGHT);
+    }
+
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        int ICON_PADDING = (ITEM_WIDTH - ICON_SIZE) / 2;
+        int ICON_IN_CENTER = (getWidth() - DashArtIcon.getBounds().width()) /2;
+        int TITLE_IN_CENTER = (getWidth() - DashTitle.getWidth()) /2;
+        int AUTHOR_IN_CENTER = (getWidth() - DashAuthor.getWidth()) /2;
+        int ICON_HEIGHT = DashArtIcon.getBounds().bottom;
+        DashBackground.draw(canvas);
+        canvas.save();
+        canvas.translate(ICON_IN_CENTER, ICON_PADDING);
+        DashArtIcon.draw(canvas);
+        canvas.restore();
+
+        canvas.save();
+        canvas.translate(TITLE_IN_CENTER, ICON_PADDING + ICON_HEIGHT);
+        DashTitle.draw(canvas);
+        canvas.restore();
+
+        canvas.save();
+        canvas.translate(AUTHOR_IN_CENTER, ICON_PADDING + ICON_HEIGHT + DashTitle.getHeight());
+        DashAuthor.draw(canvas);
+        canvas.restore();
+
+        canvas.save();
+        canvas.translate(ICON_IN_CENTER, ICON_PADDING);
+        DashPegiBackground.draw(canvas);
+        canvas.translate(4, 4);
+        DashPegi.draw(canvas);
+        canvas.restore();
+
+        canvas.save();
+        DashForeground.draw(canvas);
+        canvas.restore();
+
+
+    }
+
+
+
 
 
     @Override
@@ -110,7 +216,6 @@ public class ArtItemView extends View implements Target<Drawable> {
         DashForeground.setBounds(0, 0, w, h);
     }
 
-
     @Override
     protected void drawableStateChanged() {
         super.drawableStateChanged();
@@ -118,101 +223,6 @@ public class ArtItemView extends View implements Target<Drawable> {
         invalidate();
     }
 
-
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        int icon_padding = (ITEM_WIDTH - ICON_SIZE)/2;
-        DashBackground.draw(canvas);
-        canvas.save();
-        canvas.translate((getWidth() - defIcon.getBounds().width())/2, icon_padding);
-        DashArtIcon.draw(canvas);
-        canvas.restore();
-
-        canvas.save();
-        canvas.translate((getWidth() - DashTitle.getWidth())/2, icon_padding + DashArtIcon.getBounds().bottom);
-        DashTitle.draw(canvas);
-        canvas.restore();
-
-        canvas.save();
-        canvas.translate((getWidth() - DashAuthor.getWidth())/2, icon_padding+ DashArtIcon.getBounds().bottom + DashTitle.getHeight());
-        DashAuthor.draw(canvas);
-        canvas.restore();
-
-        canvas.save();
-        canvas.translate((getWidth() - defIcon.getBounds().width())/2, icon_padding);
-        DashPegiBackground.draw(canvas);
-        canvas.translate(4, 4);
-        DashPegi.draw(canvas);
-        canvas.restore();
-
-        canvas.save();
-        DashForeground.draw(canvas);
-        canvas.restore();
-
-
-    }
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        setMeasuredDimension(ITEM_WIDTH, ITEM_HEIGHT);
-    }
-
-
-
-    public ArtItemView(Context context) {
-        super(context);
-        establishState();
-    }
-
-    public ArtItemView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        establishState();
-    }
-
-    public ArtItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        establishState();
-    }
-
-    public ArtItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        establishState();
-    }
-
-    private void establishState() {
-        DashTitlePainter = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        DashTitlePainter.setColor(ContextCompat.getColor(getContext(), R.color.colorFeaturedItemTitleText));
-        DashTitlePainter.setTypeface(Typeface.DEFAULT_BOLD);
-        DashTitlePainter.setTextSize(sp(13));
-
-        DashAuthorPainter = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        DashAuthorPainter.setColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
-        DashAuthorPainter.setTextSize(sp(10));
-
-        this.setClickable(true);
-    }
-
-    public void setDashItem(ArtItem item){
-        RequestOptions requestOptions = new RequestOptions();
-        requestOptions = requestOptions.transforms(new CenterCrop(), new RoundedCorners(16));
-        Glide.
-                with(getContext())
-                .load(item.getArtIcon())
-                .placeholder(new ColorDrawable(Color.BLACK))
-                .fallback(defIcon)
-                .apply(requestOptions)
-                .into(this);
-        DashArtIcon.setBounds(defIcon.copyBounds());
-        DashTitle = TextCache.INSTANCE().titleLayoutFor(item.getTitle());
-        DashAuthor = TextCache.INSTANCE().authorLayoutFor(item.getAuthor());
-
-        requestLayout();
-        invalidate();
-
-
-
-    }
 
     @Override
     public void onLoadStarted(@Nullable Drawable placeholder) {
@@ -270,15 +280,15 @@ public class ArtItemView extends View implements Target<Drawable> {
 
     }
 
-    @Override
-    public void setRequest(@Nullable Request request) {
-
-    }
-
     @Nullable
     @Override
     public Request getRequest() {
         return null;
+    }
+
+    @Override
+    public void setRequest(@Nullable Request request) {
+
     }
 
     @Override
@@ -297,18 +307,8 @@ public class ArtItemView extends View implements Target<Drawable> {
     }
 
 
-    private static class TextCache{
+    private static class TextCache {
         private static TextCache instance;
-
-        public static TextCache INSTANCE() {
-            if (instance == null) {
-                instance = new TextCache();
-                return instance;
-            }
-            return instance;
-
-        }
-
         private int width;
         private final LruCache<CharSequence, StaticLayout> titleCache = new LruCache<CharSequence, StaticLayout>(100) {
             @Override
@@ -332,6 +332,15 @@ public class ArtItemView extends View implements Target<Drawable> {
                         .build();
             }
         };
+
+        public static TextCache INSTANCE() {
+            if (instance == null) {
+                instance = new TextCache();
+                return instance;
+            }
+            return instance;
+
+        }
 
         public void changeWidth(int newWidth) {
             if (width != newWidth) {

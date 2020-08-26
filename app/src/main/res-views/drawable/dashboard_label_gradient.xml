@@ -3,7 +3,7 @@
 
 
 
-    <item android:gravity="top" android:height="19dp"
+    <item android:gravity="top" android:height="18dp"
 
 
         >
@@ -21,7 +21,7 @@
         </shape>
     </item>
 
-    <item android:top="19dp"
+    <item android:gravity="bottom" android:height="16dp"
         >
         <shape
             android:shape="rectangle" >

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="ng_content_toolbar_height">56dp</dimen>
     <dimen name="ng_content_bottombar_height">64dp</dimen>
     <dimen name="ng_bottombar_padding">15dp</dimen>
@@ -11,4 +11,6 @@
     <dimen name="passport_button_iconSize">32dp</dimen>
     <dimen name="passport_textViewSize">12sp</dimen>
     <dimen name="passport_textActionSize">15sp</dimen>
+
+    <dimen name="design_navigation_icon_size" tools:override="true">22dp</dimen>
 </resources>

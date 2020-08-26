@@ -5,7 +5,12 @@
         <attr name="labelText" format="string" />
         <attr name="labelIcon" format="reference" />
         <attr name="labelMenu" format="reference" />
-        <attr name="labelMenuStrings" format="reference" />
+        <attr name="labelMenuType" format="integer" >
+            <enum name="strings" value="0" />
+            <enum name="menu" value="1" />
+            <enum name="contextMenu" value="2"/>
+            <enum name="complexContextMenu" value="3"/>
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="ProfileWidget">

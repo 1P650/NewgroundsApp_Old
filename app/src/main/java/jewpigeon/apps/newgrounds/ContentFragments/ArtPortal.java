@@ -18,9 +18,8 @@ import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.GenericLayouts.GenericArtFragment;
-import jewpigeon.apps.newgrounds.GenericLayouts.GenericMovieFragment;
 import jewpigeon.apps.newgrounds.R;
-import jewpigeon.apps.newgrounds.Views.AutofitGrid;
+import jewpigeon.apps.newgrounds.Views.AutofitGridLayout;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItemClickListener;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ArtItem;
@@ -30,7 +29,7 @@ public class ArtPortal extends NG_Fragment {
     View rootView;
 
     private Dashboard FeaturedArt;
-    private AutofitGrid FeaturedGrid;
+    private AutofitGridLayout FeaturedGrid;
     private ProgressBar FeaturedGridLoading;
     private NestedScrollView scrollView;
 
@@ -104,7 +103,7 @@ public class ArtPortal extends NG_Fragment {
         rootView = inflater.inflate(R.layout.content_art, container, false);
         setSeekerView(rootView);
         FeaturedArt = (Dashboard) findViewById(R.id.art_portal_browser);
-        FeaturedGrid = (AutofitGrid) findViewById(R.id.art_portal_browser_grid);
+        FeaturedGrid = (AutofitGridLayout) findViewById(R.id.art_portal_browser_grid);
         FeaturedGridLoading = (ProgressBar) findViewById(R.id.art_portal_loading);
         scrollView = (NestedScrollView) findViewById(R.id.art_portal_scroller);
 
