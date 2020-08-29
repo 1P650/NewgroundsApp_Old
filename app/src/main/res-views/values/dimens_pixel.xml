@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="dashboard_textSize">21sp</dimen>
-    <dimen name="dashboard_iconSize">28dp</dimen>
-    <dimen name="dashboard_labelSize">34dp</dimen>
-    <dimen name="dashboard_labelSizeHalf">16dp</dimen>
+    <dimen name="dashboard_iconSize">26dp</dimen>
+    <dimen name="dashboard_labelSize">32dp</dimen>
+    <dimen name="dashboard_labelSizeHalfTop">17dp</dimen>
+    <dimen name="dashboard_labelSizeHalfBottom">15dp</dimen>
 
     <dimen name="dashboard_margin_corners">6dp</dimen>
     <dimen name="dashboard_margin_top_bottom">8dp</dimen>

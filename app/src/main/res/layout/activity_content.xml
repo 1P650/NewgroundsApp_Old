@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--Main layout, with drawer-->
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,9 +9,10 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
     tools:context=".ContentActivity"
-    android:clipChildren="false"
-    tools:openDrawer="start">
+    android:clipChildren="false">
 
+
+<!-- Coordinator layout with toolbar, fragment container and bottombar   -->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/content_coordinator"
         android:layout_width="match_parent"
@@ -17,7 +20,7 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
+<!--AppBar layout with custom toolbar and search widget -->
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/content_appbarlayout"
             android:layout_width="match_parent"
@@ -30,20 +33,19 @@
             <include
                 android:id="@+id/content_search"
                 layout="@layout/content_search" />
-            <include
-                android:id="@+id/content_search"
-                layout="@layout/content_search" />
         </com.google.android.material.appbar.AppBarLayout>
 
+<!--Fragment container-->
         <FrameLayout
             android:id="@+id/content_container"
             android:layout_width="match_parent"
             android:fitsSystemWindows="false"
             android:layout_height="wrap_content"
+            android:clipChildren="false"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
         </FrameLayout>
 
-
+<!--Bottom bar-->
         <include
             android:id="@+id/content_bottombar"
             layout="@layout/content_bottombar" />
@@ -51,11 +53,11 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
-
+<!--Left navigation menu with portal navigation-->
     <include
         android:id="@+id/content_left_menu"
         layout="@layout/content_navigationview" />
-
+<!--User navigation menu, visible only if user is logged in-->
     <include
         android:id="@+id/content_profile_menu"
         layout="@layout/content_profilemenu">

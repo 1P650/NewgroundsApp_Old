@@ -586,8 +586,8 @@ public class Dashboard extends LinearLayout {
             ViewBackground.addState(new int[]{android.R.attr.state_focused, android.R.attr.state_pressed}, pressed);
             ViewBackground.addState(new int[]{-android.R.attr.state_enabled}, def);
             ViewBackground.addState(new int[]{}, def);
-            ViewBackground.setEnterFadeDuration(15);
-            ViewBackground.setExitFadeDuration(15);
+            ViewBackground.setEnterFadeDuration(25);
+            ViewBackground.setExitFadeDuration(75);
         }
 
         public ImageButton StyleButton_PopupMenu(@NonNull final Menu menu) {

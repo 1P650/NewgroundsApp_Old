@@ -2,13 +2,13 @@ package jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems;
 
 import android.graphics.drawable.Drawable;
 
-public class NewsItem {
+public class ArtistNewsItem {
 
     private Drawable UserIcon;
     private String Username;
     private String Title;
 
-    public NewsItem(Drawable userIcon, String username, String title) {
+    public ArtistNewsItem(Drawable userIcon, String username, String title) {
         UserIcon = userIcon;
         Username = username;
         Title = title;

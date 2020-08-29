@@ -20,7 +20,7 @@ import jewpigeon.apps.newgrounds.GenericLayouts.GenericMovieFragment;
 import jewpigeon.apps.newgrounds.R;
 import jewpigeon.apps.newgrounds.Views.AutofitGridLayout;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ListItem;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.NewsItem;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ArtistNewsItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.ItemGenericAdapter;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.GridItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.GridItemSmall;
@@ -58,10 +58,10 @@ public class FeaturedPortal extends NG_Fragment {
             new GridItem(null, "DEFAULT", "DEFAULT")
     ));
 
-    private ArrayList<NewsItem> ArtistNewsArray = new ArrayList<NewsItem>(Arrays.asList(
-            new NewsItem(null, "DEFAULT", "DEFAULT"),
-            new NewsItem(null, "DEFAULT", "DEFAULT"),
-            new NewsItem(null, "DEFAULT", "DEFAULT")
+    private ArrayList<ArtistNewsItem> ArtistNewsArray = new ArrayList<ArtistNewsItem>(Arrays.asList(
+            new ArtistNewsItem(null, "DEFAULT", "DEFAULT"),
+            new ArtistNewsItem(null, "DEFAULT", "DEFAULT"),
+            new ArtistNewsItem(null, "DEFAULT", "DEFAULT")
     ));
 
     ArrayList<GridItem> FeaturedGamesArray = new ArrayList<>(Arrays.asList(

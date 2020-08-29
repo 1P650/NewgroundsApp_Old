@@ -1,18 +1,16 @@
 package jewpigeon.apps.newgrounds.Views.DashboardData.DashItems;
 
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ForumItem;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.NewsItem;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ArtistNewsItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataViews.ForumItemView;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataViews.NewsItemView;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataViews.ArtistNewsItemView;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItemClickListener;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ArtItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.AudioItem;
@@ -82,7 +80,7 @@ public class ItemGenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             }
 
             case PORTAL_NEWS_LIST:{
-                itemView = new NewsItemView(parent.getContext());
+                itemView = new ArtistNewsItemView(parent.getContext());
                 return new DashGenericHolder(itemView);
             }
 
@@ -128,9 +126,9 @@ public class ItemGenericAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             }
 
             case PORTAL_NEWS_LIST:{
-                NewsItem item = (NewsItem) items.get(position);
-                ((NewsItemView) genHolder.view).setDashItem(item);
-                if(position%2==0)  ((NewsItemView) genHolder.view).enableBackground();
+                ArtistNewsItem item = (ArtistNewsItem) items.get(position);
+                ((ArtistNewsItemView) genHolder.view).setDashItem(item);
+                if(position%2==0)  ((ArtistNewsItemView) genHolder.view).enableBackground();
 
                 break;
             }

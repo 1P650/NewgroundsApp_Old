@@ -33,6 +33,9 @@
         <item>All forums</item>
     </string-array>
 
-    <string name="more">More</string>
-    <string name="past_features">Past features</string>
+    <string-array name="community_UOTD_buttons">
+        <item>Archive</item>
+    </string-array>
+
+
 </resources>

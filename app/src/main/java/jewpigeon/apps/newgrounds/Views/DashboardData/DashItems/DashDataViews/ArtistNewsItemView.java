@@ -20,10 +20,10 @@ import com.bumptech.glide.Glide;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import jewpigeon.apps.newgrounds.R;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.NewsItem;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ArtistNewsItem;
 
 
-public class NewsItemView extends ViewGroup {
+public class ArtistNewsItemView extends ViewGroup {
 
     private final int ITEM_HEIGHT = getContext().getResources().getDimensionPixelSize(R.dimen.dashboard_item_size_list_big);
     private final int ICON_SIZE = ITEM_HEIGHT *8/9;
@@ -76,22 +76,22 @@ public class NewsItemView extends ViewGroup {
         DashForeground.jumpToCurrentState();
     }
 
-    public NewsItemView(Context context) {
+    public ArtistNewsItemView(Context context) {
         super(context);
         establishSelf(context);
     }
 
-    public NewsItemView(Context context, AttributeSet attrs) {
+    public ArtistNewsItemView(Context context, AttributeSet attrs) {
         super(context, attrs);
         establishSelf(context);
     }
 
-    public NewsItemView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ArtistNewsItemView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         establishSelf(context);
     }
 
-    public NewsItemView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public ArtistNewsItemView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         establishSelf(context);
     }
@@ -177,7 +177,7 @@ public class NewsItemView extends ViewGroup {
 
     }
 
-    public void setDashItem(NewsItem item) {
+    public void setDashItem(ArtistNewsItem item) {
         Glide.with(getContext())
                 .load(item.getUserIcon())
                 .placeholder(new ColorDrawable(Color.BLACK))

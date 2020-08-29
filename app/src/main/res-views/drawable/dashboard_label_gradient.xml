@@ -3,7 +3,7 @@
 
 
 
-    <item android:gravity="top" android:height="18dp"
+    <item android:gravity="top" android:height="@dimen/dashboard_labelSizeHalfTop"
 
 
         >
@@ -21,7 +21,7 @@
         </shape>
     </item>
 
-    <item android:gravity="bottom" android:height="16dp"
+    <item android:gravity="bottom" android:height="@dimen/dashboard_labelSizeHalfBottom"
         >
         <shape
             android:shape="rectangle" >

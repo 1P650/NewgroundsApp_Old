@@ -17,7 +17,7 @@ import jewpigeon.apps.newgrounds.Fundamental.NG_Fragment;
 import jewpigeon.apps.newgrounds.R;
 import jewpigeon.apps.newgrounds.Views.Dashboard;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ForumItem;
-import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.NewsItem;
+import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.DashDataItems.ArtistNewsItem;
 import jewpigeon.apps.newgrounds.Views.DashboardData.DashItems.ItemGenericAdapter;
 
 public class CommunityPortal extends NG_Fragment {
@@ -26,10 +26,10 @@ public class CommunityPortal extends NG_Fragment {
     private Dashboard ArtistNews;
     private Dashboard Forums;
 
-    private ArrayList<NewsItem> ArtistNewsArray = new ArrayList<NewsItem>(Arrays.asList(
-            new NewsItem(null, "DEFAULT", "DEFAULT"),
-            new NewsItem(null, "DEFAULT", "DEFAULT"),
-            new NewsItem(null, "DEFAULT", "DEFAULT")
+    private ArrayList<ArtistNewsItem> ArtistNewsArray = new ArrayList<ArtistNewsItem>(Arrays.asList(
+            new ArtistNewsItem(null, "DEFAULT", "DEFAULT"),
+            new ArtistNewsItem(null, "DEFAULT", "DEFAULT"),
+            new ArtistNewsItem(null, "DEFAULT", "DEFAULT")
     ));
 
     private ArrayList<ForumItem> ForumsArray = new ArrayList<>(Arrays.asList(
