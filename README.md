@@ -9,6 +9,8 @@ A WIP Newgrounds client for Android. Only UI/UX, since The Site does not have an
 <img width="246" height="512" alt="изображение" src="https://github.com/user-attachments/assets/822567b8-dc05-4c75-adf0-5a85f9695cb0" />  
 <img width="246" height="512" alt="изображение" src="https://github.com/user-attachments/assets/3046a50d-d8a6-4cab-88ae-db61f47229f3" />  
 <img width="268" height="511" alt="изображение" src="https://github.com/user-attachments/assets/a97bee4b-cb76-4a94-aea3-d8372c60f542" />  
+<img width="246" height="512" alt="изображение" src="https://github.com/user-attachments/assets/d4e3790c-5de6-461d-969e-dbfa4754b4d0" />  
+
 
 
 
